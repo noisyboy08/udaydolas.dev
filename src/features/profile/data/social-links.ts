@@ -2,19 +2,19 @@ import type { SocialLink } from "../types/social-links";
 
 export const SOCIAL_LINKS: SocialLink[] = [
   {
-    icon: "https://assets.chanhdai.com/images/link-icons/liquid-glass/linkedin.webp",
+    icon: "https://cdn.simpleicons.org/linkedin/0A66C2",
     title: "LinkedIn",
     description: "Uday Dolas",
     href: "https://www.linkedin.com/in/udaydolas/",
   },
   {
-    icon: "https://assets.chanhdai.com/images/link-icons/liquid-glass/github.webp",
+    icon: "https://cdn.simpleicons.org/github/ffffff",
     title: "GitHub",
     description: "noisyboy08",
     href: "https://github.com/noisyboy08",
   },
   {
-    icon: "https://assets.chanhdai.com/images/link-icons/liquid-glass/x.webp",
+    icon: "https://cdn.simpleicons.org/x/ffffff",
     title: "X",
     description: "@UdayDolas",
     href: "https://x.com/UdayDolas",
