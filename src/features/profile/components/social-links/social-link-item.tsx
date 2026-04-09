@@ -9,8 +9,19 @@ import Image from "next/image";
 import type { SocialLink } from "@/features/profile/types/social-links";
 import { cn } from "@/lib/utils";
 
+function brandIconFromLink(href: string, title: string): "linkedin" | "github" | "x" | null {
+  const h = href.toLowerCase();
+  if (h.includes("linkedin.com")) return "linkedin";
+  if (h.includes("github.com")) return "github";
+  if (h.includes("x.com") || h.includes("twitter.com")) return "x";
+  if (title === "LinkedIn") return "linkedin";
+  if (title === "GitHub") return "github";
+  if (title === "X") return "x";
+  return null;
+}
+
 export function SocialLinkItem({ icon, title, description, href }: SocialLink) {
-  const isBuiltInIcon = title === "LinkedIn" || title === "GitHub" || title === "X";
+  const brand = brandIconFromLink(href, title);
 
   return (
     <a
@@ -36,11 +47,11 @@ export function SocialLinkItem({ icon, title, description, href }: SocialLink) {
         <div className="pointer-events-none absolute inset-0 rounded-xl ring-1 ring-black/8 ring-inset dark:ring-white/8" />
       </div> */}
 
-      {isBuiltInIcon ? (
-        <div className="flex size-12 shrink-0 items-center justify-center rounded-xl border border-edge bg-muted/50">
-          {title === "LinkedIn" && <LinkedinIcon className="size-6" />}
-          {title === "GitHub" && <GithubIcon className="size-6" />}
-          {title === "X" && <TwitterIcon className="size-6" />}
+      {brand ? (
+        <div className="flex size-12 shrink-0 items-center justify-center rounded-xl border border-edge bg-muted/50 text-foreground">
+          {brand === "linkedin" && <LinkedinIcon className="size-6" aria-hidden />}
+          {brand === "github" && <GithubIcon className="size-6" aria-hidden />}
+          {brand === "x" && <TwitterIcon className="size-6" aria-hidden />}
         </div>
       ) : (
         <Image
