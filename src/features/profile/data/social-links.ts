@@ -2,6 +2,7 @@ import type { SocialLink } from "../types/social-links";
 
 export const SOCIAL_LINKS: SocialLink[] = [
   {
+    // LinkedIn icon requested by user
     icon: "https://i.pinimg.com/1200x/b0/28/c2/b028c2e59043116dfc0da6ec6fd26d70.jpg",
     title: "LinkedIn",
     description: "Uday Dolas",
