@@ -15,7 +15,7 @@ Ensure you have the following installed:
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/ncdai/chanhdai.com.git minimal-portfolio
+git clone https://github.com/ncdai/udaydolas.com.git minimal-portfolio
 cd minimal-portfolio
 ```
 
