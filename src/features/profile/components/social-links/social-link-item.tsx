@@ -1,28 +1,10 @@
-import {
-  ArrowUpRightIcon,
-  GithubIcon,
-  LinkedinIcon,
-  TwitterIcon,
-} from "lucide-react";
+import { ArrowUpRightIcon } from "lucide-react";
 import Image from "next/image";
 
 import type { SocialLink } from "@/features/profile/types/social-links";
 import { cn } from "@/lib/utils";
 
-function brandIconFromLink(href: string, title: string): "linkedin" | "github" | "x" | null {
-  const h = href.toLowerCase();
-  if (h.includes("linkedin.com")) return "linkedin";
-  if (h.includes("github.com")) return "github";
-  if (h.includes("x.com") || h.includes("twitter.com")) return "x";
-  if (title === "LinkedIn") return "linkedin";
-  if (title === "GitHub") return "github";
-  if (title === "X") return "x";
-  return null;
-}
-
 export function SocialLinkItem({ icon, title, description, href }: SocialLink) {
-  const brand = brandIconFromLink(href, title);
-
   return (
     <a
       className={cn(
@@ -47,23 +29,15 @@ export function SocialLinkItem({ icon, title, description, href }: SocialLink) {
         <div className="pointer-events-none absolute inset-0 rounded-xl ring-1 ring-black/8 ring-inset dark:ring-white/8" />
       </div> */}
 
-      {brand ? (
-        <div className="flex size-12 shrink-0 items-center justify-center rounded-xl border border-edge bg-muted/50 text-foreground">
-          {brand === "linkedin" && <LinkedinIcon className="size-6" aria-hidden />}
-          {brand === "github" && <GithubIcon className="size-6" aria-hidden />}
-          {brand === "x" && <TwitterIcon className="size-6" aria-hidden />}
-        </div>
-      ) : (
-        <Image
-          className="shrink-0 rounded-xl"
-          src={icon}
-          alt={title}
-          width={48}
-          height={48}
-          quality={100}
-          unoptimized
-        />
-      )}
+      <Image
+        className="shrink-0 rounded-xl"
+        src={icon}
+        alt={title}
+        width={48}
+        height={48}
+        quality={100}
+        unoptimized
+      />
 
       <div className="flex-1">
         <h3 className="flex items-center font-medium underline-offset-4 group-hover/link:underline">
