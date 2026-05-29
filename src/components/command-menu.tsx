@@ -269,6 +269,24 @@ export function CommandMenu({ posts }: { posts: Post[] }) {
 
           <CommandSeparator />
 
+          <CommandGroup heading="Preferences">
+            <CommandItem
+              value={batEnabled ? "Disable Pixel Bat Pet bat pet toggle" : "Enable Pixel Bat Pet bat pet toggle"}
+              keywords={["bat", "pet", "pixel", "toggle", "enable", "disable"]}
+              onSelect={() => {
+                setOpen(false);
+                const next = !batEnabled;
+                localStorage.setItem("pixel-bat-enabled", String(next));
+                window.dispatchEvent(new Event("pixel-bat-changed"));
+              }}
+            >
+              <SparklesIcon className={cn("size-4 shrink-0 text-amber-500", batEnabled && "animate-pulse")} />
+              <span>{batEnabled ? "Disable Pixel Bat Pet" : "Enable Pixel Bat Pet"}</span>
+            </CommandItem>
+          </CommandGroup>
+
+          <CommandSeparator />
+
           <CommandLinkGroup
             heading="Daifolio"
             links={DAIFOLIO_LINKS}
@@ -349,23 +367,6 @@ export function CommandMenu({ posts }: { posts: Post[] }) {
                 <DownloadIcon />
                 Download Brand Assets
               </a>
-            </CommandItem>
-          </CommandGroup>
-
-          <CommandSeparator />
-
-          <CommandGroup heading="Preferences">
-            <CommandItem
-              keywords={["bat", "pet", "pixel", "toggle", "enable", "disable"]}
-              onSelect={() => {
-                setOpen(false);
-                const next = !batEnabled;
-                localStorage.setItem("pixel-bat-enabled", String(next));
-                window.dispatchEvent(new Event("pixel-bat-changed"));
-              }}
-            >
-              <SparklesIcon className={cn("size-4 shrink-0 text-amber-500", batEnabled && "animate-pulse")} />
-              <span>{batEnabled ? "Disable Pixel Bat Pet" : "Enable Pixel Bat Pet"}</span>
             </CommandItem>
           </CommandGroup>
 
