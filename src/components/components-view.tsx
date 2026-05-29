@@ -34,6 +34,10 @@ const SHOWCASE_CONFIG: Record<
     label: "Work Experience",
   },
   "flip-sentences": { demo: "flip-sentences-demo", size: "sm", label: "Flip Sentences" },
+  "glowing-orb": { demo: "glowing-orb-demo", size: "lg", label: "Glowing Orb" },
+  "morphing-text": { demo: "morphing-text-demo", size: "md", label: "Morphing Text" },
+  "spotlight-card": { demo: "spotlight-card-demo", size: "xl", label: "Spotlight Card" },
+  "neon-clock": { demo: "neon-clock-demo", size: "lg", label: "Neon Clock" },
 };
 
 // ─── Lazy preview cell ─────────────────────────────────────────────────────────

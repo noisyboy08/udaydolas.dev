@@ -1,0 +1,21 @@
+import { SpotlightCard } from "@/registry/spotlight-card";
+
+export default function SpotlightCardDemo() {
+  return (
+    <div className="flex w-full max-w-xs flex-col gap-3 p-2">
+      <SpotlightCard spotlightColor="rgba(139, 92, 246, 0.18)">
+        <h3 className="mb-1 text-sm font-semibold text-white">Spotlight Card</h3>
+        <p className="text-xs text-zinc-400 leading-relaxed">
+          Move your cursor over this card to see the spotlight effect follow
+          your mouse.
+        </p>
+      </SpotlightCard>
+      <SpotlightCard spotlightColor="rgba(6, 182, 212, 0.18)">
+        <h3 className="mb-1 text-sm font-semibold text-white">Cyan Glow</h3>
+        <p className="text-xs text-zinc-400 leading-relaxed">
+          Customise the spotlight color to match your brand.
+        </p>
+      </SpotlightCard>
+    </div>
+  );
+}

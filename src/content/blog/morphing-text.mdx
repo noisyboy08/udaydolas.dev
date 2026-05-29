@@ -1,0 +1,36 @@
+---
+title: Morphing Text
+description: A hacker-style text effect that scrambles characters as it transitions between words. Uses requestAnimationFrame for smooth 60fps morphing with customizable speed.
+category: components
+new: true
+createdAt: 2025-06-01
+updatedAt: 2025-06-01
+---
+
+## Overview
+
+Morphs between an array of words by scrambling each character through random ASCII symbols during the transition window. Built on `requestAnimationFrame` for buttery-smooth 60fps animation.
+
+## Usage
+
+```tsx
+import { MorphingText } from "@/registry/morphing-text";
+
+export default function Demo() {
+  return (
+    <MorphingText
+      words={["ENGINEER", "DESIGNER", "CREATOR"]}
+      className="text-4xl font-bold text-white"
+      interval={2500}
+    />
+  );
+}
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `words` | `string[]` | required | Array of words to cycle through. |
+| `interval` | `number` | `2500` | Milliseconds between transitions. |
+| `className` | `string` | — | Extra class for the `<span>` element. |

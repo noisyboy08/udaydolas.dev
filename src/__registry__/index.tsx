@@ -143,4 +143,44 @@ export const Index: Record<string, any> = {
     }],
     component: React.lazy(() => import("@/registry/examples/flip-sentences-demo.tsx")),
   },
+  "glowing-orb-demo": {
+    name: "glowing-orb-demo",
+    description: "",
+    type: "registry:example",
+    files: [{
+      path: "src/registry/examples/glowing-orb-demo.tsx",
+      type: "registry:example",
+    }],
+    component: React.lazy(() => import("@/registry/examples/glowing-orb-demo.tsx")),
+  },
+  "morphing-text-demo": {
+    name: "morphing-text-demo",
+    description: "",
+    type: "registry:example",
+    files: [{
+      path: "src/registry/examples/morphing-text-demo.tsx",
+      type: "registry:example",
+    }],
+    component: React.lazy(() => import("@/registry/examples/morphing-text-demo.tsx")),
+  },
+  "spotlight-card-demo": {
+    name: "spotlight-card-demo",
+    description: "",
+    type: "registry:example",
+    files: [{
+      path: "src/registry/examples/spotlight-card-demo.tsx",
+      type: "registry:example",
+    }],
+    component: React.lazy(() => import("@/registry/examples/spotlight-card-demo.tsx")),
+  },
+  "neon-clock-demo": {
+    name: "neon-clock-demo",
+    description: "",
+    type: "registry:example",
+    files: [{
+      path: "src/registry/examples/neon-clock-demo.tsx",
+      type: "registry:example",
+    }],
+    component: React.lazy(() => import("@/registry/examples/neon-clock-demo.tsx")),
+  },
 }

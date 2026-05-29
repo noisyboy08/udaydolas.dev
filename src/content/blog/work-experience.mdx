@@ -1,0 +1,42 @@
+---
+title: Work Experience
+description: A collapsible timeline of work experiences with role details, tech stack tags, employment periods, and expandable descriptions. Markdown supported.
+category: components
+createdAt: 2025-06-01
+updatedAt: 2025-06-01
+---
+
+## Overview
+
+A clean, collapsible work experience component. Each company can have multiple roles (positions), each with a type icon, employment period, markdown description, and skill tags.
+
+## Usage
+
+```tsx
+import { WorkExperience } from "@/registry/work-experience";
+
+const experiences = [
+  {
+    id: "company-a",
+    companyName: "Company A",
+    companyLogo: "https://example.com/logo.svg",
+    positions: [
+      {
+        id: "pos-1",
+        title: "Software Engineer",
+        employmentPeriod: "01.2024 — present",
+        employmentType: "Full-time",
+        icon: "code",
+        description: "- Built core product features\n- Led frontend architecture",
+        skills: ["React", "TypeScript", "Next.js"],
+        isExpanded: true,
+      },
+    ],
+    isCurrentEmployer: true,
+  },
+];
+
+export default function Demo() {
+  return <WorkExperience experiences={experiences} />;
+}
+```

@@ -1,0 +1,37 @@
+---
+title: Wheel Picker
+description: An iOS-style wheel picker for React with smooth inertia scrolling, infinite loop support, and haptic-like feel on touch devices.
+category: components
+createdAt: 2025-06-01
+updatedAt: 2025-06-01
+---
+
+## Overview
+
+Replicates the native iOS picker feel in React. Supports velocity-based inertia, infinite looping, and works great for time/date pickers or any list selection.
+
+## Usage
+
+```tsx
+import { WheelPicker, WheelPickerWrapper } from "@/registry/wheel-picker";
+
+const hours = Array.from({ length: 12 }, (_, i) => ({
+  label: String(i + 1).padStart(2, "0"),
+  value: String(i + 1),
+}));
+
+export default function Demo() {
+  return (
+    <WheelPickerWrapper>
+      <WheelPicker options={hours} infinite />
+    </WheelPickerWrapper>
+  );
+}
+```
+
+## Props — `WheelPicker`
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `options` | `WheelPickerOption[]` | required | Array of `{ label, value }` items. |
+| `infinite` | `boolean` | `false` | Enables infinite loop scrolling. |
