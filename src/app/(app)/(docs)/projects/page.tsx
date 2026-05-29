@@ -2,22 +2,20 @@ import dayjs from "dayjs";
 import type { Metadata } from "next";
 
 import { PostItem } from "@/components/post-item";
-import { getAllPosts } from "@/data/blog";
+import { getPostsByCategory } from "@/data/blog";
 
 export const metadata: Metadata = {
-  title: "Blog",
-  description: "Thoughts on software engineering, TypeScript, AI integration, and building great user interfaces.",
+  title: "Projects",
+  description: "A showcase of projects I've built — spanning AI, full-stack web apps, and developer tooling.",
 };
 
 export default function Page() {
-  const blogPosts = getAllPosts().filter(
-    (post) => post.metadata?.category !== "projects"
-  );
+  const projectPosts = getPostsByCategory("projects");
 
   return (
     <>
       <div className="screen-line-after px-4">
-        <h1 className="text-3xl font-semibold">Blog</h1>
+        <h1 className="text-3xl font-semibold">Projects</h1>
       </div>
 
       <div className="screen-line-after p-4">
@@ -33,7 +31,7 @@ export default function Page() {
         </div>
 
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-          {blogPosts
+          {projectPosts
             .slice()
             .sort((a, b) =>
               dayjs(b.metadata.createdAt).diff(dayjs(a.metadata.createdAt))
@@ -52,4 +50,3 @@ export default function Page() {
     </>
   );
 }
-

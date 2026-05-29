@@ -9,7 +9,9 @@ import { getAllPosts } from "@/data/blog";
 import { Panel, PanelHeader, PanelTitle } from "./panel";
 
 export function Blog() {
-  const allPosts = getAllPosts();
+  const allPosts = getAllPosts().filter(
+    (post) => post.metadata?.category === "projects"
+  );
 
   return (
     <Panel id="blog">
@@ -32,7 +34,7 @@ export function Blog() {
 
       <div className="screen-line-before flex justify-center py-2">
         <Button variant="default" asChild>
-          <Link href="/blog">
+          <Link href="/projects">
             All Projects
             <ArrowRightIcon />
           </Link>

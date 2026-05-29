@@ -60,6 +60,11 @@ const MENU_LINKS: CommandLinkItem[] = [
   },
   {
     title: "Projects",
+    href: "/projects",
+    icon: Icons.project,
+  },
+  {
+    title: "Blog",
     href: "/blog",
     icon: RssIcon,
   },
@@ -176,10 +181,17 @@ export function CommandMenu({ posts }: { posts: Post[] }) {
     [setTheme]
   );
 
-  const { blogLinks, componentLinks } = useMemo(
+  const { projectLinks, blogLinks, componentLinks } = useMemo(
     () => ({
+      projectLinks: posts
+        .filter((post) => post.metadata?.category === "projects")
+        .map(postToCommandLinkItem),
       blogLinks: posts
-        .filter((post) => post.metadata?.category !== "components")
+        .filter(
+          (post) =>
+            post.metadata?.category !== "components" &&
+            post.metadata?.category !== "projects"
+        )
         .map(postToCommandLinkItem),
       componentLinks: posts
         .filter((post) => post.metadata?.category === "components")
@@ -248,6 +260,15 @@ export function CommandMenu({ posts }: { posts: Post[] }) {
 
           <CommandLinkGroup
             heading="Projects"
+            links={projectLinks}
+            fallbackIcon={Icons.project}
+            onLinkSelect={handleOpenLink}
+          />
+
+          <CommandSeparator />
+
+          <CommandLinkGroup
+            heading="Blog"
             links={blogLinks}
             fallbackIcon={TextIcon}
             onLinkSelect={handleOpenLink}
