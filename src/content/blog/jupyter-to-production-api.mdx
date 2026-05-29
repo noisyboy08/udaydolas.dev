@@ -1,0 +1,158 @@
+---
+title: From Jupyter Notebook to Production API — My ML Deployment Workflow
+description: Turning a working Jupyter notebook into a reliable, production-ready API is harder than it looks. Here's the exact workflow I use for every ML project.
+createdAt: 2025-03-25
+updatedAt: 2025-03-25
+---
+
+Every ML project I've built has gone through the same painful transition — a notebook that works perfectly in isolation, and then the long, humbling journey of turning it into something real users can call. This post documents the exact workflow I've settled on after building projects like AGRO-CAST-AI, Netlytics, and the MediAI clinical diagnosis system.
+
+## The Problem with Notebooks in Production
+
+Jupyter notebooks are brilliant for exploration. You can iterate fast, visualize inline, and re-run individual cells. But they have serious problems as production artifacts:
+
+- **Hidden state** — cells execute in non-linear order, making reproducibility unreliable
+- **No modularity** — one giant file with global variables everywhere
+- **No error handling** — happy-path-only code that breaks on edge cases
+- **No versioning** — notebooks don't diff cleanly in git
+
+The goal isn't to abandon notebooks — use them for EDA and prototyping. The goal is to **never ship a notebook as a service**.
+
+## Stage 1 — Clean Up the Notebook First
+
+Before touching any API code, I refactor the notebook into clean Python functions. Every transformation step gets its own function with explicit inputs and outputs:
+
+```python
+# ❌ Notebook style — implicit global state
+df = pd.read_csv("data.csv")
+df["date"] = pd.to_datetime(df["date"])
+df = df.dropna()
+
+# ✅ Production style — pure, explicit functions
+def load_and_clean_data(filepath: str) -> pd.DataFrame:
+    df = pd.read_csv(filepath)
+    df["date"] = pd.to_datetime(df["date"])
+    return df.dropna()
+```
+
+## Stage 2 — Create a `model.py` Module
+
+Move all model-related code into a dedicated module. This is the file your API will import:
+
+```python
+# model.py
+import pickle
+from pathlib import Path
+
+import numpy as np
+from sklearn.preprocessing import StandardScaler
+
+MODEL_PATH = Path(__file__).parent / "models" / "classifier.pkl"
+SCALER_PATH = Path(__file__).parent / "models" / "scaler.pkl"
+
+def load_artifacts():
+    with open(MODEL_PATH, "rb") as f:
+        model = pickle.load(f)
+    with open(SCALER_PATH, "rb") as f:
+        scaler = pickle.load(f)
+    return model, scaler
+
+# Load once at module import time, not per-request
+_model, _scaler = load_artifacts()
+
+def predict(features: list[float]) -> dict:
+    arr = np.array(features).reshape(1, -1)
+    scaled = _scaler.transform(arr)
+    prediction = _model.predict(scaled)[0]
+    confidence = float(_model.predict_proba(scaled).max())
+    return {
+        "label": str(prediction),
+        "confidence": round(confidence * 100, 2),
+    }
+```
+
+Loading models at module import time (not per request) is critical for latency. A scikit-learn model load can take 200–500ms — unacceptable if you're doing it on every API call.
+
+## Stage 3 — Build the Flask API with Proper Validation
+
+```python
+# app.py
+from flask import Flask, request, jsonify
+from model import predict
+
+app = Flask(__name__)
+
+@app.route("/health")
+def health():
+    return {"status": "ok"}
+
+@app.route("/predict", methods=["POST"])
+def predict_route():
+    body = request.get_json(silent=True)
+
+    if not body or "features" not in body:
+        return jsonify({"error": "Missing 'features' in request body"}), 400
+
+    features = body["features"]
+    if not isinstance(features, list) or not all(
+        isinstance(x, (int, float)) for x in features
+    ):
+        return jsonify({"error": "'features' must be a list of numbers"}), 422
+
+    try:
+        result = predict(features)
+        return jsonify(result)
+    except Exception as e:
+        return jsonify({"error": "Prediction failed", "detail": str(e)}), 500
+```
+
+Always include a `/health` endpoint. Load balancers and uptime monitors need it.
+
+## Stage 4 — `requirements.txt` with Pinned Versions
+
+This is the one step most tutorials skip that causes the most pain. Pin exact versions:
+
+```
+Flask==3.1.3
+numpy==2.4.6
+pandas==3.0.3
+scikit-learn==1.8.0
+gunicorn==23.0.0
+```
+
+If you trained your model with scikit-learn `1.5.2` but deploy with `1.8.0`, you'll get warnings — or silent wrong predictions. Train and serve with the exact same library versions.
+
+## Stage 5 — Run with Gunicorn, Not `flask run`
+
+`flask run` is a development server. It handles one request at a time and has no worker management. In production:
+
+```bash
+gunicorn --workers 2 --bind 0.0.0.0:8080 app:app
+```
+
+Use `--workers = (2 × CPU cores) + 1` as a starting point. For CPU-bound ML inference, fewer workers with threading often performs better than many workers.
+
+## Stage 6 — Deploy to Railway or Render
+
+Both platforms support Python natively with a `Procfile`:
+
+```
+# Procfile
+web: gunicorn --workers 2 --bind 0.0.0.0:$PORT app:app
+```
+
+Set your environment variables in the platform dashboard (never commit secrets). Point your Next.js frontend to the service URL via an environment variable.
+
+## The Checklist
+
+Before I consider any ML API "production-ready":
+
+- [ ] Model loads at startup, not per-request
+- [ ] All inputs are validated before touching the model
+- [ ] `/health` endpoint exists
+- [ ] Pinned `requirements.txt`
+- [ ] Running on Gunicorn (not Flask dev server)
+- [ ] Error responses are JSON, not HTML stack traces
+- [ ] Model and scaler versions are tracked in a `model_info.json`
+
+The gap between "it works in my notebook" and "it works for real users" is real, but it's a gap you can close systematically. The workflow above has gotten me there reliably, project after project.

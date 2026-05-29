@@ -1,0 +1,114 @@
+---
+title: Building AI-Powered Web Apps with Next.js and Python
+description: A practical guide to integrating Python ML models with a Next.js frontend — from API design to real-time inference, based on my hands-on experience.
+createdAt: 2025-05-10
+updatedAt: 2025-05-10
+---
+
+Modern web development is no longer just about building beautiful UIs. Users now expect intelligence baked right into the product — smart recommendations, instant predictions, natural language interfaces. In this post, I'll walk through how I connect Python ML models with Next.js frontends, a pattern I've used across several of my own projects.
+
+## The Architecture
+
+The cleanest way I've found to bridge Python and Next.js is a **decoupled API approach**:
+
+```
+┌──────────────────┐        HTTP / REST        ┌──────────────────────┐
+│  Next.js (UI)    │  ──────────────────────►  │  Flask / FastAPI     │
+│  React + TS      │  ◄──────────────────────  │  Python ML Backend   │
+└──────────────────┘                           └──────────────────────┘
+```
+
+Your Next.js app handles routing, SSR, and the UI. Your Python service handles model loading, inference, and data preprocessing. They talk over HTTP.
+
+## Step 1 — Train and Serialize Your Model
+
+Always save your trained model to a file so you don't retrain on every server start. I use `pickle` for sklearn models and `joblib` for anything heavier:
+
+```python
+import pickle
+from sklearn.svm import SVC
+
+model = SVC(kernel="rbf", probability=True)
+model.fit(X_train, y_train)
+
+with open("model.pkl", "wb") as f:
+    pickle.dump(model, f)
+```
+
+> **Tip:** Pin your scikit-learn version in `requirements.txt`. Loading a model pickled with v1.2 in a v1.8 environment will throw `InconsistentVersionWarning` — I've hit this more than once.
+
+## Step 2 — Expose Inference via Flask
+
+A minimal Flask endpoint for serving predictions:
+
+```python
+from flask import Flask, request, jsonify
+import pickle
+import numpy as np
+
+app = Flask(__name__)
+
+with open("model.pkl", "rb") as f:
+    model = pickle.load(f)
+
+@app.route("/predict", methods=["POST"])
+def predict():
+    data = request.get_json()
+    features = np.array(data["features"]).reshape(1, -1)
+    prediction = model.predict(features)[0]
+    probability = model.predict_proba(features).max()
+    return jsonify({
+        "prediction": str(prediction),
+        "confidence": round(float(probability) * 100, 2)
+    })
+```
+
+## Step 3 — Call the API from Next.js
+
+From a Next.js Server Action or Route Handler, call your Python service:
+
+```typescript
+// app/actions/predict.ts
+"use server";
+
+export async function getPrediction(features: number[]) {
+  const res = await fetch(process.env.ML_API_URL + "/predict", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ features }),
+    cache: "no-store",
+  });
+
+  if (!res.ok) throw new Error("Prediction failed");
+  return res.json() as Promise<{ prediction: string; confidence: number }>;
+}
+```
+
+Then use it in a Client Component with `useTransition` for a non-blocking UX:
+
+```typescript
+const [isPending, startTransition] = useTransition();
+
+const handleSubmit = () => {
+  startTransition(async () => {
+    const result = await getPrediction(selectedFeatures);
+    setPrediction(result);
+  });
+};
+```
+
+## Step 4 — Deploy Together on Vercel + Railway
+
+- **Next.js** → deploy on Vercel (zero config)
+- **Flask API** → deploy on Railway or Render (supports Python runtimes natively)
+
+Set `ML_API_URL` as an environment variable in Vercel pointing to your Railway service URL.
+
+## Lessons Learned
+
+- **Keep models small.** Large pickle files slow cold starts significantly. Consider ONNX format for production.
+- **Validate inputs server-side.** Never trust raw client data going into your model.
+- **Stream responses** for LLM-style outputs — Flask supports `stream_with_context`, Next.js supports `ReadableStream`.
+- **Version your API routes** (`/v1/predict`) so you can swap models without breaking the frontend.
+
+Building full-stack AI apps is one of the most satisfying areas of engineering — you're shipping something that genuinely thinks. The Python + Next.js split keeps each layer focused on what it does best.

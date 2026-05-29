@@ -1,0 +1,113 @@
+---
+title: Why I Switched Everything to TypeScript (And Never Looked Back)
+description: After two years of writing TypeScript across React, Next.js, and Node.js projects, here's what I've learned — including the pitfalls nobody warns you about.
+createdAt: 2025-04-18
+updatedAt: 2025-04-18
+---
+
+When I started my first serious web project, I wrote plain JavaScript. It felt faster. No types to define, no compiler to satisfy, just ideas flowing directly into code. Then one morning I shipped a bug because `undefined` sneaked into a function that expected a number. Production. Real users. That was the last JavaScript-only project I ever wrote.
+
+Two years of TypeScript later, here's my honest take.
+
+## The Real Benefit Isn't Catching Errors
+
+Everyone says "TypeScript catches bugs before runtime." That's true, but it undersells the actual value. The bigger win is **confidence while refactoring**.
+
+When a codebase grows to thousands of lines, you become afraid to change things. You don't know what calls what. In JavaScript, renaming a function means grep-searching the whole codebase and hoping you didn't miss a dynamic reference. In TypeScript, you rename it in one place and the compiler shows you every single call site that needs to update — instantly.
+
+I've refactored entire data layers in my projects in under an hour because of this.
+
+## My Typing Philosophy
+
+### 1. Type data at the boundary, not everywhere
+
+Don't type every internal variable manually. Let inference do the work. Only explicitly type things at **API boundaries, function parameters, and return types**:
+
+```typescript
+// ✅ Good — type the shape of what comes from the outside
+type Post = {
+  slug: string;
+  title: string;
+  createdAt: string;
+};
+
+async function getPost(slug: string): Promise<Post> {
+  const res = await fetch(`/api/posts/${slug}`);
+  return res.json();
+}
+
+// ❌ Unnecessary — inference handles this perfectly
+const count: number = posts.length;
+```
+
+### 2. Prefer `type` over `interface` for data shapes
+
+I use `interface` only when I need declaration merging (rare). For everything else, `type` is more flexible and composable:
+
+```typescript
+type ApiResponse<T> =
+  | { success: true; data: T }
+  | { success: false; error: string };
+
+type UserResponse = ApiResponse<{ name: string; email: string }>;
+```
+
+### 3. Never use `any`. `unknown` is your friend.
+
+When you don't know the shape of data (JSON from an external API, for example), use `unknown` and narrow it:
+
+```typescript
+async function parseWebhook(body: unknown) {
+  if (
+    typeof body !== "object" ||
+    body === null ||
+    !("event" in body) ||
+    typeof (body as Record<string, unknown>).event !== "string"
+  ) {
+    throw new Error("Invalid webhook payload");
+  }
+
+  return body as { event: string };
+}
+```
+
+## The Pitfalls Nobody Warns You About
+
+### Slow compilation in large monorepos
+
+TypeScript compilation gets slow when your `tsconfig.json` includes too much. Always scope your `include` paths and use `tsc --noEmit` for type checking separately from your bundler.
+
+### Over-engineering types
+
+I spent an entire afternoon once building a deeply generic, conditionally typed utility that saved me maybe 10 lines. It was unmaintainable. Sometimes a simple union type is better than a clever generic.
+
+### `strictNullChecks` off is not TypeScript
+
+If `strict: true` is not in your `tsconfig`, you're missing half the value. Turn it on from day one — retrofitting it into an existing codebase is painful.
+
+## The Setup I Use on Every Project
+
+```json
+// tsconfig.json
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "exactOptionalPropertyTypes": true,
+    "moduleResolution": "bundler",
+    "paths": {
+      "@/*": ["./src/*"]
+    }
+  }
+}
+```
+
+`noUncheckedIndexedAccess` is the one that surprises people — array indexing returns `T | undefined` instead of `T`. It feels annoying at first, then saves you from runtime crashes constantly.
+
+## Is It Worth It for Small Projects?
+
+Yes, even for a weekend project. The tooling has gotten so good that the setup cost is near zero with `create-next-app` or Vite. You get autocomplete, inline docs, and refactoring safety from minute one.
+
+The discipline it teaches — thinking about data shapes before writing logic — makes you a better engineer in any language.

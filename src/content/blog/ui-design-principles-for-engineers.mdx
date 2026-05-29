@@ -1,0 +1,123 @@
+---
+title: UI Design Principles I Learned by Building My Own Portfolio
+description: As a software engineer who designs his own UIs, I've developed a set of practical design principles that bridge the gap between clean code and beautiful interfaces.
+createdAt: 2025-02-28
+updatedAt: 2025-02-28
+---
+
+Most software engineers think design is someone else's job. I used to think the same. Then I started building my own projects from scratch — no designer, no design system handed to me, just a blank screen and users to impress. Three years of solo product building later, I've developed a set of design principles that work specifically for engineers who have to make their own interfaces.
+
+These aren't academic design theories. They're pragmatic rules I've earned by shipping things.
+
+## 1. Spacing Is Your Most Powerful Tool
+
+Before you touch colors or typography, get the spacing right. Most developer-built UIs feel "off" not because of bad colors — it's inconsistent spacing.
+
+Use a scale, and stick to it. I use multiples of 4px:
+
+```
+4px  — micro gaps (icon to label)
+8px  — tight groupings (related items)
+16px — standard padding (cards, inputs)
+24px — section separation
+32px — major section breaks
+48px/64px — hero/page-level breathing room
+```
+
+If something feels cramped, add more space. If it feels disconnected, reduce it. Spacing communicates relationships — elements that belong together should be closer than elements that don't.
+
+## 2. Pick a Primary Color, Then Let CSS Do the Math
+
+Spend time on one great primary color. Then derive everything else using HSL adjustments rather than picking secondary colors manually:
+
+```css
+:root {
+  --primary-h: 142;        /* hue: forest green */
+  --primary-s: 71%;        /* saturation */
+  --primary-l: 45%;        /* lightness */
+
+  --primary: hsl(var(--primary-h), var(--primary-s), var(--primary-l));
+  --primary-hover: hsl(var(--primary-h), var(--primary-s), 38%);
+  --primary-subtle: hsl(var(--primary-h), 40%, 96%);
+  --primary-foreground: hsl(var(--primary-h), 10%, 98%);
+}
+```
+
+By sharing the same hue across all variants, your color palette is automatically harmonious. This is the technique behind most modern design systems.
+
+## 3. Typography Hierarchy Over Typography Variety
+
+Beginners use many different font sizes to create hierarchy. Experienced designers use **weight and opacity** instead.
+
+In practice, I use only 3–4 font sizes in an entire app, but I vary weight (`400`, `500`, `600`) and opacity (`text-foreground`, `text-muted-foreground`) to create clear hierarchy:
+
+```tsx
+// ✅ Clean hierarchy with same font size
+<h3 className="text-base font-semibold text-foreground">Card Title</h3>
+<p className="text-sm font-normal text-muted-foreground">Supporting detail</p>
+<span className="text-xs font-medium text-muted-foreground/70">Metadata</span>
+
+// ❌ Visual noise from too many sizes
+<h3 className="text-2xl">Card Title</h3>
+<p className="text-lg">Supporting detail</p>
+<span className="text-xs">Metadata</span>
+```
+
+## 4. Borders Tell Users Where Things Are
+
+On light backgrounds, borders feel boring. On dark backgrounds or glassmorphic layouts, they become essential. My rule: **use border opacity rather than hard colors**.
+
+```css
+.card {
+  border: 1px solid rgb(255 255 255 / 0.12); /* subtle in dark mode */
+}
+.divider {
+  border-top: 1px solid rgb(0 0 0 / 0.08); /* barely-there in light mode */
+}
+```
+
+This keeps interfaces feeling airy rather than rigid. The border exists to give structure; it shouldn't draw attention to itself.
+
+## 5. Motion Should Feel Physics-Based
+
+Animations that follow physical laws feel satisfying. Animations that don't feel robotic or cheap.
+
+- **Easing in**: things that come from off-screen accelerate into view (`ease-in`)
+- **Easing out**: things that stop decelerate to rest (`ease-out`)  
+- **Easing in-out**: things that traverse a space (`ease-in-out`)
+- **Never linear**: linear motion feels mechanical — avoid it for UI animations
+
+```css
+.modal-enter {
+  animation: slideIn 240ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes slideIn {
+  from { transform: translateY(8px); opacity: 0; }
+  to   { transform: translateY(0);   opacity: 1; }
+}
+```
+
+Keep durations short: `150–300ms` for micro-interactions, `300–500ms` for larger layout changes. If an animation takes longer than 500ms, users feel like they're waiting.
+
+## 6. Design for the Empty State First
+
+The most overlooked moment in UI design is when there's no data. A table with no rows, a feed with no posts, a dashboard with no activity.
+
+If the empty state shows a blank white box, users think the product is broken. Design it deliberately:
+
+- Friendly illustration or icon
+- A clear message explaining why it's empty
+- A direct call to action to fix it
+
+I've started designing empty states before I design the populated state. It forces me to think about the user's intent, not just the data layout.
+
+## 7. One Primary Action Per Screen
+
+Every screen should have exactly one thing it wants the user to do. One prominent button, one clear next step. Supporting actions exist, but they're visually subordinate.
+
+This is the principle I violate most often early in a project (adding every feature button with equal prominence) and fix most often during polish.
+
+---
+
+Engineering and design feel like opposite disciplines, but they share the same core goal: remove everything that gets in the user's way. Code does it with clean architecture and performance. Design does it with clarity and visual hierarchy. Getting both right on the same project is genuinely satisfying — and it's a skill that compounds over time.
