@@ -61,10 +61,52 @@ export function PixelBatPet() {
   const { resolvedTheme } = useTheme();
   const batRef = useRef<HTMLDivElement>(null);
   const [shouldRender, setShouldRender] = useState(false);
+  const [isEnabled, setIsEnabled] = useState(true);
+  const [showNotification, setShowNotification] = useState(false);
+  const [notificationText, setNotificationText] = useState("");
+  const isFirstRender = useRef(true);
 
   useEffect(() => {
     setShouldRender(true);
+    if (typeof window !== "undefined") {
+      const saved = localStorage.getItem("pixel-bat-enabled");
+      if (saved !== null) {
+        setIsEnabled(saved === "true");
+      }
+    }
   }, []);
+
+  useEffect(() => {
+    const handleGlobalKey = (e: KeyboardEvent) => {
+      if (e.ctrlKey && e.key === "Escape") {
+        e.preventDefault();
+        setIsEnabled((prev) => {
+          const next = !prev;
+          if (typeof window !== "undefined") {
+            localStorage.setItem("pixel-bat-enabled", String(next));
+          }
+          return next;
+        });
+      }
+    };
+    window.addEventListener("keydown", handleGlobalKey);
+    return () => {
+      window.removeEventListener("keydown", handleGlobalKey);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (isFirstRender.current) {
+      isFirstRender.current = false;
+      return;
+    }
+    setNotificationText(isEnabled ? "Pixel Bat Pet Enabled!" : "Pixel Bat Pet Disabled!");
+    setShowNotification(true);
+    const timer = setTimeout(() => {
+      setShowNotification(false);
+    }, 3000);
+    return () => clearTimeout(timer);
+  }, [isEnabled]);
 
   // Imperatively inject the stylesheet so it loads regardless of dev-mode
   // quirks with React 19's JSX <link> hoisting.
@@ -79,7 +121,7 @@ export function PixelBatPet() {
   }, []);
 
   useEffect(() => {
-    if (!shouldRender) return;
+    if (!shouldRender || !isEnabled) return;
     const bat = batRef.current;
     if (!bat) return;
 
@@ -1586,7 +1628,7 @@ export function PixelBatPet() {
       audioCtx?.close().catch(() => {});
       audioCtx = null;
     };
-  }, [shouldRender]);
+  }, [shouldRender, isEnabled]);
 
   if (!shouldRender) return null;
 
@@ -1595,12 +1637,23 @@ export function PixelBatPet() {
   const filter = resolvedTheme === "light" ? "invert(1)" : "none";
 
   return (
-    <div
-      ref={batRef}
-      id="pixel-bat-pet"
-      className="bat"
-      aria-hidden="true"
-      style={{ filter }}
-    />
+    <>
+      {showNotification && (
+        <div className="fixed bottom-6 right-6 z-[9999] flex items-center gap-2 rounded-full border border-zinc-200 bg-white/95 px-4 py-2.5 text-xs font-semibold text-zinc-900 shadow-xl backdrop-blur-md transition-all duration-300 dark:border-zinc-800 dark:bg-zinc-950/95 dark:text-zinc-50 animate-in fade-in slide-in-from-bottom-3">
+          <div className={`h-2 w-2 rounded-full ${isEnabled ? 'bg-emerald-500 animate-pulse' : 'bg-red-500'}`} />
+          <span>{notificationText}</span>
+          <span className="text-[10px] text-zinc-500 bg-zinc-100 dark:bg-zinc-800 px-1.5 py-0.5 rounded ml-2">Ctrl + Esc</span>
+        </div>
+      )}
+      {isEnabled && (
+        <div
+          ref={batRef}
+          id="pixel-bat-pet"
+          className="bat"
+          aria-hidden="true"
+          style={{ filter }}
+        />
+      )}
+    </>
   );
 }
