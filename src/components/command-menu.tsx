@@ -15,6 +15,7 @@ import {
   TextIcon,
   TriangleDashedIcon,
   TypeIcon,
+  SparklesIcon,
 } from "lucide-react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
@@ -126,6 +127,24 @@ export function CommandMenu({ posts }: { posts: Post[] }) {
   const { setTheme, resolvedTheme } = useTheme();
 
   const [open, setOpen] = useState(false);
+  const [batEnabled, setBatEnabled] = useState(true);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const saved = localStorage.getItem("pixel-bat-enabled");
+      setBatEnabled(saved !== "false");
+    }
+
+    const handleBatChange = () => {
+      const saved = localStorage.getItem("pixel-bat-enabled");
+      setBatEnabled(saved !== "false");
+    };
+
+    window.addEventListener("pixel-bat-changed", handleBatChange);
+    return () => {
+      window.removeEventListener("pixel-bat-changed", handleBatChange);
+    };
+  }, []);
 
   useEffect(() => {
     const abortController = new AbortController();
@@ -335,6 +354,23 @@ export function CommandMenu({ posts }: { posts: Post[] }) {
 
           <CommandSeparator />
 
+          <CommandGroup heading="Preferences">
+            <CommandItem
+              keywords={["bat", "pet", "pixel", "toggle", "enable", "disable"]}
+              onSelect={() => {
+                setOpen(false);
+                const next = !batEnabled;
+                localStorage.setItem("pixel-bat-enabled", String(next));
+                window.dispatchEvent(new Event("pixel-bat-changed"));
+              }}
+            >
+              <SparklesIcon className={cn("size-4 shrink-0 text-amber-500", batEnabled && "animate-pulse")} />
+              <span>{batEnabled ? "Disable Pixel Bat Pet" : "Enable Pixel Bat Pet"}</span>
+            </CommandItem>
+          </CommandGroup>
+
+          <CommandSeparator />
+
           <CommandGroup heading="Theme">
             <CommandItem
               keywords={["theme"]}
@@ -421,6 +457,8 @@ function buildCommandMetaMap() {
   const commandMetaMap: CommandMetaMap = new Map();
 
   commandMetaMap.set("Download vCard", { commandKind: "command" });
+  commandMetaMap.set("Disable Pixel Bat Pet", { commandKind: "command" });
+  commandMetaMap.set("Enable Pixel Bat Pet", { commandKind: "command" });
 
   commandMetaMap.set("Light", { commandKind: "command" });
   commandMetaMap.set("Dark", { commandKind: "command" });
