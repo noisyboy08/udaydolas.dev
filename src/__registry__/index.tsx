@@ -133,4 +133,14 @@ export const Index: Record<string, any> = {
     }],
     component: React.lazy(() => import("@/registry/examples/work-experience-demo.tsx")),
   },
+  "flip-sentences-demo": {
+    name: "flip-sentences-demo",
+    description: "",
+    type: "registry:example",
+    files: [{
+      path: "src/registry/examples/flip-sentences-demo.tsx",
+      type: "registry:example",
+    }],
+    component: React.lazy(() => import("@/registry/examples/flip-sentences-demo.tsx")),
+  },
 }

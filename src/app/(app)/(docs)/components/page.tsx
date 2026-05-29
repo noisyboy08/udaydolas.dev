@@ -1,12 +1,11 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 
-import { Icons } from "@/components/icons";
+import { ComponentsView } from "@/components/components-view";
 import { getPostsByCategory } from "@/data/blog";
 
 export const metadata: Metadata = {
   title: "Components",
-  description: "A collection of reusable components.",
+  description: "Pixel-perfect, uniquely crafted.",
 };
 
 export default function Page() {
@@ -14,45 +13,18 @@ export default function Page() {
 
   return (
     <div className="min-h-svh [--color-react:#087EA4] dark:[--color-react:#58C4DC]">
-      <div className="screen-line-after px-4">
-        <h1 className="text-3xl font-semibold">Components</h1>
-      </div>
-
-      <div className="screen-line-after p-4">
-        <p className="font-mono text-sm text-balance text-muted-foreground">
-          {metadata.description}
+      {/* Hero heading — matches reference design */}
+      <div className="screen-line-after px-4 pt-2 pb-4">
+        <p className="mb-1 font-mono text-xs font-medium text-[--color-react]">
+          Components
         </p>
+        <h1 className="text-3xl font-bold tracking-tight sm:text-4xl">
+          Pixel-perfect, uniquely crafted.
+        </h1>
       </div>
 
-      {posts.map((post) => (
-        <Link
-          key={post.slug}
-          href={`/components/${post.slug}`}
-          className="group/post flex items-center border-b border-edge pr-4"
-        >
-          <Icons.react
-            className="mx-4 size-5 shrink-0 text-(--color-react)"
-            aria-hidden
-          />
-
-          <div className="border-l border-dashed border-edge p-4">
-            <h2 className="leading-snug font-medium text-balance underline-offset-4 group-hover/post:underline">
-              {post.metadata.title}
-            </h2>
-          </div>
-
-          {post.metadata.new && (
-            <span
-              className="shrink-0 rounded-md bg-info px-1.5 font-mono text-sm font-medium text-white text-shadow-xs"
-              aria-hidden
-            >
-              New
-            </span>
-          )}
-        </Link>
-      ))}
-
-      <div className="h-4" />
+      {/* View switcher + list / grid / showcase */}
+      <ComponentsView posts={posts} />
     </div>
   );
 }
