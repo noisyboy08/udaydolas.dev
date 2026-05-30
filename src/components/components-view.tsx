@@ -1,6 +1,6 @@
 "use client";
 
-import { LayoutGridIcon, ListIcon, SparklesIcon } from "lucide-react";
+import { Grid3X3Icon, LayoutGridIcon } from "lucide-react";
 import Link from "next/link";
 import React, { Suspense, useState } from "react";
 
@@ -67,8 +67,8 @@ function ShowcaseCell({
     <Link
       href={`/components/${slug}`}
       className={cn(
-        "group relative flex flex-col overflow-hidden rounded-xl border border-edge bg-zinc-950/[0.02] transition-all duration-300",
-        "hover:border-zinc-400/40 hover:shadow-lg hover:shadow-black/10 dark:bg-white/[0.02] dark:hover:border-zinc-600/60",
+        "group relative flex flex-col overflow-hidden transition-all duration-300",
+        "bg-background hover:bg-zinc-100/60 dark:hover:bg-zinc-900/60",
         sizeClass[size]
       )}
     >
@@ -118,9 +118,8 @@ function FallbackCell({ post }: { post: Post }) {
     <Link
       href={`/components/${post.slug}`}
       className={cn(
-        "group relative flex flex-col overflow-hidden rounded-xl border border-edge col-span-1 row-span-1",
-        "bg-zinc-950/[0.02] transition-all duration-300 dark:bg-white/[0.02]",
-        "hover:border-zinc-400/40 hover:shadow-lg hover:shadow-black/10 dark:hover:border-zinc-600/60"
+        "group relative flex flex-col overflow-hidden col-span-1 row-span-1 transition-all duration-300",
+        "bg-background hover:bg-zinc-100/60 dark:hover:bg-zinc-900/60"
       )}
     >
       <div className="flex flex-1 flex-col items-center justify-center gap-3 p-6">
@@ -137,10 +136,10 @@ function FallbackCell({ post }: { post: Post }) {
 }
 
 // ─── Main component ──────────────────────────────────────────────────────────
-type ViewMode = "list" | "grid" | "showcase";
+type ViewMode = "grid" | "showcase";
 
 export function ComponentsView({ posts }: { posts: Post[] }) {
-  const [view, setView] = useState<ViewMode>("list");
+  const [view, setView] = useState<ViewMode>("grid");
 
   return (
     <div className="[--color-react:#087EA4] dark:[--color-react:#58C4DC]">
@@ -152,65 +151,21 @@ export function ComponentsView({ posts }: { posts: Post[] }) {
 
         <div className="flex items-center gap-1 rounded-lg border border-edge bg-background p-1">
           <ViewButton
-            active={view === "list"}
-            onClick={() => setView("list")}
-            title="List view"
-          >
-            <ListIcon className="size-3.5" />
-          </ViewButton>
-          <ViewButton
             active={view === "grid"}
             onClick={() => setView("grid")}
             title="Grid view"
           >
+            <Grid3X3Icon className="size-3.5" />
+          </ViewButton>
+          <ViewButton
+            active={view === "showcase"}
+            onClick={() => setView("showcase")}
+            title="Showcase view"
+          >
             <LayoutGridIcon className="size-3.5" />
           </ViewButton>
-          <button
-            onClick={() => setView("showcase")}
-            title="Showcase"
-            className={cn(
-              "flex items-center gap-1.5 rounded-md px-2.5 py-1 text-xs font-semibold transition-all",
-              view === "showcase"
-                ? "bg-zinc-900 text-white shadow-sm dark:bg-white dark:text-zinc-900"
-                : "text-muted-foreground hover:text-foreground"
-            )}
-          >
-            <SparklesIcon className="size-3.5" />
-            Showcase
-          </button>
         </div>
       </div>
-
-      {/* LIST view */}
-      {view === "list" && (
-        <div>
-          {posts.map((post) => (
-            <Link
-              key={post.slug}
-              href={`/components/${post.slug}`}
-              className="group/post flex items-center border-b border-edge pr-4"
-            >
-              <Icons.react
-                className="mx-4 size-5 shrink-0 text-(--color-react)"
-                aria-hidden
-              />
-              <div className="border-l border-dashed border-edge p-4">
-                <h2 className="leading-snug font-medium text-balance underline-offset-4 group-hover/post:underline">
-                  {post.metadata.title}
-                </h2>
-              </div>
-              {post.metadata.new && (
-                <span
-                  className="ml-auto shrink-0 rounded-md bg-info px-1.5 font-mono text-sm font-medium text-white text-shadow-xs"
-                  aria-hidden
-                >
-                  New
-                </span>
-              )}
-            </Link>
-          ))}
-        </div>
-      )}
 
       {/* GRID view */}
       {view === "grid" && (
@@ -240,26 +195,24 @@ export function ComponentsView({ posts }: { posts: Post[] }) {
 
       {/* SHOWCASE view */}
       {view === "showcase" && (
-        <div className="p-4">
-          <div
-            className="grid auto-rows-[180px] grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4"
-          >
-            {posts.map((post) => {
-              const config = SHOWCASE_CONFIG[post.slug];
-              if (config) {
-                return (
-                  <ShowcaseCell
-                    key={post.slug}
-                    slug={post.slug}
-                    demoName={config.demo}
-                    label={config.label}
-                    size={config.size}
-                  />
-                );
-              }
-              return <FallbackCell key={post.slug} post={post} />;
-            })}
-          </div>
+        <div
+          className="grid auto-rows-[180px] grid-cols-2 gap-px border-b border-edge bg-edge sm:grid-cols-3 md:grid-cols-4"
+        >
+          {posts.map((post) => {
+            const config = SHOWCASE_CONFIG[post.slug];
+            if (config) {
+              return (
+                <ShowcaseCell
+                  key={post.slug}
+                  slug={post.slug}
+                  demoName={config.demo}
+                  label={config.label}
+                  size={config.size}
+                />
+              );
+            }
+            return <FallbackCell key={post.slug} post={post} />;
+          })}
         </div>
       )}
 
