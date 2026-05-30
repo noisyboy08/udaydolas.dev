@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "morphing-text",
+  "type": "registry:component",
+  "title": "Morphing Text",
+  "author": "ncdai <dai@chanhdai.com>",
+  "dependencies": [],
+  "registryDependencies": [
+    "https://chanhdai.com/r/utils.json"
+  ],
+  "files": [
+    {
+      "path": "src/registry/morphing-text/morphing-text.tsx",
+      "content": "\"use client\";\n\nimport { useEffect, useRef, useState } from \"react\";\n\nimport { cn } from \"@/lib/utils\";\n\ntype MorphingTextProps = {\n  words: string[];\n  className?: string;\n  interval?: number;\n};\n\n// Blends two strings character-by-character for a morphing effect\nfunction morphString(from: string, to: string, progress: number): string {\n  const maxLen = Math.max(from.length, to.length);\n  const fromPadded = from.padEnd(maxLen, \" \");\n  const toPadded = to.padEnd(maxLen, \" \");\n\n  return Array.from({ length: maxLen }, (_, i) => {\n    const threshold = i / maxLen;\n    if (progress >= threshold + 0.15) return toPadded[i];\n    if (progress < threshold) return fromPadded[i];\n\n    // In transition zone — show a random ASCII character\n    const chars = \"ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%\";\n    return chars[Math.floor(Math.random() * chars.length)];\n  }).join(\"\");\n}\n\nexport function MorphingText({\n  words,\n  className,\n  interval = 2500,\n}: MorphingTextProps) {\n  const [current, setCurrent] = useState(0);\n  const [displayed, setDisplayed] = useState(words[0] ?? \"\");\n  const [isAnimating, setIsAnimating] = useState(false);\n  const rafRef = useRef<number | null>(null);\n  const timerRef = useRef<NodeJS.Timeout | null>(null);\n\n  useEffect(() => {\n    timerRef.current = setInterval(() => {\n      const next = (current + 1) % words.length;\n      setIsAnimating(true);\n\n      const from = words[current];\n      const to = words[next];\n      const duration = 600;\n      const start = performance.now();\n\n      const animate = (now: number) => {\n        const elapsed = now - start;\n        const progress = Math.min(elapsed / duration, 1);\n        setDisplayed(morphString(from, to, progress));\n\n        if (progress < 1) {\n          rafRef.current = requestAnimationFrame(animate);\n        } else {\n          setDisplayed(to);\n          setIsAnimating(false);\n          setCurrent(next);\n        }\n      };\n\n      rafRef.current = requestAnimationFrame(animate);\n    }, interval);\n\n    return () => {\n      if (timerRef.current) clearInterval(timerRef.current);\n      if (rafRef.current) cancelAnimationFrame(rafRef.current);\n    };\n  }, [current, words, interval]);\n\n  return (\n    <span\n      className={cn(\n        \"font-mono tabular-nums tracking-widest transition-all\",\n        isAnimating && \"opacity-80\",\n        className\n      )}\n    >\n      {displayed}\n    </span>\n  );\n}\n",
+      "type": "registry:component"
+    }
+  ]
+}

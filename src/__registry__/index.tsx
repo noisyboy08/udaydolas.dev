@@ -73,6 +73,42 @@ export const Index: Record<string, any> = {
       type: "registry:component",
     }],
   },
+  "glowing-orb": {
+    name: "glowing-orb",
+    description: "",
+    type: "registry:component",
+    files: [{
+      path: "src/registry/glowing-orb/glowing-orb.tsx",
+      type: "registry:component",
+    }],
+  },
+  "morphing-text": {
+    name: "morphing-text",
+    description: "",
+    type: "registry:component",
+    files: [{
+      path: "src/registry/morphing-text/morphing-text.tsx",
+      type: "registry:component",
+    }],
+  },
+  "spotlight-card": {
+    name: "spotlight-card",
+    description: "",
+    type: "registry:component",
+    files: [{
+      path: "src/registry/spotlight-card/spotlight-card.tsx",
+      type: "registry:component",
+    }],
+  },
+  "neon-clock": {
+    name: "neon-clock",
+    description: "",
+    type: "registry:component",
+    files: [{
+      path: "src/registry/neon-clock/neon-clock.tsx",
+      type: "registry:component",
+    }],
+  },
   "apple-hello-effect-vi-demo": {
     name: "apple-hello-effect-vi-demo",
     description: "",
@@ -132,16 +168,6 @@ export const Index: Record<string, any> = {
       type: "registry:example",
     }],
     component: React.lazy(() => import("@/registry/examples/work-experience-demo.tsx")),
-  },
-  "flip-sentences-demo": {
-    name: "flip-sentences-demo",
-    description: "",
-    type: "registry:example",
-    files: [{
-      path: "src/registry/examples/flip-sentences-demo.tsx",
-      type: "registry:example",
-    }],
-    component: React.lazy(() => import("@/registry/examples/flip-sentences-demo.tsx")),
   },
   "glowing-orb-demo": {
     name: "glowing-orb-demo",

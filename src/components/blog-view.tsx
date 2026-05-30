@@ -129,7 +129,7 @@ export function BlogView({ posts }: { posts: Post[] }) {
             <SearchIcon className="size-8 text-muted-foreground/30" />
             <p className="text-sm text-muted-foreground">
               No posts found for{" "}
-              <span className="font-medium text-foreground">"{query}"</span>
+              <span className="font-medium text-foreground">&quot;{query}&quot;</span>
             </p>
             <button
               onClick={() => setQuery("")}

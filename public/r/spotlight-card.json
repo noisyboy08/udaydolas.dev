@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "spotlight-card",
+  "type": "registry:component",
+  "title": "Spotlight Card",
+  "author": "ncdai <dai@chanhdai.com>",
+  "dependencies": [],
+  "registryDependencies": [
+    "https://chanhdai.com/r/utils.json"
+  ],
+  "files": [
+    {
+      "path": "src/registry/spotlight-card/spotlight-card.tsx",
+      "content": "\"use client\";\n\nimport { useRef } from \"react\";\n\nimport { cn } from \"@/lib/utils\";\n\ntype SpotlightCardProps = {\n  children: React.ReactNode;\n  className?: string;\n  spotlightColor?: string;\n};\n\nexport function SpotlightCard({\n  children,\n  className,\n  spotlightColor = \"rgba(139, 92, 246, 0.15)\",\n}: SpotlightCardProps) {\n  const cardRef = useRef<HTMLDivElement>(null);\n  const spotRef = useRef<HTMLDivElement>(null);\n\n  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {\n    const card = cardRef.current;\n    const spot = spotRef.current;\n    if (!card || !spot) return;\n\n    const rect = card.getBoundingClientRect();\n    const x = e.clientX - rect.left;\n    const y = e.clientY - rect.top;\n\n    spot.style.opacity = \"1\";\n    spot.style.background = `radial-gradient(400px circle at ${x}px ${y}px, ${spotlightColor}, transparent 60%)`;\n  };\n\n  const handleMouseLeave = () => {\n    const spot = spotRef.current;\n    if (spot) spot.style.opacity = \"0\";\n  };\n\n  return (\n    <div\n      ref={cardRef}\n      onMouseMove={handleMouseMove}\n      onMouseLeave={handleMouseLeave}\n      className={cn(\n        \"group relative overflow-hidden rounded-2xl border border-white/10 bg-zinc-900 p-6 transition-all duration-300 hover:border-white/20\",\n        className\n      )}\n    >\n      {/* spotlight overlay */}\n      <div\n        ref={spotRef}\n        className=\"pointer-events-none absolute inset-0 rounded-2xl opacity-0 transition-opacity duration-300\"\n      />\n      {/* content */}\n      <div className=\"relative z-10\">{children}</div>\n    </div>\n  );\n}\n",
+      "type": "registry:component"
+    }
+  ]
+}

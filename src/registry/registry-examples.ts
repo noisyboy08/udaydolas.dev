@@ -67,4 +67,48 @@ export const examples: Registry["items"] = [
       },
     ],
   },
+  {
+    name: "glowing-orb-demo",
+    type: "registry:example",
+    registryDependencies: ["<registryBaseUrl>/glowing-orb.json"],
+    files: [
+      {
+        path: "examples/glowing-orb-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "morphing-text-demo",
+    type: "registry:example",
+    registryDependencies: ["<registryBaseUrl>/morphing-text.json"],
+    files: [
+      {
+        path: "examples/morphing-text-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "spotlight-card-demo",
+    type: "registry:example",
+    registryDependencies: ["<registryBaseUrl>/spotlight-card.json"],
+    files: [
+      {
+        path: "examples/spotlight-card-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "neon-clock-demo",
+    type: "registry:example",
+    registryDependencies: ["<registryBaseUrl>/neon-clock.json"],
+    files: [
+      {
+        path: "examples/neon-clock-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
 ];

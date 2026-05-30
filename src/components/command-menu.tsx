@@ -11,11 +11,11 @@ import {
   MessageSquareIcon,
   MoonStarIcon,
   RssIcon,
+  SparklesIcon,
   SunIcon,
   TextIcon,
   TriangleDashedIcon,
   TypeIcon,
-  SparklesIcon,
 } from "lucide-react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";

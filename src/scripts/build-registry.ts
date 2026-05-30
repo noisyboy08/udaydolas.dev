@@ -68,7 +68,7 @@ export const Index: Record<string, any> = {`;
             files:
               item.files?.map((file) => {
                 if (file.path.startsWith("src/")) {
-                  return file;
+                   return file;
                 }
 
                 return {
@@ -99,20 +99,24 @@ export const Index: Record<string, any> = {`;
   await fs.writeFile(path.join(REGISTRY_PATH, "index.tsx"), index, "utf8");
 }
 
-try {
-  console.log("💽 Building registry...");
+async function run() {
+  try {
+    console.log("💽 Building registry...");
 
-  const result = registrySchema.safeParse(registry);
+    const result = registrySchema.safeParse(registry);
 
-  if (!result.success) {
-    console.error(result.error);
+    if (!result.success) {
+      console.error(result.error);
+      process.exit(1);
+    }
+
+    await buildRegistry(result.data);
+
+    console.log("✅ Done!");
+  } catch (error) {
+    console.error(error);
     process.exit(1);
   }
-
-  await buildRegistry(result.data);
-
-  console.log("✅ Done!");
-} catch (error) {
-  console.error(error);
-  process.exit(1);
 }
+
+run();

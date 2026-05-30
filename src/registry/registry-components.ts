@@ -102,4 +102,60 @@ export const components: Registry["items"] = [
     },
     docs: "https://chanhdai.com/components/work-experience-component",
   },
+  {
+    name: "glowing-orb",
+    type: "registry:component",
+    title: "Glowing Orb",
+    author: "ncdai <dai@chanhdai.com>",
+    dependencies: [],
+    registryDependencies: ["<registryBaseUrl>/utils.json"],
+    files: [
+      {
+        path: "glowing-orb/glowing-orb.tsx",
+        type: "registry:component",
+      },
+    ],
+  },
+  {
+    name: "morphing-text",
+    type: "registry:component",
+    title: "Morphing Text",
+    author: "ncdai <dai@chanhdai.com>",
+    dependencies: [],
+    registryDependencies: ["<registryBaseUrl>/utils.json"],
+    files: [
+      {
+        path: "morphing-text/morphing-text.tsx",
+        type: "registry:component",
+      },
+    ],
+  },
+  {
+    name: "spotlight-card",
+    type: "registry:component",
+    title: "Spotlight Card",
+    author: "ncdai <dai@chanhdai.com>",
+    dependencies: [],
+    registryDependencies: ["<registryBaseUrl>/utils.json"],
+    files: [
+      {
+        path: "spotlight-card/spotlight-card.tsx",
+        type: "registry:component",
+      },
+    ],
+  },
+  {
+    name: "neon-clock",
+    type: "registry:component",
+    title: "Neon Clock",
+    author: "ncdai <dai@chanhdai.com>",
+    dependencies: [],
+    registryDependencies: ["<registryBaseUrl>/utils.json"],
+    files: [
+      {
+        path: "neon-clock/neon-clock.tsx",
+        type: "registry:component",
+      },
+    ],
+  },
 ];

@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "neon-clock",
+  "type": "registry:component",
+  "title": "Neon Clock",
+  "author": "ncdai <dai@chanhdai.com>",
+  "dependencies": [],
+  "registryDependencies": [
+    "https://chanhdai.com/r/utils.json"
+  ],
+  "files": [
+    {
+      "path": "src/registry/neon-clock/neon-clock.tsx",
+      "content": "\"use client\";\n\nimport { useEffect, useState } from \"react\";\n\nimport { cn } from \"@/lib/utils\";\n\ntype NeonClockProps = {\n  className?: string;\n  color?: \"purple\" | \"cyan\" | \"green\" | \"pink\";\n};\n\nconst COLOR_MAP = {\n  purple: {\n    glow: \"#a855f7\",\n    text: \"text-purple-400\",\n    shadow: \"drop-shadow-[0_0_8px_rgba(168,85,247,0.9)]\",\n    colon: \"text-purple-500\",\n  },\n  cyan: {\n    glow: \"#06b6d4\",\n    text: \"text-cyan-400\",\n    shadow: \"drop-shadow-[0_0_8px_rgba(6,182,212,0.9)]\",\n    colon: \"text-cyan-500\",\n  },\n  green: {\n    glow: \"#10b981\",\n    text: \"text-emerald-400\",\n    shadow: \"drop-shadow-[0_0_8px_rgba(16,185,129,0.9)]\",\n    colon: \"text-emerald-500\",\n  },\n  pink: {\n    glow: \"#ec4899\",\n    text: \"text-pink-400\",\n    shadow: \"drop-shadow-[0_0_8px_rgba(236,72,153,0.9)]\",\n    colon: \"text-pink-500\",\n  },\n};\n\nexport function NeonClock({ className, color = \"purple\" }: NeonClockProps) {\n  const [time, setTime] = useState<Date | null>(null);\n  const [colonVisible, setColonVisible] = useState(true);\n\n  useEffect(() => {\n    setTime(new Date());\n\n    const tick = setInterval(() => {\n      setTime(new Date());\n      setColonVisible((v) => !v);\n    }, 500);\n\n    return () => clearInterval(tick);\n  }, []);\n\n  const c = COLOR_MAP[color];\n\n  if (!time) {\n    return <div className={cn(\"h-16 w-36\", className)} />;\n  }\n\n  const hours = String(time.getHours()).padStart(2, \"0\");\n  const minutes = String(time.getMinutes()).padStart(2, \"0\");\n  const seconds = String(time.getSeconds()).padStart(2, \"0\");\n  const ampm = time.getHours() >= 12 ? \"PM\" : \"AM\";\n\n  return (\n    <div className={cn(\"flex flex-col items-center gap-1\", className)}>\n      {/* main time */}\n      <div\n        className={cn(\n          \"flex items-center gap-1 font-mono text-5xl font-bold tabular-nums tracking-tight\",\n          c.text,\n          c.shadow\n        )}\n      >\n        <span>{hours}</span>\n        <span\n          className={cn(\n            \"transition-opacity duration-100\",\n            colonVisible ? \"opacity-100\" : \"opacity-20\",\n            c.colon\n          )}\n        >\n          :\n        </span>\n        <span>{minutes}</span>\n      </div>\n\n      {/* seconds + ampm */}\n      <div\n        className={cn(\n          \"flex items-center gap-2 font-mono text-sm tabular-nums opacity-60\",\n          c.text\n        )}\n      >\n        <span>{seconds}s</span>\n        <span>·</span>\n        <span>{ampm}</span>\n      </div>\n    </div>\n  );\n}\n",
+      "type": "registry:component"
+    }
+  ]
+}
