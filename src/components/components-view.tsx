@@ -214,12 +214,12 @@ export function ComponentsView({ posts }: { posts: Post[] }) {
 
       {/* GRID view */}
       {view === "grid" && (
-        <div className="grid grid-cols-2 gap-px border-b border-edge sm:grid-cols-3">
+        <div className="grid grid-cols-2 gap-px border-b border-edge sm:grid-cols-3 bg-edge">
           {posts.map((post) => (
             <Link
               key={post.slug}
               href={`/components/${post.slug}`}
-              className="group/post flex items-center gap-3 border border-edge/0 p-4 transition-colors hover:bg-zinc-100/60 dark:hover:bg-zinc-900/60"
+              className="group/post flex items-center gap-3 border border-edge/0 p-4 transition-colors bg-background hover:bg-zinc-100/60 dark:hover:bg-zinc-900/60"
             >
               <Icons.react
                 className="size-4 shrink-0 text-(--color-react)"
