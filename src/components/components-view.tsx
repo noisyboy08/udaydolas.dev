@@ -6,13 +6,21 @@ import {
   CircleIcon,
   ClipboardIcon,
   ClockIcon,
+  Code2Icon,
+  CopyIcon,
+  GithubIcon,
   Grid2X2Icon,
   Grid3X3Icon,
   LayoutGridIcon,
+  MessageSquareIcon,
   PanelTopIcon,
+  QrCodeIcon,
+  SlidersHorizontalIcon,
   SparklesIcon,
   SunIcon,
+  TerminalIcon,
   TextCursorInputIcon,
+  UsersIcon,
   WandSparklesIcon,
 } from "lucide-react";
 import Link from "next/link";
@@ -90,7 +98,23 @@ const COMPONENT_ICONS = [
   SunIcon,
   Grid2X2Icon,
   PanelTopIcon,
+  Code2Icon,
+  GithubIcon,
+  MessageSquareIcon,
+  QrCodeIcon,
+  SlidersHorizontalIcon,
+  TerminalIcon,
+  UsersIcon,
 ];
+
+const sizeClass: Record<ShowcaseSize, string> = {
+  sm: "min-h-38",
+  md: "row-span-2 min-h-76",
+  wide: "sm:col-span-2 min-h-38",
+  large: "sm:col-span-2 row-span-2 min-h-76",
+  tall: "row-span-2 min-h-76",
+  hero: "sm:col-span-2 row-span-3 min-h-114",
+};
 
 export function ComponentsView({
   posts,
@@ -226,7 +250,7 @@ function ComponentsShowcase({ posts }: { posts: Post[] }) {
       <div className="flex items-center justify-end border-b border-edge px-4 py-2.5">
         <ViewToggle active="showcase" />
       </div>
-      <div className="grid auto-rows-[152px] grid-cols-1 gap-1 border-b border-edge bg-edge p-1 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="grid grid-flow-dense auto-rows-[152px] grid-cols-1 gap-1 border-b border-edge bg-edge p-1 sm:grid-cols-2 lg:grid-cols-3">
         {posts.map((post) => {
           const config = SHOWCASE_CONFIG[post.slug];
 
@@ -245,6 +269,42 @@ function ComponentsShowcase({ posts }: { posts: Post[] }) {
 
           return <FallbackCell key={post.slug} post={post} />;
         })}
+        <ExtraShowcaseCell label="Slide to Unlock" size="sm">
+          <SlideUnlockPreview />
+        </ExtraShowcaseCell>
+        <ExtraShowcaseCell label="Gradient Controls" size="md">
+          <GradientControlsPreview />
+        </ExtraShowcaseCell>
+        <ExtraShowcaseCell label="Middle Truncation" size="md">
+          <MiddleTruncationPreview />
+        </ExtraShowcaseCell>
+        <ExtraShowcaseCell label="GitHub Contributions" size="wide">
+          <ContributionPreview />
+        </ExtraShowcaseCell>
+        <ExtraShowcaseCell label="Install Command" size="sm">
+          <CommandPreview />
+        </ExtraShowcaseCell>
+        <ExtraShowcaseCell label="Copy Button" size="sm">
+          <CopyPreview />
+        </ExtraShowcaseCell>
+        <ExtraShowcaseCell label="Text Spotlight" size="wide">
+          <TextSpotlightPreview />
+        </ExtraShowcaseCell>
+        <ExtraShowcaseCell label="Testimonials" size="wide">
+          <TestimonialsPreview />
+        </ExtraShowcaseCell>
+        <ExtraShowcaseCell label="Creator Grid" size="large">
+          <CreatorGridPreview />
+        </ExtraShowcaseCell>
+        <ExtraShowcaseCell label="Version Tags" size="tall">
+          <VersionTagsPreview />
+        </ExtraShowcaseCell>
+        <ExtraShowcaseCell label="Haptic QR" size="md">
+          <HapticQrPreview />
+        </ExtraShowcaseCell>
+        <ExtraShowcaseCell label="Dot Matrix" size="md">
+          <DotMatrixPreview />
+        </ExtraShowcaseCell>
       </div>
     </>
   );
@@ -265,15 +325,6 @@ function ShowcaseCell({
 }) {
   const entry = Index[demoName];
   const Component = entry?.component;
-
-  const sizeClass: Record<ShowcaseSize, string> = {
-    sm: "min-h-38",
-    md: "row-span-2 min-h-76",
-    wide: "sm:col-span-2 min-h-38",
-    large: "sm:col-span-2 row-span-2 min-h-76",
-    tall: "row-span-2 min-h-76",
-    hero: "sm:col-span-2 row-span-3 min-h-114",
-  };
 
   return (
     <section
@@ -323,6 +374,289 @@ function ShowcaseCell({
         </Link>
       </div>
     </section>
+  );
+}
+
+function ExtraShowcaseCell({
+  label,
+  size,
+  children,
+}: {
+  label: string;
+  size: ShowcaseSize;
+  children: React.ReactNode;
+}) {
+  return (
+    <section
+      className={cn(
+        "group relative flex flex-col overflow-hidden rounded-md border border-border bg-background",
+        sizeClass[size]
+      )}
+    >
+      <div className="flex min-h-0 flex-1 items-center justify-center overflow-hidden p-5">
+        {children}
+      </div>
+      <div className="flex items-center gap-2 border-t border-edge px-3 py-2">
+        <SparklesIcon
+          className="size-3.5 shrink-0 text-[--color-react]"
+          aria-hidden
+        />
+        <span className="truncate text-xs font-medium text-muted-foreground">
+          {label}
+        </span>
+      </div>
+    </section>
+  );
+}
+
+function SlideUnlockPreview() {
+  return (
+    <button
+      type="button"
+      className="group/slide flex h-11 w-48 items-center rounded-lg border border-border bg-card p-1 text-sm font-semibold text-muted-foreground shadow-sm transition-colors hover:text-foreground"
+    >
+      <span className="flex size-9 items-center justify-center rounded-md bg-foreground text-background transition-transform group-hover/slide:translate-x-24">
+        <PanelTopIcon className="size-4 rotate-90" />
+      </span>
+      <span className="ml-3">slide to unlock</span>
+    </button>
+  );
+}
+
+function GradientControlsPreview() {
+  const rows = [
+    ["Opacity", "0.50"],
+    ["Blur", "20px"],
+    ["Saturation", "8.0"],
+  ];
+
+  return (
+    <div className="flex w-56 flex-col gap-3">
+      {rows.map(([label, value], index) => (
+        <div
+          key={label}
+          className="grid h-10 grid-cols-[1fr_88px] overflow-hidden rounded-md bg-muted text-sm"
+        >
+          <span
+            className={cn(
+              "flex items-center px-3 text-muted-foreground",
+              index === 0 && "bg-white/5",
+              index === 1 && "bg-white/8",
+              index === 2 && "bg-white/10"
+            )}
+          >
+            {label}
+          </span>
+          <span className="flex items-center justify-end px-3 font-mono text-muted-foreground">
+            {value}
+          </span>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+function MiddleTruncationPreview() {
+  const lines = [
+    "/Users/uday/Code/components/ui/button.tsx",
+    "FY26_Q1_Consolidated_Financial_Statements.pdf",
+    "https://www.apple.com/financial-reports.pdf",
+  ];
+
+  return (
+    <div className="w-full max-w-sm rounded-lg border border-border bg-card p-4 font-mono text-xs shadow-sm">
+      {lines.map((line) => (
+        <div key={line} className="mb-4 last:mb-0">
+          <p className="mb-1 text-muted-foreground">&lt;MiddleTruncation&gt;</p>
+          <p className="truncate font-semibold">{line}</p>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+function ContributionPreview() {
+  return (
+    <div className="w-full max-w-2xl px-3">
+      <div className="mb-3 flex justify-between text-xs font-semibold text-muted-foreground">
+        {["Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec", "Jan", "Feb", "Mar"].map(
+          (month) => (
+            <span key={month}>{month}</span>
+          )
+        )}
+      </div>
+      <div className="grid grid-flow-col grid-rows-7 gap-1">
+        {Array.from({ length: 196 }, (_, index) => (
+          <span
+            key={index}
+            className={cn(
+              "size-3 rounded-[2px]",
+              index % 11 === 0 || index % 17 === 0
+                ? "bg-zinc-300 dark:bg-zinc-500"
+                : index % 5 === 0
+                  ? "bg-zinc-500/60"
+                  : "bg-muted"
+            )}
+          />
+        ))}
+      </div>
+      <p className="mt-3 text-xs text-muted-foreground">
+        4,703 contributions in 2026 on{" "}
+        <span className="font-semibold text-foreground underline">GitHub</span>.
+      </p>
+    </div>
+  );
+}
+
+function CommandPreview() {
+  return (
+    <div className="w-full max-w-md rounded-lg border border-border bg-card p-3 font-mono text-sm">
+      <div className="mb-3 flex items-center justify-between text-muted-foreground">
+        <div className="flex items-center gap-3">
+          <Icons.pnpm className="size-4" />
+          <span className="font-semibold text-foreground">pnpm</span>
+          <span>yarn</span>
+          <span>npm</span>
+          <span>bun</span>
+        </div>
+        <ClipboardIcon className="size-4" />
+      </div>
+      <p className="text-muted-foreground">$ pnpm dlx shadcn add button</p>
+    </div>
+  );
+}
+
+function CopyPreview() {
+  return (
+    <div className="flex items-center gap-2">
+      <button className="flex size-9 items-center justify-center rounded-md border border-border bg-card text-muted-foreground hover:text-foreground">
+        <CopyIcon className="size-4" />
+      </button>
+      <button className="flex h-9 items-center gap-2 rounded-md border border-border bg-card px-3 text-sm font-semibold">
+        <CopyIcon className="size-4" />
+        Copy
+      </button>
+    </div>
+  );
+}
+
+function TextSpotlightPreview() {
+  return (
+    <div className="relative flex h-full w-full items-center justify-center overflow-hidden">
+      <p className="absolute top-6 text-xs text-muted-foreground">
+        Move your cursor within the text below
+      </p>
+      <p className="select-none text-7xl font-black tracking-normal text-transparent [-webkit-text-stroke:1px_var(--border)] sm:text-8xl">
+        uday
+      </p>
+      <div className="absolute bottom-10 h-px w-4/5 bg-gradient-to-r from-transparent via-border to-transparent" />
+    </div>
+  );
+}
+
+function TestimonialsPreview() {
+  const quotes = [
+    ["Great job", "Built with care and speed."],
+    ["Clean design", "One of the sharpest portfolio systems."],
+    ["Smooth UX", "The components feel ready to use."],
+  ];
+
+  return (
+    <div className="grid h-full w-full grid-cols-3 divide-x divide-border overflow-hidden rounded-md border border-border">
+      {quotes.map(([title, body]) => (
+        <div key={title} className="flex min-w-0 flex-col justify-between p-4">
+          <p className="text-sm font-semibold text-balance">{body}</p>
+          <div>
+            <span className="mb-2 block size-7 rounded-full bg-gradient-to-br from-cyan-400 via-violet-400 to-rose-400" />
+            <p className="text-xs font-semibold">{title}</p>
+            <p className="text-xs text-muted-foreground">Creator feedback</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+function CreatorGridPreview() {
+  const people = ["shadcn", "OrcDev", "David Haz", "Shu", "Emil", "Uday"];
+
+  return (
+    <div className="grid w-full max-w-xl grid-cols-2 gap-3 sm:grid-cols-3">
+      {people.map((person, index) => (
+        <div
+          key={person}
+          className="flex aspect-square flex-col items-center justify-center rounded-lg border border-border bg-card text-center shadow-sm"
+        >
+          <span
+            className={cn(
+              "mb-3 size-14 rounded-full bg-gradient-to-br",
+              index % 3 === 0 && "from-fuchsia-400 via-sky-400 to-amber-300",
+              index % 3 === 1 && "from-lime-300 via-emerald-400 to-cyan-400",
+              index % 3 === 2 && "from-violet-400 via-rose-300 to-orange-300"
+            )}
+          />
+          <span className="text-sm font-bold">{person}</span>
+          <span className="text-xs text-muted-foreground">@{person.toLowerCase().replace(" ", "")}</span>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+function VersionTagsPreview() {
+  return (
+    <div className="w-56 rounded-lg border border-border bg-card p-4">
+      <p className="mb-3 text-xs text-muted-foreground">Tags</p>
+      <div className="max-h-52 space-y-3 overflow-y-auto pr-2 font-mono text-sm">
+        {Array.from({ length: 9 }, (_, index) => (
+          <p key={index} className="border-b border-border pb-2">
+            v1.2.0-beta.{50 - index}
+          </p>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function HapticQrPreview() {
+  return (
+    <div className="flex flex-col items-center gap-4 text-center">
+      <span className="rounded-md bg-foreground px-3 py-1 text-sm font-semibold text-background">
+        Haptic
+      </span>
+      <p className="max-w-44 text-sm text-muted-foreground">
+        Scan the QR code below to try it on mobile.
+      </p>
+      <div className="grid grid-cols-9 gap-0.5 rounded-lg bg-white p-3">
+        {Array.from({ length: 81 }, (_, index) => (
+          <span
+            key={index}
+            className={cn(
+              "size-2",
+              index % 2 === 0 || index % 7 === 0 || index % 13 === 0
+                ? "bg-black"
+                : "bg-white"
+            )}
+          />
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function DotMatrixPreview() {
+  return (
+    <div className="grid h-full w-full grid-cols-[repeat(24,minmax(0,1fr))] gap-2 opacity-70">
+      {Array.from({ length: 240 }, (_, index) => (
+        <span
+          key={index}
+          className={cn(
+            "size-1 rounded-full",
+            index % 19 === 0 ? "bg-info" : "bg-muted"
+          )}
+        />
+      ))}
+    </div>
   );
 }
 
