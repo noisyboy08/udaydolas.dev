@@ -2,6 +2,7 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   reactStrictMode: true,
+  outputFileTracingRoot: __dirname,
   transpilePackages: ["next-mdx-remote"],
   allowedDevOrigins: ["chanhdai-macbook.local"],
   devIndicators: false,
