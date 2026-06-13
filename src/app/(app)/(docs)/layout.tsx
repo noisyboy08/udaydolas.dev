@@ -1,3 +1,7 @@
+"use client";
+
+import { usePathname } from "next/navigation";
+
 import { cn } from "@/lib/utils";
 
 export default function DocsLayout({
@@ -5,8 +9,16 @@ export default function DocsLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const pathname = usePathname();
+  const isShowcase = pathname === "/components/showcase";
+
   return (
-    <div className="mx-auto border-x border-edge md:max-w-3xl">
+    <div
+      className={cn(
+        "mx-auto border-x border-edge",
+        isShowcase ? "max-w-[1720px]" : "md:max-w-3xl"
+      )}
+    >
       <div
         className={cn(
           "h-8 px-2",

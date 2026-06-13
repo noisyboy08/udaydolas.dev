@@ -12,7 +12,7 @@ export default function Page() {
   const posts = getPostsByCategory("components");
 
   return (
-    <div className="relative left-1/2 min-h-svh w-[calc(100vw-1rem)] max-w-[1720px] -translate-x-1/2 border-x border-edge [--color-react:#087EA4] dark:[--color-react:#58C4DC]">
+    <div className="min-h-svh [--color-react:#087EA4] dark:[--color-react:#58C4DC]">
       <div className="screen-line-after px-4 pt-10 pb-4">
         <p className="mb-1 text-sm font-medium text-muted-foreground">
           Component Showcase
