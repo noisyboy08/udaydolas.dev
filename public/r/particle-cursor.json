@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "particle-cursor",
+  "type": "registry:component",
+  "title": "Particle Cursor",
+  "description": "Canvas particle trail that follows the mouse cursor.",
+  "dependencies": [],
+  "registryDependencies": [
+    "https://chanhdai.com/r/utils.json"
+  ],
+  "files": [
+    {
+      "path": "src/registry/particle-cursor/particle-cursor.tsx",
+      "content": "\"use client\";\n\nimport { useEffect, useRef } from \"react\";\n\nimport { cn } from \"@/lib/utils\";\n\ntype ParticleCursorProps = {\n  color?: string;\n  particleCount?: number;\n  size?: number;\n  decay?: number;\n  className?: string;\n};\n\ntype Particle = {\n  x: number;\n  y: number;\n  vx: number;\n  vy: number;\n  life: number;\n  maxLife: number;\n};\n\nexport function ParticleCursor({\n  color = \"#6366f1\",\n  particleCount = 3,\n  size = 4,\n  decay = 0.02,\n  className,\n}: ParticleCursorProps) {\n  const canvasRef = useRef<HTMLCanvasElement>(null);\n  const particles = useRef<Particle[]>([]);\n  const mouse = useRef({ x: 0, y: 0 });\n  const rafRef = useRef<number | null>(null);\n\n  useEffect(() => {\n    const canvas = canvasRef.current;\n    if (!canvas) return;\n    const ctx = canvas.getContext(\"2d\");\n    if (!ctx) return;\n\n    const resize = () => {\n      canvas.width = canvas.offsetWidth;\n      canvas.height = canvas.offsetHeight;\n    };\n    resize();\n    const ro = new ResizeObserver(resize);\n    ro.observe(canvas);\n\n    const onMove = (e: MouseEvent) => {\n      const rect = canvas.getBoundingClientRect();\n      mouse.current = { x: e.clientX - rect.left, y: e.clientY - rect.top };\n\n      for (let i = 0; i < particleCount; i++) {\n        particles.current.push({\n          x: mouse.current.x,\n          y: mouse.current.y,\n          vx: (Math.random() - 0.5) * 3,\n          vy: (Math.random() - 0.5) * 3 - 1,\n          life: 1,\n          maxLife: 0.6 + Math.random() * 0.4,\n        });\n      }\n    };\n\n    canvas.addEventListener(\"mousemove\", onMove);\n\n    const draw = () => {\n      ctx.clearRect(0, 0, canvas.width, canvas.height);\n\n      particles.current = particles.current.filter((p) => p.life > 0);\n\n      for (const p of particles.current) {\n        p.x += p.vx;\n        p.y += p.vy;\n        p.vy += 0.05;\n        p.life -= decay;\n\n        const alpha = Math.max(0, p.life / p.maxLife);\n        const r = size * alpha;\n\n        ctx.beginPath();\n        ctx.arc(p.x, p.y, r, 0, Math.PI * 2);\n        ctx.fillStyle = color;\n        ctx.globalAlpha = alpha * 0.8;\n        ctx.fill();\n        ctx.globalAlpha = 1;\n      }\n\n      rafRef.current = requestAnimationFrame(draw);\n    };\n\n    draw();\n\n    return () => {\n      ro.disconnect();\n      canvas.removeEventListener(\"mousemove\", onMove);\n      if (rafRef.current) cancelAnimationFrame(rafRef.current);\n    };\n  }, [color, particleCount, size, decay]);\n\n  return (\n    <canvas\n      ref={canvasRef}\n      className={cn(\"block h-full w-full cursor-none\", className)}\n    />\n  );\n}\n",
+      "type": "registry:component"
+    }
+  ]
+}

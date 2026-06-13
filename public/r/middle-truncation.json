@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "middle-truncation",
+  "type": "registry:component",
+  "title": "Middle Truncation",
+  "description": "Truncates long strings from the middle, preserving start and end.",
+  "dependencies": [],
+  "registryDependencies": [
+    "https://chanhdai.com/r/utils.json"
+  ],
+  "files": [
+    {
+      "path": "src/registry/middle-truncation/middle-truncation.tsx",
+      "content": "\"use client\";\n\nimport { cn } from \"@/lib/utils\";\n\ntype MiddleTruncationProps = {\n  text: string;\n  maxLength?: number;\n  className?: string;\n  separator?: string;\n};\n\nexport function MiddleTruncation({ text, maxLength = 32, className, separator = \"...\" }: MiddleTruncationProps) {\n  if (text.length <= maxLength) {\n    return <span className={className}>{text}</span>;\n  }\n  const half = Math.floor((maxLength - separator.length) / 2);\n  const start = text.slice(0, half);\n  const end = text.slice(text.length - (maxLength - half - separator.length));\n\n  return (\n    <span className={cn(\"inline-block font-mono\", className)} title={text}>\n      {start}\n      <span className=\"text-muted-foreground\">{separator}</span>\n      {end}\n    </span>\n  );\n}\n\nexport function MiddleTruncationDemo() {\n  const examples = [\n    \"/Users/uday/Documents/Projects/portfolio-website/src/components/button.tsx\",\n    \"FY2026_Q1_Consolidated_Financial_Report_Final_v3.pdf\",\n    \"0x742d35Cc6634C0532925a3b844Bc454e4438f44e\",\n    \"https://www.example.com/very/long/path/to/a/resource/that/is/truncated\",\n  ];\n\n  return (\n    <div className=\"w-full max-w-sm space-y-3 rounded-xl border border-border bg-card p-4\">\n      {examples.map((ex) => (\n        <div key={ex} className=\"text-sm\">\n          <MiddleTruncation text={ex} maxLength={36} className=\"text-xs\" />\n        </div>\n      ))}\n    </div>\n  );\n}\n",
+      "type": "registry:component"
+    }
+  ]
+}

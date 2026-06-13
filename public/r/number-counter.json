@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "number-counter",
+  "type": "registry:component",
+  "title": "Number Counter",
+  "description": "Animated number that counts up to a target when it enters the viewport.",
+  "dependencies": [],
+  "registryDependencies": [
+    "https://chanhdai.com/r/utils.json"
+  ],
+  "files": [
+    {
+      "path": "src/registry/number-counter/number-counter.tsx",
+      "content": "\"use client\";\n\nimport { useEffect, useRef, useState } from \"react\";\n\nimport { cn } from \"@/lib/utils\";\n\ntype NumberCounterProps = {\n  from?: number;\n  to: number;\n  duration?: number;\n  suffix?: string;\n  prefix?: string;\n  decimals?: number;\n  className?: string;\n  separator?: string;\n};\n\nexport function NumberCounter({\n  from = 0,\n  to,\n  duration = 2000,\n  suffix = \"\",\n  prefix = \"\",\n  decimals = 0,\n  className,\n  separator = \"\",\n}: NumberCounterProps) {\n  const [value, setValue] = useState(from);\n  const [started, setStarted] = useState(false);\n  const ref = useRef<HTMLSpanElement>(null);\n\n  useEffect(() => {\n    if (typeof window === \"undefined\") return;\n    const el = ref.current;\n    if (!el) return;\n    if (!(\"IntersectionObserver\" in window)) {\n      setStarted(true);\n      return;\n    }\n    const observer = new IntersectionObserver(\n      ([entry]) => {\n        if (entry.isIntersecting && !started) {\n          setStarted(true);\n          observer.disconnect();\n        }\n      },\n      { threshold: 0.1 }\n    );\n    observer.observe(el);\n    return () => observer.disconnect();\n  }, [started]);\n\n  useEffect(() => {\n    if (!started) return;\n    const start = performance.now();\n    const diff = to - from;\n    const raf = (now: number) => {\n      const elapsed = now - start;\n      const t = Math.min(elapsed / duration, 1);\n      const ease = 1 - Math.pow(1 - t, 3);\n      setValue(from + diff * ease);\n      if (t < 1) requestAnimationFrame(raf);\n    };\n    requestAnimationFrame(raf);\n  }, [started, from, to, duration]);\n\n  const formatted = separator\n    ? value.toFixed(decimals).replace(/\\B(?=(\\d{3})+(?!\\d))/g, separator)\n    : value.toFixed(decimals);\n\n  return (\n    <span ref={ref} className={cn(\"tabular-nums\", className)}>\n      {prefix}{formatted}{suffix}\n    </span>\n  );\n}\n\n",
+      "type": "registry:component"
+    }
+  ]
+}

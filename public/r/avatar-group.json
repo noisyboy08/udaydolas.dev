@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "avatar-group",
+  "type": "registry:component",
+  "title": "Avatar Group",
+  "description": "Overlapping avatar stack with gradient initials and overflow count.",
+  "dependencies": [],
+  "registryDependencies": [
+    "https://chanhdai.com/r/utils.json"
+  ],
+  "files": [
+    {
+      "path": "src/registry/avatar-group/avatar-group.tsx",
+      "content": "\"use client\";\n\nimport { cn } from \"@/lib/utils\";\n\ntype AvatarGroupProps = {\n  avatars: { name: string; color?: string; image?: string }[];\n  max?: number;\n  size?: \"sm\" | \"md\" | \"lg\";\n  className?: string;\n};\n\nconst COLORS = [\n  \"from-violet-500 to-indigo-500\",\n  \"from-cyan-500 to-blue-500\",\n  \"from-rose-500 to-pink-500\",\n  \"from-amber-500 to-orange-500\",\n  \"from-emerald-500 to-teal-500\",\n  \"from-fuchsia-500 to-purple-500\",\n];\n\nexport function AvatarGroup({ avatars, max = 5, size = \"md\", className }: AvatarGroupProps) {\n  const shown = avatars.slice(0, max);\n  const rest = avatars.length - max;\n\n  const sizes = {\n    sm: \"size-7 text-xs ring-1\",\n    md: \"size-10 text-sm ring-2\",\n    lg: \"size-14 text-base ring-2\",\n  };\n\n  const overlap = { sm: \"-ml-2\", md: \"-ml-3\", lg: \"-ml-4\" };\n\n  return (\n    <div className={cn(\"flex items-center\", className)}>\n      {shown.map((a, i) => (\n        <div\n          key={i}\n          title={a.name}\n          className={cn(\n            \"relative flex shrink-0 items-center justify-center rounded-full ring-background\",\n            \"bg-gradient-to-br font-bold text-white\",\n            sizes[size],\n            COLORS[i % COLORS.length],\n            i > 0 && overlap[size]\n          )}\n          style={{ zIndex: shown.length - i }}\n        >\n          {a.name[0].toUpperCase()}\n        </div>\n      ))}\n      {rest > 0 && (\n        <div\n          className={cn(\n            \"relative flex shrink-0 items-center justify-center rounded-full bg-muted font-semibold text-muted-foreground ring-background\",\n            sizes[size],\n            overlap[size]\n          )}\n        >\n          +{rest}\n        </div>\n      )}\n    </div>\n  );\n}\n",
+      "type": "registry:component"
+    }
+  ]
+}

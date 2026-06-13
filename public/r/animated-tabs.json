@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "animated-tabs",
+  "type": "registry:component",
+  "title": "Animated Tabs",
+  "description": "Tabs with pill, underline, and card style variants.",
+  "dependencies": [],
+  "registryDependencies": [
+    "https://chanhdai.com/r/utils.json"
+  ],
+  "files": [
+    {
+      "path": "src/registry/animated-tabs/animated-tabs.tsx",
+      "content": "\"use client\";\n\nimport { useState } from \"react\";\n\nimport { cn } from \"@/lib/utils\";\n\ntype TabsProps = {\n  tabs: { label: string; content: React.ReactNode; icon?: React.ReactNode }[];\n  className?: string;\n  variant?: \"pill\" | \"underline\" | \"card\";\n  accentColor?: string;\n};\n\nexport function AnimatedTabs({ tabs, className, variant = \"pill\", accentColor = \"#6366f1\" }: TabsProps) {\n  const [active, setActive] = useState(0);\n\n  return (\n    <div className={cn(\"flex flex-col gap-4\", className)}>\n      {/* Tab list */}\n      <div\n        className={cn(\n          \"flex gap-1\",\n          variant === \"pill\" && \"rounded-xl bg-muted p-1\",\n          variant === \"underline\" && \"border-b border-border\",\n          variant === \"card\" && \"gap-2\"\n        )}\n      >\n        {tabs.map((tab, i) => (\n          <button\n            key={i}\n            type=\"button\"\n            onClick={() => setActive(i)}\n            className={cn(\n              \"relative flex items-center gap-1.5 text-sm font-medium transition-all duration-200\",\n              variant === \"pill\" && \"flex-1 justify-center rounded-lg px-3 py-1.5\",\n              variant === \"underline\" && \"px-3 pb-2.5\",\n              variant === \"card\" && \"rounded-lg border px-3 py-1.5\",\n              i !== active && \"text-muted-foreground hover:text-foreground\",\n              i === active && variant === \"pill\" && \"bg-background text-foreground shadow-sm\",\n              i === active && variant === \"card\" && \"border-border bg-card text-foreground\",\n            )}\n            style={\n              i === active && variant === \"underline\"\n                ? { color: accentColor }\n                : undefined\n            }\n          >\n            {tab.icon}\n            {tab.label}\n            {i === active && variant === \"underline\" && (\n              <span\n                className=\"absolute inset-x-0 -bottom-px h-0.5 rounded-full\"\n                style={{ background: accentColor }}\n              />\n            )}\n          </button>\n        ))}\n      </div>\n\n      {/* Panel */}\n      <div\n        key={active}\n        className=\"animate-in fade-in slide-in-from-bottom-2 duration-200\"\n      >\n        {tabs[active].content}\n      </div>\n    </div>\n  );\n}\n",
+      "type": "registry:component"
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "fluid-gradient-text",
+  "type": "registry:component",
+  "title": "Fluid Gradient Text",
+  "description": "Text with a continuously flowing multi-color gradient animation.",
+  "dependencies": [],
+  "registryDependencies": [
+    "https://chanhdai.com/r/utils.json"
+  ],
+  "files": [
+    {
+      "path": "src/registry/fluid-gradient-text/fluid-gradient-text.tsx",
+      "content": "\"use client\";\n\nimport { cn } from \"@/lib/utils\";\n\ntype FluidGradientTextProps = {\n  text: string;\n  className?: string;\n  colors?: string[];\n  speed?: number;\n};\n\nexport function FluidGradientText({\n  text,\n  className,\n  colors = [\"#6366f1\", \"#a855f7\", \"#ec4899\", \"#06b6d4\", \"#10b981\"],\n  speed = 4,\n}: FluidGradientTextProps) {\n  const gradient = [...colors, ...colors].join(\", \");\n\n  return (\n    <span\n      className={cn(\"inline-block font-bold select-none\", className)}\n      style={{\n        backgroundImage: `linear-gradient(90deg, ${gradient})`,\n        backgroundSize: `${colors.length * 200}% auto`,\n        WebkitBackgroundClip: \"text\",\n        WebkitTextFillColor: \"transparent\",\n        backgroundClip: \"text\",\n        animation: `fluid-gradient-move ${speed}s linear infinite`,\n      }}\n    >\n      {text}\n      <style>{`\n        @keyframes fluid-gradient-move {\n          0%   { background-position: 0% center; }\n          100% { background-position: ${colors.length * 200}% center; }\n        }\n      `}</style>\n    </span>\n  );\n}\n",
+      "type": "registry:component"
+    }
+  ]
+}

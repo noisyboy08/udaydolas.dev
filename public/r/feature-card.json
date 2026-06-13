@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "feature-card",
+  "type": "registry:component",
+  "title": "Feature Card",
+  "description": "Feature card with icon bubble and hover shimmer.",
+  "dependencies": [],
+  "registryDependencies": [
+    "https://chanhdai.com/r/utils.json"
+  ],
+  "files": [
+    {
+      "path": "src/registry/feature-card/feature-card.tsx",
+      "content": "\"use client\";\n\nimport { cn } from \"@/lib/utils\";\n\ntype FeatureCardProps = {\n  title: string;\n  description: string;\n  icon: React.ReactNode;\n  className?: string;\n  accentColor?: string;\n  href?: string;\n};\n\nexport function FeatureCard({ title, description, icon, className, accentColor = \"#6366f1\", href }: FeatureCardProps) {\n  const Tag = href ? \"a\" : \"div\";\n\n  return (\n    <Tag\n      href={href}\n      className={cn(\n        \"group relative flex flex-col gap-3 rounded-xl border border-border bg-card p-5 transition-all duration-300\",\n        \"hover:shadow-md\",\n        href && \"cursor-pointer hover:border-foreground/20\",\n        className\n      )}\n    >\n      {/* Icon bubble */}\n      <div\n        className=\"flex size-10 items-center justify-center rounded-lg transition-transform duration-300 group-hover:scale-110\"\n        style={{ background: `${accentColor}18`, color: accentColor }}\n      >\n        {icon}\n      </div>\n\n      <div>\n        <p className=\"mb-1 font-semibold\">{title}</p>\n        <p className=\"text-sm leading-relaxed text-muted-foreground\">{description}</p>\n      </div>\n\n      {href && (\n        <div\n          className=\"mt-auto flex items-center gap-1 text-xs font-medium opacity-0 transition-opacity duration-200 group-hover:opacity-100\"\n          style={{ color: accentColor }}\n        >\n          Learn more →\n        </div>\n      )}\n\n      {/* Hover shimmer */}\n      <div\n        className=\"pointer-events-none absolute inset-0 rounded-xl opacity-0 transition-opacity duration-300 group-hover:opacity-100\"\n        style={{ background: `radial-gradient(300px at 50% 0%, ${accentColor}0a, transparent 70%)` }}\n      />\n    </Tag>\n  );\n}\n",
+      "type": "registry:component"
+    }
+  ]
+}

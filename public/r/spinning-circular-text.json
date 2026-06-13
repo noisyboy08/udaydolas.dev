@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "spinning-circular-text",
+  "type": "registry:component",
+  "title": "Spinning Circular Text",
+  "description": "Characters arranged in a circle that continuously spin — built with SVG and CSS keyframes.",
+  "dependencies": [],
+  "registryDependencies": [
+    "https://chanhdai.com/r/utils.json"
+  ],
+  "files": [
+    {
+      "path": "src/registry/spinning-circular-text/spinning-circular-text.tsx",
+      "content": "\"use client\";\n\nimport { cn } from \"@/lib/utils\";\n\ntype SpinningCircularTextProps = {\n  text: string;\n  className?: string;\n  radius?: number; // px\n  fontSize?: number;\n  duration?: number; // seconds\n  color?: string;\n};\n\nexport function SpinningCircularText({\n  text,\n  className,\n  radius = 70,\n  fontSize = 12,\n  duration = 10,\n  color = \"currentColor\",\n}: SpinningCircularTextProps) {\n  const chars = text.split(\"\");\n  const angleStep = 360 / chars.length;\n  const size = radius * 2 + fontSize * 2;\n\n  return (\n    <div\n      className={cn(\"inline-flex items-center justify-center\", className)}\n      style={{ width: size, height: size }}\n    >\n      <svg\n        width={size}\n        height={size}\n        viewBox={`0 0 ${size} ${size}`}\n        style={{ animation: `spinning-circular-text-spin ${duration}s linear infinite` }}\n      >\n        {chars.map((char, i) => {\n          const angle = i * angleStep - 90;\n          const rad = (angle * Math.PI) / 180;\n          const cx = size / 2;\n          const cy = size / 2;\n          const x = cx + radius * Math.cos(rad);\n          const y = cy + radius * Math.sin(rad);\n\n          return (\n            <text\n              key={i}\n              x={x}\n              y={y}\n              textAnchor=\"middle\"\n              dominantBaseline=\"central\"\n              fontSize={fontSize}\n              fill={color}\n              fontWeight=\"600\"\n              letterSpacing=\"0\"\n              transform={`rotate(${angle + 90}, ${x}, ${y})`}\n            >\n              {char}\n            </text>\n          );\n        })}\n      </svg>\n      <style>{`\n        @keyframes spinning-circular-text-spin {\n          from { transform: rotate(0deg); }\n          to   { transform: rotate(360deg); }\n        }\n      `}</style>\n    </div>\n  );\n}\n",
+      "type": "registry:component"
+    }
+  ]
+}

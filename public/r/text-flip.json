@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "text-flip",
+  "type": "registry:component",
+  "title": "Text Flip",
+  "description": "Cycles through an array of words with a 3D flip transition.",
+  "dependencies": [],
+  "registryDependencies": [
+    "https://chanhdai.com/r/utils.json"
+  ],
+  "files": [
+    {
+      "path": "src/registry/text-flip/text-flip.tsx",
+      "content": "\"use client\";\n\nimport { useEffect, useState } from \"react\";\n\nimport { cn } from \"@/lib/utils\";\n\ntype TextFlipProps = {\n  words: string[];\n  className?: string;\n  interval?: number;\n  accentColor?: string;\n};\n\nexport function TextFlip({\n  words,\n  className,\n  interval = 2000,\n  accentColor = \"#6366f1\",\n}: TextFlipProps) {\n  const [index, setIndex] = useState(0);\n  const [flipping, setFlipping] = useState(false);\n\n  useEffect(() => {\n    const id = setInterval(() => {\n      setFlipping(true);\n      setTimeout(() => {\n        setIndex((i) => (i + 1) % words.length);\n        setFlipping(false);\n      }, 300);\n    }, interval);\n    return () => clearInterval(id);\n  }, [words, interval]);\n\n  return (\n    <span className={cn(\"inline-flex items-center gap-2\", className)}>\n      <span\n        className=\"inline-block min-w-28 text-center font-bold transition-all duration-300\"\n        style={{\n          color: accentColor,\n          transform: flipping ? \"rotateX(90deg)\" : \"rotateX(0deg)\",\n          opacity: flipping ? 0 : 1,\n          perspective: \"400px\",\n          display: \"inline-block\",\n        }}\n      >\n        {words[index]}\n      </span>\n    </span>\n  );\n}\n\n",
+      "type": "registry:component"
+    }
+  ]
+}

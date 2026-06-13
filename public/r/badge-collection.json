@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "badge-collection",
+  "type": "registry:component",
+  "title": "Badge Collection",
+  "description": "Badge set with success, warning, error, info, outline and gradient variants.",
+  "dependencies": [],
+  "registryDependencies": [
+    "https://chanhdai.com/r/utils.json"
+  ],
+  "files": [
+    {
+      "path": "src/registry/badge-collection/badge-collection.tsx",
+      "content": "\"use client\";\n\nimport { cn } from \"@/lib/utils\";\n\ntype BadgeProps = {\n  label: string;\n  variant?: \"default\" | \"success\" | \"warning\" | \"error\" | \"info\" | \"outline\" | \"gradient\";\n  size?: \"sm\" | \"md\" | \"lg\";\n  dot?: boolean;\n  className?: string;\n};\n\nconst variantStyles: Record<string, string> = {\n  default: \"bg-muted text-muted-foreground\",\n  success: \"bg-emerald-500/15 text-emerald-500 border border-emerald-500/20\",\n  warning: \"bg-amber-500/15 text-amber-500 border border-amber-500/20\",\n  error: \"bg-rose-500/15 text-rose-500 border border-rose-500/20\",\n  info: \"bg-blue-500/15 text-blue-400 border border-blue-500/20\",\n  outline: \"border border-border text-foreground\",\n  gradient: \"text-white border-0\",\n};\n\nconst dotColors: Record<string, string> = {\n  default: \"bg-muted-foreground\",\n  success: \"bg-emerald-500\",\n  warning: \"bg-amber-500\",\n  error: \"bg-rose-500\",\n  info: \"bg-blue-400\",\n  outline: \"bg-foreground\",\n  gradient: \"bg-white\",\n};\n\nexport function Badge({ label, variant = \"default\", size = \"md\", dot = false, className }: BadgeProps) {\n  const sizeClass = { sm: \"px-1.5 py-0.5 text-xs\", md: \"px-2.5 py-0.5 text-xs\", lg: \"px-3 py-1 text-sm\" };\n\n  return (\n    <span\n      className={cn(\n        \"inline-flex items-center gap-1.5 rounded-full font-medium\",\n        variantStyles[variant],\n        sizeClass[size],\n        variant === \"gradient\" && \"bg-gradient-to-r from-violet-600 to-indigo-600\",\n        className\n      )}\n    >\n      {dot && (\n        <span\n          className={cn(\"size-1.5 rounded-full\", dotColors[variant], variant === \"success\" && \"animate-pulse\")}\n        />\n      )}\n      {label}\n    </span>\n  );\n}\n\nexport function BadgeCollection({ className }: { className?: string }) {\n  const badges: BadgeProps[] = [\n    { label: \"Default\", variant: \"default\" },\n    { label: \"Success\", variant: \"success\", dot: true },\n    { label: \"Warning\", variant: \"warning\", dot: true },\n    { label: \"Error\", variant: \"error\", dot: true },\n    { label: \"Info\", variant: \"info\" },\n    { label: \"Outline\", variant: \"outline\" },\n    { label: \"Gradient\", variant: \"gradient\" },\n    { label: \"Live\", variant: \"success\", dot: true, size: \"sm\" },\n    { label: \"Beta\", variant: \"info\", size: \"sm\" },\n    { label: \"New\", variant: \"gradient\", size: \"sm\" },\n  ];\n\n  return (\n    <div className={cn(\"flex flex-wrap gap-2\", className)}>\n      {badges.map((b) => (\n        <Badge key={b.label + b.variant} {...b} />\n      ))}\n    </div>\n  );\n}\n",
+      "type": "registry:component"
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "step-progress",
+  "type": "registry:component",
+  "title": "Step Progress",
+  "description": "Multi-step progress in numbered, bars, and dots variants.",
+  "dependencies": [],
+  "registryDependencies": [
+    "https://chanhdai.com/r/utils.json"
+  ],
+  "files": [
+    {
+      "path": "src/registry/step-progress/step-progress.tsx",
+      "content": "\"use client\";\n\nimport React from \"react\";\n\nimport { cn } from \"@/lib/utils\";\n\ntype StepProgressProps = {\n  steps: string[];\n  current: number;\n  className?: string;\n  accentColor?: string;\n  variant?: \"dots\" | \"bars\" | \"numbered\";\n};\n\nexport function StepProgress({\n  steps,\n  current,\n  className,\n  accentColor = \"#6366f1\",\n  variant = \"numbered\",\n}: StepProgressProps) {\n  if (variant === \"bars\") {\n    return (\n      <div className={cn(\"flex gap-1.5\", className)}>\n        {steps.map((_, i) => (\n          <div key={i} className=\"h-1 flex-1 overflow-hidden rounded-full bg-muted\">\n            <div\n              className=\"h-full rounded-full transition-all duration-500\"\n              style={{\n                width: i < current ? \"100%\" : i === current ? \"60%\" : \"0%\",\n                background: accentColor,\n              }}\n            />\n          </div>\n        ))}\n      </div>\n    );\n  }\n\n  if (variant === \"dots\") {\n    return (\n      <div className={cn(\"flex items-center gap-2\", className)}>\n        {steps.map((_, i) => (\n          <div\n            key={i}\n            className=\"rounded-full transition-all duration-300\"\n            style={{\n              width: i === current ? 24 : 8,\n              height: 8,\n              background: i <= current ? accentColor : \"var(--color-muted)\",\n            }}\n          />\n        ))}\n      </div>\n    );\n  }\n\n  return (\n    <div className={cn(\"flex items-center\", className)}>\n      {steps.map((step, i) => (\n        <React.Fragment key={i}>\n          <div className=\"flex flex-col items-center\">\n            <div\n              className={cn(\n                \"flex size-8 items-center justify-center rounded-full text-sm font-bold transition-all duration-300\",\n                i < current && \"text-white\",\n                i === current && \"text-white ring-4\",\n                i > current && \"border border-border bg-muted text-muted-foreground\"\n              )}\n              style={\n                i <= current\n                  ? ({\n                      background: accentColor,\n                      \"--tw-ring-color\": `${accentColor}40`,\n                    } as React.CSSProperties)\n                  : undefined\n              }\n            >\n              {i < current ? \"✓\" : i + 1}\n            </div>\n            <span className=\"mt-1 max-w-16 text-center text-xs text-muted-foreground\">{step}</span>\n          </div>\n          {i < steps.length - 1 && (\n            <div\n              className=\"mx-1 mb-5 h-px flex-1 transition-all duration-500\"\n              style={{ background: i < current ? accentColor : \"var(--color-border)\" }}\n            />\n          )}\n        </React.Fragment>\n      ))}\n    </div>\n  );\n}\n\n",
+      "type": "registry:component"
+    }
+  ]
+}

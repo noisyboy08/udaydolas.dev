@@ -69,6 +69,7 @@ const SHOWCASE_CONFIG: Record<
     demo: "glowing-orb-demo",
     size: "wide",
     label: "Glowing Orb",
+    className: "p-0 overflow-hidden",
   },
   "morphing-text": {
     demo: "morphing-text-demo",
@@ -340,13 +341,13 @@ function ComponentsShowcase({ posts }: { posts: Post[] }) {
         <ExtraShowcaseCell label="Text Spotlight" size="wide">
           <TextSpotlightPreview />
         </ExtraShowcaseCell>
-        <ExtraShowcaseCell label="Testimonials" size="wide">
+        <ExtraShowcaseCell label="Testimonials" size="wide" className="p-2">
           <TestimonialsPreview />
         </ExtraShowcaseCell>
-        <ExtraShowcaseCell label="Creator Grid" size="large">
+        <ExtraShowcaseCell label="Creator Grid" size="large" className="p-3">
           <CreatorGridPreview />
         </ExtraShowcaseCell>
-        <ExtraShowcaseCell label="Version Tags" size="tall">
+        <ExtraShowcaseCell label="Version Tags" size="tall" className="p-3">
           <VersionTagsPreview />
         </ExtraShowcaseCell>
         <ExtraShowcaseCell label="Haptic QR" size="md">
@@ -395,7 +396,7 @@ function ShowcaseCell({
               <div className="text-xs text-muted-foreground">Loading...</div>
             }
           >
-            <div className="flex h-full w-full items-center justify-center">
+            <div className="flex min-h-full w-full items-center justify-center">
               <Component />
             </div>
           </Suspense>
@@ -430,10 +431,12 @@ function ShowcaseCell({
 function ExtraShowcaseCell({
   label,
   size,
+  className,
   children,
 }: {
   label: string;
   size: ShowcaseSize;
+  className?: string;
   children: React.ReactNode;
 }) {
   return (
@@ -443,7 +446,12 @@ function ExtraShowcaseCell({
         sizeClass[size]
       )}
     >
-      <div className="flex min-h-0 flex-1 items-center justify-center overflow-hidden p-5">
+      <div
+        className={cn(
+          "flex min-h-0 flex-1 items-center justify-center overflow-hidden p-5",
+          className
+        )}
+      >
         {children}
       </div>
       <div className="flex items-center gap-2 border-t border-edge px-3 py-2">
@@ -535,12 +543,14 @@ function TestimonialsPreview() {
   return (
     <div className="grid h-full w-full grid-cols-3 divide-x divide-border overflow-hidden rounded-md border border-border">
       {quotes.map(([title, body]) => (
-        <div key={title} className="flex min-w-0 flex-col justify-between p-4">
-          <p className="text-sm font-semibold text-balance">{body}</p>
-          <div>
-            <span className="mb-2 block size-7 rounded-full bg-gradient-to-br from-cyan-400 via-violet-400 to-rose-400" />
-            <p className="text-xs font-semibold">{title}</p>
-            <p className="text-xs text-muted-foreground">Creator feedback</p>
+        <div key={title} className="flex min-w-0 flex-col justify-between p-2.5 bg-card">
+          <p className="text-xs font-semibold text-balance leading-normal">{body}</p>
+          <div className="flex items-center gap-2 mt-1">
+            <span className="size-6 shrink-0 rounded-full bg-gradient-to-br from-cyan-400 via-violet-400 to-rose-400" />
+            <div className="min-w-0">
+              <p className="text-[10px] font-bold leading-none truncate">{title}</p>
+              <p className="text-[9px] text-muted-foreground leading-none mt-0.5 truncate">Creator feedback</p>
+            </div>
           </div>
         </div>
       ))}
@@ -556,18 +566,20 @@ function CreatorGridPreview() {
       {people.map((person, index) => (
         <div
           key={person}
-          className="flex aspect-square flex-col items-center justify-center rounded-lg border border-border bg-card text-center shadow-sm"
+          className="flex h-[108px] flex-col items-center justify-center rounded-lg border border-border bg-card p-2 text-center shadow-sm"
         >
           <span
             className={cn(
-              "mb-3 size-14 rounded-full bg-gradient-to-br",
+              "mb-2 size-11 rounded-full bg-gradient-to-br",
               index % 3 === 0 && "from-fuchsia-400 via-sky-400 to-amber-300",
               index % 3 === 1 && "from-lime-300 via-emerald-400 to-cyan-400",
               index % 3 === 2 && "from-violet-400 via-rose-300 to-orange-300"
             )}
           />
-          <span className="text-sm font-bold">{person}</span>
-          <span className="text-xs text-muted-foreground">@{person.toLowerCase().replace(" ", "")}</span>
+          <span className="text-xs font-bold leading-tight">{person}</span>
+          <span className="text-[10px] text-muted-foreground leading-none mt-0.5">
+            @{person.toLowerCase().replace(" ", "")}
+          </span>
         </div>
       ))}
     </div>
@@ -577,8 +589,8 @@ function CreatorGridPreview() {
 function VersionTagsPreview() {
   return (
     <div className="w-56 rounded-lg border border-border bg-card p-4">
-      <p className="mb-3 text-xs text-muted-foreground">Tags</p>
-      <div className="max-h-52 space-y-3 overflow-y-auto pr-2 font-mono text-sm">
+      <p className="mb-2.5 text-xs text-muted-foreground">Tags</p>
+      <div className="max-h-[140px] space-y-2.5 overflow-y-auto pr-2 font-mono text-sm">
         {Array.from({ length: 9 }, (_, index) => (
           <p key={index} className="border-b border-border pb-2">
             v1.2.0-beta.{50 - index}

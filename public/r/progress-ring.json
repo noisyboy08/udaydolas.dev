@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "progress-ring",
+  "type": "registry:component",
+  "title": "Progress Ring",
+  "description": "SVG circular progress indicator with animated fill.",
+  "dependencies": [],
+  "registryDependencies": [
+    "https://chanhdai.com/r/utils.json"
+  ],
+  "files": [
+    {
+      "path": "src/registry/progress-ring/progress-ring.tsx",
+      "content": "\"use client\";\n\nimport { cn } from \"@/lib/utils\";\n\ntype ProgressRingProps = {\n  value: number; // 0-100\n  size?: number;\n  strokeWidth?: number;\n  className?: string;\n  color?: string;\n  trackColor?: string;\n  showLabel?: boolean;\n  label?: string;\n  animate?: boolean;\n};\n\nexport function ProgressRing({\n  value,\n  size = 120,\n  strokeWidth = 10,\n  className,\n  color = \"#6366f1\",\n  trackColor,\n  showLabel = true,\n  label,\n  animate = true,\n}: ProgressRingProps) {\n  const r = (size - strokeWidth) / 2;\n  const circ = 2 * Math.PI * r;\n  const offset = circ - (Math.min(100, Math.max(0, value)) / 100) * circ;\n  const cx = size / 2;\n\n  return (\n    <div className={cn(\"relative inline-flex items-center justify-center\", className)}>\n      <svg width={size} height={size} className=\"-rotate-90\">\n        {/* Track */}\n        <circle\n          cx={cx}\n          cy={cx}\n          r={r}\n          fill=\"none\"\n          strokeWidth={strokeWidth}\n          stroke={trackColor ?? \"currentColor\"}\n          className={!trackColor ? \"text-muted\" : \"\"}\n        />\n        {/* Progress */}\n        <circle\n          cx={cx}\n          cy={cx}\n          r={r}\n          fill=\"none\"\n          strokeWidth={strokeWidth}\n          stroke={color}\n          strokeLinecap=\"round\"\n          strokeDasharray={circ}\n          strokeDashoffset={offset}\n          style={\n            animate\n              ? { transition: \"stroke-dashoffset 1s cubic-bezier(.4,0,.2,1)\" }\n              : undefined\n          }\n        />\n      </svg>\n      {showLabel && (\n        <div className=\"absolute flex flex-col items-center\">\n          <span className=\"text-xl font-bold tabular-nums\">{Math.round(value)}%</span>\n          {label && <span className=\"text-xs text-muted-foreground\">{label}</span>}\n        </div>\n      )}\n    </div>\n  );\n}\n",
+      "type": "registry:component"
+    }
+  ]
+}

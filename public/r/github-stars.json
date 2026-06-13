@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "github-stars",
+  "type": "registry:component",
+  "title": "GitHub Stars",
+  "description": "Star badge that fetches live star count from the GitHub API.",
+  "dependencies": [],
+  "registryDependencies": [
+    "https://chanhdai.com/r/utils.json"
+  ],
+  "files": [
+    {
+      "path": "src/registry/github-stars/github-stars.tsx",
+      "content": "\"use client\";\n\nimport { StarIcon } from \"lucide-react\";\nimport { useEffect, useState } from \"react\";\n\nimport { cn } from \"@/lib/utils\";\n\ntype GithubStarsProps = {\n  owner: string;\n  repo: string;\n  className?: string;\n  defaultCount?: number;\n  showIcon?: boolean;\n};\n\nexport function GithubStars({ owner, repo, className, defaultCount = 1240, showIcon = true }: GithubStarsProps) {\n  const [stars, setStars] = useState<number | null>(null);\n  const [loading, setLoading] = useState(true);\n\n  useEffect(() => {\n    const controller = new AbortController();\n    fetch(`https://api.github.com/repos/${owner}/${repo}`, { signal: controller.signal })\n      .then((r) => r.json())\n      .then((d) => { setStars(d.stargazers_count ?? defaultCount); setLoading(false); })\n      .catch(() => { setStars(defaultCount); setLoading(false); });\n    return () => controller.abort();\n  }, [owner, repo, defaultCount]);\n\n  const format = (n: number) => n >= 1000 ? `${(n / 1000).toFixed(1)}k` : String(n);\n\n  return (\n    <a\n      href={`https://github.com/${owner}/${repo}`}\n      target=\"_blank\"\n      rel=\"noopener noreferrer\"\n      className={cn(\n        \"inline-flex items-center gap-2 rounded-full border border-border bg-card px-3 py-1.5 text-sm font-medium\",\n        \"transition-all hover:border-amber-400/50 hover:bg-amber-500/10 hover:text-amber-400\",\n        className\n      )}\n    >\n      {showIcon && <StarIcon className=\"size-4\" />}\n      <span>{loading ? \"…\" : format(stars ?? defaultCount)}</span>\n      <span className=\"text-muted-foreground\">stars</span>\n    </a>\n  );\n}\n",
+      "type": "registry:component"
+    }
+  ]
+}

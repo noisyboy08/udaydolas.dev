@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "typewriter-effect",
+  "type": "registry:component",
+  "title": "Typewriter Effect",
+  "description": "Animated typewriter that types and deletes a list of words.",
+  "dependencies": [],
+  "registryDependencies": [
+    "https://chanhdai.com/r/utils.json"
+  ],
+  "files": [
+    {
+      "path": "src/registry/typewriter-effect/typewriter-effect.tsx",
+      "content": "\"use client\";\n\nimport { useEffect, useState } from \"react\";\n\nimport { cn } from \"@/lib/utils\";\n\ntype TypewriterEffectProps = {\n  words: string[];\n  className?: string;\n  typingSpeed?: number;\n  deletingSpeed?: number;\n  pauseDuration?: number;\n  cursor?: boolean;\n  cursorChar?: string;\n};\n\nexport function TypewriterEffect({\n  words,\n  className,\n  typingSpeed = 80,\n  deletingSpeed = 40,\n  pauseDuration = 1800,\n  cursor = true,\n  cursorChar = \"|\",\n}: TypewriterEffectProps) {\n  const [displayed, setDisplayed] = useState(\"\");\n  const [wordIdx, setWordIdx] = useState(0);\n  const [phase, setPhase] = useState<\"typing\" | \"pause\" | \"deleting\">(\"typing\");\n  const [cursorVisible, setCursorVisible] = useState(true);\n\n  useEffect(() => {\n    const id = setInterval(() => setCursorVisible((v) => !v), 530);\n    return () => clearInterval(id);\n  }, []);\n\n  useEffect(() => {\n    const word = words[wordIdx];\n    if (phase === \"typing\") {\n      if (displayed.length < word.length) {\n        const id = setTimeout(() => setDisplayed(word.slice(0, displayed.length + 1)), typingSpeed);\n        return () => clearTimeout(id);\n      } else {\n        const id = setTimeout(() => setPhase(\"pause\"), pauseDuration);\n        return () => clearTimeout(id);\n      }\n    }\n    if (phase === \"pause\") {\n      setPhase(\"deleting\");\n    }\n    if (phase === \"deleting\") {\n      if (displayed.length > 0) {\n        const id = setTimeout(() => setDisplayed(displayed.slice(0, -1)), deletingSpeed);\n        return () => clearTimeout(id);\n      } else {\n        setWordIdx((i) => (i + 1) % words.length);\n        setPhase(\"typing\");\n      }\n    }\n  }, [displayed, phase, wordIdx, words, typingSpeed, deletingSpeed, pauseDuration]);\n\n  return (\n    <span className={cn(\"font-mono\", className)}>\n      {displayed}\n      {cursor && (\n        <span\n          className=\"ml-0.5 font-sans\"\n          style={{ opacity: cursorVisible ? 1 : 0 }}\n        >\n          {cursorChar}\n        </span>\n      )}\n    </span>\n  );\n}\n",
+      "type": "registry:component"
+    }
+  ]
+}

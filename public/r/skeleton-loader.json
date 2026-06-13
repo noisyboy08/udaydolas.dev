@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "skeleton-loader",
+  "type": "registry:component",
+  "title": "Skeleton Loader",
+  "description": "Animated skeleton placeholders for cards, text and circles.",
+  "dependencies": [],
+  "registryDependencies": [
+    "https://chanhdai.com/r/utils.json"
+  ],
+  "files": [
+    {
+      "path": "src/registry/skeleton-loader/skeleton-loader.tsx",
+      "content": "\"use client\";\n\nimport { cn } from \"@/lib/utils\";\n\ntype SkeletonProps = {\n  className?: string;\n  variant?: \"text\" | \"circle\" | \"rect\";\n  lines?: number;\n};\n\nexport function Skeleton({ className, variant = \"rect\", lines = 1 }: SkeletonProps) {\n  if (variant === \"text\" && lines > 1) {\n    return (\n      <div className={cn(\"space-y-2\", className)}>\n        {Array.from({ length: lines }, (_, i) => (\n          <div\n            key={i}\n            className={cn(\n              \"h-3 rounded-full bg-muted animate-pulse\",\n              i === lines - 1 && \"w-3/4\"\n            )}\n          />\n        ))}\n      </div>\n    );\n  }\n  return (\n    <div\n      className={cn(\n        \"animate-pulse bg-muted\",\n        variant === \"circle\" ? \"rounded-full\" : \"rounded-md\",\n        variant === \"text\" ? \"h-3\" : \"h-full\",\n        className\n      )}\n    />\n  );\n}\n\nexport function SkeletonCard({ className }: { className?: string }) {\n  return (\n    <div className={cn(\"rounded-xl border border-border bg-card p-3 space-y-2.5\", className)}>\n      <div className=\"flex items-center gap-3\">\n        <Skeleton variant=\"circle\" className=\"size-8 shrink-0\" />\n        <div className=\"flex-1 space-y-1.5\">\n          <Skeleton variant=\"text\" className=\"h-3 w-28\" />\n          <Skeleton variant=\"text\" className=\"h-2 w-16\" />\n        </div>\n      </div>\n      <Skeleton className=\"h-20 w-full\" />\n      <Skeleton variant=\"text\" lines={2} />\n      <div className=\"flex gap-2 pt-0.5\">\n        <Skeleton className=\"h-7 w-16\" />\n        <Skeleton className=\"h-7 w-16\" />\n      </div>\n    </div>\n  );\n}\n",
+      "type": "registry:component"
+    }
+  ]
+}

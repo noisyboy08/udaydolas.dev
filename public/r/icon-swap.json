@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "icon-swap",
+  "type": "registry:component",
+  "title": "Icon Swap",
+  "description": "Button that swaps between two icons with flip, slide or fade animation.",
+  "dependencies": [],
+  "registryDependencies": [
+    "https://chanhdai.com/r/utils.json"
+  ],
+  "files": [
+    {
+      "path": "src/registry/icon-swap/icon-swap.tsx",
+      "content": "\"use client\";\n\nimport { useState } from \"react\";\n\nimport { cn } from \"@/lib/utils\";\n\ntype IconSwapProps = {\n  iconA: React.ReactNode;\n  iconB: React.ReactNode;\n  label?: string;\n  className?: string;\n  direction?: \"fade\" | \"flip\" | \"slide\";\n};\n\nexport function IconSwap({ iconA, iconB, label, className, direction = \"flip\" }: IconSwapProps) {\n  const [swapped, setSwapped] = useState(false);\n\n  return (\n    <button\n      type=\"button\"\n      onClick={() => setSwapped((s) => !s)}\n      className={cn(\n        \"group inline-flex items-center gap-2 rounded-xl border border-border bg-card px-4 py-2.5 text-sm font-medium\",\n        \"transition-all hover:border-foreground/20 hover:bg-accent\",\n        className\n      )}\n      aria-label={label ?? \"Toggle icon\"}\n    >\n      <div\n        className=\"relative flex size-5 items-center justify-center overflow-hidden\"\n        style={{ perspective: 300 }}\n      >\n        {/* Icon A */}\n        <div\n          className=\"absolute inset-0 flex items-center justify-center transition-all duration-300\"\n          style={\n            direction === \"flip\"\n              ? { transform: swapped ? \"rotateY(90deg)\" : \"rotateY(0deg)\", opacity: swapped ? 0 : 1 }\n              : direction === \"slide\"\n              ? { transform: swapped ? \"translateY(-100%)\" : \"translateY(0)\", opacity: swapped ? 0 : 1 }\n              : { opacity: swapped ? 0 : 1 }\n          }\n        >\n          {iconA}\n        </div>\n        {/* Icon B */}\n        <div\n          className=\"absolute inset-0 flex items-center justify-center transition-all duration-300\"\n          style={\n            direction === \"flip\"\n              ? { transform: swapped ? \"rotateY(0deg)\" : \"rotateY(-90deg)\", opacity: swapped ? 1 : 0 }\n              : direction === \"slide\"\n              ? { transform: swapped ? \"translateY(0)\" : \"translateY(100%)\", opacity: swapped ? 1 : 0 }\n              : { opacity: swapped ? 1 : 0 }\n          }\n        >\n          {iconB}\n        </div>\n      </div>\n      {label && <span>{label}</span>}\n    </button>\n  );\n}\n\n",
+      "type": "registry:component"
+    }
+  ]
+}

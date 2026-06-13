@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "testimonials-marquee",
+  "type": "registry:component",
+  "title": "Testimonials Marquee",
+  "description": "A continuous horizontal marquee of testimonial cards with pause-on-hover, configurable speed, and fade-out edges.",
+  "dependencies": [],
+  "registryDependencies": [
+    "https://chanhdai.com/r/utils.json"
+  ],
+  "files": [
+    {
+      "path": "src/registry/testimonials-marquee/testimonials-marquee.tsx",
+      "content": "\"use client\";\n\nimport { useState } from \"react\";\n\nimport { cn } from \"@/lib/utils\";\n\ntype TestimonialsMarqueeItem = {\n  quote: string;\n  author: string;\n  role?: string;\n  avatar?: string;\n};\n\ntype TestimonialsMarqueeProps = {\n  items: TestimonialsMarqueeItem[];\n  speed?: number; // px/s\n  pauseOnHover?: boolean;\n  className?: string;\n  direction?: \"left\" | \"right\";\n};\n\nfunction Card({ item }: { item: TestimonialsMarqueeItem }) {\n  return (\n    <div className=\"mx-3 flex w-72 shrink-0 flex-col gap-3 rounded-xl border border-border bg-card p-4 shadow-sm\">\n      <p className=\"text-sm leading-relaxed text-muted-foreground\">\n        &ldquo;{item.quote}&rdquo;\n      </p>\n      <div className=\"flex items-center gap-2\">\n        <span className=\"flex size-8 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-violet-400 via-sky-400 to-emerald-400 text-xs font-bold text-white\">\n          {item.author[0]}\n        </span>\n        <div className=\"min-w-0\">\n          <p className=\"truncate text-sm font-semibold\">{item.author}</p>\n          {item.role && (\n            <p className=\"truncate text-xs text-muted-foreground\">{item.role}</p>\n          )}\n        </div>\n      </div>\n    </div>\n  );\n}\n\nexport function TestimonialsMarquee({\n  items,\n  speed = 40,\n  pauseOnHover = true,\n  className,\n  direction = \"left\",\n}: TestimonialsMarqueeProps) {\n  const [paused, setPaused] = useState(false);\n  const doubled = [...items, ...items];\n\n  return (\n    <div\n      className={cn(\"relative overflow-hidden\", className)}\n      onMouseEnter={() => pauseOnHover && setPaused(true)}\n      onMouseLeave={() => pauseOnHover && setPaused(false)}\n    >\n      {/* fade edges */}\n      <div className=\"pointer-events-none absolute inset-y-0 left-0 z-10 w-16 bg-gradient-to-r from-background to-transparent\" />\n      <div className=\"pointer-events-none absolute inset-y-0 right-0 z-10 w-16 bg-gradient-to-l from-background to-transparent\" />\n\n      <div\n        className=\"flex\"\n        style={{\n          animation: `marquee-scroll ${(doubled.length * 72 * 2) / speed}s linear infinite`,\n          animationDirection: direction === \"right\" ? \"reverse\" : \"normal\",\n          animationPlayState: paused ? \"paused\" : \"running\",\n        }}\n      >\n        {doubled.map((item, i) => (\n          <Card key={i} item={item} />\n        ))}\n      </div>\n\n      <style>{`\n        @keyframes marquee-scroll {\n          from { transform: translateX(0); }\n          to   { transform: translateX(-50%); }\n        }\n      `}</style>\n    </div>\n  );\n}\n",
+      "type": "registry:component"
+    }
+  ]
+}

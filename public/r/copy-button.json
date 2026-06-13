@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "copy-button",
+  "type": "registry:component",
+  "title": "Copy Button",
+  "description": "Clipboard copy button with animated confirmation state.",
+  "dependencies": [],
+  "registryDependencies": [
+    "https://chanhdai.com/r/utils.json"
+  ],
+  "files": [
+    {
+      "path": "src/registry/copy-button/copy-button.tsx",
+      "content": "\"use client\";\n\nimport { CheckIcon, CopyIcon } from \"lucide-react\";\nimport { useState } from \"react\";\n\nimport { cn } from \"@/lib/utils\";\n\ntype CopyButtonProps = {\n  text: string;\n  className?: string;\n  size?: \"sm\" | \"md\" | \"lg\";\n  variant?: \"icon\" | \"icon-label\" | \"pill\";\n};\n\nexport function CopyButton({\n  text,\n  className,\n  size = \"md\",\n  variant = \"icon-label\",\n}: CopyButtonProps) {\n  const [copied, setCopied] = useState(false);\n\n  const copy = async () => {\n    try {\n      await navigator.clipboard.writeText(text);\n      setCopied(true);\n      setTimeout(() => setCopied(false), 1500);\n    } catch {}\n  };\n\n  const sizeClasses = {\n    sm: \"h-7 text-xs\",\n    md: \"h-9 text-sm\",\n    lg: \"h-11 text-base\",\n  };\n\n  const iconSize = { sm: \"size-3\", md: \"size-4\", lg: \"size-5\" };\n\n  return (\n    <button\n      type=\"button\"\n      onClick={copy}\n      aria-label=\"Copy to clipboard\"\n      className={cn(\n        \"inline-flex items-center justify-center gap-2 rounded-md border border-border bg-card font-medium text-muted-foreground\",\n        \"transition-all duration-150 hover:border-foreground/20 hover:bg-accent hover:text-foreground\",\n        \"focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring\",\n        variant === \"icon\" && \"aspect-square\",\n        variant === \"icon-label\" && \"px-3\",\n        variant === \"pill\" && \"rounded-full px-4\",\n        sizeClasses[size],\n        copied && \"border-green-500/40 bg-green-500/10 text-green-500\",\n        className\n      )}\n    >\n      <span className={cn(\"transition-transform duration-200\", copied && \"scale-110\")}>\n        {copied ? (\n          <CheckIcon className={cn(iconSize[size], \"text-green-500\")} />\n        ) : (\n          <CopyIcon className={iconSize[size]} />\n        )}\n      </span>\n      {variant !== \"icon\" && (\n        <span className=\"transition-all duration-150\">{copied ? \"Copied!\" : \"Copy\"}</span>\n      )}\n    </button>\n  );\n}\n",
+      "type": "registry:component"
+    }
+  ]
+}

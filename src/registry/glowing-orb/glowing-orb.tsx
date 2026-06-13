@@ -30,9 +30,9 @@ export function GlowingOrb({
   }, [colors.length, speed]);
 
   const sizes = {
-    sm: "size-20",
-    md: "size-32",
-    lg: "size-48",
+    sm: "size-14",
+    md: "size-20",
+    lg: "size-28",
   };
 
   const current = colors[colorIndex];

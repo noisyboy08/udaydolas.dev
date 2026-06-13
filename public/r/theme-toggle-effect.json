@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "theme-toggle-effect",
+  "type": "registry:component",
+  "title": "Theme Toggle Effect",
+  "description": "Animated sun/moon toggle button for dark/light mode.",
+  "dependencies": [],
+  "registryDependencies": [
+    "https://chanhdai.com/r/utils.json"
+  ],
+  "files": [
+    {
+      "path": "src/registry/theme-toggle-effect/theme-toggle-effect.tsx",
+      "content": "\"use client\";\n\nimport { useState } from \"react\";\n\nimport { cn } from \"@/lib/utils\";\n\ntype ThemeToggleEffectProps = {\n  className?: string;\n  defaultDark?: boolean;\n  onChange?: (dark: boolean) => void;\n};\n\nexport function ThemeToggleEffect({ className, defaultDark = true, onChange }: ThemeToggleEffectProps) {\n  const [dark, setDark] = useState(defaultDark);\n  const [animating, setAnimating] = useState(false);\n\n  const toggle = () => {\n    setAnimating(true);\n    setTimeout(() => {\n      setDark((d) => {\n        const next = !d;\n        onChange?.(next);\n        return next;\n      });\n      setAnimating(false);\n    }, 300);\n  };\n\n  return (\n    <button\n      type=\"button\"\n      onClick={toggle}\n      className={cn(\n        \"group relative flex size-16 items-center justify-center rounded-full border border-border transition-all duration-500\",\n        dark ? \"bg-zinc-950\" : \"bg-amber-50\",\n        className\n      )}\n      aria-label=\"Toggle theme\"\n    >\n      {/* Sun */}\n      <div\n        className={cn(\n          \"absolute transition-all duration-500\",\n          dark ? \"scale-0 rotate-90 opacity-0\" : \"scale-100 rotate-0 opacity-100\"\n        )}\n      >\n        <svg width=\"28\" height=\"28\" viewBox=\"0 0 24 24\" fill=\"none\">\n          <circle cx=\"12\" cy=\"12\" r=\"4\" fill=\"#f59e0b\" />\n          {Array.from({ length: 8 }, (_, i) => {\n            const a = (i * 45 * Math.PI) / 180;\n            const x1 = 12 + 6.5 * Math.cos(a);\n            const y1 = 12 + 6.5 * Math.sin(a);\n            const x2 = 12 + 9 * Math.cos(a);\n            const y2 = 12 + 9 * Math.sin(a);\n            return <line key={i} x1={x1} y1={y1} x2={x2} y2={y2} stroke=\"#f59e0b\" strokeWidth=\"2\" strokeLinecap=\"round\" />;\n          })}\n        </svg>\n      </div>\n\n      {/* Moon */}\n      <div\n        className={cn(\n          \"absolute transition-all duration-500\",\n          dark ? \"scale-100 rotate-0 opacity-100\" : \"scale-0 -rotate-90 opacity-0\"\n        )}\n      >\n        <svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\">\n          <path\n            d=\"M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z\"\n            fill=\"#c4b5fd\"\n            stroke=\"#c4b5fd\"\n            strokeWidth=\"0.5\"\n          />\n        </svg>\n      </div>\n\n      {/* Ripple on click */}\n      {animating && (\n        <span className=\"absolute inset-0 animate-ping rounded-full border-2 border-current opacity-20\" />\n      )}\n    </button>\n  );\n}\n",
+      "type": "registry:component"
+    }
+  ]
+}

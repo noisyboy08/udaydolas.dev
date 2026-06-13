@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "tilt-card",
+  "type": "registry:component",
+  "title": "Tilt Card",
+  "description": "3D perspective tilt card with glare highlight on hover.",
+  "dependencies": [],
+  "registryDependencies": [
+    "https://chanhdai.com/r/utils.json"
+  ],
+  "files": [
+    {
+      "path": "src/registry/tilt-card/tilt-card.tsx",
+      "content": "\"use client\";\n\nimport { useRef, useState } from \"react\";\n\nimport { cn } from \"@/lib/utils\";\n\ntype TiltCardProps = {\n  children: React.ReactNode;\n  className?: string;\n  maxTilt?: number;\n  glare?: boolean;\n};\n\nexport function TiltCard({ children, className, maxTilt = 12, glare = true }: TiltCardProps) {\n  const ref = useRef<HTMLDivElement>(null);\n  const [tilt, setTilt] = useState({ x: 0, y: 0 });\n  const [glarePos, setGlarePos] = useState({ x: 50, y: 50 });\n  const [hovered, setHovered] = useState(false);\n\n  const handleMove = (e: React.MouseEvent<HTMLDivElement>) => {\n    const rect = ref.current?.getBoundingClientRect();\n    if (!rect) return;\n    const px = (e.clientX - rect.left) / rect.width;\n    const py = (e.clientY - rect.top) / rect.height;\n    setTilt({ x: (py - 0.5) * maxTilt, y: (0.5 - px) * maxTilt });\n    setGlarePos({ x: px * 100, y: py * 100 });\n  };\n\n  const reset = () => {\n    setTilt({ x: 0, y: 0 });\n    setHovered(false);\n  };\n\n  return (\n    <div\n      ref={ref}\n      className={cn(\"relative overflow-hidden rounded-xl\", className)}\n      style={{\n        transform: `perspective(600px) rotateX(${tilt.x}deg) rotateY(${tilt.y}deg) scale(${hovered ? 1.03 : 1})`,\n        transition: hovered ? \"transform 0.1s ease-out\" : \"transform 0.5s cubic-bezier(.23,1,.32,1)\",\n        transformStyle: \"preserve-3d\",\n      }}\n      onMouseMove={handleMove}\n      onMouseEnter={() => setHovered(true)}\n      onMouseLeave={reset}\n    >\n      {children}\n      {glare && hovered && (\n        <div\n          className=\"pointer-events-none absolute inset-0 rounded-xl\"\n          style={{\n            background: `radial-gradient(circle at ${glarePos.x}% ${glarePos.y}%, rgba(255,255,255,0.12) 0%, transparent 60%)`,\n          }}\n        />\n      )}\n    </div>\n  );\n}\n",
+      "type": "registry:component"
+    }
+  ]
+}

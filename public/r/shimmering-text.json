@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "shimmering-text",
+  "type": "registry:component",
+  "title": "Shimmering Text",
+  "description": "A pure-CSS shimmer animation for text that sweeps a highlight across characters.",
+  "dependencies": [],
+  "registryDependencies": [
+    "https://chanhdai.com/r/utils.json"
+  ],
+  "files": [
+    {
+      "path": "src/registry/shimmering-text/shimmering-text.tsx",
+      "content": "\"use client\";\n\nimport React from \"react\";\n\nimport { cn } from \"@/lib/utils\";\n\ntype ShimmeringTextProps = {\n  text: string;\n  className?: string;\n  shimmerColor?: string;\n  baseColor?: string;\n  speed?: number; // seconds for one full shimmer cycle\n};\n\nexport function ShimmeringText({\n  text,\n  className,\n  shimmerColor = \"#a855f7\",\n  baseColor = \"#888\",\n  speed = 2.5,\n}: ShimmeringTextProps) {\n  return (\n    <span\n      className={cn(\"relative inline-block select-none font-bold\", className)}\n      style={\n        {\n          color: baseColor,\n          backgroundImage: `linear-gradient(120deg, ${baseColor} 40%, ${shimmerColor} 50%, #fff 55%, ${shimmerColor} 60%, ${baseColor} 70%)`,\n          backgroundSize: \"200% auto\",\n          WebkitBackgroundClip: \"text\",\n          WebkitTextFillColor: \"transparent\",\n          backgroundClip: \"text\",\n          animation: `shimmering-text-anim ${speed}s linear infinite`,\n        } as React.CSSProperties\n      }\n    >\n      {text}\n      <style>{`\n        @keyframes shimmering-text-anim {\n          0%   { background-position: 200% center; }\n          100% { background-position: -200% center; }\n        }\n      `}</style>\n    </span>\n  );\n}\n",
+      "type": "registry:component"
+    }
+  ]
+}

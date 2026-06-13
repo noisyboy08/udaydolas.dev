@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "stat-card",
+  "type": "registry:component",
+  "title": "Stat Card",
+  "description": "Metric card with accent bar, trend indicator, and icon.",
+  "dependencies": [],
+  "registryDependencies": [
+    "https://chanhdai.com/r/utils.json"
+  ],
+  "files": [
+    {
+      "path": "src/registry/stat-card/stat-card.tsx",
+      "content": "\"use client\";\n\nimport { TrendingDownIcon, TrendingUpIcon } from \"lucide-react\";\n\nimport { cn } from \"@/lib/utils\";\n\ntype StatCardProps = {\n  label: string;\n  value: string | number;\n  change?: number;\n  suffix?: string;\n  prefix?: string;\n  icon?: React.ReactNode;\n  className?: string;\n  accentColor?: string;\n};\n\nexport function StatCard({\n  label,\n  value,\n  change,\n  suffix,\n  prefix,\n  icon,\n  className,\n  accentColor = \"#6366f1\",\n}: StatCardProps) {\n  const isPositive = (change ?? 0) >= 0;\n\n  return (\n    <div\n      className={cn(\n        \"relative overflow-hidden rounded-xl border border-border bg-card p-5 shadow-sm\",\n        className\n      )}\n    >\n      {/* Subtle top accent bar */}\n      <div\n        className=\"absolute inset-x-0 top-0 h-0.5\"\n        style={{ background: accentColor }}\n      />\n\n      <div className=\"flex items-start justify-between gap-3\">\n        <div className=\"min-w-0\">\n          <p className=\"mb-1 text-xs font-medium uppercase tracking-widest text-muted-foreground\">\n            {label}\n          </p>\n          <p className=\"text-2xl font-bold tabular-nums tracking-tight\">\n            {prefix}{value}{suffix}\n          </p>\n          {change !== undefined && (\n            <div className={cn(\"mt-1 flex items-center gap-1 text-xs font-medium\",\n              isPositive ? \"text-emerald-500\" : \"text-rose-500\"\n            )}>\n              {isPositive ? <TrendingUpIcon className=\"size-3\" /> : <TrendingDownIcon className=\"size-3\" />}\n              {isPositive ? \"+\" : \"\"}{change}% vs last period\n            </div>\n          )}\n        </div>\n        {icon && (\n          <div\n            className=\"flex size-10 shrink-0 items-center justify-center rounded-lg\"\n            style={{ background: `${accentColor}20`, color: accentColor }}\n          >\n            {icon}\n          </div>\n        )}\n      </div>\n    </div>\n  );\n}\n",
+      "type": "registry:component"
+    }
+  ]
+}

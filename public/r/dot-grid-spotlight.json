@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "dot-grid-spotlight",
+  "type": "registry:component",
+  "title": "Dot Grid Spotlight",
+  "description": "An interactive dot-grid canvas component that highlights dots near the cursor with a customisable spotlight glow effect.",
+  "dependencies": [],
+  "registryDependencies": [
+    "https://chanhdai.com/r/utils.json"
+  ],
+  "files": [
+    {
+      "path": "src/registry/dot-grid-spotlight/dot-grid-spotlight.tsx",
+      "content": "\"use client\";\n\nimport { useEffect, useRef } from \"react\";\n\nimport { cn } from \"@/lib/utils\";\n\ntype DotGridSpotlightProps = {\n  className?: string;\n  dotColor?: string;\n  spotlightColor?: string;\n  dotSize?: number;\n  gap?: number;\n};\n\nexport function DotGridSpotlight({\n  className,\n  dotColor = \"rgba(255,255,255,0.25)\",\n  spotlightColor = \"rgba(139,92,246,0.6)\",\n  dotSize = 2,\n  gap = 20,\n}: DotGridSpotlightProps) {\n  const canvasRef = useRef<HTMLCanvasElement>(null);\n  const mouseRef = useRef({ x: -9999, y: -9999 });\n  const rafRef = useRef<number | null>(null);\n\n  useEffect(() => {\n    const canvas = canvasRef.current;\n    if (!canvas) return;\n    const ctx = canvas.getContext(\"2d\");\n    if (!ctx) return;\n\n    const resize = () => {\n      canvas.width = canvas.offsetWidth;\n      canvas.height = canvas.offsetHeight;\n    };\n    resize();\n    const ro = new ResizeObserver(resize);\n    ro.observe(canvas);\n\n    const onMove = (e: MouseEvent) => {\n      const rect = canvas.getBoundingClientRect();\n      mouseRef.current = { x: e.clientX - rect.left, y: e.clientY - rect.top };\n    };\n    const onLeave = () => {\n      mouseRef.current = { x: -9999, y: -9999 };\n    };\n    canvas.addEventListener(\"mousemove\", onMove);\n    canvas.addEventListener(\"mouseleave\", onLeave);\n\n    const draw = () => {\n      ctx.clearRect(0, 0, canvas.width, canvas.height);\n      const { x: mx, y: my } = mouseRef.current;\n      const radius = 100;\n\n      for (let x = gap / 2; x < canvas.width; x += gap) {\n        for (let y = gap / 2; y < canvas.height; y += gap) {\n          const dist = Math.hypot(x - mx, y - my);\n          const t = Math.max(0, 1 - dist / radius);\n          const r = dotSize + t * dotSize;\n\n          ctx.beginPath();\n          ctx.arc(x, y, r, 0, Math.PI * 2);\n\n          if (t > 0) {\n            // Parse spotlightColor rgba\n            ctx.fillStyle = spotlightColor;\n            ctx.globalAlpha = 0.2 + t * 0.8;\n          } else {\n            ctx.fillStyle = dotColor;\n            ctx.globalAlpha = 1;\n          }\n          ctx.fill();\n          ctx.globalAlpha = 1;\n        }\n      }\n\n      rafRef.current = requestAnimationFrame(draw);\n    };\n    draw();\n\n    return () => {\n      ro.disconnect();\n      canvas.removeEventListener(\"mousemove\", onMove);\n      canvas.removeEventListener(\"mouseleave\", onLeave);\n      if (rafRef.current) cancelAnimationFrame(rafRef.current);\n    };\n  }, [dotColor, spotlightColor, dotSize, gap]);\n\n  return (\n    <canvas\n      ref={canvasRef}\n      className={cn(\"block h-full w-full\", className)}\n    />\n  );\n}\n",
+      "type": "registry:component"
+    }
+  ]
+}

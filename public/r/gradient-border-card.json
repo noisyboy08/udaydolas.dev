@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "gradient-border-card",
+  "type": "registry:component",
+  "title": "Gradient Border Card",
+  "description": "Card with an animated rotating gradient border.",
+  "dependencies": [],
+  "registryDependencies": [
+    "https://chanhdai.com/r/utils.json"
+  ],
+  "files": [
+    {
+      "path": "src/registry/gradient-border-card/gradient-border-card.tsx",
+      "content": "\"use client\";\n\nimport { cn } from \"@/lib/utils\";\n\ntype GradientBorderCardProps = {\n  children: React.ReactNode;\n  className?: string;\n  gradientColors?: string[];\n  padding?: string;\n  animated?: boolean;\n};\n\nexport function GradientBorderCard({\n  children,\n  className,\n  gradientColors = [\"#6366f1\", \"#a855f7\", \"#ec4899\", \"#06b6d4\"],\n  padding = \"p-5\",\n  animated = true,\n}: GradientBorderCardProps) {\n  const gradient = gradientColors.join(\", \");\n\n  return (\n    <div\n      className={cn(\"relative rounded-xl p-px\", className)}\n      style={{\n        background: `linear-gradient(135deg, ${gradient})`,\n        backgroundSize: animated ? \"200% 200%\" : undefined,\n        animation: animated ? \"gradient-border-spin 4s linear infinite\" : undefined,\n      }}\n    >\n      <div className={cn(\"relative h-full w-full rounded-[11px] bg-card\", padding)}>\n        {children}\n      </div>\n      <style>{`\n        @keyframes gradient-border-spin {\n          0%   { background-position: 0% 50%; }\n          50%  { background-position: 100% 50%; }\n          100% { background-position: 0% 50%; }\n        }\n      `}</style>\n    </div>\n  );\n}\n",
+      "type": "registry:component"
+    }
+  ]
+}
