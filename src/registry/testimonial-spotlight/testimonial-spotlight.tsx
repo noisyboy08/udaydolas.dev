@@ -37,7 +37,7 @@ export function TestimonialSpotlight({
       ref={cardRef}
       onMouseMove={handleMove}
       className={cn(
-        "group relative overflow-hidden rounded-2xl border border-border bg-zinc-950 p-8 text-white",
+        "group relative overflow-hidden rounded-2xl border border-border bg-zinc-950 p-6 sm:p-7 text-white",
         className
       )}
     >
@@ -63,12 +63,12 @@ export function TestimonialSpotlight({
       <div className="relative">
         {/* Large quote mark */}
         <div
-          className="mb-4 text-6xl font-black leading-none"
+          className="mb-2.5 text-5xl font-black leading-none"
           style={{ color: gradientFrom, opacity: 0.4 }}
         >
           &ldquo;
         </div>
-        <p className="mb-6 text-lg leading-relaxed text-zinc-300">{quote}</p>
+        <p className="mb-4 text-sm sm:text-base leading-relaxed text-zinc-300">{quote}</p>
         <div className="flex items-center gap-3">
           <div
             className="flex size-10 items-center justify-center rounded-full text-sm font-bold text-white"
@@ -77,8 +77,8 @@ export function TestimonialSpotlight({
             {author[0]}
           </div>
           <div>
-            <p className="font-semibold">{author}</p>
-            {role && <p className="text-sm text-zinc-400">{role}</p>}
+            <p className="font-semibold text-sm sm:text-base">{author}</p>
+            {role && <p className="text-xs sm:text-sm text-zinc-400">{role}</p>}
           </div>
         </div>
       </div>

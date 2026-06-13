@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import { cn } from "@/lib/utils";
 
@@ -13,6 +13,10 @@ type ThemeToggleEffectProps = {
 export function ThemeToggleEffect({ className, defaultDark = true, onChange }: ThemeToggleEffectProps) {
   const [dark, setDark] = useState(defaultDark);
   const [animating, setAnimating] = useState(false);
+
+  useEffect(() => {
+    setDark(defaultDark);
+  }, [defaultDark]);
 
   const toggle = () => {
     setAnimating(true);

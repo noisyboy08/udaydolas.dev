@@ -121,7 +121,7 @@ const SHOWCASE_CONFIG: Record<
   "scroll-fade-effect": { demo: "scroll-fade-effect-demo", size: "tall", label: "Scroll Fade Effect", className: "items-start justify-start p-2" },
   "text-flip": { demo: "text-flip-demo", size: "md", label: "Text Flip" },
   "testimonial": { demo: "testimonial-demo", size: "large", label: "Testimonial", className: "items-start justify-start p-4 overflow-auto" },
-  "testimonial-spotlight": { demo: "testimonial-spotlight-demo", size: "md", label: "Testimonial Spotlight" },
+  "testimonial-spotlight": { demo: "testimonial-spotlight-demo", size: "md", label: "Testimonial Spotlight", className: "p-3 sm:p-4" },
   "number-counter": { demo: "number-counter-demo", size: "wide", label: "Number Counter" },
   "progress-ring": { demo: "progress-ring-demo", size: "md", label: "Progress Ring" },
   "gradient-border-card": { demo: "gradient-border-card-demo", size: "tall", label: "Gradient Border Card", className: "items-start justify-start p-2 overflow-auto" },
