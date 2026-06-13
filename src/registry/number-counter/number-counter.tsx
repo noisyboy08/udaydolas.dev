@@ -30,8 +30,13 @@ export function NumberCounter({
   const ref = useRef<HTMLSpanElement>(null);
 
   useEffect(() => {
+    if (typeof window === "undefined") return;
     const el = ref.current;
     if (!el) return;
+    if (!("IntersectionObserver" in window)) {
+      setStarted(true);
+      return;
+    }
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting && !started) {
@@ -39,7 +44,7 @@ export function NumberCounter({
           observer.disconnect();
         }
       },
-      { threshold: 0.5 }
+      { threshold: 0.1 }
     );
     observer.observe(el);
     return () => observer.disconnect();

@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 
 import { cn } from "@/lib/utils";
 
@@ -63,9 +63,11 @@ export function TypewriterEffect({
       {displayed}
       {cursor && (
         <span
-          className="ml-0.5 inline-block w-0.5 bg-current align-middle"
-          style={{ height: "1.1em", opacity: cursorVisible ? 1 : 0 }}
-        />
+          className="ml-0.5 font-sans"
+          style={{ opacity: cursorVisible ? 1 : 0 }}
+        >
+          {cursorChar}
+        </span>
       )}
     </span>
   );

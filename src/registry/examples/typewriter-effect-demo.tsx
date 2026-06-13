@@ -2,7 +2,7 @@ import { TypewriterEffect } from "@/registry/typewriter-effect";
 
 export default function TypewriterEffectDemo() {
   return (
-    <div className="flex flex-col items-center gap-6 py-6">
+    <div className="flex flex-col items-center gap-2 py-2">
       <p className="text-3xl font-bold">
         I am a{" "}
         <TypewriterEffect

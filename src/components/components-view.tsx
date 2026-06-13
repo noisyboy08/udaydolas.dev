@@ -12,6 +12,7 @@ import {
   Grid3X3Icon,
   LayoutGridIcon,
   MessageSquareIcon,
+  PanelTopIcon,
   QrCodeIcon,
   SlidersHorizontalIcon,
   SparklesIcon,
@@ -116,7 +117,7 @@ const SHOWCASE_CONFIG: Record<
   "slide-to-unlock": { demo: "slide-to-unlock-demo", size: "md", label: "Slide to Unlock" },
   "copy-button": { demo: "copy-button-demo", size: "sm", label: "Copy Button" },
   "fluid-gradient-text": { demo: "fluid-gradient-text-demo", size: "md", label: "Fluid Gradient Text" },
-  "scroll-fade-effect": { demo: "scroll-fade-effect-demo", size: "tall", label: "Scroll Fade Effect", className: "items-start justify-start p-4 overflow-y-auto" },
+  "scroll-fade-effect": { demo: "scroll-fade-effect-demo", size: "tall", label: "Scroll Fade Effect", className: "items-start justify-start p-2" },
   "text-flip": { demo: "text-flip-demo", size: "md", label: "Text Flip" },
   "testimonial": { demo: "testimonial-demo", size: "large", label: "Testimonial", className: "items-start justify-start p-4 overflow-auto" },
   "testimonial-spotlight": { demo: "testimonial-spotlight-demo", size: "large", label: "Testimonial Spotlight" },
@@ -125,23 +126,23 @@ const SHOWCASE_CONFIG: Record<
   "gradient-border-card": { demo: "gradient-border-card-demo", size: "tall", label: "Gradient Border Card", className: "items-start justify-start p-2 overflow-auto" },
   "typewriter-effect": { demo: "typewriter-effect-demo", size: "wide", label: "Typewriter Effect" },
   "magnetic-button": { demo: "magnetic-button-demo", size: "md", label: "Magnetic Button" },
-  "avatar-group": { demo: "avatar-group-demo", size: "sm", label: "Avatar Group" },
+  "avatar-group": { demo: "avatar-group-demo", size: "md", label: "Avatar Group" },
   "stat-card": { demo: "stat-card-demo", size: "hero", label: "Stat Card", className: "items-start justify-start p-3 overflow-auto" },
   "timeline": { demo: "timeline-demo", size: "tall", label: "Timeline", className: "items-start justify-start p-4 overflow-auto" },
   "pricing-card": { demo: "pricing-card-demo", size: "hero", label: "Pricing Card", className: "items-start justify-start p-4 overflow-auto" },
-  "step-progress": { demo: "step-progress-demo", size: "wide", label: "Step Progress", className: "items-start justify-start p-6 overflow-auto" },
+  "step-progress": { demo: "step-progress-demo", size: "large", label: "Step Progress", className: "items-start justify-start p-4 overflow-hidden" },
   "badge-collection": { demo: "badge-collection-demo", size: "md", label: "Badge Collection" },
   "skeleton-loader": { demo: "skeleton-loader-demo", size: "large", label: "Skeleton Loader", className: "items-start justify-start p-3 overflow-auto" },
   "feature-card": { demo: "feature-card-demo", size: "large", label: "Feature Card", className: "items-start justify-start overflow-auto" },
-  "code-snippet": { demo: "code-snippet-demo", size: "wide", label: "Code Snippet", className: "items-start justify-start p-4 overflow-auto" },
+  "code-snippet": { demo: "code-snippet-demo", size: "large", label: "Code Snippet", className: "items-start justify-start p-3 overflow-auto" },
   "particle-cursor": { demo: "particle-cursor-demo", size: "wide", label: "Particle Cursor", className: "p-0 overflow-hidden" },
   "tilt-card": { demo: "tilt-card-demo", size: "md", label: "Tilt Card" },
   "animated-tabs": { demo: "animated-tabs-demo", size: "md", label: "Animated Tabs" },
   "accordion": { demo: "accordion-demo", size: "tall", label: "Accordion", className: "items-start justify-start p-4 overflow-auto" },
-  "github-contributions": { demo: "github-contributions-demo", size: "wide", label: "GitHub Contributions", className: "p-4 items-start overflow-auto" },
+  "github-contributions": { demo: "github-contributions-demo", size: "large", label: "GitHub Contributions", className: "p-3 overflow-hidden" },
   "github-stars": { demo: "github-stars-demo", size: "sm", label: "GitHub Stars" },
   "middle-truncation": { demo: "middle-truncation-demo", size: "md", label: "Middle Truncation" },
-  "theme-toggle-effect": { demo: "theme-toggle-effect-demo", size: "sm", label: "Theme Toggle Effect" },
+  "theme-toggle-effect": { demo: "theme-toggle-effect-demo", size: "sm", label: "Theme Toggle Effect", className: "p-0" },
   "icon-swap": { demo: "icon-swap-demo", size: "md", label: "Icon Swap" },
 };
 
@@ -333,9 +334,6 @@ function ComponentsShowcase({ posts }: { posts: Post[] }) {
         <ExtraShowcaseCell label="Gradient Controls" size="md">
           <GradientControlsPreview />
         </ExtraShowcaseCell>
-        <ExtraShowcaseCell label="GitHub Contributions" size="wide">
-          <ContributionPreview />
-        </ExtraShowcaseCell>
         <ExtraShowcaseCell label="Install Command" size="sm">
           <CommandPreview />
         </ExtraShowcaseCell>
@@ -494,38 +492,6 @@ function GradientControlsPreview() {
   );
 }
 
-function ContributionPreview() {
-  return (
-    <div className="w-full max-w-2xl px-3">
-      <div className="mb-3 flex justify-between text-xs font-semibold text-muted-foreground">
-        {["Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec", "Jan", "Feb", "Mar"].map(
-          (month) => (
-            <span key={month}>{month}</span>
-          )
-        )}
-      </div>
-      <div className="grid grid-flow-col grid-rows-7 gap-1">
-        {Array.from({ length: 196 }, (_, index) => (
-          <span
-            key={index}
-            className={cn(
-              "size-3 rounded-[2px]",
-              index % 11 === 0 || index % 17 === 0
-                ? "bg-zinc-300 dark:bg-zinc-500"
-                : index % 5 === 0
-                  ? "bg-zinc-500/60"
-                  : "bg-muted"
-            )}
-          />
-        ))}
-      </div>
-      <p className="mt-3 text-xs text-muted-foreground">
-        4,703 contributions in 2026 on{" "}
-        <span className="font-semibold text-foreground underline">GitHub</span>.
-      </p>
-    </div>
-  );
-}
 
 function CommandPreview() {
   return (

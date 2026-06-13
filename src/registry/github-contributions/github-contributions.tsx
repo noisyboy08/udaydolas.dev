@@ -11,7 +11,7 @@ type GithubContributionsProps = {
 };
 
 function generateData(weeks: number) {
-  return Array.from({ length: weeks * 7 }, (_, i) =>
+  return Array.from({ length: weeks * 7 }, () =>
     Math.random() < 0.3 ? 0 : Math.floor(Math.random() * 8 + 1)
   );
 }

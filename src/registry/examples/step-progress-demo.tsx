@@ -10,7 +10,7 @@ export default function StepProgressDemo() {
   const [current, setCurrent] = useState(1);
 
   return (
-    <div className="flex w-full max-w-md flex-col gap-8 py-4">
+    <div className="flex w-full max-w-md flex-col gap-5 py-2">
       <StepProgress steps={STEPS} current={current} variant="numbered" accentColor="#6366f1" />
       <StepProgress steps={STEPS} current={current} variant="bars" accentColor="#06b6d4" />
       <StepProgress steps={STEPS} current={current} variant="dots" accentColor="#a855f7" />

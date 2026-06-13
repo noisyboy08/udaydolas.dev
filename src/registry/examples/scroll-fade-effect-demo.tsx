@@ -19,10 +19,10 @@ function InstantFadeIn({
   }, [delay]);
 
   const transforms: Record<string, string> = {
-    up: "translateY(20px)",
-    down: "translateY(-20px)",
-    left: "translateX(20px)",
-    right: "translateX(-20px)",
+    up: "translateY(12px)",
+    down: "translateY(-12px)",
+    left: "translateX(12px)",
+    right: "translateX(-12px)",
   };
 
   return (
@@ -40,14 +40,14 @@ function InstantFadeIn({
 
 export default function ScrollFadeEffectDemo() {
   return (
-    <div className="flex w-full flex-col gap-3 py-2">
+    <div className="flex w-full flex-col gap-2 py-0.5">
       {(["up", "down", "left", "right"] as const).map((dir, i) => (
         <InstantFadeIn key={dir} direction={dir} delay={i * 120}>
-          <div className="flex items-center gap-3 rounded-lg border border-border bg-card p-3">
-            <div className="size-8 shrink-0 rounded-md bg-gradient-to-br from-violet-500 to-indigo-500" />
+          <div className="flex items-center gap-2.5 rounded-lg border border-border bg-card p-2">
+            <div className="size-7 shrink-0 rounded-md bg-gradient-to-br from-violet-500 to-indigo-500" />
             <div>
-              <p className="text-sm font-semibold capitalize">Fade from {dir}</p>
-              <p className="text-xs text-muted-foreground">Direction: {dir}</p>
+              <p className="text-xs font-semibold capitalize">Fade From {dir}</p>
+              <p className="text-[10px] text-muted-foreground">Scroll to trigger this animation</p>
             </div>
           </div>
         </InstantFadeIn>
@@ -55,3 +55,4 @@ export default function ScrollFadeEffectDemo() {
     </div>
   );
 }
+

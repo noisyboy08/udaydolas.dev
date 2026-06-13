@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
 
 import { cn } from "@/lib/utils";
@@ -32,9 +33,13 @@ export function Testimonial({
           &ldquo;{quote}&rdquo;
         </p>
         <footer className="flex items-center gap-3">
-          <span className="flex size-9 items-center justify-center rounded-full bg-gradient-to-br from-violet-400 to-cyan-400 text-sm font-bold text-white">
-            {author[0]}
-          </span>
+          {avatar ? (
+            <img src={avatar} alt={author} className="size-9 rounded-full object-cover" />
+          ) : (
+            <span className="flex size-9 items-center justify-center rounded-full bg-gradient-to-br from-violet-400 to-cyan-400 text-sm font-bold text-white">
+              {author[0]}
+            </span>
+          )}
           <div>
             <p className="text-sm font-semibold">{author}</p>
             {role && <p className="text-xs text-muted-foreground">{role}</p>}
@@ -61,9 +66,13 @@ export function Testimonial({
           </div>
           <p className="mb-5 text-base leading-relaxed">&ldquo;{quote}&rdquo;</p>
           <div className="flex items-center gap-3">
-            <span className="flex size-10 items-center justify-center rounded-full bg-gradient-to-br from-violet-500 to-cyan-500 text-sm font-bold text-white">
-              {author[0]}
-            </span>
+            {avatar ? (
+              <img src={avatar} alt={author} className="size-10 rounded-full object-cover" />
+            ) : (
+              <span className="flex size-10 items-center justify-center rounded-full bg-gradient-to-br from-violet-500 to-cyan-500 text-sm font-bold text-white">
+                {author[0]}
+              </span>
+            )}
             <div>
               <p className="text-sm font-semibold">{author}</p>
               <p className="text-xs text-muted-foreground">{role}{company ? ` · ${company}` : ""}</p>
@@ -83,9 +92,13 @@ export function Testimonial({
       </div>
       <p className="mb-4 text-sm leading-relaxed text-muted-foreground">&ldquo;{quote}&rdquo;</p>
       <div className="flex items-center gap-3">
-        <span className="flex size-8 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-violet-400 to-cyan-400 text-xs font-bold text-white">
-          {author[0]}
-        </span>
+        {avatar ? (
+          <img src={avatar} alt={author} className="size-8 shrink-0 rounded-full object-cover" />
+        ) : (
+          <span className="flex size-8 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-violet-400 to-cyan-400 text-xs font-bold text-white">
+            {author[0]}
+          </span>
+        )}
         <div className="min-w-0">
           <p className="truncate text-sm font-semibold">{author}</p>
           {role && <p className="truncate text-xs text-muted-foreground">{role}{company ? ` · ${company}` : ""}</p>}
