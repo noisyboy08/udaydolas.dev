@@ -62,12 +62,12 @@ const SHOWCASE_CONFIG: Record<
   },
   "flip-sentences": {
     demo: "flip-sentences-demo",
-    size: "wide",
+    size: "sm",
     label: "Flip Sentences",
   },
   "glowing-orb": {
     demo: "glowing-orb-demo",
-    size: "wide",
+    size: "md",
     label: "Glowing Orb",
     className: "p-0 overflow-hidden",
   },
@@ -78,12 +78,12 @@ const SHOWCASE_CONFIG: Record<
   },
   "spotlight-card": {
     demo: "spotlight-card-demo",
-    size: "large",
+    size: "md",
     label: "Spotlight Card",
   },
   "neon-clock": {
     demo: "neon-clock-demo",
-    size: "wide",
+    size: "md",
     label: "Neon Clock",
   },
   "dot-grid-spotlight": {

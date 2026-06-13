@@ -42,32 +42,31 @@ export function PricingCard({
       className={cn(
         "relative flex flex-col rounded-2xl border p-6 transition-all duration-300",
         highlight
-          ? "border-transparent bg-zinc-950 text-white shadow-2xl shadow-violet-500/20"
+          ? "border-transparent bg-zinc-950 text-white shadow-2xl"
           : "border-border bg-card",
         hovered && !highlight && "shadow-lg",
         className
       )}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
-      style={highlight ? { boxShadow: `0 0 40px ${accentColor}30` } : undefined}
+      style={
+        highlight
+          ? {
+              backgroundImage: "linear-gradient(#09090b, #09090b), linear-gradient(135deg, #6366f1, #a855f7, #06b6d4)",
+              backgroundClip: "padding-box, border-box",
+              backgroundOrigin: "border-box",
+              borderColor: "transparent",
+              boxShadow: hovered
+                ? `0 0 48px ${accentColor}45`
+                : `0 0 32px ${accentColor}25`,
+              transform: hovered ? "translateY(-4px)" : "none",
+            }
+          : undefined
+      }
     >
-      {/* Gradient border for highlighted */}
-      {highlight && (
-        <div
-          className="absolute inset-px rounded-2xl"
-          style={{
-            background: "linear-gradient(135deg, #6366f1, #a855f7, #06b6d4)",
-            WebkitMaskImage: "linear-gradient(#fff,#fff)",
-            maskImage: "linear-gradient(#fff,#fff)",
-            WebkitMaskComposite: "xor",
-            maskComposite: "exclude",
-          }}
-        />
-      )}
-
       {badge && (
         <span
-          className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full px-3 py-0.5 text-xs font-bold text-white"
+          className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full px-3 py-0.5 text-xs font-bold text-white z-10"
           style={{ background: `linear-gradient(90deg, ${accentColor}, #a855f7)` }}
         >
           {badge}
