@@ -1,0 +1,40 @@
+---
+title: Shimmering Text
+description: A pure-CSS shimmer animation for text that sweeps a highlight across characters — no canvas or JS animation loops needed.
+category: components
+new: true
+createdAt: 2025-06-10
+updatedAt: 2025-06-10
+---
+
+## Overview
+
+Renders text with a shimmering highlight sweep effect using CSS `background-clip: text` and `@keyframes`. Zero runtime cost — runs entirely on the GPU.
+
+## Usage
+
+```tsx
+import { ShimmeringText } from "@/registry/shimmering-text";
+
+export default function Demo() {
+  return (
+    <ShimmeringText
+      text="Shimmering Text"
+      className="text-4xl"
+      shimmerColor="#a855f7"
+      baseColor="#555"
+      speed={2}
+    />
+  );
+}
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `text` | `string` | — | The text to display. |
+| `shimmerColor` | `string` | `#a855f7` | Color of the shimmer highlight. |
+| `baseColor` | `string` | `#888` | Base text color. |
+| `speed` | `number` | `2.5` | Duration of one shimmer cycle in seconds. |
+| `className` | `string` | — | Extra Tailwind classes (e.g., `text-4xl`). |

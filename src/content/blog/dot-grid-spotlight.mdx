@@ -1,0 +1,41 @@
+---
+title: Dot Grid Spotlight
+description: An interactive dot-grid canvas component that highlights dots near the cursor with a customisable spotlight glow effect.
+category: components
+new: true
+createdAt: 2025-06-10
+updatedAt: 2025-06-10
+---
+
+## Overview
+
+A canvas-based dot grid that tracks the mouse cursor and glows nearby dots in a spotlight radius. Fully customisable colors, dot size, and gap.
+
+## Usage
+
+```tsx
+import { DotGridSpotlight } from "@/registry/dot-grid-spotlight";
+
+export default function Demo() {
+  return (
+    <div className="relative h-48 w-full overflow-hidden rounded-xl bg-zinc-950">
+      <DotGridSpotlight
+        dotColor="rgba(255,255,255,0.15)"
+        spotlightColor="rgba(139,92,246,0.9)"
+        dotSize={2}
+        gap={18}
+      />
+    </div>
+  );
+}
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `dotColor` | `string` | `rgba(255,255,255,0.25)` | Base dot fill color. |
+| `spotlightColor` | `string` | `rgba(139,92,246,0.6)` | Color of highlighted dots near cursor. |
+| `dotSize` | `number` | `2` | Radius of each dot in pixels. |
+| `gap` | `number` | `20` | Spacing between dot centers. |
+| `className` | `string` | — | Extra class for the canvas element. |

@@ -1,0 +1,44 @@
+---
+title: Elastic Slider
+description: A smooth, elastic-feeling range slider with a floating value label, custom accent color, and accessible keyboard input.
+category: components
+new: true
+createdAt: 2025-06-10
+updatedAt: 2025-06-10
+---
+
+## Overview
+
+A styled `<input type="range">` replacement with elastic thumb scaling on drag, a floating current-value label, and a custom accent color. Fully keyboard accessible.
+
+## Usage
+
+```tsx
+import { ElasticSlider } from "@/registry/elastic-slider";
+
+export default function Demo() {
+  return (
+    <ElasticSlider
+      label="Opacity"
+      min={0}
+      max={100}
+      defaultValue={60}
+      formatValue={(v) => `${v}%`}
+      accentColor="#6366f1"
+    />
+  );
+}
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `min` | `number` | `0` | Minimum value. |
+| `max` | `number` | `100` | Maximum value. |
+| `step` | `number` | `1` | Step increment. |
+| `defaultValue` | `number` | `50` | Initial value. |
+| `label` | `string` | — | Label shown above the slider. |
+| `formatValue` | `(v: number) => string` | `String(v)` | Custom value formatter. |
+| `accentColor` | `string` | `#6366f1` | Thumb and fill color. |
+| `className` | `string` | — | Extra class for the wrapper. |

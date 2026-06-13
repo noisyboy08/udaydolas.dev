@@ -1,0 +1,41 @@
+---
+title: Spinning Circular Text
+description: Characters arranged in a circle that continuously spin — built with SVG text elements and a CSS keyframe rotation.
+category: components
+new: true
+createdAt: 2025-06-10
+updatedAt: 2025-06-10
+---
+
+## Overview
+
+Renders individual characters evenly distributed around a circle using SVG and animates the whole SVG with a CSS `rotate` keyframe. Great for badges, decorative elements, and loading states.
+
+## Usage
+
+```tsx
+import { SpinningCircularText } from "@/registry/spinning-circular-text";
+
+export default function Demo() {
+  return (
+    <SpinningCircularText
+      text="UDAY DOLAS • DEVELOPER • "
+      radius={60}
+      fontSize={11}
+      duration={8}
+      color="#a855f7"
+    />
+  );
+}
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `text` | `string` | — | Text to arrange around the circle. Add trailing spaces/dots for even gaps. |
+| `radius` | `number` | `70` | Radius of the circle in pixels. |
+| `fontSize` | `number` | `12` | Font size of each character. |
+| `duration` | `number` | `10` | Seconds for one full rotation. |
+| `color` | `string` | `currentColor` | Character fill color. |
+| `className` | `string` | — | Extra class for the outer container. |

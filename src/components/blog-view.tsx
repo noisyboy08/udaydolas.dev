@@ -17,6 +17,11 @@ function BlogCard({
   post: Post;
   priority?: boolean;
 }) {
+  // Use the post's own image or fall back to the dynamic OG image
+  const coverImage =
+    post.metadata.image ||
+    `/og/simple?title=${encodeURIComponent(post.metadata.title)}`;
+
   return (
     <Link
       href={`/blog/${post.slug}`}
@@ -28,25 +33,17 @@ function BlogCard({
     >
       {/* Cover image */}
       <div className="relative aspect-[1200/630] w-full overflow-hidden bg-zinc-950">
-        {post.metadata.image ? (
-          <>
-            <Image
-              src={post.metadata.image}
-              alt={post.metadata.title}
-              fill
-              priority={priority}
-              sizes="(max-width: 640px) 100vw, 50vw"
-              className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
-            />
-            {/* subtle dark vignette */}
-            <div className="absolute inset-0 bg-gradient-to-t from-zinc-900/30 via-transparent to-transparent" />
-          </>
-        ) : (
-          // Placeholder for posts without cover
-          <div className="flex h-full items-center justify-center">
-            <span className="font-mono text-xs text-zinc-600">No cover</span>
-          </div>
-        )}
+        <Image
+          src={coverImage}
+          alt={post.metadata.title}
+          fill
+          priority={priority}
+          unoptimized={coverImage.startsWith("/og/")}
+          sizes="(max-width: 640px) 100vw, 50vw"
+          className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+        />
+        {/* subtle dark vignette */}
+        <div className="absolute inset-0 bg-gradient-to-t from-zinc-900/30 via-transparent to-transparent" />
 
         {/* "New" badge */}
         {post.metadata.new && (
