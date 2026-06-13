@@ -533,4 +533,374 @@ export const Index: Record<string, any> = {
     }],
     component: React.lazy(() => import("@/registry/examples/neon-clock-demo.tsx")),
   },
+  "dot-grid-spotlight-demo": {
+    name: "dot-grid-spotlight-demo",
+    description: "",
+    type: "registry:example",
+    files: [{
+      path: "src/registry/examples/dot-grid-spotlight-demo.tsx",
+      type: "registry:example",
+    }],
+    component: React.lazy(() => import("@/registry/examples/dot-grid-spotlight-demo.tsx")),
+  },
+  "shimmering-text-demo": {
+    name: "shimmering-text-demo",
+    description: "",
+    type: "registry:example",
+    files: [{
+      path: "src/registry/examples/shimmering-text-demo.tsx",
+      type: "registry:example",
+    }],
+    component: React.lazy(() => import("@/registry/examples/shimmering-text-demo.tsx")),
+  },
+  "spinning-circular-text-demo": {
+    name: "spinning-circular-text-demo",
+    description: "",
+    type: "registry:example",
+    files: [{
+      path: "src/registry/examples/spinning-circular-text-demo.tsx",
+      type: "registry:example",
+    }],
+    component: React.lazy(() => import("@/registry/examples/spinning-circular-text-demo.tsx")),
+  },
+  "testimonials-marquee-demo": {
+    name: "testimonials-marquee-demo",
+    description: "",
+    type: "registry:example",
+    files: [{
+      path: "src/registry/examples/testimonials-marquee-demo.tsx",
+      type: "registry:example",
+    }],
+    component: React.lazy(() => import("@/registry/examples/testimonials-marquee-demo.tsx")),
+  },
+  "glow-card-grid-demo": {
+    name: "glow-card-grid-demo",
+    description: "",
+    type: "registry:example",
+    files: [{
+      path: "src/registry/examples/glow-card-grid-demo.tsx",
+      type: "registry:example",
+    }],
+    component: React.lazy(() => import("@/registry/examples/glow-card-grid-demo.tsx")),
+  },
+  "elastic-slider-demo": {
+    name: "elastic-slider-demo",
+    description: "",
+    type: "registry:example",
+    files: [{
+      path: "src/registry/examples/elastic-slider-demo.tsx",
+      type: "registry:example",
+    }],
+    component: React.lazy(() => import("@/registry/examples/elastic-slider-demo.tsx")),
+  },
+  "slide-to-unlock-demo": {
+    name: "slide-to-unlock-demo",
+    description: "",
+    type: "registry:example",
+    files: [{
+      path: "src/registry/examples/slide-to-unlock-demo.tsx",
+      type: "registry:example",
+    }],
+    component: React.lazy(() => import("@/registry/examples/slide-to-unlock-demo.tsx")),
+  },
+  "copy-button-demo": {
+    name: "copy-button-demo",
+    description: "",
+    type: "registry:example",
+    files: [{
+      path: "src/registry/examples/copy-button-demo.tsx",
+      type: "registry:example",
+    }],
+    component: React.lazy(() => import("@/registry/examples/copy-button-demo.tsx")),
+  },
+  "fluid-gradient-text-demo": {
+    name: "fluid-gradient-text-demo",
+    description: "",
+    type: "registry:example",
+    files: [{
+      path: "src/registry/examples/fluid-gradient-text-demo.tsx",
+      type: "registry:example",
+    }],
+    component: React.lazy(() => import("@/registry/examples/fluid-gradient-text-demo.tsx")),
+  },
+  "scroll-fade-effect-demo": {
+    name: "scroll-fade-effect-demo",
+    description: "",
+    type: "registry:example",
+    files: [{
+      path: "src/registry/examples/scroll-fade-effect-demo.tsx",
+      type: "registry:example",
+    }],
+    component: React.lazy(() => import("@/registry/examples/scroll-fade-effect-demo.tsx")),
+  },
+  "text-flip-demo": {
+    name: "text-flip-demo",
+    description: "",
+    type: "registry:example",
+    files: [{
+      path: "src/registry/examples/text-flip-demo.tsx",
+      type: "registry:example",
+    }],
+    component: React.lazy(() => import("@/registry/examples/text-flip-demo.tsx")),
+  },
+  "testimonial-demo": {
+    name: "testimonial-demo",
+    description: "",
+    type: "registry:example",
+    files: [{
+      path: "src/registry/examples/testimonial-demo.tsx",
+      type: "registry:example",
+    }],
+    component: React.lazy(() => import("@/registry/examples/testimonial-demo.tsx")),
+  },
+  "testimonial-spotlight-demo": {
+    name: "testimonial-spotlight-demo",
+    description: "",
+    type: "registry:example",
+    files: [{
+      path: "src/registry/examples/testimonial-spotlight-demo.tsx",
+      type: "registry:example",
+    }],
+    component: React.lazy(() => import("@/registry/examples/testimonial-spotlight-demo.tsx")),
+  },
+  "number-counter-demo": {
+    name: "number-counter-demo",
+    description: "",
+    type: "registry:example",
+    files: [{
+      path: "src/registry/examples/number-counter-demo.tsx",
+      type: "registry:example",
+    }],
+    component: React.lazy(() => import("@/registry/examples/number-counter-demo.tsx")),
+  },
+  "progress-ring-demo": {
+    name: "progress-ring-demo",
+    description: "",
+    type: "registry:example",
+    files: [{
+      path: "src/registry/examples/progress-ring-demo.tsx",
+      type: "registry:example",
+    }],
+    component: React.lazy(() => import("@/registry/examples/progress-ring-demo.tsx")),
+  },
+  "gradient-border-card-demo": {
+    name: "gradient-border-card-demo",
+    description: "",
+    type: "registry:example",
+    files: [{
+      path: "src/registry/examples/gradient-border-card-demo.tsx",
+      type: "registry:example",
+    }],
+    component: React.lazy(() => import("@/registry/examples/gradient-border-card-demo.tsx")),
+  },
+  "typewriter-effect-demo": {
+    name: "typewriter-effect-demo",
+    description: "",
+    type: "registry:example",
+    files: [{
+      path: "src/registry/examples/typewriter-effect-demo.tsx",
+      type: "registry:example",
+    }],
+    component: React.lazy(() => import("@/registry/examples/typewriter-effect-demo.tsx")),
+  },
+  "magnetic-button-demo": {
+    name: "magnetic-button-demo",
+    description: "",
+    type: "registry:example",
+    files: [{
+      path: "src/registry/examples/magnetic-button-demo.tsx",
+      type: "registry:example",
+    }],
+    component: React.lazy(() => import("@/registry/examples/magnetic-button-demo.tsx")),
+  },
+  "avatar-group-demo": {
+    name: "avatar-group-demo",
+    description: "",
+    type: "registry:example",
+    files: [{
+      path: "src/registry/examples/avatar-group-demo.tsx",
+      type: "registry:example",
+    }],
+    component: React.lazy(() => import("@/registry/examples/avatar-group-demo.tsx")),
+  },
+  "stat-card-demo": {
+    name: "stat-card-demo",
+    description: "",
+    type: "registry:example",
+    files: [{
+      path: "src/registry/examples/stat-card-demo.tsx",
+      type: "registry:example",
+    }],
+    component: React.lazy(() => import("@/registry/examples/stat-card-demo.tsx")),
+  },
+  "timeline-demo": {
+    name: "timeline-demo",
+    description: "",
+    type: "registry:example",
+    files: [{
+      path: "src/registry/examples/timeline-demo.tsx",
+      type: "registry:example",
+    }],
+    component: React.lazy(() => import("@/registry/examples/timeline-demo.tsx")),
+  },
+  "pricing-card-demo": {
+    name: "pricing-card-demo",
+    description: "",
+    type: "registry:example",
+    files: [{
+      path: "src/registry/examples/pricing-card-demo.tsx",
+      type: "registry:example",
+    }],
+    component: React.lazy(() => import("@/registry/examples/pricing-card-demo.tsx")),
+  },
+  "step-progress-demo": {
+    name: "step-progress-demo",
+    description: "",
+    type: "registry:example",
+    files: [{
+      path: "src/registry/examples/step-progress-demo.tsx",
+      type: "registry:example",
+    }],
+    component: React.lazy(() => import("@/registry/examples/step-progress-demo.tsx")),
+  },
+  "badge-collection-demo": {
+    name: "badge-collection-demo",
+    description: "",
+    type: "registry:example",
+    files: [{
+      path: "src/registry/examples/badge-collection-demo.tsx",
+      type: "registry:example",
+    }],
+    component: React.lazy(() => import("@/registry/examples/badge-collection-demo.tsx")),
+  },
+  "skeleton-loader-demo": {
+    name: "skeleton-loader-demo",
+    description: "",
+    type: "registry:example",
+    files: [{
+      path: "src/registry/examples/skeleton-loader-demo.tsx",
+      type: "registry:example",
+    }],
+    component: React.lazy(() => import("@/registry/examples/skeleton-loader-demo.tsx")),
+  },
+  "feature-card-demo": {
+    name: "feature-card-demo",
+    description: "",
+    type: "registry:example",
+    files: [{
+      path: "src/registry/examples/feature-card-demo.tsx",
+      type: "registry:example",
+    }],
+    component: React.lazy(() => import("@/registry/examples/feature-card-demo.tsx")),
+  },
+  "code-snippet-demo": {
+    name: "code-snippet-demo",
+    description: "",
+    type: "registry:example",
+    files: [{
+      path: "src/registry/examples/code-snippet-demo.tsx",
+      type: "registry:example",
+    }],
+    component: React.lazy(() => import("@/registry/examples/code-snippet-demo.tsx")),
+  },
+  "particle-cursor-demo": {
+    name: "particle-cursor-demo",
+    description: "",
+    type: "registry:example",
+    files: [{
+      path: "src/registry/examples/particle-cursor-demo.tsx",
+      type: "registry:example",
+    }],
+    component: React.lazy(() => import("@/registry/examples/particle-cursor-demo.tsx")),
+  },
+  "tilt-card-demo": {
+    name: "tilt-card-demo",
+    description: "",
+    type: "registry:example",
+    files: [{
+      path: "src/registry/examples/tilt-card-demo.tsx",
+      type: "registry:example",
+    }],
+    component: React.lazy(() => import("@/registry/examples/tilt-card-demo.tsx")),
+  },
+  "animated-tabs-demo": {
+    name: "animated-tabs-demo",
+    description: "",
+    type: "registry:example",
+    files: [{
+      path: "src/registry/examples/animated-tabs-demo.tsx",
+      type: "registry:example",
+    }],
+    component: React.lazy(() => import("@/registry/examples/animated-tabs-demo.tsx")),
+  },
+  "accordion-demo": {
+    name: "accordion-demo",
+    description: "",
+    type: "registry:example",
+    files: [{
+      path: "src/registry/examples/accordion-demo.tsx",
+      type: "registry:example",
+    }],
+    component: React.lazy(() => import("@/registry/examples/accordion-demo.tsx")),
+  },
+  "github-contributions-demo": {
+    name: "github-contributions-demo",
+    description: "",
+    type: "registry:example",
+    files: [{
+      path: "src/registry/examples/github-contributions-demo.tsx",
+      type: "registry:example",
+    }],
+    component: React.lazy(() => import("@/registry/examples/github-contributions-demo.tsx")),
+  },
+  "github-stars-demo": {
+    name: "github-stars-demo",
+    description: "",
+    type: "registry:example",
+    files: [{
+      path: "src/registry/examples/github-stars-demo.tsx",
+      type: "registry:example",
+    }],
+    component: React.lazy(() => import("@/registry/examples/github-stars-demo.tsx")),
+  },
+  "middle-truncation-demo": {
+    name: "middle-truncation-demo",
+    description: "",
+    type: "registry:example",
+    files: [{
+      path: "src/registry/examples/middle-truncation-demo.tsx",
+      type: "registry:example",
+    }],
+    component: React.lazy(() => import("@/registry/examples/middle-truncation-demo.tsx")),
+  },
+  "theme-toggle-effect-demo": {
+    name: "theme-toggle-effect-demo",
+    description: "",
+    type: "registry:example",
+    files: [{
+      path: "src/registry/examples/theme-toggle-effect-demo.tsx",
+      type: "registry:example",
+    }],
+    component: React.lazy(() => import("@/registry/examples/theme-toggle-effect-demo.tsx")),
+  },
+  "icon-swap-demo": {
+    name: "icon-swap-demo",
+    description: "",
+    type: "registry:example",
+    files: [{
+      path: "src/registry/examples/icon-swap-demo.tsx",
+      type: "registry:example",
+    }],
+    component: React.lazy(() => import("@/registry/examples/icon-swap-demo.tsx")),
+  },
+  "flip-sentences-demo": {
+    name: "flip-sentences-demo",
+    description: "",
+    type: "registry:example",
+    files: [{
+      path: "src/registry/examples/flip-sentences-demo.tsx",
+      type: "registry:example",
+    }],
+    component: React.lazy(() => import("@/registry/examples/flip-sentences-demo.tsx")),
+  },
 }
