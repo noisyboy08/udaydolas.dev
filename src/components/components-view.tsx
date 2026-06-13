@@ -313,7 +313,7 @@ function ComponentsShowcase({ posts }: { posts: Post[] }) {
       <div className="flex items-center justify-end border-b border-edge px-4 py-2.5">
         <ViewToggle active="showcase" />
       </div>
-      <div className="grid grid-flow-dense auto-rows-[152px] grid-cols-1 gap-1 border-b border-edge bg-edge p-1 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="grid grid-flow-dense auto-rows-[152px] grid-cols-1 gap-1 border-b border-edge bg-edge p-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
         {posts.map((post) => {
           const config = SHOWCASE_CONFIG[post.slug];
 
