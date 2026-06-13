@@ -37,7 +37,7 @@ export function TestimonialSpotlight({
       ref={cardRef}
       onMouseMove={handleMove}
       className={cn(
-        "group relative overflow-hidden rounded-2xl border border-border bg-zinc-950 p-5 sm:p-6 text-white",
+        "group relative overflow-hidden rounded-2xl border border-zinc-200 dark:border-border bg-zinc-50 dark:bg-zinc-950 p-5 sm:p-6 text-zinc-900 dark:text-white",
         className
       )}
     >
@@ -45,14 +45,14 @@ export function TestimonialSpotlight({
       <div
         className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
         style={{
-          background: `radial-gradient(400px circle at ${pos.x}% ${pos.y}%, ${gradientFrom}22 0%, transparent 60%)`,
+          background: `radial-gradient(400px circle at ${pos.x}% ${pos.y}%, ${gradientFrom}15 0%, transparent 60%)`,
         }}
       />
       {/* Gradient border glow */}
       <div
         className="pointer-events-none absolute inset-px rounded-2xl opacity-0 transition-opacity duration-300 group-hover:opacity-100"
         style={{
-          background: `radial-gradient(200px circle at ${pos.x}% ${pos.y}%, ${gradientFrom}40, transparent 60%)`,
+          background: `radial-gradient(200px circle at ${pos.x}% ${pos.y}%, ${gradientFrom}30, transparent 60%)`,
           WebkitMaskImage: "linear-gradient(#fff,#fff)",
           maskImage: "linear-gradient(#fff,#fff)",
           WebkitMaskComposite: "xor",
@@ -63,12 +63,12 @@ export function TestimonialSpotlight({
       <div className="relative">
         {/* Large quote mark */}
         <div
-          className="mb-1.5 text-4xl font-black leading-none"
-          style={{ color: gradientFrom, opacity: 0.4 }}
+          className="mb-1.5 text-4xl font-black leading-none opacity-20 dark:opacity-40"
+          style={{ color: gradientFrom }}
         >
           &ldquo;
         </div>
-        <p className="mb-3 text-xs sm:text-sm leading-relaxed text-zinc-300">{quote}</p>
+        <p className="mb-3 text-xs sm:text-sm leading-relaxed text-zinc-600 dark:text-zinc-300">{quote}</p>
         <div className="flex items-center gap-3">
           <div
             className="flex size-9 items-center justify-center rounded-full text-xs font-bold text-white"
@@ -77,8 +77,8 @@ export function TestimonialSpotlight({
             {author[0]}
           </div>
           <div>
-            <p className="font-semibold text-xs sm:text-sm">{author}</p>
-            {role && <p className="text-[10px] sm:text-xs text-zinc-400">{role}</p>}
+            <p className="font-semibold text-xs sm:text-sm text-zinc-900 dark:text-white">{author}</p>
+            {role && <p className="text-[10px] sm:text-xs text-zinc-500 dark:text-zinc-400">{role}</p>}
           </div>
         </div>
       </div>

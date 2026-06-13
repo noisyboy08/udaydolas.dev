@@ -1,7 +1,8 @@
 "use client";
 
 import { CheckIcon } from "lucide-react";
-import { useState } from "react";
+import { useTheme } from "next-themes";
+import { useEffect, useState } from "react";
 
 import { cn } from "@/lib/utils";
 
@@ -36,13 +37,24 @@ export function PricingCard({
   onSelect,
 }: PricingCardProps) {
   const [hovered, setHovered] = useState(false);
+  const { resolvedTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const isDark = !mounted || resolvedTheme === "dark";
 
   return (
     <div
       className={cn(
         "relative flex flex-col rounded-2xl border p-6 transition-all duration-300",
         highlight
-          ? "border-transparent bg-zinc-950 text-white shadow-2xl"
+          ? cn(
+              "border-transparent shadow-2xl",
+              isDark ? "bg-zinc-950 text-white" : "bg-white text-zinc-900"
+            )
           : "border-border bg-card",
         hovered && !highlight && "shadow-lg",
         className
@@ -52,7 +64,9 @@ export function PricingCard({
       style={
         highlight
           ? {
-              backgroundImage: "linear-gradient(#09090b, #09090b), linear-gradient(135deg, #6366f1, #a855f7, #06b6d4)",
+              backgroundImage: isDark
+                ? "linear-gradient(#09090b, #09090b), linear-gradient(135deg, #6366f1, #a855f7, #06b6d4)"
+                : "linear-gradient(#ffffff, #ffffff), linear-gradient(135deg, #6366f1, #a855f7, #06b6d4)",
               backgroundClip: "padding-box, border-box",
               backgroundOrigin: "border-box",
               borderColor: "transparent",
@@ -88,7 +102,7 @@ export function PricingCard({
               className="mt-0.5 size-4 shrink-0"
               style={{ color: accentColor }}
             />
-            <span className={highlight ? "text-zinc-300" : "text-muted-foreground"}>{f}</span>
+            <span className={highlight ? (isDark ? "text-zinc-300" : "text-zinc-600") : "text-muted-foreground"}>{f}</span>
           </li>
         ))}
       </ul>
@@ -99,7 +113,7 @@ export function PricingCard({
         className={cn(
           "mt-auto w-full rounded-xl py-2.5 text-sm font-semibold transition-all duration-200",
           highlight
-            ? "bg-white text-zinc-900 hover:bg-zinc-100"
+            ? (isDark ? "bg-white text-zinc-900 hover:bg-zinc-100" : "bg-zinc-900 text-white hover:bg-zinc-800")
             : "border border-border bg-background hover:bg-accent"
         )}
         style={!highlight ? { borderColor: `${accentColor}40` } : undefined}
