@@ -1,0 +1,40 @@
+---
+title: Icon Swap
+description: Button that swaps between two icons with a flip, slide, or fade animation on click, useful for toggle actions.
+category: components
+new: true
+createdAt: 2025-06-13
+updatedAt: 2025-06-13
+---
+
+## Overview
+
+Renders a button with two icon slots that animate between each other on press. Supports three transition styles — `flip` (rotateY), `slide` (translateY), and `fade` (opacity) — to create expressive toggle interactions.
+
+## Usage
+
+```tsx
+import { IconSwap } from "@/registry/icon-swap";
+import { HeartIcon, HeartOffIcon } from "lucide-react";
+
+export default function Demo() {
+  return (
+    <IconSwap
+      iconA={<HeartIcon />}
+      iconB={<HeartOffIcon />}
+      animation="flip"
+    />
+  );
+}
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `iconA` | `ReactNode` | required | Icon shown in the default (off) state. |
+| `iconB` | `ReactNode` | required | Icon shown in the toggled (on) state. |
+| `animation` | `"flip" \| "slide" \| "fade"` | `"flip"` | Transition animation between the two icons. |
+| `defaultActive` | `boolean` | `false` | Whether the button starts in the active (iconB) state. |
+| `onChange` | `(active: boolean) => void` | — | Callback fired when the toggle state changes. |
+| `className` | `string` | — | Extra class for the button element. |

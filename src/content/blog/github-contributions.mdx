@@ -1,0 +1,36 @@
+---
+title: GitHub Contributions
+description: GitHub-style contribution heatmap grid that visualizes daily commit activity for a given year with intensity-based cell coloring.
+category: components
+new: true
+createdAt: 2025-06-13
+updatedAt: 2025-06-13
+---
+
+## Overview
+
+Renders a 52-week grid of day cells, colored by contribution intensity (0–4+), matching GitHub's contribution graph style. Accepts a flat array of `{ date, count }` objects and maps them to the grid automatically.
+
+## Usage
+
+```tsx
+import { GitHubContributions } from "@/registry/github-contributions";
+
+export default function Demo() {
+  const data = Array.from({ length: 365 }, (_, i) => ({
+    date: new Date(2025, 0, i + 1).toISOString().slice(0, 10),
+    count: Math.floor(Math.random() * 8),
+  }));
+
+  return <GitHubContributions data={data} accentColor="#6366f1" />;
+}
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `data` | `{ date: string; count: number }[]` | required | Daily contribution records. `date` is `YYYY-MM-DD`. |
+| `accentColor` | `string` | `#6366f1` | Base color used for the intensity scale. |
+| `year` | `number` | current year | The year to render (used for grid alignment). |
+| `className` | `string` | — | Extra class for the grid wrapper. |

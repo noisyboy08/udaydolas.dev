@@ -1,5 +1,6 @@
+import { BellIcon, BookmarkIcon, HeartIcon, MoonIcon,StarIcon, SunIcon } from "lucide-react";
+
 import { IconSwap } from "@/registry/icon-swap";
-import { HeartIcon, StarIcon, BookmarkIcon, BellIcon, SunIcon, MoonIcon } from "lucide-react";
 
 export default function IconSwapDemo() {
   return (

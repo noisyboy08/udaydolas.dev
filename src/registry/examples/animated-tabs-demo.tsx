@@ -1,5 +1,6 @@
-import { AnimatedTabs } from "@/registry/animated-tabs";
 import { CodeIcon, EyeIcon, SettingsIcon } from "lucide-react";
+
+import { AnimatedTabs } from "@/registry/animated-tabs";
 
 export default function AnimatedTabsDemo() {
   return (

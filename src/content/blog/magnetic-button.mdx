@@ -1,0 +1,34 @@
+---
+title: Magnetic Button
+description: Button that magnetically follows the cursor on hover, snapping back to its original position with a spring animation on mouse leave.
+category: components
+new: true
+createdAt: 2025-06-13
+updatedAt: 2025-06-13
+---
+
+## Overview
+
+Listens to `mousemove` events relative to the button's bounding rect and applies a proportional `translate` transform, creating a magnetic pull effect. Uses a CSS transition with cubic-bezier easing for the spring-back.
+
+## Usage
+
+```tsx
+import { MagneticButton } from "@/registry/magnetic-button";
+
+export default function Demo() {
+  return (
+    <MagneticButton strength={0.4}>
+      Hover me
+    </MagneticButton>
+  );
+}
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `children` | `ReactNode` | required | Button content. |
+| `strength` | `number` | `0.4` | Magnetic pull strength (0 = no movement, 1 = full offset). |
+| `className` | `string` | — | Extra class for the button element. |

@@ -1,5 +1,5 @@
-import { TiltCard } from "@/registry/tilt-card";
 import { GlowingOrb } from "@/registry/glowing-orb";
+import { TiltCard } from "@/registry/tilt-card";
 
 export default function TiltCardDemo() {
   return (

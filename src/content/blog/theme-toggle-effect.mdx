@@ -1,0 +1,32 @@
+---
+title: Theme Toggle Effect
+description: Animated sun/moon toggle button for dark/light mode with a smooth icon morph transition using Motion for React.
+category: components
+new: true
+createdAt: 2025-06-13
+updatedAt: 2025-06-13
+---
+
+## Overview
+
+A compact icon button that toggles between the sun and moon icons with a scale + rotate animation on each press. Integrates with `next-themes` to apply the dark/light class to the document root.
+
+## Usage
+
+```tsx
+import { ThemeToggleEffect } from "@/registry/theme-toggle-effect";
+
+export default function Nav() {
+  return (
+    <nav>
+      <ThemeToggleEffect />
+    </nav>
+  );
+}
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `className` | `string` | — | Extra class for the button element. |

@@ -1,0 +1,38 @@
+---
+title: Tilt Card
+description: 3D perspective tilt card that rotates along X and Y axes following the mouse, with a glare highlight overlay on hover.
+category: components
+new: true
+createdAt: 2025-06-13
+updatedAt: 2025-06-13
+---
+
+## Overview
+
+Listens to `mousemove` events relative to the card's bounding rect and applies a `perspective` + `rotateX` / `rotateY` CSS transform to simulate a 3D tilt. A translucent glare overlay tracks the same position for a premium glass-like feel.
+
+## Usage
+
+```tsx
+import { TiltCard } from "@/registry/tilt-card";
+
+export default function Demo() {
+  return (
+    <TiltCard maxTilt={15} glare>
+      <img src="/product.jpg" alt="Product" />
+      <p className="mt-2 font-semibold">Product Name</p>
+    </TiltCard>
+  );
+}
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `children` | `ReactNode` | required | Card body content. |
+| `maxTilt` | `number` | `15` | Maximum rotation in degrees for each axis. |
+| `glare` | `boolean` | `true` | Whether to show the glare highlight overlay. |
+| `perspective` | `number` | `800` | CSS perspective distance in pixels. |
+| `scale` | `number` | `1.02` | Scale factor applied on hover. |
+| `className` | `string` | — | Extra class for the card wrapper. |

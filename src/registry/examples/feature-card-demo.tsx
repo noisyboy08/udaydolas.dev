@@ -1,4 +1,5 @@
-import { ZapIcon, ShieldIcon, SparklesIcon } from "lucide-react";
+import { ShieldIcon, SparklesIcon,ZapIcon } from "lucide-react";
+
 import { FeatureCard } from "@/registry/feature-card";
 
 export default function FeatureCardDemo() {

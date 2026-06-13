@@ -1,0 +1,41 @@
+---
+title: Avatar Group
+description: Overlapping avatar stack with gradient initials fallback and an overflow count badge for extra members.
+category: components
+new: true
+createdAt: 2025-06-13
+updatedAt: 2025-06-13
+---
+
+## Overview
+
+Renders a row of overlapping circular avatars with configurable overlap, size, and a `+N` overflow badge when the list exceeds a maximum display count. Falls back to gradient initials when no image is provided.
+
+## Usage
+
+```tsx
+import { AvatarGroup } from "@/registry/avatar-group";
+
+export default function Demo() {
+  return (
+    <AvatarGroup
+      avatars={[
+        { name: "Alice", src: "/alice.jpg" },
+        { name: "Bob" },
+        { name: "Carol" },
+      ]}
+      max={3}
+      size="md"
+    />
+  );
+}
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `avatars` | `{ name: string; src?: string }[]` | required | List of avatar data. `src` is optional; initials are used as fallback. |
+| `max` | `number` | `4` | Maximum number of avatars to display before showing the overflow badge. |
+| `size` | `"sm" \| "md" \| "lg"` | `"md"` | Controls the avatar diameter. |
+| `className` | `string` | — | Extra class for the group wrapper. |

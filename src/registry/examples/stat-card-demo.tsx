@@ -1,4 +1,5 @@
-import { UsersIcon, StarIcon, CodeIcon, ZapIcon } from "lucide-react";
+import { CodeIcon, StarIcon, UsersIcon, ZapIcon } from "lucide-react";
+
 import { StatCard } from "@/registry/stat-card";
 
 export default function StatCardDemo() {

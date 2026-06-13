@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+
 import { StepProgress } from "@/registry/step-progress";
 
 const STEPS = ["Cart", "Shipping", "Payment", "Review"];

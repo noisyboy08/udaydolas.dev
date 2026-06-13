@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+
 import { ThemeToggleEffect } from "@/registry/theme-toggle-effect";
 
 export default function ThemeToggleEffectDemo() {

@@ -1,0 +1,31 @@
+---
+title: Copy Button
+description: Clipboard copy button with animated icon swap and a green confirmation state that resets after 1.5 seconds.
+category: components
+new: true
+createdAt: 2025-06-13
+updatedAt: 2025-06-13
+---
+
+## Overview
+
+Writes a given string to the clipboard using the Clipboard API, then briefly switches to a check-icon confirmation. Supports three sizes and three visual variants.
+
+## Usage
+
+```tsx
+import { CopyButton } from "@/registry/copy-button";
+
+export default function Demo() {
+  return <CopyButton text="npm install @ncdai/ui" variant="pill" />;
+}
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `text` | `string` | required | The string that will be written to the clipboard. |
+| `size` | `"sm" \| "md" \| "lg"` | `"md"` | Controls height and font size. |
+| `variant` | `"icon" \| "icon-label" \| "pill"` | `"icon-label"` | Layout variant — icon only, icon + label, or pill shape. |
+| `className` | `string` | — | Extra class for the button element. |

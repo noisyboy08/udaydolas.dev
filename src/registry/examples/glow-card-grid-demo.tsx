@@ -1,4 +1,4 @@
-import { SparklesIcon, ZapIcon, ShieldIcon, LayersIcon, CodeIcon, RocketIcon } from "lucide-react";
+import { CodeIcon, LayersIcon, RocketIcon,ShieldIcon, SparklesIcon, ZapIcon } from "lucide-react";
 
 import { GlowCardGrid } from "@/registry/glow-card-grid";
 

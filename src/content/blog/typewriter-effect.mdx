@@ -1,0 +1,39 @@
+---
+title: Typewriter Effect
+description: Animated typewriter that types out each word character by character, then deletes it, cycling through a configurable list.
+category: components
+new: true
+createdAt: 2025-06-13
+updatedAt: 2025-06-13
+---
+
+## Overview
+
+Simulates a typewriter by incrementally adding and removing characters from a word list using `setInterval`. Includes a blinking cursor and configurable typing/deleting speeds.
+
+## Usage
+
+```tsx
+import { TypewriterEffect } from "@/registry/typewriter-effect";
+
+export default function Demo() {
+  return (
+    <TypewriterEffect
+      words={["Developer", "Designer", "Creator"]}
+      typingSpeed={80}
+      deletingSpeed={40}
+      pauseMs={1500}
+    />
+  );
+}
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `words` | `string[]` | required | List of words to type and delete in sequence. |
+| `typingSpeed` | `number` | `80` | Milliseconds per character while typing. |
+| `deletingSpeed` | `number` | `40` | Milliseconds per character while deleting. |
+| `pauseMs` | `number` | `1500` | Pause duration at the end of a fully typed word. |
+| `className` | `string` | — | Extra class for the container. |

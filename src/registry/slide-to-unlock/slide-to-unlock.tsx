@@ -1,7 +1,8 @@
 "use client";
 
-import { useCallback, useRef, useState } from "react";
 import { LockIcon, UnlockIcon } from "lucide-react";
+import { useCallback, useRef, useState } from "react";
+
 import { cn } from "@/lib/utils";
 
 type SlideToUnlockProps = {

@@ -1,0 +1,49 @@
+---
+title: Timeline
+description: Vertical timeline with done, active, and pending step states, connecting lines, and optional icons per step.
+category: components
+new: true
+createdAt: 2025-06-13
+updatedAt: 2025-06-13
+---
+
+## Overview
+
+Renders a vertical list of timeline steps with a dot indicator (colored for done/active, outlined for pending), a connecting line between steps, and optional title, description, date, and icon per item.
+
+## Usage
+
+```tsx
+import { Timeline } from "@/registry/timeline";
+
+export default function Demo() {
+  return (
+    <Timeline
+      accentColor="#6366f1"
+      items={[
+        { title: "Project started", date: "Jan 2025", status: "done" },
+        { title: "Beta launched", date: "Mar 2025", status: "active" },
+        { title: "v1.0 release", date: "Jun 2025", status: "pending" },
+      ]}
+    />
+  );
+}
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `items` | `TimelineItem[]` | required | Array of timeline steps. |
+| `accentColor` | `string` | `#6366f1` | Color applied to done and active step indicators and lines. |
+| `className` | `string` | — | Extra class for the timeline wrapper. |
+
+### `TimelineItem`
+
+| Field | Type | Description |
+|---|---|---|
+| `title` | `string` | Step heading. |
+| `description` | `string` | Optional body text below the title. |
+| `date` | `string` | Optional date label shown beside the title. |
+| `icon` | `ReactNode` | Optional icon inside the dot indicator. |
+| `status` | `"done" \| "active" \| "pending"` | Controls the dot color and connecting line style. |

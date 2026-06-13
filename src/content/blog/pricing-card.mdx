@@ -1,0 +1,47 @@
+---
+title: Pricing Card
+description: Pricing card with a highlighted popular plan, feature list, animated gradient border on the featured plan, and a CTA badge.
+category: components
+new: true
+createdAt: 2025-06-13
+updatedAt: 2025-06-13
+---
+
+## Overview
+
+A full-featured pricing card component that renders a plan name, price, feature list, and call-to-action button. The featured/highlighted plan gets a rotating gradient border and a badge label for visual emphasis.
+
+## Usage
+
+```tsx
+import { PricingCard } from "@/registry/pricing-card";
+
+export default function Demo() {
+  return (
+    <PricingCard
+      name="Pro"
+      price="$19"
+      period="/mo"
+      featured
+      badge="Most Popular"
+      features={["Unlimited projects", "Priority support", "Custom domain"]}
+      ctaLabel="Get started"
+    />
+  );
+}
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `name` | `string` | required | Plan name. |
+| `price` | `string` | required | Price string (e.g. `"$19"`). |
+| `period` | `string` | — | Billing period label (e.g. `"/mo"`). |
+| `featured` | `boolean` | `false` | Highlights the card with a gradient border and elevated style. |
+| `badge` | `string` | — | Badge text shown on the featured card. |
+| `features` | `string[]` | `[]` | List of feature strings with checkmarks. |
+| `ctaLabel` | `string` | `"Get started"` | Call-to-action button label. |
+| `onCta` | `() => void` | — | Callback for CTA button click. |
+| `accentColor` | `string` | `#6366f1` | Accent color for the gradient border and CTA. |
+| `className` | `string` | — | Extra class for the card wrapper. |

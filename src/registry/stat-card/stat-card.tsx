@@ -1,7 +1,8 @@
 "use client";
 
-import { cn } from "@/lib/utils";
 import { TrendingDownIcon, TrendingUpIcon } from "lucide-react";
+
+import { cn } from "@/lib/utils";
 
 type StatCardProps = {
   label: string;

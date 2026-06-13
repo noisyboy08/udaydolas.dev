@@ -1,0 +1,39 @@
+---
+title: Testimonial Spotlight
+description: Dark testimonial card with a mouse-tracking radial glow that reveals the card surface on hover.
+category: components
+new: true
+createdAt: 2025-06-13
+updatedAt: 2025-06-13
+---
+
+## Overview
+
+Tracks the mouse position relative to the card container and applies a `radial-gradient` spotlight overlay, creating a premium dark-mode testimonial card with a luxurious reveal effect on hover.
+
+## Usage
+
+```tsx
+import { TestimonialSpotlight } from "@/registry/testimonial-spotlight";
+
+export default function Demo() {
+  return (
+    <TestimonialSpotlight
+      quote="Absolutely game-changing. I ship UI in hours now."
+      author="Alex Kim"
+      title="Indie Hacker"
+      spotlightColor="rgba(99, 102, 241, 0.15)"
+    />
+  );
+}
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `quote` | `string` | required | The testimonial quote text. |
+| `author` | `string` | required | Name of the person giving the testimonial. |
+| `title` | `string` | — | Role or company of the author. |
+| `spotlightColor` | `string` | `rgba(139,92,246,0.15)` | CSS color for the spotlight radial gradient. |
+| `className` | `string` | — | Extra class for the card wrapper. |

@@ -1,0 +1,37 @@
+---
+title: Fluid Gradient Text
+description: Text with a continuously flowing multi-color gradient animation using CSS background-clip and keyframes.
+category: components
+new: true
+createdAt: 2025-06-13
+updatedAt: 2025-06-13
+---
+
+## Overview
+
+Applies an animated `linear-gradient` to text via `background-clip: text`, cycling through a customizable color palette with configurable speed.
+
+## Usage
+
+```tsx
+import { FluidGradientText } from "@/registry/fluid-gradient-text";
+
+export default function Demo() {
+  return (
+    <FluidGradientText
+      text="Hello, World!"
+      colors={["#6366f1", "#a855f7", "#06b6d4", "#22c55e"]}
+      speed={4}
+    />
+  );
+}
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `text` | `string` | required | The text content to render with the gradient. |
+| `colors` | `string[]` | indigo/purple/cyan palette | Array of CSS colors to cycle through. |
+| `speed` | `number` | `4` | Animation duration in seconds. |
+| `className` | `string` | — | Extra class for the span element. |

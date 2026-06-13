@@ -67,7 +67,10 @@ export function StepProgress({
               )}
               style={
                 i <= current
-                  ? { background: accentColor, ringColor: `${accentColor}40` }
+                  ? ({
+                      background: accentColor,
+                      "--tw-ring-color": `${accentColor}40`,
+                    } as React.CSSProperties)
                   : undefined
               }
             >

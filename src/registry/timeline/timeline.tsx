@@ -51,9 +51,9 @@ export function Timeline({ items, className, accentColor = "#6366f1" }: Timeline
               className={cn("flex size-8 items-center justify-center rounded-full", statusRing[item.status ?? "pending"])}
               style={{
                 background: statusColors[item.status ?? "pending"],
-                ringColor: accentColor,
+                "--tw-ring-color": accentColor,
                 borderColor: item.status === "pending" ? undefined : accentColor,
-              }}
+              } as React.CSSProperties}
             >
               {item.icon ?? (
                 <span
