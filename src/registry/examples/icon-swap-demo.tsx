@@ -1,4 +1,4 @@
-import { BellIcon, BookmarkIcon, HeartIcon, MoonIcon,StarIcon, SunIcon } from "lucide-react";
+import { BellIcon, BookmarkIcon, HeartIcon, MoonIcon, SunIcon } from "lucide-react";
 
 import { IconSwap } from "@/registry/icon-swap";
 

@@ -7,13 +7,11 @@ import {
   ClipboardIcon,
   ClockIcon,
   Code2Icon,
-  CopyIcon,
   GithubIcon,
   Grid2X2Icon,
   Grid3X3Icon,
   LayoutGridIcon,
   MessageSquareIcon,
-  PanelTopIcon,
   QrCodeIcon,
   SlidersHorizontalIcon,
   SparklesIcon,
@@ -332,23 +330,14 @@ function ComponentsShowcase({ posts }: { posts: Post[] }) {
 
           return <FallbackCell key={post.slug} post={post} />;
         })}
-        <ExtraShowcaseCell label="Slide to Unlock" size="sm">
-          <SlideUnlockPreview />
-        </ExtraShowcaseCell>
         <ExtraShowcaseCell label="Gradient Controls" size="md">
           <GradientControlsPreview />
-        </ExtraShowcaseCell>
-        <ExtraShowcaseCell label="Middle Truncation" size="md">
-          <MiddleTruncationPreview />
         </ExtraShowcaseCell>
         <ExtraShowcaseCell label="GitHub Contributions" size="wide">
           <ContributionPreview />
         </ExtraShowcaseCell>
         <ExtraShowcaseCell label="Install Command" size="sm">
           <CommandPreview />
-        </ExtraShowcaseCell>
-        <ExtraShowcaseCell label="Copy Button" size="sm">
-          <CopyPreview />
         </ExtraShowcaseCell>
         <ExtraShowcaseCell label="Text Spotlight" size="wide">
           <TextSpotlightPreview />
@@ -472,20 +461,6 @@ function ExtraShowcaseCell({
   );
 }
 
-function SlideUnlockPreview() {
-  return (
-    <button
-      type="button"
-      className="group/slide flex h-11 w-48 items-center rounded-lg border border-border bg-card p-1 text-sm font-semibold text-muted-foreground shadow-sm transition-colors hover:text-foreground"
-    >
-      <span className="flex size-9 items-center justify-center rounded-md bg-foreground text-background transition-transform group-hover/slide:translate-x-24">
-        <PanelTopIcon className="size-4 rotate-90" />
-      </span>
-      <span className="ml-3">slide to unlock</span>
-    </button>
-  );
-}
-
 function GradientControlsPreview() {
   const rows = [
     ["Opacity", "0.50"],
@@ -513,25 +488,6 @@ function GradientControlsPreview() {
           <span className="flex items-center justify-end px-3 font-mono text-muted-foreground">
             {value}
           </span>
-        </div>
-      ))}
-    </div>
-  );
-}
-
-function MiddleTruncationPreview() {
-  const lines = [
-    "/Users/uday/Code/components/ui/button.tsx",
-    "FY26_Q1_Consolidated_Financial_Statements.pdf",
-    "https://www.apple.com/financial-reports.pdf",
-  ];
-
-  return (
-    <div className="w-full max-w-sm rounded-lg border border-border bg-card p-4 font-mono text-xs shadow-sm">
-      {lines.map((line) => (
-        <div key={line} className="mb-4 last:mb-0">
-          <p className="mb-1 text-muted-foreground">&lt;MiddleTruncation&gt;</p>
-          <p className="truncate font-semibold">{line}</p>
         </div>
       ))}
     </div>
@@ -585,20 +541,6 @@ function CommandPreview() {
         <ClipboardIcon className="size-4" />
       </div>
       <p className="text-muted-foreground">$ pnpm dlx shadcn add button</p>
-    </div>
-  );
-}
-
-function CopyPreview() {
-  return (
-    <div className="flex items-center gap-2">
-      <button className="flex size-9 items-center justify-center rounded-md border border-border bg-card text-muted-foreground hover:text-foreground">
-        <CopyIcon className="size-4" />
-      </button>
-      <button className="flex h-9 items-center gap-2 rounded-md border border-border bg-card px-3 text-sm font-semibold">
-        <CopyIcon className="size-4" />
-        Copy
-      </button>
     </div>
   );
 }

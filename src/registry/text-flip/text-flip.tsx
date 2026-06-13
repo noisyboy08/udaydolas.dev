@@ -1,5 +1,7 @@
 "use client";
 
+import { useEffect, useState } from "react";
+
 import { cn } from "@/lib/utils";
 
 type TextFlipProps = {
@@ -15,10 +17,10 @@ export function TextFlip({
   interval = 2000,
   accentColor = "#6366f1",
 }: TextFlipProps) {
-  const [index, setIndex] = React.useState(0);
-  const [flipping, setFlipping] = React.useState(false);
+  const [index, setIndex] = useState(0);
+  const [flipping, setFlipping] = useState(false);
 
-  React.useEffect(() => {
+  useEffect(() => {
     const id = setInterval(() => {
       setFlipping(true);
       setTimeout(() => {
@@ -47,4 +49,3 @@ export function TextFlip({
   );
 }
 
-import React from "react";

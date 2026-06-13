@@ -1,5 +1,3 @@
-import { CheckIcon } from "lucide-react";
-
 import { Timeline } from "@/registry/timeline";
 
 const ITEMS = [

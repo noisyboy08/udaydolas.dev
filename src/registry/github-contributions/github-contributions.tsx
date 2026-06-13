@@ -1,5 +1,7 @@
 "use client";
 
+import { useMemo } from "react";
+
 import { cn } from "@/lib/utils";
 
 type GithubContributionsProps = {
@@ -17,7 +19,7 @@ function generateData(weeks: number) {
 const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
 export function GithubContributions({ className, weeks = 26, username = "udaydolas" }: GithubContributionsProps) {
-  const data = React.useMemo(() => generateData(weeks), [weeks]);
+  const data = useMemo(() => generateData(weeks), [weeks]);
   const total = data.reduce((a, b) => a + b, 0);
 
   const getColor = (count: number) => {
@@ -28,7 +30,7 @@ export function GithubContributions({ className, weeks = 26, username = "udaydol
     return "bg-emerald-400";
   };
 
-  const monthLabels = React.useMemo(() => {
+  const monthLabels = useMemo(() => {
     const now = new Date();
     return Array.from({ length: 6 }, (_, i) => {
       const d = new Date(now);
@@ -60,4 +62,3 @@ export function GithubContributions({ className, weeks = 26, username = "udaydol
   );
 }
 
-import React from "react";

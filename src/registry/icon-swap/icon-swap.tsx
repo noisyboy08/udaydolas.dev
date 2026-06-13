@@ -1,5 +1,7 @@
 "use client";
 
+import { useState } from "react";
+
 import { cn } from "@/lib/utils";
 
 type IconSwapProps = {
@@ -11,7 +13,7 @@ type IconSwapProps = {
 };
 
 export function IconSwap({ iconA, iconB, label, className, direction = "flip" }: IconSwapProps) {
-  const [swapped, setSwapped] = React.useState(false);
+  const [swapped, setSwapped] = useState(false);
 
   return (
     <button
@@ -60,4 +62,3 @@ export function IconSwap({ iconA, iconB, label, className, direction = "flip" }:
   );
 }
 
-import React from "react";

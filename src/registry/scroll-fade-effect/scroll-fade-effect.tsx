@@ -1,5 +1,7 @@
 "use client";
 
+import React, { useEffect, useRef, useState } from "react";
+
 import { cn } from "@/lib/utils";
 
 type ScrollFadeEffectProps = {
@@ -15,10 +17,10 @@ export function ScrollFadeEffect({
   direction = "up",
   delay = 0,
 }: ScrollFadeEffectProps) {
-  const [visible, setVisible] = React.useState(false);
-  const ref = React.useRef<HTMLDivElement>(null);
+  const [visible, setVisible] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
 
-  React.useEffect(() => {
+  useEffect(() => {
     const el = ref.current;
     if (!el) return;
     const observer = new IntersectionObserver(
@@ -55,5 +57,3 @@ export function ScrollFadeEffect({
     </div>
   );
 }
-
-import React from "react";

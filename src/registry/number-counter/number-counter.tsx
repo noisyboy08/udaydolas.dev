@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import { cn } from "@/lib/utils";
 
@@ -27,7 +27,7 @@ export function NumberCounter({
 }: NumberCounterProps) {
   const [value, setValue] = useState(from);
   const [started, setStarted] = useState(false);
-  const ref = React.useRef<HTMLSpanElement>(null);
+  const ref = useRef<HTMLSpanElement>(null);
 
   useEffect(() => {
     const el = ref.current;
@@ -70,4 +70,3 @@ export function NumberCounter({
   );
 }
 
-import React from "react";
