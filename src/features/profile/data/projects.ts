@@ -150,6 +150,7 @@ export const PROJECTS: Project[] = [
       start: "2025",
     },
     link: "https://github.com/noisyboy08/3D-Planet-",
+    live: "https://3d-planet-v1.vercel.app",
     skills: [
       "React",
       "Three.js",
@@ -176,6 +177,7 @@ export const PROJECTS: Project[] = [
       start: "2025",
     },
     link: "https://github.com/noisyboy08/Aegis-HUD-",
+    live: "https://aegis-hud.vercel.app",
     skills: [
       "React Three Fiber",
       "Three.js",
@@ -201,6 +203,7 @@ export const PROJECTS: Project[] = [
       start: "2025",
     },
     link: "https://github.com/noisyboy08/AI-Travel-Planner",
+    live: "https://travel-next-level.vercel.app",
     skills: [
       "Next.js 15",
       "Three.js",

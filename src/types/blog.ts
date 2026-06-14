@@ -6,6 +6,8 @@ export type PostMetadata = {
   new?: boolean;
   createdAt: string;
   updatedAt: string;
+  github?: string;
+  live?: string;
 };
 
 export type Post = {

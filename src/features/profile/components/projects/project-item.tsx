@@ -123,6 +123,29 @@ export function ProjectItem({
                 ))}
               </ul>
             )}
+
+            <div className="flex flex-wrap items-center gap-3 pt-2">
+              <a
+                href={addQueryParams(project.link, UTM_PARAMS)}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 rounded-lg border border-edge bg-zinc-50 dark:bg-zinc-900/50 hover:bg-zinc-100 dark:hover:bg-zinc-800 px-3 py-1.5 text-sm font-medium text-foreground transition-colors"
+              >
+                <Icons.github className="size-4" />
+                GitHub Code
+              </a>
+              {project.live && (
+                <a
+                  href={project.live}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 rounded-lg bg-foreground text-background hover:opacity-90 px-3 py-1.5 text-sm font-medium transition-opacity"
+                >
+                  <LinkIcon className="size-3.5" />
+                  Live Preview
+                </a>
+              )}
+            </div>
           </div>
         </CollapsibleContent>
       </div>
