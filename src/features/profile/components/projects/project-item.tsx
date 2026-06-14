@@ -124,26 +124,30 @@ export function ProjectItem({
               </ul>
             )}
 
-            <div className="flex flex-wrap items-center gap-3 pt-2">
-              <a
-                href={addQueryParams(project.link, UTM_PARAMS)}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 rounded-lg border border-edge bg-zinc-50 dark:bg-zinc-900/50 hover:bg-zinc-100 dark:hover:bg-zinc-800 px-3 py-1.5 text-sm font-medium text-foreground transition-colors"
-              >
-                <Icons.github className="size-4" />
-                GitHub Code
-              </a>
-              {project.live && (
+            <div className="flex items-center gap-2.5 pt-2">
+              <SimpleTooltip content="GitHub Code">
                 <a
-                  href={project.live}
+                  href={addQueryParams(project.link, UTM_PARAMS)}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 rounded-lg bg-foreground text-background hover:opacity-90 px-3 py-1.5 text-sm font-medium transition-opacity"
+                  className="flex size-8 shrink-0 items-center justify-center rounded-full border border-edge bg-zinc-50 dark:bg-zinc-900/50 hover:bg-zinc-100 dark:hover:bg-zinc-800 text-muted-foreground hover:text-foreground transition-colors"
                 >
-                  <LinkIcon className="size-3.5" />
-                  Live Preview
+                  <Icons.github className="size-4" />
+                  <span className="sr-only">GitHub</span>
                 </a>
+              </SimpleTooltip>
+              {project.live && (
+                <SimpleTooltip content="Live Preview">
+                  <a
+                    href={project.live}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex size-8 shrink-0 items-center justify-center rounded-full border border-edge bg-zinc-50 dark:bg-zinc-900/50 hover:bg-zinc-100 dark:hover:bg-zinc-800 text-muted-foreground hover:text-foreground transition-colors"
+                  >
+                    <LinkIcon className="size-4" />
+                    <span className="sr-only">Live Preview</span>
+                  </a>
+                </SimpleTooltip>
               )}
             </div>
           </div>

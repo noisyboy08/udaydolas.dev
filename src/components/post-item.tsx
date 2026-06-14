@@ -5,6 +5,7 @@ import Link from "next/link";
 import React from "react";
 
 import { Icons } from "@/components/icons";
+import { SimpleTooltip } from "@/components/ui/tooltip";
 import { cn } from "@/lib/utils";
 import type { Post } from "@/types/blog";
 
@@ -65,28 +66,32 @@ export function PostItem({
       </Link>
 
       {(post.metadata.github || post.metadata.live) && (
-        <div className="flex flex-wrap items-center gap-3 p-2 pt-0 mt-auto">
+        <div className="flex items-center gap-2.5 p-2 pt-0 mt-auto">
           {post.metadata.github && (
-            <a
-              href={post.metadata.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 rounded-lg border border-edge bg-zinc-50 dark:bg-zinc-900/50 hover:bg-zinc-100 dark:hover:bg-zinc-800 px-3 py-1.5 text-sm font-medium text-foreground transition-colors"
-            >
-              <Icons.github className="size-4" />
-              GitHub Code
-            </a>
+            <SimpleTooltip content="GitHub Code">
+              <a
+                href={post.metadata.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex size-8 shrink-0 items-center justify-center rounded-full border border-edge bg-zinc-50 dark:bg-zinc-900/50 hover:bg-zinc-100 dark:hover:bg-zinc-800 text-muted-foreground hover:text-foreground transition-colors"
+              >
+                <Icons.github className="size-4" />
+                <span className="sr-only">GitHub</span>
+              </a>
+            </SimpleTooltip>
           )}
           {post.metadata.live && (
-            <a
-              href={post.metadata.live}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 rounded-lg bg-foreground text-background hover:opacity-90 px-3 py-1.5 text-sm font-medium transition-opacity"
-            >
-              <LinkIcon className="size-3.5" />
-              Live Preview
-            </a>
+            <SimpleTooltip content="Live Preview">
+              <a
+                href={post.metadata.live}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex size-8 shrink-0 items-center justify-center rounded-full border border-edge bg-zinc-50 dark:bg-zinc-900/50 hover:bg-zinc-100 dark:hover:bg-zinc-800 text-muted-foreground hover:text-foreground transition-colors"
+              >
+                <LinkIcon className="size-4" />
+                <span className="sr-only">Live Preview</span>
+              </a>
+            </SimpleTooltip>
           )}
         </div>
       )}
