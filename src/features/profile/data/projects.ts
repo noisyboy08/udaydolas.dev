@@ -226,4 +226,124 @@ export const PROJECTS: Project[] = [
 - 🗺️ Interactive routing and travel destination mapping
 - 🚀 Smooth animations and cinematic transitions (Framer Motion)`,
   },
+  {
+    id: "anti-gravity-city",
+    title: "Anti-Gravity-City",
+    period: {
+      start: "2025",
+    },
+    link: "https://github.com/noisyboy08/anti-gravity-city",
+    live: "https://anti-gravity-city.vercel.app",
+    skills: [
+      "React",
+      "Three.js",
+      "React Three Fiber",
+      "GLSL Shaders",
+      "Web Audio API",
+      "Node.js",
+      "Express",
+      "Tailwind CSS",
+      "Framer Motion",
+    ],
+    description: `A massively gamified 3D metaverse repository visualizer that parses codebases into interactive 3D cities.
+- 🏙️ Codebase to 3D Cyberpunk City conversion
+- 🛡️ Interactive force fields, altitude layers & glowing beams
+- 🤖 Google Gemini AI-powered codebase chatbot
+- ⏱️ Git timeline visualization for repository commits
+- 🎵 Procedural Web Audio API sound synthesizer`,
+  },
+  {
+    id: "bakelpv",
+    title: "Bakelpv",
+    period: {
+      start: "2025",
+    },
+    link: "https://github.com/noisyboy08/Bakery",
+    live: "https://bakery-ten-gold.vercel.app",
+    skills: [
+      "Next.js 14",
+      "TypeScript",
+      "React",
+      "Tailwind CSS",
+      "Framer Motion",
+      "Context API",
+    ],
+    description: `A premium high-end modern bakery experience with real-time shopping cart and table booking capabilities.
+- 🍰 Beautiful interactive floating elements & wave dividers
+- 🛒 Real-time cart management with custom checkout simulations
+- 📅 Table reservation system with input validation
+- 🔍 Sticky navigation & global search overlay
+- 📱 Fully responsive layout tailored for all device breakpoints`,
+  },
+  {
+    id: "campus-club-ems",
+    title: "CAMS",
+    period: {
+      start: "2025",
+    },
+    link: "https://github.com/noisyboy08/Campus-Club-ems",
+    live: "https://campusclub-ems.vercel.app",
+    skills: [
+      "React 18",
+      "TypeScript",
+      "Vite",
+      "Tailwind CSS",
+      "Framer Motion",
+      "Three.js",
+      "React Router",
+      "Supabase",
+    ],
+    description: `Campus Activity Management System – the ultimate operating system for student organization checkpoints.
+- 🪪 Next-Gen digital student E-ID validation
+- 🤖 AI event suggestions and automated event descriptions
+- 💳 Treasury financial budget & expense ledger tools
+- 🏆 Gamified student leaderboards for events & club attendance
+- 📊 Fully responsive dark mode dashboards`,
+  },
+  {
+    id: "comic-verse",
+    title: "Comic Verse",
+    period: {
+      start: "2025",
+    },
+    link: "https://github.com/noisyboy08/ComicVerse",
+    live: "https://comic-verse-eight.vercel.app",
+    skills: [
+      "React",
+      "Tailwind CSS",
+      "Framer Motion",
+      "React Router",
+      "Node.js",
+    ],
+    description: `An interactive digital comic community and reading catalog built for comic fans.
+- 📖 Realistic page-turn animations for digital viewing
+- 🔍 Catalog with advanced tags & instant filtering
+- 💬 Community reviews, ratings, and feedback portal
+- 👤 User profiles and saved reading histories
+- 🎨 Modern cyberpunk dark mode aesthetics`,
+  },
+  {
+    id: "cascade-annote",
+    title: "CascadeAnnote",
+    period: {
+      start: "2025",
+    },
+    link: "https://github.com/noisyboy08/CascadeAnnote",
+    live: "https://cascade-annote.vercel.app",
+    skills: [
+      "React",
+      "TypeScript",
+      "Tailwind CSS",
+      "Framer Motion",
+      "SVG",
+      "Lucide Icons",
+    ],
+    description: `An advanced interactive codebase annotation tool to draw connections and highlight code blocks.
+- 📝 Real-time code block annotations & custom notes
+- 🔗 SVG-based interactive visual link connections between blocks
+- 🎨 Code syntax highlighting & markdown editor pane
+- 💾 Export configuration schemes for developers
+- ⚡ Clean, minimalist interface optimized for explanation flows`,
+  },
 ];
+
