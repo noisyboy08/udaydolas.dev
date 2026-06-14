@@ -1,0 +1,60 @@
+---
+title: CTX_GUARD — ContextGuard
+description: An AI-powered platform that monitors, captures, and publicly surfaces every silent edit on Reddit and social platforms to prevent misinformation and manipulation.
+image: /images/blog/ContextGuard.png
+createdAt: 2025-01-25
+category: projects
+updatedAt: 2025-01-25
+github: https://github.com/noisyboy08/ContextGuard
+live: https://contextguard.vercel.app
+---
+
+## Overview
+
+**CTX_GUARD (ContextGuard)** is an AI-powered transparency platform that addresses one of the most abused loopholes on Reddit and social platforms — the edit button. When a post goes viral, bad actors frequently edit the original content to spread misinformation, scam links, or manipulative messaging after the audience is already locked in. ContextGuard monitors, captures, and publicly surfaces every silent edit in real-time.
+
+The platform runs live at v0.0.2 with a bold orange-on-black brutalist visual identity that communicates urgency and accountability — every change is logged, timestamped, and permanently accessible.
+
+![ContextGuard Preview](/images/blog/ContextGuard.png)
+
+## The Problem it Solves
+
+Reddit's edit button is invisible — when someone edits a post, no notification is sent to commenters or upvoters who engaged based on the original content. This creates a massive manipulation vector: post something benign, wait for virality, then silently swap the content for a scam link, a political reversal, or misinformation. ContextGuard makes silent editing impossible to hide.
+
+## Key Features
+
+### 👁️ Real-Time Edit Detection Engine
+Continuously monitors high-engagement posts across Reddit and social feeds for content modifications. The detection daemon polls monitored posts at sub-second intervals and compares content hashes. When a silent edit is detected, ContextGuard captures the before/after diff and logs it to the public transparency ledger within seconds of the change occurring.
+
+### 📋 Public Transparency Ledger
+A permanent, searchable feed of all detected edits across every monitored post and account. Anyone can search a post URL or user handle to retrieve the complete edit history — every version of the content, with full timestamp, character-level diff highlighting, and engagement stats at the time of each edit.
+
+### 🤖 AI Manipulation Classifier
+Each detected edit is automatically run through an NLP classification pipeline that categorizes the type of modification into one of five categories: sentiment reversal, link injection, scam pattern insertion, factual flip, or benign correction. Edits classified as high-risk immediately trigger community alert notifications and are promoted to the top of the transparency feed.
+
+### 🔔 Real-Time Alert Subscriptions
+Users, moderators, and journalists can subscribe to specific threads, subreddits, or individual accounts to receive instant webhook or push notifications whenever a flagged edit is detected. Subscription filters can be set by severity level, edit type, or account trust score.
+
+### 📊 Context Integrity Score
+Every tracked account accumulates a Context Integrity Score — a public credibility rating calculated from edit frequency, edit severity classifications, post engagement at time of edit, and historical manipulation patterns. The score is displayed on every scan result and is publicly accessible via a profile lookup API.
+
+## Tech Stack
+
+| Layer | Technology |
+|---|---|
+| **Frontend** | React, TypeScript, Tailwind CSS |
+| **Animations** | Framer Motion |
+| **AI/NLP Layer** | Node.js + NLP Classification API |
+| **Data Source** | Reddit API, Social Platform Scrapers |
+| **Storage** | Immutable Ledger (PostgreSQL + append-only schema) |
+| **Deployment** | Vercel |
+
+## Design Philosophy
+
+ContextGuard's visual identity is deliberately confrontational — the brutalist orange-on-black design communicates that this is not a product for passive browsing. It's a surveillance and accountability tool. Bold monospace typography, high-contrast warning colors, and terminal-inspired UI components (blinking status indicators, scan progress bars, diff-highlighted change logs) reinforce the platform's mission: making transparency unavoidable.
+
+## Project Links
+
+- **GitHub Repository**: [ContextGuard](https://github.com/noisyboy08/ContextGuard)
+- **Live Demo**: [CTX_GUARD](https://contextguard.vercel.app)
+- **Status**: Live v0.0.2
