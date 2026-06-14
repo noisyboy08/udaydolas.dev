@@ -143,4 +143,30 @@ export const PROJECTS: Project[] = [
 - 🌱 Sustainability insights
 - 📈 Comprehensive reporting`,
   },
+  {
+    id: "3d-planet",
+    title: "3D Planets Explorer",
+    period: {
+      start: "2025",
+    },
+    link: "https://github.com/noisyboy08/3D-Planet-",
+    skills: [
+      "React",
+      "Three.js",
+      "@react-three/fiber",
+      "GSAP",
+      "Tailwind CSS",
+      "Lenis",
+      "React Router",
+      "3D Rendering",
+      "Vite",
+    ],
+    description: `A visually stunning 3D space exploration experience built with React, Three.js, and GSAP. Explore Earth and 7 unique fictional planets with immersive animations, realistic textures, and smooth interactions.
+- 🪐 Hyper-Realistic 3D Planets (Three.js & React Three Fiber)
+- 📊 Detailed Planet statistics cards
+- ⚡ GSAP ScrollTrigger animations
+- ☄️ Interactive starfield background
+- 🖱️ Slick space-themed custom cursor
+- 🚀 Cinematic loading sequence`,
+  },
 ];
