@@ -8,6 +8,7 @@ export const PROJECTS: Project[] = [
       start: "2025",
     },
     link: "https://github.com/noisyboy08/PYRO-CAST-AI-",
+    live: "https://pyrocast-ai.vercel.app",
     skills: [
       "AI/ML",
       "Python",
@@ -34,6 +35,7 @@ export const PROJECTS: Project[] = [
       start: "2025",
     },
     link: "https://github.com/noisyboy08/AGRO-CAST-AI",
+    live: "https://agrocast-ai.vercel.app",
     skills: [
       "AI/ML",
       "TypeScript",
@@ -58,6 +60,7 @@ export const PROJECTS: Project[] = [
       start: "2025",
     },
     link: "https://github.com/noisyboy08/Netlytics",
+    live: "https://netlytix.vercel.app",
     skills: [
       "AI/ML",
       "React",
@@ -82,6 +85,7 @@ export const PROJECTS: Project[] = [
       start: "2025",
     },
     link: "https://github.com/noisyboy08/AIRBNB-360",
+    live: "https://airbnb360-alpha.vercel.app",
     skills: [
       "AI/ML",
       "TypeScript",
@@ -105,6 +109,7 @@ export const PROJECTS: Project[] = [
       start: "2025",
     },
     link: "https://github.com/noisyboy08/WEATHER-PRO",
+    live: "https://weatherpro-omega.vercel.app",
     skills: [
       "AI/ML",
       "TypeScript",
@@ -129,6 +134,7 @@ export const PROJECTS: Project[] = [
       start: "2025",
     },
     link: "https://github.com/noisyboy08/EcosphereAI",
+    live: "https://ecosphere-ai.vercel.app",
     skills: [
       "AI/ML",
       "Climate Risk",
