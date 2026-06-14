@@ -1,0 +1,61 @@
+---
+title: Nova — AI-Powered GitHub PR Reviewer
+description: A production GitHub App that reviews every pull request before risk reaches main. Reads PR diffs, catches secrets and security risks, scores changes, and provides a live review pipeline dashboard.
+image: /images/blog/NOVA .png
+createdAt: 2025-01-25
+category: projects
+updatedAt: 2025-01-25
+github: https://github.com/noisyboy08/Nova
+live: https://nova-pr.vercel.app
+---
+
+## Overview
+
+**Nova** is a production-ready AI-powered GitHub Pull Request reviewer that installs as a GitHub App and reviews every pull request before risk reaches main. Nova reads PR diffs, catches secrets and security risks, scores changes, and gives your team a dashboard that actually reflects the review pipeline — turning code review from a bottleneck into a safety net.
+
+The core promise: *"Review every pull request before risk reaches main."* Nova acts as a tireless senior engineer who never misses a PR, never gets fatigued, and never lets a leaked secret or security vulnerability slip through.
+
+![Nova Preview](/images/blog/NOVA .png)
+
+## The Problem it Solves
+
+Code review is the last line of defense before bad code reaches production — but human reviewers are overloaded, inconsistent, and miss things under pressure. A single leaked API key or an unreviewed auth change can cause catastrophic security incidents. Nova ensures that every PR gets a thorough automated pre-review before human reviewers even open it, dramatically reducing the blast radius of code review oversights.
+
+## Key Features
+
+### 🔍 Automated PR Diff Analysis
+Nova installs as a GitHub App and receives webhook events the instant a PR opens or updates. It reads the complete git diff — every changed line across every file — and performs structural analysis: which modules were touched, which sensitive code paths (authentication, billing, database, API routes) were modified, and what the overall change complexity looks like. This pre-review report is posted as a GitHub PR comment within seconds.
+
+### 🔒 Secret & Credentials Scanner
+Every line of every changed file is scanned using a pattern library covering 200+ secret types: AWS access keys, Stripe API keys, GitHub personal access tokens, JWT secrets, database connection strings, SSH private keys, and OAuth client secrets. Any detected secret immediately triggers a PR check failure, blocks merging, posts a detailed comment with remediation steps, and notifies the team.
+
+### 📊 Risk Scoring System
+Every PR receives a computed Risk Score from 0 to 100 and a Verdict: Approve (safe to merge), Review (needs human attention), or Block (must fix before merge). The score is calculated from change complexity (files touched, lines changed), sensitivity of touched code areas, presence of flagged patterns, test coverage implications, and dependency changes. Teams configure their own score thresholds to match their risk tolerance.
+
+### 🗂️ Live Review Pipeline Dashboard
+A web dashboard showing the full PR review queue with real-time status updates: Risk Score, Verdict, number of automated checks run, flagged issues list, and time-in-review. Team leads use it to triage which PRs need urgent human attention versus which are safe to merge with just Nova's approval.
+
+### ⚡ Serverless & Webhook-Verified Architecture
+Built entirely on Vercel serverless functions for zero maintenance overhead. All webhook events from GitHub are verified using HMAC signature validation before processing. Upstash Redis provides persistent storage for PR state, review history, and team configuration — with edge-fast read latency globally.
+
+## Tech Stack
+
+| Layer | Technology |
+|---|---|
+| **Framework** | Next.js (API Routes for webhook handlers) |
+| **Language** | TypeScript |
+| **GitHub Integration** | GitHub Apps API, Octokit SDK |
+| **Storage** | Upstash Redis |
+| **Secrets Detection** | Custom regex pattern library + entropy analysis |
+| **AI Analysis** | LLM-powered diff summarization |
+| **Deployment** | Vercel Serverless |
+
+## Design Philosophy
+
+Nova's interface is built for engineering teams — clean, information-dense, and zero-fluff. The dark dashboard aesthetic uses a navy-to-black gradient background, teal accent for safe/approved states, amber for review-required states, and red for blocked/critical states. The color system is semantic and immediately communicates the health of your PR pipeline at a glance.
+
+## Project Links
+
+- **GitHub Repository**: [Nova](https://github.com/noisyboy08/Nova)
+- **Live Demo**: [Nova](https://nova-pr.vercel.app)
+- **Status**: Production Ready — Install as GitHub App

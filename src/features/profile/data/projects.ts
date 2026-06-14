@@ -520,6 +520,156 @@ The platform is built on the insight that meme creation has always had a high ba
 - ✏️ **In-Browser Meme Editor** — After generation, refine your meme with a lightweight but powerful editor: resize text, adjust font weight, change overlay colors, add stickers, and crop the background image — all without leaving the browser.
 - 🚀 **One-Click Sharing** — Export your finished meme as a PNG or directly share to Twitter, Reddit, or copy a shareable URL — all from the creation screen with no extra steps.`,
   },
+  {
+    id: "norix",
+    title: "Norix — AI Phishing Defense",
+    period: {
+      start: "2025",
+    },
+    link: "https://github.com/noisyboy08/Norix",
+    live: "https://norix.vercel.app",
+    skills: [
+      "React",
+      "TypeScript",
+      "Node.js",
+      "AI/ML",
+      "NLP",
+      "Cybersecurity",
+      "Browser Extension",
+      "Tailwind CSS",
+    ],
+    description: `**Norix** is the world's first Cognitive Phishing Defense platform — an AI-powered security system that protects your entire team from phishing attacks across URLs, emails, SMS, and voice calls, all in one integrated platform. With 99.4% phishing detection accuracy and 50,000+ security professionals protected, Norix v3.0 operates as a Supreme God Level Counter-Offensive AI defense layer.
+
+Aligned with UN SDG 9 (Industry, Innovation & Infrastructure) and SDG 16 (Peace, Justice & Strong Institutions), Norix was built to democratize enterprise-grade cybersecurity for teams of all sizes.
+
+**What makes it unique:**
+
+- 🧠 **Cognitive Detection Engine** — Unlike traditional rule-based phishing filters, Norix uses a multi-modal AI model that analyzes URL structure, domain age, SSL patterns, visual similarity to legitimate brands, and email header forensics simultaneously — catching sophisticated attacks that bypass traditional filters.
+- 🔗 **Real-Time URL Scanner** — Any URL pasted, clicked, or received is scanned in under 200ms against a continuously updated threat intelligence database, a live DNS reputation check, and a visual content similarity engine that compares the rendered page layout against 10,000+ known brand templates.
+- 📧 **Email & SMS Shield** — Integrates directly with Gmail, Outlook, and major SMS gateways via API to scan incoming messages for phishing indicators: spoofed sender addresses, lookalike domains, urgency language patterns, and malicious embedded links — before they reach the inbox.
+- 🎙️ **Voice Call Defense** — A first-of-its-kind real-time call analysis mode that flags vishing (voice phishing) patterns during live calls: caller ID spoofing detection, social engineering script fingerprinting, and unusual information request patterns.
+- 📊 **Team Security Dashboard** — A unified threat monitoring dashboard showing real-time attack attempts, blocked threats by category, team member vulnerability scores, and monthly security posture reports — giving IT teams complete visibility across the organization.`,
+  },
+  {
+    id: "nova-pr",
+    title: "Nova — AI PR Reviewer",
+    period: {
+      start: "2025",
+    },
+    link: "https://github.com/noisyboy08/Nova",
+    live: "https://nova-pr.vercel.app",
+    skills: [
+      "Next.js",
+      "TypeScript",
+      "GitHub API",
+      "Webhooks",
+      "Upstash",
+      "Vercel",
+      "AI/ML",
+      "Node.js",
+    ],
+    description: `**Nova** is a production-ready AI-powered GitHub Pull Request reviewer that installs as a GitHub App and reviews every pull request before risk reaches main. Nova reads PR diffs, catches secrets and security risks, scores changes, and gives your team a dashboard that actually reflects the review pipeline — turning code review from a bottleneck into a safety net.
+
+The core promise: *"Review every pull request before risk reaches main."* Nova acts as a tireless senior engineer who never misses a PR, never gets fatigued, and never lets a leaked secret or security vulnerability slip through.
+
+**What makes it unique:**
+
+- 🔍 **Automated Diff Analysis** — Nova reads the full git diff of every PR the moment it opens. It parses changed files, identifies touched modules (auth code, billing, API endpoints), and flags all changes that interact with sensitive system areas, generating a structured risk assessment before a human reviewer even opens the PR.
+- 🔒 **Secret & Credentials Scanner** — Automatically scans every line of every changed file for exposed secrets: API keys, auth tokens, database URLs, private keys, and environment variables that accidentally made it into the codebase. Detected secrets trigger an immediate PR block and team alert.
+- 📊 **Risk Scoring System** — Every PR receives a Risk Score (0-100) and a Verdict (Approve / Review / Block) based on the complexity of changes, the sensitivity of touched code paths, the number of files changed, and the presence of any flagged patterns. Teams can configure scoring thresholds to match their risk tolerance.
+- 🗂️ **Review Pipeline Dashboard** — A live dashboard showing the current PR review queue with risk scores, verdicts, and check counts for every open PR. Team leads can prioritize review effort by focusing on high-risk PRs first.
+- ⚡ **Webhook-Verified & Serverless** — Built on Vercel serverless functions with webhook signature verification for security, Upstash for persistent queue storage, and zero server maintenance overhead.`,
+  },
+  {
+    id: "studio-website",
+    title: "Studio — Digital Studio Website",
+    period: {
+      start: "2025",
+    },
+    link: "https://github.com/noisyboy08/Studio",
+    live: "https://studio-gamma-three-56.vercel.app",
+    skills: [
+      "React 19",
+      "Vite",
+      "TypeScript",
+      "Tailwind CSS v4",
+      "Framer Motion",
+      "React Router v7",
+      "GSAP",
+    ],
+    description: `**Studio** is a professional, high-fidelity portfolio and studio website built with modern web technologies. The tagline says it all: *"We craft digital experiences that endure."* A premium design & engineering studio for founders, brands, and builders who refuse to settle for ordinary.
+
+With 200+ founders trusting the work, a 4.9-star rating, and 50+ projects shipped, Studio is both a showcase of craft and a living demonstration of what the studio can build for clients.
+
+**What makes it unique:**
+
+- 🎬 **Cinematic Interactive Hero** — The hero section features seamless background video with complex entrance animations, context-aware browser tab tracking, and a scroll-to-top utility that makes navigating long pages effortless. Every scroll interaction triggers a perfectly timed animation sequence.
+- 🧭 **Dynamic Routing & Titles** — Built on React Router v7 with content-aware dynamic page titles, smooth page transitions, and deep-linkable project case study routes that preserve scroll position and navigation state.
+- ✨ **Premium Aesthetics** — Tailored color palettes using Tailwind CSS v4's new configuration system, modern editorial typography with display serif/sans pairings, glassmorphism effects on key UI surfaces, and micro-motion on every interactive element.
+- 📱 **Fully Responsive Design** — Every layout has been precision-crafted for desktop, tablet, and mobile. Navigation adapts to a smooth full-screen mobile menu, hero text scales with CSS fluid typography, and service cards reflow into elegant single-column layouts on smaller screens.
+- 🚀 **Production-Optimized Stack** — React 19 with concurrent features, Vite for sub-second hot module replacement during development, and Vercel's edge network for global CDN deployment — achieving sub-2-second first contentful paint globally.`,
+  },
+  {
+    id: "superintelligence",
+    title: "Superintelligence — On-Device AI",
+    period: {
+      start: "2025",
+    },
+    link: "https://github.com/noisyboy08/Superintelligence",
+    live: "https://superintelligence-ai.vercel.app",
+    skills: [
+      "React",
+      "TypeScript",
+      "On-Device AI",
+      "WebLLM",
+      "WebGPU",
+      "Tailwind CSS",
+      "Framer Motion",
+      "GSAP",
+    ],
+    description: `**Superintelligence** is an AI-First assistant platform built around a radical premise: the most advanced AI assistant should be Private, Fast, and Entirely Yours. No data leaves your device. No cloud round-trips. No subscription surveillance. Superintelligence runs state-of-the-art language models directly on your local hardware using WebGPU acceleration — delivering on-device AI that rivals cloud performance.
+
+The platform serves as both a working AI product and a showcase landing page for what on-device superintelligence looks and feels like when implemented with zero compromise on design quality.
+
+**What makes it unique:**
+
+- 🖥️ **On-Device LLM Execution** — Uses WebLLM and WebGPU to run quantized large language models entirely in the browser on your local GPU. No API calls, no latency from network round-trips, no data ever leaving your machine. The first-load model download is cached locally for instant startup on subsequent sessions.
+- 🔒 **Absolute Privacy Architecture** — Every conversation, every query, every document you feed the model stays entirely on your device. There are no server logs, no training data extraction, no analytics events. The privacy guarantee is architectural, not policy-based.
+- ⚡ **GPU-Accelerated Inference** — WebGPU compute shaders provide hardware-accelerated matrix operations, delivering token generation speeds competitive with cloud APIs — typically 20-40 tokens/second on consumer hardware.
+- 🎨 **Cinematic Showcase UI** — A full scrolljacking experience with GSAP-powered section transitions, 3D perspective card reveals, animated blockchain/neural grid backgrounds, and keyboard-driven navigation (arrow keys to progress through sections).
+- 🗣️ **Multi-Modal Interface** — Text, voice input (browser speech API), and document drag-and-drop all feed the same local model context — enabling a truly versatile private assistant that can read your PDFs, answer your questions, and draft your documents offline.`,
+  },
+  {
+    id: "talentify-ai",
+    title: "Talentify AI — Resume Analyzer",
+    period: {
+      start: "2025",
+    },
+    link: "https://github.com/noisyboy08/TalentifyAI",
+    live: "https://talentify-ai.vercel.app",
+    skills: [
+      "React",
+      "TypeScript",
+      "AI/ML",
+      "NLP",
+      "PDF Parsing",
+      "Node.js",
+      "Tailwind CSS",
+      "Framer Motion",
+    ],
+    description: `**Talentify AI** is a smart resume analysis platform powered by AI that gives job seekers instant feedback and actionable improvements to maximize their resume's impact. Get AI-powered insights that transform a mediocre resume into an interview-winning one — in under 60 seconds.
+
+The platform was built to address the brutal reality of modern job applications: most resumes are screened by ATS (Applicant Tracking Systems) before a human ever reads them. Talentify AI teaches job seekers exactly how to beat both the algorithm and the recruiter, simultaneously.
+
+**What makes it unique:**
+
+- 📄 **AI Resume Parser** — Upload your resume as a PDF or paste plain text, and Talentify's AI model extracts every data point: work experience, skills, education, certifications, projects, and achievements. It then categorizes each section and prepares it for multi-dimensional analysis.
+- 🎯 **ATS Compatibility Score** — Analyzes your resume against ATS parsing rules: keyword density for your target role, formatting compatibility (no tables, no headers in text boxes, proper section labels), and file format optimization. A 0-100 ATS Score with specific fixes ensures your resume actually gets read.
+- 💡 **AI Improvement Suggestions** — For every weakness detected — weak action verbs, missing quantifiable achievements, vague skill descriptions, gaps in experience narrative — the AI generates specific, copy-paste-ready replacement text that you can apply immediately.
+- 📊 **Role-Specific Keyword Analysis** — Paste a job description and Talentify AI compares your resume's keyword coverage against the role requirements, identifying exactly which skills and technologies are missing and how to naturally incorporate them.
+- 📈 **Interview Probability Predictor** — Based on the combined ATS score, keyword match rate, experience relevance, and resume quality score, Talentify AI predicts the probability of getting an interview callback — motivating targeted improvements rather than vague edits.`,
+  },
 ];
+
 
 

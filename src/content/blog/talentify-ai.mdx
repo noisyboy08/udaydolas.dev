@@ -1,0 +1,64 @@
+---
+title: Talentify AI — Smart Resume Analysis Powered by AI
+description: Get instant feedback and improve your resume with AI-powered insights. Talentify AI analyzes your resume for ATS compatibility, keyword coverage, and interview probability — in under 60 seconds.
+image: /images/blog/TALENTIFY AI.png
+createdAt: 2025-01-25
+category: projects
+updatedAt: 2025-01-25
+github: https://github.com/noisyboy08/TalentifyAI
+live: https://talentify-ai.vercel.app
+---
+
+## Overview
+
+**Talentify AI** is a smart resume analysis platform powered by AI that gives job seekers instant feedback and actionable improvements to maximize their resume's impact. Get AI-powered insights that transform a mediocre resume into an interview-winning one — in under 60 seconds.
+
+The platform was built to address a brutal reality of modern job applications: most resumes are screened and rejected by ATS (Applicant Tracking Systems) before a human recruiter ever reads them. Talentify AI teaches job seekers exactly how to beat both the algorithm and the recruiter, simultaneously.
+
+![Talentify AI Preview](/images/blog/TALENTIFY AI.png)
+
+## The Problem it Solves
+
+Job seekers send hundreds of applications and receive zero responses — not because they're unqualified, but because their resume fails the ATS filter in the first 6 seconds of automated screening. Most people have no idea what an ATS looks for, why their resume is being rejected, or how to fix it. Talentify AI makes the invisible rules of modern hiring visible and actionable.
+
+## Key Features
+
+### 📄 AI Resume Parser
+Upload your resume as a PDF or paste plain text directly into the editor. Talentify's AI model extracts and categorizes every data point: work experience with tenure calculations, skills (technical and soft), educational background, certifications and licenses, project contributions, and quantifiable achievements. The parsed output is displayed in a structured profile that shows exactly what the ATS sees when it reads your resume.
+
+### 🎯 ATS Compatibility Score
+A comprehensive ATS compatibility analysis checks your resume against the parsing rules used by major Applicant Tracking Systems (Greenhouse, Workday, Lever, iCIMS). It evaluates: keyword density relative to your target role, section label conventions (does "Work History" parse the same as "Experience"?), formatting elements that break ATS parsers (tables, text in header/footer, multi-column layouts, custom bullet symbols), and file format optimization. The result is a 0-100 ATS Score with a prioritized list of specific fixes.
+
+### 💡 AI-Generated Improvement Suggestions
+For every weakness identified in your resume — passive voice verbs, missing quantifiable achievements, vague skill descriptions, experience gaps with no narrative bridge, education listed in the wrong order — Talentify AI generates specific replacement copy that you can apply immediately. Not generic advice like "add more metrics" but actual replacement sentences: "Changed: Managed team projects. To: Led cross-functional team of 8 engineers to deliver 3 product launches 15% ahead of schedule."
+
+### 📊 Role-Specific Keyword Analysis
+Paste any job description into the Role Matcher and Talentify AI performs a keyword gap analysis: which skills and technologies mentioned in the JD are missing from your resume, which ones are present but underemphasized, and which of your existing skills map to the role requirements even if the exact words don't match. It then generates a keyword integration plan showing exactly where to naturally incorporate each missing term.
+
+### 📈 Interview Probability Predictor
+A composite score combining ATS compatibility (40%), keyword match rate (30%), experience relevance to the target role (20%), and overall resume quality (10%) produces an Interview Probability percentage — a single number that tells you how likely you are to get a callback for this specific role with your current resume. As you apply the AI's suggestions, the predictor updates in real-time, gamifying the improvement process.
+
+### 🎨 Side Navigation Dashboard
+An icon-based vertical side navigation (home, analytics, upload, activity, document, contact) provides quick access to every tool in the platform without cluttering the main content area, keeping the resume editing experience clean and focused.
+
+## Tech Stack
+
+| Layer | Technology |
+|---|---|
+| **Framework** | React, TypeScript |
+| **AI/NLP Engine** | Resume parsing + keyword extraction LLM |
+| **PDF Processing** | PDF.js (client-side parsing) |
+| **Styling** | Tailwind CSS |
+| **Animations** | Framer Motion (score reveals, suggestion cards) |
+| **Backend** | Node.js API (ATS scoring, JD analysis) |
+| **Deployment** | Vercel |
+
+## Design Philosophy
+
+Talentify AI's visual identity is clean, light, and aspirational — designed to feel encouraging rather than clinical. A white background with abstract holographic diagonal stripe textures creates a premium yet approachable aesthetic. The gradient typography of "Talentify AI" transitions through warm grays and muted teals — sophisticated without being cold. The overall feel is "premium career coaching app" rather than "government form-filling tool."
+
+## Project Links
+
+- **GitHub Repository**: [TalentifyAI](https://github.com/noisyboy08/TalentifyAI)
+- **Live Demo**: [Talentify AI](https://talentify-ai.vercel.app)
+- **Status**: Production Ready
