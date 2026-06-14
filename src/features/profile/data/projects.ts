@@ -245,12 +245,17 @@ export const PROJECTS: Project[] = [
       "Tailwind CSS",
       "Framer Motion",
     ],
-    description: `A massively gamified 3D metaverse repository visualizer that parses codebases into interactive 3D cities.
-- 🏙️ Codebase to 3D Cyberpunk City conversion
-- 🛡️ Interactive force fields, altitude layers & glowing beams
-- 🤖 Google Gemini AI-powered codebase chatbot
-- ⏱️ Git timeline visualization for repository commits
-- 🎵 Procedural Web Audio API sound synthesizer`,
+    description: `**Anti-Gravity-City** transforms static GitHub repositories into a living, breathing 3D Cyberpunk Metropolis. Instead of reading flat file trees or wall-to-wall diff logs, developers can now *fly through* their codebase — each file becomes a glowing skyscraper, each import/export dependency becomes a neon energy beam connecting buildings at different altitude layers.
+
+The project was born from the idea that codebases are architectural cities in disguise. Complex systems have districts (modules), highways (data flows), and skylines (abstraction layers). Anti-Gravity-City makes that metaphor physically visible and interactive.
+
+**What makes it unique:**
+
+- 🏙️ **3D City Renderer** — Each source file is mapped to a building. File size determines building height, folder nesting sets the altitude tier, and import relationships draw glowing connector beams between structures. The entire city rebuilds live as you push new commits.
+- 🛡️ **Force Field Districts** — Related modules and folders are enclosed in interactive force field bubbles with distinct color palettes, making it immediately clear which parts of the codebase belong together.
+- 🤖 **Gemini AI Codebase Chatbot** — A fully embedded Google Gemini AI assistant reads your parsed repository structure and answers architectural questions like "What does this module depend on?" or "Which files have the most coupling?" directly inside the 3D control panel.
+- ⏱️ **Git Timeline Time-Travel** — Scrub through a commit timeline slider and watch the city rebuild itself, building by building, tracking how the repository grew from a single file to a full metropolis.
+- 🎵 **Procedural Synth Engine** — All UI interactions, hover events, camera movements, and city transitions are accompanied by a real-time Web Audio API synthesizer generating immersive cyberpunk ambient sound without any pre-recorded audio files.`,
   },
   {
     id: "bakelpv",
@@ -268,12 +273,17 @@ export const PROJECTS: Project[] = [
       "Framer Motion",
       "Context API",
     ],
-    description: `A premium high-end modern bakery experience with real-time shopping cart and table booking capabilities.
-- 🍰 Beautiful interactive floating elements & wave dividers
-- 🛒 Real-time cart management with custom checkout simulations
-- 📅 Table reservation system with input validation
-- 🔍 Sticky navigation & global search overlay
-- 📱 Fully responsive layout tailored for all device breakpoints`,
+    description: `**Bakelpv** is a premium, high-end bakery storefront and reservation platform built to demonstrate how a real-world artisan bakery could deliver an immersive digital experience rivaling luxury brand websites. Every pixel is intentional — from custom wave-shaped SVG dividers between sections to floating illustrated croissants that react to scroll velocity.
+
+This project challenged the idea that e-commerce sites need to be sterile and template-driven. Bakelpv proves that a bakery's warmth, craftsmanship, and personality can be expressed digitally through motion, color, and carefully layered UI details.
+
+**What makes it unique:**
+
+- 🍰 **Immersive Visual Design** — Custom SVG wave dividers, parallax scrolling food illustrations, micro-hover animations on every card, and a warm artisan color palette (creams, deep mocha, and copper gold) make this feel like a premium lifestyle brand rather than a standard shop.
+- 🛒 **Full Cart & Checkout System** — Customers can browse a categorized menu (pastries, cakes, breads, beverages), add items to a slide-out cart with live quantity management, apply promo codes, and proceed through a multi-step checkout flow — all powered by React Context API with zero backend dependencies.
+- 📅 **Table Reservation Engine** — A dedicated reservations page lets customers pick their date, time, party size, and special requests with real-time form validation, animated success confirmations, and elegant error states.
+- 🔍 **Global Search Overlay** — A keyboard-triggered search overlay allows instant filtering across the entire menu catalog, blog posts, and reservation slots.
+- 📱 **Pixel-Perfect Responsive Layout** — Carefully tested from 320px mobile to 2560px ultrawide, every component reflows gracefully with thoughtful breakpoint-specific layouts.`,
   },
   {
     id: "campus-club-ems",
@@ -293,12 +303,17 @@ export const PROJECTS: Project[] = [
       "React Router",
       "Supabase",
     ],
-    description: `Campus Activity Management System – the ultimate operating system for student organization checkpoints.
-- 🪪 Next-Gen digital student E-ID validation
-- 🤖 AI event suggestions and automated event descriptions
-- 💳 Treasury financial budget & expense ledger tools
-- 🏆 Gamified student leaderboards for events & club attendance
-- 📊 Fully responsive dark mode dashboards`,
+    description: `**CAMS (Campus Activity Management System)** is a comprehensive, full-stack operating platform built specifically for university student clubs and campus organizations. It replaces the painful reality of managing memberships in WhatsApp groups, tracking budgets in Excel sheets, and promoting events through plain Instagram posts — with a cohesive, gamified, AI-assisted digital command center.
+
+Built as a real solution to real problems faced by college clubs, CAMS bundles 15+ integrated micro-applications into one unified dark-mode dashboard experience that feels closer to a startup SaaS tool than a student project.
+
+**What makes it unique:**
+
+- 🪪 **Dynamic Student E-ID System** — Each student gets a beautifully designed animated digital identity card showing their club rank, points balance, QR code for event check-ins, and participation badges. Club admins can validate attendance by scanning student QR codes at the event gate.
+- 🤖 **AI Event Copilot** — Powered by an integrated LLM backend, the AI Copilot suggests personalized event ideas based on club history, drafts full event descriptions and promotional captions, predicts expected attendance, and auto-generates reminder schedules.
+- 💳 **Treasury & Financial Ledger** — The built-in financial module allows treasurers to log income (member fees, sponsorships) and expenses (venue, printing), visualize budget breakdowns with interactive pie charts, set spending limits per category, and generate monthly PDF reports.
+- 🏆 **Gamified Leaderboard Engine** — Students earn XP points for attending events, volunteering, completing tasks, and winning club competitions. A live leaderboard fosters healthy competition and massively improves event turnout rates.
+- 📢 **Integrated Announcement & Voting System** — Club admins can publish rich-text announcements, run anonymous polls, gather RSVPs, and broadcast notifications — all without leaving the platform.`,
   },
   {
     id: "comic-verse",
@@ -315,12 +330,17 @@ export const PROJECTS: Project[] = [
       "React Router",
       "Node.js",
     ],
-    description: `An interactive digital comic community and reading catalog built for comic fans.
-- 📖 Realistic page-turn animations for digital viewing
-- 🔍 Catalog with advanced tags & instant filtering
-- 💬 Community reviews, ratings, and feedback portal
-- 👤 User profiles and saved reading histories
-- 🎨 Modern cyberpunk dark mode aesthetics`,
+    description: `**Comic Verse** is a dedicated interactive digital comic book community and reading platform built for the modern comic fan. Rather than being a simple catalog or static listing site, Comic Verse is a living community where readers discover, read, review, and discuss comics — with cinematic page-turn animations and rich community features at the core.
+
+The project was inspired by the frustration that most digital comic platforms feel clinical and impersonal. Comic Verse leans into the visual drama and storytelling nature of comics themselves — the UI is vibrant, bold, and full of personality.
+
+**What makes it unique:**
+
+- 📖 **Immersive Page-Turn Reader** — The centerpiece feature: a physically accurate CSS3-powered page-flip reading experience with realistic paper curl shadows and smooth Bezier easing. Reading a comic in Comic Verse feels like holding the physical book.
+- 🔍 **Advanced Discovery Catalog** — Browse titles filtered by genre (superhero, manga, sci-fi, horror), publication era, art style, rating tier, and completion status. Instant search returns results within milliseconds using client-side indexed filtering.
+- 💬 **Community Review & Discussion System** — Each comic has a full review portal where readers leave star ratings, write structured reviews (art, story, pacing, characters), reply to others, and mark spoilers. Community reputation scores reward helpful reviewers.
+- 👤 **Personal Reading Profiles** — Every user gets a customizable profile page showing their reading history, favorite genres, review count, currently-reading shelf, and a personalized recommendation feed based on past reading patterns.
+- 🎨 **Cyberpunk Visual Identity** — Deep charcoal backgrounds, vibrant neon accent gradients, glowing card borders, and custom comic-panel-inspired layout grids give Comic Verse a visual language that feels native to the medium.`,
   },
   {
     id: "cascade-annote",
@@ -338,12 +358,17 @@ export const PROJECTS: Project[] = [
       "SVG",
       "Lucide Icons",
     ],
-    description: `An advanced interactive codebase annotation tool to draw connections and highlight code blocks.
-- 📝 Real-time code block annotations & custom notes
-- 🔗 SVG-based interactive visual link connections between blocks
-- 🎨 Code syntax highlighting & markdown editor pane
-- 💾 Export configuration schemes for developers
-- ⚡ Clean, minimalist interface optimized for explanation flows`,
+    description: `**CascadeAnnote** is a next-generation interactive codebase annotation and documentation tool designed for developers who need to visually explain, review, or document complex code architecture. Rather than writing separate README files or creating ad-hoc diagrams in Figma, CascadeAnnote lets you annotate *directly on the code itself* — drawing visual arrows, writing markdown notes, and exporting everything as a shareable configuration.
+
+Built for code reviewers, technical writers, senior engineers onboarding new team members, and open source maintainers who want their documentation to live *alongside* the code rather than separately from it.
+
+**What makes it unique:**
+
+- 📝 **Live Code Block Annotations** — Select any range of code lines and attach floating annotation cards containing markdown-formatted notes, technical explanations, or review comments. All annotations persist and update in real-time as you edit.
+- 🔗 **SVG Connection Mapper** — Draw interactive visual connector lines between any two code blocks or annotation cards. These SVG paths have labeled arrows, curve controls, and color-coding to indicate relationship types (calls, inherits, transforms, depends on).
+- 🎨 **Dual-Pane Editor** — The left pane shows syntax-highlighted code with inline annotation markers; the right pane provides a full markdown editor for the selected annotation's content, with live preview rendering.
+- 💾 **Export & Share System** — Export your entire annotation session as a portable JSON config file that can be re-imported by any other CascadeAnnote user, committed to version control, or embedded as a documentation artifact in CI/CD pipelines.
+- ⚡ **Developer-First Keyboard Workflow** — Every action has a keyboard shortcut. Select blocks with keyboard range selection, create connections with hotkeys, switch panes instantly, and export with a single command — no mouse required for power users.`,
   },
 ];
 

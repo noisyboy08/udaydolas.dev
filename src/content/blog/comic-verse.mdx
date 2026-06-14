@@ -1,5 +1,5 @@
 ---
-title: Comic Verse - Digital Comic Catalog
+title: Comic Verse - Interactive Digital Comic Community
 description: A dedicated interactive digital comic community and reading catalog built with full page-turn animations, search tags, reviews, and a user profile system.
 image: /images/blog/COMIC VERSE.png
 createdAt: 2025-01-25
@@ -11,26 +11,47 @@ live: https://comic-verse-eight.vercel.app
 
 ## Overview
 
-Comic Verse is an interactive digital comic community and catalog built for comic fans. Utilizing smooth page-turn animations, flexible tagging filters, reviews, and custom user reading histories, it forms a cohesive hub for comic book readers to explore, review, and track their favorite titles.
+**Comic Verse** is a dedicated interactive digital comic book community and reading platform built for the modern comic fan. Rather than being a simple catalog or static listing site, Comic Verse is a living community where readers discover, read, review, and discuss comics — with cinematic page-turn animations and rich community features at the core.
+
+The project was inspired by the frustration that most digital comic platforms feel clinical and impersonal. Comic Verse leans into the visual drama and storytelling nature of comics themselves — the UI is vibrant, bold, and full of personality, designed to feel like stepping into a high-end comic book store.
 
 ![Comic Verse Preview](/images/blog/COMIC VERSE.png)
 
+## The Problem it Solves
+
+Most digital comic reading platforms are either clunky legacy apps or stripped-down mobile viewers. They lack community, discovery, and personality. Comic Verse bridges the gap between a great reading experience and an engaged community — making discovering and discussing comics as enjoyable as reading them.
+
 ## Key Features
 
-- **📖 Interactive Page-Turn Reader** - Slick, immersive reading frame simulating realistic page transitions for digital viewing.
-- **🔍 Filterable Catalog Hub** - Instantly search, filter, and categorise titles using tags, genres, ratings, or popularity metrics.
-- **💬 Community Review System** - Interactive section where readers leave ratings, write reviews, and share comments.
-- **👤 Custom User Profiles** - Dedicated dashboard for comic fans to bookmark reads, track statistics, and view personalized lists.
-- **🎨 Premium Dark UI** - Modern cyberpunk-inspired dark theme featuring vibrant hues, glowing cards, and custom icons.
+### 📖 Immersive Page-Turn Reader
+The centerpiece feature: a physically accurate, CSS3-transform-powered page-flip reading experience with realistic paper curl shadows and smooth cubic-bezier easing curves. Reading a comic in Comic Verse feels like holding the physical book. The reader supports keyboard shortcuts, swipe gestures on mobile, and fullscreen mode.
+
+### 🔍 Advanced Discovery Catalog
+Browse thousands of titles with a powerful multi-filter system covering genre (superhero, manga, sci-fi, fantasy, horror, slice-of-life), publication era (Golden Age to Modern), art style, rating tier, completion status, and language. Instant search returns results within milliseconds using client-side indexed filtering with fuzzy matching — typos and partial titles still return accurate results.
+
+### 💬 Community Review & Discussion System
+Each comic has a dedicated community section where readers leave star ratings, write structured reviews with separate scores for art quality, story depth, pacing, and character development. Users can reply to reviews, react with emoji, mark spoilers with blur overlays, and follow other reviewers whose taste aligns with theirs. Community reputation scores reward the most helpful and consistent reviewers with verified badges.
+
+### 👤 Personal Reading Profiles
+Every user gets a fully customizable profile page showing their complete reading history, genre preference breakdown as a visual chart, review count and reputation score, currently-reading and want-to-read shelves, and a personalized recommendation feed generated from their reading patterns. Profiles are shareable public links.
+
+### 🎨 Cyberpunk Visual Identity
+Deep charcoal backgrounds, vibrant neon magenta and electric blue accent gradients, glowing card borders with hover illumination effects, and custom comic-panel-inspired grid layouts give Comic Verse a visual language that feels native to the medium. The design rewards exploration — hover states reveal additional metadata, and scroll-triggered animations bring catalog pages to life.
 
 ## Tech Stack
 
-- **Framework**: React, Vite
-- **Styling**: Tailwind CSS
-- **Animations**: Framer Motion
-- **Router**: React Router
-- **Database / API**: Node.js & JSON API
-- **Deployment**: Vercel
+| Layer | Technology |
+|---|---|
+| **Framework** | React, Vite |
+| **Styling** | Tailwind CSS, CSS Modules |
+| **Animations** | Framer Motion |
+| **Router** | React Router v6 |
+| **API Layer** | Node.js, REST API |
+| **Deployment** | Vercel |
+
+## Design Philosophy
+
+Comic Verse's visual identity is deliberately dramatic — it takes cues from the panel layouts, bold typography, and high-contrast color blocking of comics themselves. Section headers use display-weight typefaces with tight letter spacing, card grids mimic comic panel arrangements, and hover effects use color bleeds reminiscent of ink bleeds on comic pages.
 
 ## Project Links
 
