@@ -169,4 +169,52 @@ export const PROJECTS: Project[] = [
 - 🖱️ Slick space-themed custom cursor
 - 🚀 Cinematic loading sequence`,
   },
+  {
+    id: "aegis-hud",
+    title: "Aegis HUD",
+    period: {
+      start: "2025",
+    },
+    link: "https://github.com/noisyboy08/Aegis-HUD-",
+    skills: [
+      "React Three Fiber",
+      "Three.js",
+      "GLSL Shaders",
+      "React Flow",
+      "Leva",
+      "Framer Motion",
+      "Tailwind CSS",
+      "Vite",
+      "3D Graphics",
+    ],
+    description: `A futuristic tactical defense dashboard built with React-Three-Fiber, Three.js, and custom GLSL shaders. Experience a cyberpunk force field control interface with procedural stars, interactive telemetries, and weapon selection modules.
+- 🛡️ Core Shader Tech (Hexagonal force field & dynamic noise)
+- 📊 Live Interactive Telemetry Flowchart (React Flow nodes)
+- ⚔️ Cyberpunk Weapon Selection grid with custom stats
+- 🎛️ Diagnostic control panel for shaders & grid colors
+- 🚀 Real-time post-processing controls (Leva controls)`,
+  },
+  {
+    id: "ai-travel-planner",
+    title: "AI Travel Planner",
+    period: {
+      start: "2025",
+    },
+    link: "https://github.com/noisyboy08/AI-Travel-Planner",
+    skills: [
+      "Next.js 15",
+      "Three.js",
+      "React Three Fiber",
+      "GLSL Shaders",
+      "Gemini API",
+      "Tailwind CSS",
+      "Framer Motion",
+    ],
+    description: `A visually stunning travel planning web application. Includes interactive globe rendering, glassmorphic weather widgets, and AI-driven travel itineraries.
+- 🌍 Interactive 3D Globe visualization (Three.js & React Three Fiber)
+- 🤖 AI-powered personalized itinerary generator (Gemini API)
+- 🌤️ Glassmorphic weather widget with live forecasts (OpenWeather API)
+- 🗺️ Interactive routing and travel destination mapping
+- 🚀 Smooth animations and cinematic transitions (Framer Motion)`,
+  },
 ];
