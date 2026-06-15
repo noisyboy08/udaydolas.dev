@@ -1,0 +1,66 @@
+---
+title: RealLens — AI Product Research Assistant
+description: Aggregates authentic consumer opinions from Reddit, YouTube, and Google directly onto your shopping screen. Features local AI sentiment analysis and authenticity scoring to beat review manipulation.
+image: /images/blog/RealLens.png
+createdAt: 2025-01-25
+category: projects
+updatedAt: 2025-01-25
+github: https://github.com/noisyboy08/reallens
+live: https://reallens.vercel.app
+---
+
+## Overview
+
+**RealLens** is an AI-powered product research assistant that instantly aggregates authentic customer feedback, video reviews, and search indexing directly on top of your shopping screens. Instead of spending hours digging through spam reviews, sponsored posts, and manipulated ratings, RealLens extracts the true consumer consensus from across Reddit, YouTube, and Google, helping you see what shoppers actually think.
+
+Available as both a comprehensive analytics dashboard and a browser companion overlay, RealLens implements zero-cost client-side AI analysis to surface genuine product insights without monthly subscription costs.
+
+![RealLens Preview](/images/blog/RealLens.png)
+
+## The Problem it Solves
+
+E-commerce review sections have become hotbeds for bot activity, paid sponsorships, and seller review manipulation. Shoppers looking for authentic opinions are forced to open multiple tabs, search Reddit forums, and watch lengthy YouTube reviews to make informed purchasing decisions. RealLens solves this by automatically querying social and video APIs, parsing discussions, running local NLP classification, and surfacing clean pros/cons, user desires, and an overall trust score directly where you shop.
+
+## Key Features
+
+### 📡 Unified 3-Point Data Extraction
+Queries and scrapes social sources in parallel:
+- **Reddit Consensus**: Searches Reddit threads using target product names to isolate user-submitted discussions and unfiltered comments.
+- **YouTube Transcripts**: Integrates with YouTube API to parse video transcripts of top product reviews, translating spoken reviews into structured text.
+- **Google Search Scraper**: Parses search results and web indexes to capture expert reviews, blog discussions, and forum links.
+
+### 🧠 Zero-Cost Local AI Sentiment Analysis
+Runs light-weight, local natural language processing (NLP) models directly on the client browser. It parses comments, scores sentiment values, and constructs keyword matrices offline, requiring no external OpenAI API keys or subscription feeds.
+
+### 🏷️ Feature & Pain Point Extractor
+Analyzes raw comments to identify recurring patterns. It automatically isolates:
+- **Major Pros**: Core features users love (e.g., battery life, durability).
+- **Major Cons**: Criticisms and product limitations.
+- **User Desires**: Requested features or alternative recommendations.
+
+### 🔒 Authenticity Score Calculator
+Flags suspicious activity patterns, structured bot scripts, or review manipulation. By evaluating comment length distributions, keyword repetition rates, and user profile credibility metrics, RealLens outputs an overall Authenticity Score.
+
+### 🎨 Neo-Glassmorphic UI
+Features a premium dark aesthetic with glassmorphic cards, custom halftone graphics, and live telemetry indicators (Ingest, Analyze, Extract, Deliver) showing the status of the background research pipeline.
+
+## Tech Stack
+
+| Layer | Technology |
+|---|---|
+| **Frontend** | React, TypeScript |
+| **Styling** | Vanilla CSS, glassmorphism design tokens |
+| **APIs** | Reddit API, YouTube API, Google Custom Search |
+| **NLP Engine** | Local Javascript NLP library |
+| **Extension Shell** | Chrome Extension Manifest V3 |
+| **Deployment** | Vercel (Web App) + Chrome Web Store |
+
+## Design Philosophy
+
+RealLens uses a striking black-and-white high-contrast visual design. Monospace typography matches the technical accuracy of the underlying threat data, and a large halftone eye graphic symbolizes the project's core focus: absolute transparency and visibility. Progress states animate smoothly as data flows from raw social inputs to polished shopper intelligence summaries.
+
+## Project Links
+
+- **GitHub Repository**: [RealLens](https://github.com/noisyboy08/reallens)
+- **Live Demo**: [RealLens Platform](https://reallens.vercel.app)
+- **Status**: Production Ready

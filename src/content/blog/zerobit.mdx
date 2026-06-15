@@ -1,0 +1,63 @@
+---
+title: ZeroBit — Threat Intelligence Dashboard
+description: Real-time threat detection and deception platform. Deploys honeypots, visualizes network topology and attack graphs, and uses AI-driven intelligence (Groq/AbuseIPDB/VirusTotal) to flag and block bad actors.
+image: /images/blog/ZeroBit.png
+createdAt: 2025-01-25
+category: projects
+updatedAt: 2025-01-25
+github: https://github.com/noisyboy08/ZeroBit
+live: https://zerobit-dashboard.vercel.app
+---
+
+## Overview
+
+**ZeroBit** is a real-time Threat Intelligence Dashboard that integrates Groq AI, VirusTotal, and AbuseIPDB APIs to deliver live network threat detection, deception honeypot management, attack graph visualization, and adaptive machine learning model training — all in one unified security operations interface.
+
+The dashboard provides security operators with a comprehensive view of system health (in bold green "System Healthy"), real-time threat levels, firewall auto-block metrics, and a live alert stream, making it feel like a true next-generation Security Operations Center (SOC) command console.
+
+![ZeroBit Preview](/images/blog/ZeroBit.png)
+
+## The Problem it Solves
+
+As cyber threats grow in scale and sophistication, traditional static firewall logs fail to provide the context required to stop attacks early. Security teams are overwhelmed by raw, uncorrelated alerts and lack visibility into active lateral movements. ZeroBit addresses this by marrying active deception (honeypots) with real-time graph visualization and AI correlation, enabling security engineers to detect, analyze, and neutralize attacks in minutes rather than days.
+
+## Key Features
+
+### 🚨 Live Alerts Engine (Real-Time)
+A continuously updating alerts feed processes incoming network events through a multi-source threat correlation engine. Alerts are classified by severity (Critical, High, Medium, Low), tagged with specific attack patterns (port scan, brute force, command-and-control, data exfiltration), and enriched with AbuseIPDB geodata and VirusTotal IP scores.
+
+### 🕸️ Attack Graph Visualization
+An interactive network attack graph visualizes the entire intrusion kill chain in real-time. It maps out where the threat entered, which network assets have been probed or compromised, and highlights lateral movement attempts. Nodes are color-coded by compromise status and edges show the attack trajectory.
+
+### 🗺️ Live Threat Map
+A global geospatial map overlay displays live threat origins and destination paths. Moving vectors dynamically link attack coordinates to your host infrastructure, featuring country-level attribution, threat-type markers, and real-time response counters.
+
+### 🍯 Honeypot Trap Switch
+Deploys or teardowns a decoy SSH honeypot service on port 2222 with a single click. When hackers target this decoy, ZeroBit captures their keystrokes, payloads, and IPs, feeds them into the threat database, and triggers firewall auto-blocks against the attackers.
+
+### 🧠 Adaptive Learning Model Gym
+A local training simulator that lets operators run mock network scenarios and training datasets. Operators can adjust model thresholds, test classifiers, and watch detection accuracy improve. Over time, the model adapts to custom traffic baseline variations.
+
+### 📊 Deception Metrics & Network Topology
+Visualizes network topology nodes and system health status. It presents interactive statistics on active honeypot traps, decoy interactions, firewall rule injection counts, and raw API JSON logs for deep forensic investigation.
+
+## Tech Stack
+
+| Layer | Technology |
+|---|---|
+| **Frontend** | React, TypeScript |
+| **Styling** | Tailwind CSS |
+| **Backend** | Python, FastAPI |
+| **Threat APIs** | Groq AI, VirusTotal API, AbuseIPDB |
+| **Visualizations** | D3-based Attack Graphs, SVG Threat Maps |
+| **Deployment** | Vercel (Frontend), self-hosted API backend |
+
+## Design Philosophy
+
+ZeroBit uses a high-contrast cyber-defense aesthetics style. A dark charcoal background (#0B0F19) is coupled with glowing green indicators for operational status and neon red alerts for critical vulnerabilities. Layout cards use a unified glassmorphic layout to separate dashboards, prioritizing telemetry data readability.
+
+## Project Links
+
+- **GitHub Repository**: [ZeroBit](https://github.com/noisyboy08/ZeroBit)
+- **Live Demo**: [ZeroBit Dashboard](https://zerobit-dashboard.vercel.app)
+- **Status**: Production Ready

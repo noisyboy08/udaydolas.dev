@@ -1,0 +1,60 @@
+---
+title: GraphLens OS — Agentic Relationship Mapping Platform
+description: An agentic graph database and relationship mapping platform. Uses a multi-agent system to ingest data, analyze associations, uncover community patterns, and render interactive 3D networks.
+image: /images/blog/GraphLens.png
+createdAt: 2025-01-25
+category: projects
+updatedAt: 2025-01-25
+github: https://github.com/noisyboy08/GraphLens
+live: https://graphlens.vercel.app
+---
+
+## Overview
+
+**GraphLens OS** is an agentic graph database and relationship mapping platform designed to transform unstructured information into high-fidelity knowledge graphs. By utilizing a coordinated network of intelligent AI agents, GraphLens OS automates data ingestion, relationship extraction, semantic categorization, and interactive 3D rendering.
+
+The platform provides a futuristic command console where users can monitor active agents, track relationship processing queues, and explore intricate networks of interconnected data points in real-time.
+
+![GraphLens Preview](/images/blog/GraphLens.png)
+
+## The Problem it Solves
+
+Most enterprise and research data is trapped in unstructured text files, documentation, and database exports. Manually scanning documents to map relationships between individuals, technologies, or organizations is slow and prone to human bias. Existing graph databases require steep learning curves and lack automated extraction engines. GraphLens OS bridges this gap by coordinating four specialized AI agents that autonomously construct and validate complex network topologies.
+
+## Key Features
+
+### 📥 Ingest Agent (Collecting Data)
+The Ingest Agent connects to structured and unstructured data feeds—including APIs, local files, and live document streams. It automatically parses text, filters out noise, detects language boundaries, and queues the clean payloads for relationship analysis.
+
+### 🔗 Analytics Agent (Analyzing Relationships)
+The Analytics Agent runs deep semantic extraction models to identify entities and their associations. It establishes connection strengths, defines relationship types, and computes similarity scores using vector embeddings to construct the relational skeleton.
+
+### 💡 Insight Agent (Finding Patterns)
+The Insight Agent executes community detection algorithms and flags network anomalies. It clusters related nodes together, identifies highly connected "influence hubs," and isolates peripheral nodes to bubble up actionable patterns.
+
+### 🎨 Visualization Agent (Building Graph)
+The Visualization Agent compiles the nodes and edges, rendering them in a beautiful, physics-bound 3D particle-field network using Three.js. Hovering over nodes reveals details about their entities and connecting edges, allowing users to physically navigate their data space.
+
+### ⚙️ Multi-Agent Coordination Panel
+Provides a live telemetry view of all running agents. Real-time progress bars, status indicators, and throughput counters allow operators to track exactly where data is in the processing pipeline.
+
+## Tech Stack
+
+| Layer | Technology |
+|---|---|
+| **Frontend** | React, TypeScript |
+| **Styling** | Vanilla CSS, glassmorphism design system |
+| **3D Engine** | Three.js (WebGL graph rendering) |
+| **API Backend** | Python, FastAPI |
+| **Agent Coordination** | LangChain / Custom Agent Runtime |
+| **Deployment** | Vercel (Frontend), self-hosted API backend |
+
+## Design Philosophy
+
+GraphLens OS features a high-density, dark cybernetic aesthetic. Particle networks flow through the background, reflecting the structural integrity of the underlying data graph. Glassmorphic card modules contain individual agent status trackers, utilizing neon accents and clean monospace typography to present detailed execution logs without visual clutter.
+
+## Project Links
+
+- **GitHub Repository**: [GraphLens](https://github.com/noisyboy08/GraphLens)
+- **Live Demo**: [GraphLens OS](https://graphlens.vercel.app)
+- **Status**: Production Ready

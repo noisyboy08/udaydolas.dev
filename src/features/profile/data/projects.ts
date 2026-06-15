@@ -669,7 +669,219 @@ The platform was built to address the brutal reality of modern job applications:
 - 📊 **Role-Specific Keyword Analysis** — Paste a job description and Talentify AI compares your resume's keyword coverage against the role requirements, identifying exactly which skills and technologies are missing and how to naturally incorporate them.
 - 📈 **Interview Probability Predictor** — Based on the combined ATS score, keyword match rate, experience relevance, and resume quality score, Talentify AI predicts the probability of getting an interview callback — motivating targeted improvements rather than vague edits.`,
   },
+  {
+    id: "topologies-of-thoughts",
+    title: "Topologies of Thoughts",
+    period: {
+      start: "2025",
+    },
+    link: "https://github.com/noisyboy08/TopologiesOfThoughts",
+    live: "https://topologies-of-thoughts.vercel.app",
+    skills: [
+      "React",
+      "TypeScript",
+      "Three.js",
+      "FastAPI",
+      "Python",
+      "WebXR",
+      "AI/ML",
+      "Knowledge Graphs",
+    ],
+    description: `**Topologies of Thoughts** is an immersive knowledge graph platform that lets you map the topology of your thoughts. Build living knowledge graphs from notes, explore them in full 3D with camera and hand gestures, and route every AI call through your own self-hosted FastAPI backend — so your API keys never leave the server.
+
+The platform reimagines how humans organize ideas: instead of linear notes or flat folders, every concept becomes a node in a spatial graph that you can physically navigate with gestures, zoom into with pinch motions, and orbit around with wrist movements.
+
+**What makes it unique:**
+
+- 🌐 **3D Living Knowledge Graph** — Every note, idea, and concept becomes a node. Relationships between ideas become edges with weighted values (the 0.1456 connection weights visible in the hero). The entire graph is rendered in real-time 3D using Three.js with a particle-field background that creates a sense of depth in idea-space.
+- 🤲 **Hand & Camera Gesture Navigation** — Navigate your knowledge graph without a mouse or keyboard. Pinch to select nodes, use two-handed pinch to zoom in/out, and rotate your wrist to orbit the 3D graph. Camera-based gesture recognition uses the WebXR Device API for a fully spatial computing experience.
+- 🔗 **Live Graph Mode** — A live streaming graph view shows ideas and connections forming in real-time as you type or dictate notes — watching your knowledge graph grow live creates an entirely new relationship with thinking and note-taking.
+- 🤖 **Self-Hosted AI Backend** — Every AI feature (note summarization, concept linking suggestions, semantic similarity scoring, question answering over your graph) routes through a user-deployed FastAPI Python backend. Your OpenAI or Groq API keys never touch the frontend — they live on your server.
+- 🔍 **Semantic Edge Discovery** — The AI backend computes semantic similarity between all nodes in your graph and automatically suggests new connections you hadn't made explicitly, surfacing non-obvious relationships between ideas across different topics.`,
+  },
+  {
+    id: "tree-tabs",
+    title: "Tree Tabs — Sowser Browser",
+    period: {
+      start: "2025",
+    },
+    link: "https://github.com/noisyboy08/TreeTabs",
+    live: "https://tree-tabs.vercel.app",
+    skills: [
+      "Electron",
+      "TypeScript",
+      "React",
+      "Tree Data Structures",
+      "Canvas API",
+      "Browser APIs",
+      "Tailwind CSS",
+      "WebViews",
+    ],
+    description: `**Tree Tabs (Sowser)** is a reimagined desktop browser that organizes your tabs as a visual spatial tree rather than a flat horizontal bar. When you open a new tab from a link, Sowser automatically adds it as a child of the parent tab — creating a navigable, zoomable tree of your browsing session that shows exactly how you got from A to B.
+
+The browser addresses a fundamental UX failure of modern browsers: after 20+ tabs, the tab bar becomes completely unusable — all tabs are the same size, unlabeled, and the relationship between them is completely lost. Sowser makes browsing spatial and navigable.
+
+**What makes it unique:**
+
+- 🌳 **Visual Tab Tree** — Every tab is a node in a spatial tree. Open a link in a new tab and it becomes a child of the current tab. The tree renders as an interactive canvas graph with zoom/pan, minimap navigation, and connecting edge lines that show parent-child relationships at a glance.
+- 🔍 **Unified Search & URL Bar** — A centered command-palette style search bar supports URL entry, search queries, and instant bookmark access. Quick-access pinned site shortcuts (YouTube, ChatGPT, Amazon, Google Docs, Netflix, GitHub) appear below the search bar for one-click access.
+- 🗺️ **Tab Minimap** — A miniature overview map in the bottom-right corner renders the full tab tree at reduced scale, providing spatial orientation when the tree grows large. Click any node on the minimap to jump directly to that tab.
+- ⏱️ **Full Session Features** — Bookmark management with smart collections, full tab history navigation with visual backtrack trails, session persistence across browser restarts, and download management with progress indicators — all the core browser functionality rebuilt with a tree-first mental model.
+- 🎨 **Slate Dark Interface** — A premium dark UI with an icon-based vertical left sidebar (tabs, bookmarks, history, downloads, settings), consistent border radius and spacing, and a color-coded tab tree where tab depth is indicated by subtle node color shifts from teal to cyan.`,
+  },
+  {
+    id: "zerobit",
+    title: "ZeroBit — Threat Intelligence Dashboard",
+    period: {
+      start: "2025",
+    },
+    link: "https://github.com/noisyboy08/ZeroBit",
+    live: "https://zerobit-dashboard.vercel.app",
+    skills: [
+      "React",
+      "TypeScript",
+      "Python",
+      "FastAPI",
+      "Groq AI",
+      "VirusTotal API",
+      "AbuseIPDB",
+      "Network Security",
+    ],
+    description: `**ZeroBit** is a real-time Threat Intelligence Dashboard that integrates Groq AI, VirusTotal, and AbuseIPDB APIs to deliver live network threat detection, deception honeypot management, attack graph visualization, and adaptive machine learning model training — all in one unified security operations interface.
+
+The dashboard shows system health status in bold green ("System Healthy"), threat levels, auto-block status, and surfaces live alerts the moment a threat is detected — making it feel like a true security operations center (SOC) command console.
+
+**What makes it unique:**
+
+- 🚨 **Live Alerts Engine (Real-Time)** — A continuously updating alerts feed processes incoming network events through a multi-source threat correlation engine. Alerts are classified by severity (critical/high/medium/low), tagged with the attack type (port scan, brute force, C2 communication, data exfiltration), and displayed with full source IP details and geolocation.
+- 🕸️ **Attack Graph Visualization** — An interactive network attack graph shows the kill chain of detected intrusion attempts: which entry point was probed, which lateral movement paths were attempted, and which assets were targeted. Nodes are color-coded by compromise status and edges show attack progression direction.
+- 🗺️ **Live Threat Map** — A real-time global map overlaying detected attack sources with animated connection lines to your network, threat type icons, and country-level attribution data sourced from AbuseIPDB and VirusTotal lookups.
+- 🍯 **Honeypot Trap Switch** — A toggle that deploys a decoy honeypot service on port 2222, simulating a vulnerable SSH endpoint. Any connection attempt to the honeypot is immediately flagged, logged, the source IP cross-referenced against threat intelligence databases, and optionally auto-blocked via firewall rule injection.
+- 🧠 **Adaptive Learning Model Gym** — An integrated Model Training Gym lets you run simulated attack traffic scenarios against your detection engine, validate its classification accuracy, and fine-tune threat classification thresholds. The model improves with each real and simulated incident, making detection more accurate over time.
+- 📊 **Deception Metrics & Network Topology** — Confirmed trap counts, decoy interaction logs, a live network topology graph showing all connected assets and their security posture, and a threat intelligence feed with raw API responses from VirusTotal and Groq AI analysis.`,
+  },
+  {
+    id: "graphlens",
+    title: "GraphLens OS",
+    period: {
+      start: "2025",
+    },
+    link: "https://github.com/noisyboy08/GraphLens",
+    live: "https://graphlens.vercel.app",
+    skills: [
+      "React",
+      "TypeScript",
+      "Three.js",
+      "FastAPI",
+      "Python",
+      "Graph Databases",
+      "Agentic AI",
+      "Data Visualization",
+    ],
+    description: `**GraphLens OS** is an agentic graph database and relationship mapping platform. It utilizes a multi-agent system to automate relationship extraction, uncover hidden patterns, and construct interactive 3D knowledge graphs from unstructured data sources.
+
+The platform is designed around a fully autonomous pipeline of intelligent agents, delivering an immersive 3D interface with real-time status diagnostics.
+
+**What makes it unique:**
+
+- 📥 **Ingest Agent** — Automates data collection from various document types, database exports, and APIs, cleaning and preprocessing unstructured text for node extraction.
+- 🔗 **Analytics Agent** — Analyzes semantic and structural relationships between data points, mapping entity associations and weighting connections based on semantic similarity.
+- 💡 **Insight Agent** — Runs graph algorithms and clustering models to identify patterns, communities, and anomalies within the network topology.
+- 🎨 **Visualization Agent** — Constructs and renders the final interactive 3D relationship network graph using Three.js, with smooth particle transitions and physics-based layouts.
+- ⚙️ **Multi-Agent Coordination Panel** — A real-time control console displaying progress sliders, status indicators, and operational metrics for each running agent.`,
+  },
+  {
+    id: "rag-anything",
+    title: "RAG-Anything",
+    period: {
+      start: "2025",
+    },
+    link: "https://github.com/noisyboy08/RAG-Anything",
+    live: "https://rag-anything-six.vercel.app",
+    skills: [
+      "Python",
+      "LightRAG",
+      "Multimodal AI",
+      "PDF Parsing",
+      "Semantic Search",
+      "Knowledge Graphs",
+      "Next.js",
+      "Tailwind CSS",
+    ],
+    description: `**RAG-Anything** is an open-source multimodal RAG (Retrieval-Augmented Generation) pipeline. It parses complex files—including PDFs, images, tables, and mathematical equations—and indexes them into a LightRAG knowledge graph structure to enable highly accurate, context-grounded semantic retrieval.
+
+It provides a unified UI for uploading diverse files, processing them using LLM document analysis, and querying the combined knowledge graph with real-time graph visualizations of retrieved nodes.
+
+**What makes it unique:**
+
+- 📄 **Multimodal Document Parser** — Decodes complex layout PDFs, extracts images, reconstructs tabular data, and parses mathematical equations into structured markdown text ready for indexing.
+- 🕸️ **LightRAG Graph Grounded Indexing** — Indexes extracted documents into a LightRAG structure. Instead of isolated vector chunks, it creates a relational knowledge graph, drastically improving retrieval coherence for cross-document queries.
+- 🔍 **Hybrid Retrieval Engine** — Combines dense vector retrieval with graph-based neighbor searches, resolving both specific keyword lookups and high-level conceptual summaries.
+- 📊 **Dynamic Knowledge Graph Explorer** — An interactive in-browser graph viewer that renders the queried sub-graphs in real-time, showing users the exact nodes and connections used to construct the AI's response.
+- ⚡ **Streamlined Developer Dashboard** — Features simple configuration setups for selecting embedding models, LLM providers, chunking sizes, and visualizing index-wide metrics.`,
+  },
+  {
+    id: "reallens",
+    title: "RealLens",
+    period: {
+      start: "2025",
+    },
+    link: "https://github.com/noisyboy08/reallens",
+    live: "https://reallens.vercel.app",
+    skills: [
+      "React",
+      "TypeScript",
+      "Reddit API",
+      "YouTube API",
+      "NLP",
+      "Sentiment Analysis",
+      "Chrome Extension",
+      "Glassmorphism UI",
+    ],
+    description: `**RealLens** is an AI-powered product research assistant that aggregates and translates real consumer feedback from Reddit, YouTube, and Google directly onto your shopping screen. It eliminates the need to manually browse reviews by running local sentiment analysis to uncover genuine shopper insights.
+
+It functions as both a rich analytics dashboard and a browser overlay, extracting features, pros/cons, and authenticity scores from multiple social sources.
+
+**What makes it unique:**
+
+- 📡 **3-Point Data Extraction** — Seamlessly queries the Reddit API, extracts YouTube transcripts, and parses Google search indexing to capture consumer sentiment, avoiding generic ecommerce platform review manipulation.
+- 🧠 **Zero-Cost Local AI Sentiment** — Uses light-weight, local natural language processing libraries to process comments and transcripts directly on the client side, computing sentiment trends and keyword matrices.
+- 🏷️ **Feature & Pain Point Extractor** — Automatically parses raw discussions to isolate product features, user desires, recurring complaints, and direct product comparisons.
+- 🎨 **Neo-Glassmorphic UI** — A premium, dark interface with glassmorphic cards, custom halftone graphics, and status tickers (Ingest, Analyze, Extract, Deliver) tracking data pipeline execution.
+- 🔒 **Authenticity Score Calculator** — Flags sponsored posts, bot patterns, and manipulated review profiles using text density and repetitive pattern matching to output an overall credibility score.`,
+  },
+  {
+    id: "cloudzero",
+    title: "CloudZero",
+    period: {
+      start: "2025",
+    },
+    link: "https://github.com/noisyboy08/CloudZero",
+    live: "https://cloudzero.vercel.app",
+    skills: [
+      "React",
+      "TypeScript",
+      "FinOps",
+      "Cloud Cost Management",
+      "Data Visualization",
+      "Stripe API",
+      "MongoDB",
+      "Tailwind CSS",
+    ],
+    description: `**CloudZero** is a modern cloud financial management (FinOps) dashboard that unifies cost, usage, and performance metrics across multiple cloud providers. It gives engineering and finance teams total visibility and control over infrastructure spending, helping them optimize costs and build with zero waste.
+
+The platform includes a stunning cloud-sky UI with interactive cost-breakdown graphs, anomaly alerts, and trusted partner integrations.
+
+**What makes it unique:**
+
+- 📊 **Unified Cost & Performance Ledger** — Aggregate spending data from AWS, GCP, and Azure into a single interactive chart. Correlate direct cloud costs with infrastructure usage and transaction volumes.
+- 🚨 **Anomaly Alert Engine** — Continuously monitors cloud billing APIs and alerts engineers to cost spikes, rogue servers, or misconfigured storage buckets before they compound.
+- ⚙️ **Interactive FinOps Optimization Panel** — Provides actionable suggestions to resize instances, delete orphaned volumes, and purchase reserved capacities, tracking total saved waste over time.
+- 🎨 **Cinematic Sky-Theme UI** — Uses smooth parallax scroll effects, starry background layouts, and glowing clouds to build a visual aesthetic that stands out in the SaaS finance space.
+- 🤝 **Enterprise Integration Grid** — Integrates seamlessly with payment systems like Stripe, hosting networks like Vercel, databases like MongoDB, and security monitors like Snyk to build a comprehensive service map.`,
+  },
 ];
+
 
 
 
