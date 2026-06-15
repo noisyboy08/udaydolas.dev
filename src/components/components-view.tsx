@@ -744,12 +744,42 @@ function TokenUsagePreview() {
 
 function MichaelSignPreview() {
   return (
-    <div className="relative flex h-full w-full items-center justify-center p-2 overflow-hidden bg-black/80 rounded-md border border-border/40">
-      <img
-        src="/images/michael-sign.png"
-        alt="Michael Signature"
-        className="max-h-full max-w-full object-contain filter drop-shadow-[0_0_12px_rgba(234,179,8,0.3)] transition-transform duration-500 hover:scale-105"
-      />
+    <div className="relative flex h-full w-full flex-col items-center justify-center p-4 overflow-hidden bg-black/80 rounded-md border border-border/40 select-none">
+      <style dangerouslySetInnerHTML={{ __html: `
+        @import url('https://fonts.googleapis.com/css2?family=Pinyon+Script&display=swap');
+        .gold-metallic-text {
+          font-family: 'Pinyon Script', cursive;
+          background: linear-gradient(
+            to bottom,
+            #ffe58f 0%,
+            #d4af37 30%,
+            #9a7816 55%,
+            #ffe58f 80%,
+            #b89020 100%
+          );
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          filter: drop-shadow(0px 2px 3px rgba(0, 0, 0, 0.9))
+                  drop-shadow(0px 0px 8px rgba(212, 175, 55, 0.35));
+        }
+        .gold-underline {
+          background: linear-gradient(
+            to right,
+            transparent 0%,
+            #ffe58f 20%,
+            #d4af37 50%,
+            #9a7816 80%,
+            transparent 100%
+          );
+          box-shadow: 0px 0px 8px rgba(212, 175, 55, 0.4);
+        }
+      `}} />
+      <div className="relative flex flex-col items-center justify-center transform hover:scale-105 transition-transform duration-500">
+        <span className="text-6xl sm:text-7xl font-normal gold-metallic-text tracking-wide leading-none pb-2 italic select-none">
+          Michael
+        </span>
+        <div className="absolute bottom-1.5 left-1/2 -translate-x-1/2 w-48 h-[2px] gold-underline -rotate-3 rounded-full opacity-80" />
+      </div>
     </div>
   );
 }
