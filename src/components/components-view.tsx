@@ -365,8 +365,8 @@ function ComponentsShowcase({ posts }: { posts: Post[] }) {
         <ExtraShowcaseCell label="Token Usage" size="md">
           <TokenUsagePreview />
         </ExtraShowcaseCell>
-        <ExtraShowcaseCell label="Security Radar" size="md">
-          <SecurityRadarPreview />
+        <ExtraShowcaseCell label="Michael" size="md">
+          <MichaelSignPreview />
         </ExtraShowcaseCell>
       </div>
     </>
@@ -742,22 +742,14 @@ function TokenUsagePreview() {
   );
 }
 
-function SecurityRadarPreview() {
+function MichaelSignPreview() {
   return (
-    <div className="relative size-28 rounded-full border border-border/40 bg-black/20 flex items-center justify-center overflow-hidden">
-      <div className="absolute inset-0 border border-dashed border-border/20 rounded-full scale-[0.66]" />
-      <div className="absolute inset-0 border border-dashed border-border/20 rounded-full scale-[0.33]" />
-      
-      <div className="absolute inset-0 bg-gradient-to-tr from-emerald-500/0 via-emerald-500/0 to-emerald-500/15 animate-[spin_4s_linear_infinite]" />
-      
-      <span className="absolute top-6 right-8 size-1.5 rounded-full bg-emerald-400 shadow-[0_0_8px_rgba(52,211,153,0.8)] animate-pulse" />
-      <span className="absolute bottom-8 left-10 size-1 rounded-full bg-emerald-400/60" />
-      <span className="absolute top-16 left-6 size-1 rounded-full bg-rose-500 shadow-[0_0_8px_rgba(244,63,94,0.8)] animate-pulse" />
-      
-      <div className="absolute flex flex-col items-center text-center leading-none">
-        <span className="text-[9px] font-mono text-emerald-400">SCANNING</span>
-        <span className="text-[8px] font-mono text-muted-foreground mt-0.5">3 Threat nodes</span>
-      </div>
+    <div className="relative flex h-full w-full items-center justify-center p-2 overflow-hidden bg-black/80 rounded-md border border-border/40">
+      <img
+        src="/images/michael-sign.png"
+        alt="Michael Signature"
+        className="max-h-full max-w-full object-contain filter drop-shadow-[0_0_12px_rgba(234,179,8,0.3)] transition-transform duration-500 hover:scale-105"
+      />
     </div>
   );
 }
