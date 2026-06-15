@@ -750,15 +750,15 @@ function MichaelSignPreview() {
         @import url('https://fonts.googleapis.com/css2?family=Pinyon+Script&display=swap');
         
         @keyframes sig-pulse {
-          0%, 100% { opacity: 0.35; filter: drop-shadow(0px 0px 2px rgba(212, 175, 55, 0.1)); }
-          50% { opacity: 0.65; filter: drop-shadow(0px 0px 5px rgba(212, 175, 55, 0.25)); }
+          0%, 100% { opacity: 0.35; filter: drop-shadow(0px 0px 3px rgba(212, 175, 55, 0.15)); }
+          50% { opacity: 0.65; filter: drop-shadow(0px 0px 7px rgba(212, 175, 55, 0.3)); }
         }
 
         .gold-metallic-text {
           font-family: 'Pinyon Script', cursive;
           background: transparent;
           -webkit-text-fill-color: transparent;
-          -webkit-text-stroke: 1px rgba(212, 175, 55, 0.25);
+          -webkit-text-stroke: 1.5px rgba(212, 175, 55, 0.25);
           filter: none;
           transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
           animation: sig-pulse 2.5s infinite ease-in-out;
@@ -767,7 +767,7 @@ function MichaelSignPreview() {
         .gold-underline {
           background: rgba(212, 175, 55, 0.15);
           box-shadow: none;
-          width: 80px;
+          width: 180px;
           transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
           animation: sig-pulse 2.5s infinite ease-in-out;
         }
@@ -785,8 +785,8 @@ function MichaelSignPreview() {
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
           -webkit-text-stroke: 0px transparent;
-          filter: drop-shadow(0px 2px 3px rgba(0, 0, 0, 0.9))
-                  drop-shadow(0px 0px 18px rgba(212, 175, 55, 0.6));
+          filter: drop-shadow(0px 2px 4px rgba(0, 0, 0, 0.95))
+                  drop-shadow(0px 0px 24px rgba(212, 175, 55, 0.65));
           opacity: 1;
         }
 
@@ -800,16 +800,16 @@ function MichaelSignPreview() {
             #9a7816 80%,
             transparent 100%
           );
-          box-shadow: 0px 0px 12px rgba(212, 175, 55, 0.6);
-          width: 220px;
+          box-shadow: 0px 0px 14px rgba(212, 175, 55, 0.7);
+          width: 480px;
           opacity: 0.9;
         }
       `}} />
       <div className="relative flex flex-col items-center justify-center transform group-hover/sig-card:scale-105 transition-transform duration-700 ease-out">
-        <span className="text-6xl sm:text-7xl font-normal gold-metallic-text tracking-wide leading-none pb-3 italic select-none">
+        <span className="text-7xl sm:text-8xl md:text-[6.5rem] lg:text-[8rem] xl:text-[9.5rem] 2xl:text-[11rem] font-normal gold-metallic-text tracking-wide leading-none pb-4 italic select-none">
           Michael
         </span>
-        <div className="absolute bottom-1 left-1/2 -translate-x-1/2 h-[2px] gold-underline -rotate-2 rounded-full" />
+        <div className="absolute bottom-2.5 left-1/2 -translate-x-1/2 h-[3px] gold-underline -rotate-2 rounded-full" />
       </div>
     </div>
   );
