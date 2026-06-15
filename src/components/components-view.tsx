@@ -356,6 +356,18 @@ function ComponentsShowcase({ posts }: { posts: Post[] }) {
         <ExtraShowcaseCell label="Dot Matrix" size="md">
           <DotMatrixPreview />
         </ExtraShowcaseCell>
+        <ExtraShowcaseCell label="System Terminal" size="md">
+          <TerminalConsolePreview />
+        </ExtraShowcaseCell>
+        <ExtraShowcaseCell label="Audio Controller" size="md">
+          <AudioControllerPreview />
+        </ExtraShowcaseCell>
+        <ExtraShowcaseCell label="Token Usage" size="md">
+          <TokenUsagePreview />
+        </ExtraShowcaseCell>
+        <ExtraShowcaseCell label="Security Radar" size="md">
+          <SecurityRadarPreview />
+        </ExtraShowcaseCell>
       </div>
     </>
   );
@@ -639,6 +651,113 @@ function DotMatrixPreview() {
           )}
         />
       ))}
+    </div>
+  );
+}
+
+function TerminalConsolePreview() {
+  return (
+    <div className="w-full h-full flex flex-col font-mono text-[10px] text-muted-foreground bg-black/40 p-3 rounded border border-border/40 overflow-hidden leading-relaxed justify-between">
+      <div className="space-y-1">
+        <p className="text-info font-bold">~ udaydolas$ init --system</p>
+        <p className="text-emerald-400">✓ Load core credentials</p>
+        <p className="text-emerald-400">✓ Establish remote connection (12ms)</p>
+        <p className="text-rose-400">✗ Security warning bypassed</p>
+        <p className="text-amber-400">! Optimizing garbage collection</p>
+      </div>
+      <p className="text-foreground animate-pulse mt-2">udaydolas.dev ~ $ _</p>
+    </div>
+  );
+}
+
+function AudioControllerPreview() {
+  return (
+    <div className="w-full h-full flex flex-col justify-between p-3 bg-card border border-border/40 rounded-md">
+      <div className="flex items-center gap-2">
+        <div className="size-10 rounded bg-gradient-to-tr from-rose-500 via-purple-500 to-blue-500 flex items-center justify-center shrink-0">
+          <span className="size-1.5 bg-white rounded-full animate-ping" />
+        </div>
+        <div className="min-w-0">
+          <p className="text-xs font-bold truncate">Anti-Gravity Beats</p>
+          <p className="text-[10px] text-muted-foreground truncate">Procedural Synth Engine</p>
+        </div>
+      </div>
+      
+      <div className="flex items-end gap-1 h-8 px-1">
+        {[20, 45, 60, 30, 80, 50, 95, 75, 40, 60, 25, 55, 70, 40].map((h, i) => (
+          <span
+            key={i}
+            className="flex-1 bg-gradient-to-t from-violet-500 to-cyan-400 rounded-t-sm animate-pulse"
+            style={{ height: `${h}%`, animationDelay: `${i * 70}ms` }}
+          />
+        ))}
+      </div>
+
+      <div className="flex items-center justify-between mt-1 text-[10px] text-muted-foreground font-mono">
+        <span>02:14</span>
+        <div className="flex items-center gap-2.5 text-xs text-foreground">
+          <button type="button" className="hover:text-cyan-400">⏮</button>
+          <button type="button" className="size-5 rounded-full bg-foreground text-background flex items-center justify-center font-bold">⏸</button>
+          <button type="button" className="hover:text-cyan-400">⏭</button>
+        </div>
+        <span>03:45</span>
+      </div>
+    </div>
+  );
+}
+
+function TokenUsagePreview() {
+  return (
+    <div className="flex flex-col items-center justify-center text-center gap-2">
+      <div className="relative size-20 flex items-center justify-center">
+        <svg className="absolute size-full -rotate-90">
+          <circle
+            cx="40"
+            cy="40"
+            r="34"
+            className="stroke-muted fill-none"
+            strokeWidth="6"
+          />
+          <circle
+            cx="40"
+            cy="40"
+            r="34"
+            className="stroke-cyan-400 fill-none"
+            strokeWidth="6"
+            strokeDasharray="213.6"
+            strokeDashoffset="64"
+            strokeLinecap="round"
+          />
+        </svg>
+        <div className="flex flex-col items-center">
+          <span className="text-sm font-bold font-mono">70%</span>
+          <span className="text-[8px] text-muted-foreground font-mono">92.5k t/s</span>
+        </div>
+      </div>
+      <div className="min-w-0 mt-1">
+        <p className="text-xs font-semibold">Gemma 2B Local</p>
+        <p className="text-[9px] text-muted-foreground font-mono">API Usage Limits</p>
+      </div>
+    </div>
+  );
+}
+
+function SecurityRadarPreview() {
+  return (
+    <div className="relative size-28 rounded-full border border-border/40 bg-black/20 flex items-center justify-center overflow-hidden">
+      <div className="absolute inset-0 border border-dashed border-border/20 rounded-full scale-[0.66]" />
+      <div className="absolute inset-0 border border-dashed border-border/20 rounded-full scale-[0.33]" />
+      
+      <div className="absolute inset-0 bg-gradient-to-tr from-emerald-500/0 via-emerald-500/0 to-emerald-500/15 animate-[spin_4s_linear_infinite]" />
+      
+      <span className="absolute top-6 right-8 size-1.5 rounded-full bg-emerald-400 shadow-[0_0_8px_rgba(52,211,153,0.8)] animate-pulse" />
+      <span className="absolute bottom-8 left-10 size-1 rounded-full bg-emerald-400/60" />
+      <span className="absolute top-16 left-6 size-1 rounded-full bg-rose-500 shadow-[0_0_8px_rgba(244,63,94,0.8)] animate-pulse" />
+      
+      <div className="absolute flex flex-col items-center text-center leading-none">
+        <span className="text-[9px] font-mono text-emerald-400">SCANNING</span>
+        <span className="text-[8px] font-mono text-muted-foreground mt-0.5">3 Threat nodes</span>
+      </div>
     </div>
   );
 }
