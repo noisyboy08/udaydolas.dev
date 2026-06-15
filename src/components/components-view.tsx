@@ -31,7 +31,7 @@ import { cn } from "@/lib/utils";
 import type { Post } from "@/types/blog";
 
 type ComponentsMode = "list" | "showcase";
-type ShowcaseSize = "sm" | "md" | "wide" | "large" | "tall" | "hero";
+type ShowcaseSize = "sm" | "md" | "wide" | "large" | "tall" | "hero" | "full";
 
 const PACKAGE_MANAGERS = ["pnpm", "yarn", "npm", "bun"] as const;
 
@@ -177,6 +177,7 @@ const sizeClass: Record<ShowcaseSize, string> = {
   large: "sm:col-span-2 row-span-2 min-h-76",
   tall: "row-span-2 min-h-76",
   hero: "sm:col-span-2 row-span-3 min-h-114",
+  full: "sm:col-span-2 lg:col-span-3 xl:col-span-4 2xl:col-span-5 row-span-2 min-h-76",
 };
 
 export function ComponentsView({
@@ -365,7 +366,7 @@ function ComponentsShowcase({ posts }: { posts: Post[] }) {
         <ExtraShowcaseCell label="Token Usage" size="md">
           <TokenUsagePreview />
         </ExtraShowcaseCell>
-        <ExtraShowcaseCell label="Michael" size="md">
+        <ExtraShowcaseCell label="Michael" size="full">
           <MichaelSignPreview />
         </ExtraShowcaseCell>
       </div>
@@ -744,11 +745,35 @@ function TokenUsagePreview() {
 
 function MichaelSignPreview() {
   return (
-    <div className="relative flex h-full w-full flex-col items-center justify-center p-4 overflow-hidden bg-black/80 rounded-md border border-border/40 select-none">
+    <div className="relative flex h-full w-full flex-col items-center justify-center p-4 overflow-hidden bg-black/80 rounded-md border border-border/40 select-none group/sig-card">
       <style dangerouslySetInnerHTML={{ __html: `
         @import url('https://fonts.googleapis.com/css2?family=Pinyon+Script&display=swap');
+        
+        @keyframes sig-pulse {
+          0%, 100% { opacity: 0.35; filter: drop-shadow(0px 0px 2px rgba(212, 175, 55, 0.1)); }
+          50% { opacity: 0.65; filter: drop-shadow(0px 0px 5px rgba(212, 175, 55, 0.25)); }
+        }
+
         .gold-metallic-text {
           font-family: 'Pinyon Script', cursive;
+          background: transparent;
+          -webkit-text-fill-color: transparent;
+          -webkit-text-stroke: 1px rgba(212, 175, 55, 0.25);
+          filter: none;
+          transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+          animation: sig-pulse 2.5s infinite ease-in-out;
+        }
+        
+        .gold-underline {
+          background: rgba(212, 175, 55, 0.15);
+          box-shadow: none;
+          width: 80px;
+          transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+          animation: sig-pulse 2.5s infinite ease-in-out;
+        }
+
+        .group\\/sig-card:hover .gold-metallic-text {
+          animation: none;
           background: linear-gradient(
             to bottom,
             #ffe58f 0%,
@@ -759,10 +784,14 @@ function MichaelSignPreview() {
           );
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
+          -webkit-text-stroke: 0px transparent;
           filter: drop-shadow(0px 2px 3px rgba(0, 0, 0, 0.9))
-                  drop-shadow(0px 0px 8px rgba(212, 175, 55, 0.35));
+                  drop-shadow(0px 0px 18px rgba(212, 175, 55, 0.6));
+          opacity: 1;
         }
-        .gold-underline {
+
+        .group\\/sig-card:hover .gold-underline {
+          animation: none;
           background: linear-gradient(
             to right,
             transparent 0%,
@@ -771,14 +800,16 @@ function MichaelSignPreview() {
             #9a7816 80%,
             transparent 100%
           );
-          box-shadow: 0px 0px 8px rgba(212, 175, 55, 0.4);
+          box-shadow: 0px 0px 12px rgba(212, 175, 55, 0.6);
+          width: 220px;
+          opacity: 0.9;
         }
       `}} />
-      <div className="relative flex flex-col items-center justify-center transform hover:scale-105 transition-transform duration-500">
-        <span className="text-6xl sm:text-7xl font-normal gold-metallic-text tracking-wide leading-none pb-2 italic select-none">
+      <div className="relative flex flex-col items-center justify-center transform group-hover/sig-card:scale-105 transition-transform duration-700 ease-out">
+        <span className="text-6xl sm:text-7xl font-normal gold-metallic-text tracking-wide leading-none pb-3 italic select-none">
           Michael
         </span>
-        <div className="absolute bottom-1.5 left-1/2 -translate-x-1/2 w-48 h-[2px] gold-underline -rotate-3 rounded-full opacity-80" />
+        <div className="absolute bottom-1 left-1/2 -translate-x-1/2 h-[2px] gold-underline -rotate-2 rounded-full" />
       </div>
     </div>
   );
