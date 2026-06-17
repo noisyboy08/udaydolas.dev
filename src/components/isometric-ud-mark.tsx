@@ -426,7 +426,8 @@ export function IsometricUDMark({
             y1="0"
             x2="0"
             y2="8"
-            className="hatch-line"
+            stroke="currentColor"
+            strokeOpacity="0.35"
             strokeWidth="1"
           />
         </pattern>
@@ -443,7 +444,8 @@ export function IsometricUDMark({
             y1="0"
             x2="0"
             y2="8"
-            className="hatch-line"
+            stroke="currentColor"
+            strokeOpacity="0.3"
             strokeWidth="1"
           />
         </pattern>
