@@ -114,36 +114,159 @@ const SHOWCASE_CONFIG: Record<
     label: "Glow Card Grid",
     className: "items-start justify-start overflow-y-auto p-4",
   },
-  "elastic-slider": { demo: "elastic-slider-demo", size: "tall", label: "Elastic Slider" },
-  "slide-to-unlock": { demo: "slide-to-unlock-demo", size: "md", label: "Slide to Unlock" },
+  "elastic-slider": {
+    demo: "elastic-slider-demo",
+    size: "tall",
+    label: "Elastic Slider",
+  },
+  "slide-to-unlock": {
+    demo: "slide-to-unlock-demo",
+    size: "md",
+    label: "Slide to Unlock",
+  },
   "copy-button": { demo: "copy-button-demo", size: "sm", label: "Copy Button" },
-  "fluid-gradient-text": { demo: "fluid-gradient-text-demo", size: "md", label: "Fluid Gradient Text" },
-  "scroll-fade-effect": { demo: "scroll-fade-effect-demo", size: "tall", label: "Scroll Fade Effect", className: "items-start justify-start p-2" },
+  "fluid-gradient-text": {
+    demo: "fluid-gradient-text-demo",
+    size: "md",
+    label: "Fluid Gradient Text",
+  },
+  "scroll-fade-effect": {
+    demo: "scroll-fade-effect-demo",
+    size: "tall",
+    label: "Scroll Fade Effect",
+    className: "items-start justify-start p-2",
+  },
   "text-flip": { demo: "text-flip-demo", size: "md", label: "Text Flip" },
-  "testimonial": { demo: "testimonial-demo", size: "large", label: "Testimonial", className: "items-start justify-start p-4 overflow-auto" },
-  "testimonial-spotlight": { demo: "testimonial-spotlight-demo", size: "md", label: "Testimonial Spotlight", className: "p-2" },
-  "number-counter": { demo: "number-counter-demo", size: "wide", label: "Number Counter" },
-  "progress-ring": { demo: "progress-ring-demo", size: "md", label: "Progress Ring" },
-  "gradient-border-card": { demo: "gradient-border-card-demo", size: "tall", label: "Gradient Border Card", className: "items-start justify-start p-2 overflow-auto" },
-  "typewriter-effect": { demo: "typewriter-effect-demo", size: "wide", label: "Typewriter Effect" },
-  "magnetic-button": { demo: "magnetic-button-demo", size: "md", label: "Magnetic Button" },
-  "avatar-group": { demo: "avatar-group-demo", size: "md", label: "Avatar Group" },
-  "stat-card": { demo: "stat-card-demo", size: "hero", label: "Stat Card", className: "items-start justify-start p-3 overflow-auto" },
-  "timeline": { demo: "timeline-demo", size: "tall", label: "Timeline", className: "items-start justify-start p-4 overflow-auto" },
-  "pricing-card": { demo: "pricing-card-demo", size: "hero", label: "Pricing Card", className: "items-start justify-start p-4 overflow-auto" },
-  "step-progress": { demo: "step-progress-demo", size: "large", label: "Step Progress", className: "items-start justify-start p-4 overflow-hidden" },
-  "badge-collection": { demo: "badge-collection-demo", size: "md", label: "Badge Collection" },
-  "skeleton-loader": { demo: "skeleton-loader-demo", size: "large", label: "Skeleton Loader", className: "items-start justify-start p-3 overflow-auto" },
-  "feature-card": { demo: "feature-card-demo", size: "large", label: "Feature Card", className: "items-start justify-start overflow-auto" },
-  "code-snippet": { demo: "code-snippet-demo", size: "large", label: "Code Snippet", className: "items-start justify-start p-3 overflow-auto" },
-  "particle-cursor": { demo: "particle-cursor-demo", size: "wide", label: "Particle Cursor", className: "p-0 overflow-hidden" },
+  testimonial: {
+    demo: "testimonial-demo",
+    size: "large",
+    label: "Testimonial",
+    className: "items-start justify-start p-4 overflow-auto",
+  },
+  "testimonial-spotlight": {
+    demo: "testimonial-spotlight-demo",
+    size: "md",
+    label: "Testimonial Spotlight",
+    className: "p-2",
+  },
+  "number-counter": {
+    demo: "number-counter-demo",
+    size: "wide",
+    label: "Number Counter",
+  },
+  "progress-ring": {
+    demo: "progress-ring-demo",
+    size: "md",
+    label: "Progress Ring",
+  },
+  "gradient-border-card": {
+    demo: "gradient-border-card-demo",
+    size: "tall",
+    label: "Gradient Border Card",
+    className: "items-start justify-start p-2 overflow-auto",
+  },
+  "typewriter-effect": {
+    demo: "typewriter-effect-demo",
+    size: "wide",
+    label: "Typewriter Effect",
+  },
+  "magnetic-button": {
+    demo: "magnetic-button-demo",
+    size: "md",
+    label: "Magnetic Button",
+  },
+  "avatar-group": {
+    demo: "avatar-group-demo",
+    size: "md",
+    label: "Avatar Group",
+  },
+  "stat-card": {
+    demo: "stat-card-demo",
+    size: "hero",
+    label: "Stat Card",
+    className: "items-start justify-start p-3 overflow-auto",
+  },
+  timeline: {
+    demo: "timeline-demo",
+    size: "tall",
+    label: "Timeline",
+    className: "items-start justify-start p-4 overflow-auto",
+  },
+  "pricing-card": {
+    demo: "pricing-card-demo",
+    size: "hero",
+    label: "Pricing Card",
+    className: "items-start justify-start p-4 overflow-auto",
+  },
+  "step-progress": {
+    demo: "step-progress-demo",
+    size: "large",
+    label: "Step Progress",
+    className: "items-start justify-start p-4 overflow-hidden",
+  },
+  "badge-collection": {
+    demo: "badge-collection-demo",
+    size: "md",
+    label: "Badge Collection",
+  },
+  "skeleton-loader": {
+    demo: "skeleton-loader-demo",
+    size: "large",
+    label: "Skeleton Loader",
+    className: "items-start justify-start p-3 overflow-auto",
+  },
+  "feature-card": {
+    demo: "feature-card-demo",
+    size: "large",
+    label: "Feature Card",
+    className: "items-start justify-start overflow-auto",
+  },
+  "code-snippet": {
+    demo: "code-snippet-demo",
+    size: "large",
+    label: "Code Snippet",
+    className: "items-start justify-start p-3 overflow-auto",
+  },
+  "particle-cursor": {
+    demo: "particle-cursor-demo",
+    size: "wide",
+    label: "Particle Cursor",
+    className: "p-0 overflow-hidden",
+  },
   "tilt-card": { demo: "tilt-card-demo", size: "md", label: "Tilt Card" },
-  "animated-tabs": { demo: "animated-tabs-demo", size: "md", label: "Animated Tabs" },
-  "accordion": { demo: "accordion-demo", size: "tall", label: "Accordion", className: "items-start justify-start p-4 overflow-auto" },
-  "github-contributions": { demo: "github-contributions-demo", size: "large", label: "GitHub Contributions", className: "p-3 overflow-hidden" },
-  "github-stars": { demo: "github-stars-demo", size: "sm", label: "GitHub Stars" },
-  "middle-truncation": { demo: "middle-truncation-demo", size: "md", label: "Middle Truncation" },
-  "theme-toggle-effect": { demo: "theme-toggle-effect-demo", size: "sm", label: "Theme Toggle Effect", className: "p-0" },
+  "animated-tabs": {
+    demo: "animated-tabs-demo",
+    size: "md",
+    label: "Animated Tabs",
+  },
+  accordion: {
+    demo: "accordion-demo",
+    size: "tall",
+    label: "Accordion",
+    className: "items-start justify-start p-4 overflow-auto",
+  },
+  "github-contributions": {
+    demo: "github-contributions-demo",
+    size: "large",
+    label: "GitHub Contributions",
+    className: "p-3 overflow-hidden",
+  },
+  "github-stars": {
+    demo: "github-stars-demo",
+    size: "sm",
+    label: "GitHub Stars",
+  },
+  "middle-truncation": {
+    demo: "middle-truncation-demo",
+    size: "md",
+    label: "Middle Truncation",
+  },
+  "theme-toggle-effect": {
+    demo: "theme-toggle-effect-demo",
+    size: "sm",
+    label: "Theme Toggle Effect",
+    className: "p-0",
+  },
   "icon-swap": { demo: "icon-swap-demo", size: "md", label: "Icon Swap" },
 };
 
@@ -432,7 +555,7 @@ function ShowcaseCell({
         </div>
         <Link
           href={`/components/${slug}`}
-          className="rounded-sm px-1.5 py-0.5 text-xs text-muted-foreground opacity-0 transition-opacity hover:bg-accent hover:text-foreground group-hover:opacity-100 focus-visible:opacity-100"
+          className="rounded-sm px-1.5 py-0.5 text-xs text-muted-foreground opacity-0 transition-opacity group-hover:opacity-100 hover:bg-accent hover:text-foreground focus-visible:opacity-100"
         >
           Docs
         </Link>
@@ -513,7 +636,6 @@ function GradientControlsPreview() {
   );
 }
 
-
 function CommandPreview() {
   return (
     <div className="w-full max-w-md rounded-lg border border-border bg-card p-3 font-mono text-sm">
@@ -538,7 +660,7 @@ function TextSpotlightPreview() {
       <p className="absolute top-6 text-xs text-muted-foreground">
         Move your cursor within the text below
       </p>
-      <p className="select-none text-7xl font-black tracking-normal text-transparent [-webkit-text-stroke:1px_var(--border)] sm:text-8xl">
+      <p className="text-7xl font-black tracking-normal text-transparent select-none [-webkit-text-stroke:1px_var(--border)] sm:text-8xl">
         uday
       </p>
       <div className="absolute bottom-10 h-px w-4/5 bg-gradient-to-r from-transparent via-border to-transparent" />
@@ -556,13 +678,22 @@ function TestimonialsPreview() {
   return (
     <div className="grid h-full w-full grid-cols-3 divide-x divide-border overflow-hidden rounded-md border border-border">
       {quotes.map(([title, body]) => (
-        <div key={title} className="flex min-w-0 flex-col justify-between p-2.5 bg-card">
-          <p className="text-xs font-semibold text-balance leading-normal">{body}</p>
-          <div className="flex items-center gap-2 mt-1">
+        <div
+          key={title}
+          className="flex min-w-0 flex-col justify-between bg-card p-2.5"
+        >
+          <p className="text-xs leading-normal font-semibold text-balance">
+            {body}
+          </p>
+          <div className="mt-1 flex items-center gap-2">
             <span className="size-6 shrink-0 rounded-full bg-gradient-to-br from-cyan-400 via-violet-400 to-rose-400" />
             <div className="min-w-0">
-              <p className="text-[10px] font-bold leading-none truncate">{title}</p>
-              <p className="text-[9px] text-muted-foreground leading-none mt-0.5 truncate">Creator feedback</p>
+              <p className="truncate text-[10px] leading-none font-bold">
+                {title}
+              </p>
+              <p className="mt-0.5 truncate text-[9px] leading-none text-muted-foreground">
+                Creator feedback
+              </p>
             </div>
           </div>
         </div>
@@ -589,8 +720,8 @@ function CreatorGridPreview() {
               index % 3 === 2 && "from-violet-400 via-rose-300 to-orange-300"
             )}
           />
-          <span className="text-xs font-bold leading-tight">{person}</span>
-          <span className="text-[10px] text-muted-foreground leading-none mt-0.5">
+          <span className="text-xs leading-tight font-bold">{person}</span>
+          <span className="mt-0.5 text-[10px] leading-none text-muted-foreground">
             @{person.toLowerCase().replace(" ", "")}
           </span>
         </div>
@@ -658,48 +789,61 @@ function DotMatrixPreview() {
 
 function TerminalConsolePreview() {
   return (
-    <div className="w-full h-full flex flex-col font-mono text-[10px] text-muted-foreground bg-black/40 p-3 rounded border border-border/40 overflow-hidden leading-relaxed justify-between">
+    <div className="flex h-full w-full flex-col justify-between overflow-hidden rounded border border-border/40 bg-black/40 p-3 font-mono text-[10px] leading-relaxed text-muted-foreground">
       <div className="space-y-1">
-        <p className="text-info font-bold">~ udaydolas$ init --system</p>
+        <p className="font-bold text-info">~ udaydolas$ init --system</p>
         <p className="text-emerald-400">✓ Load core credentials</p>
         <p className="text-emerald-400">✓ Establish remote connection (12ms)</p>
         <p className="text-rose-400">✗ Security warning bypassed</p>
         <p className="text-amber-400">! Optimizing garbage collection</p>
       </div>
-      <p className="text-foreground animate-pulse mt-2">udaydolas.dev ~ $ _</p>
+      <p className="mt-2 animate-pulse text-foreground">udaydolas.dev ~ $ _</p>
     </div>
   );
 }
 
 function AudioControllerPreview() {
   return (
-    <div className="w-full h-full flex flex-col justify-between p-3 bg-card border border-border/40 rounded-md">
+    <div className="flex h-full w-full flex-col justify-between rounded-md border border-border/40 bg-card p-3">
       <div className="flex items-center gap-2">
-        <div className="size-10 rounded bg-gradient-to-tr from-rose-500 via-purple-500 to-blue-500 flex items-center justify-center shrink-0">
-          <span className="size-1.5 bg-white rounded-full animate-ping" />
+        <div className="flex size-10 shrink-0 items-center justify-center rounded bg-gradient-to-tr from-rose-500 via-purple-500 to-blue-500">
+          <span className="size-1.5 animate-ping rounded-full bg-white" />
         </div>
         <div className="min-w-0">
-          <p className="text-xs font-bold truncate">Anti-Gravity Beats</p>
-          <p className="text-[10px] text-muted-foreground truncate">Procedural Synth Engine</p>
+          <p className="truncate text-xs font-bold">Anti-Gravity Beats</p>
+          <p className="truncate text-[10px] text-muted-foreground">
+            Procedural Synth Engine
+          </p>
         </div>
       </div>
-      
-      <div className="flex items-end gap-1 h-8 px-1">
-        {[20, 45, 60, 30, 80, 50, 95, 75, 40, 60, 25, 55, 70, 40].map((h, i) => (
-          <span
-            key={i}
-            className="flex-1 bg-gradient-to-t from-violet-500 to-cyan-400 rounded-t-sm animate-pulse"
-            style={{ height: `${h}%`, animationDelay: `${i * 70}ms` }}
-          />
-        ))}
+
+      <div className="flex h-8 items-end gap-1 px-1">
+        {[20, 45, 60, 30, 80, 50, 95, 75, 40, 60, 25, 55, 70, 40].map(
+          (h, i) => (
+            <span
+              key={i}
+              className="flex-1 animate-pulse rounded-t-sm bg-gradient-to-t from-violet-500 to-cyan-400"
+              style={{ height: `${h}%`, animationDelay: `${i * 70}ms` }}
+            />
+          )
+        )}
       </div>
 
-      <div className="flex items-center justify-between mt-1 text-[10px] text-muted-foreground font-mono">
+      <div className="mt-1 flex items-center justify-between font-mono text-[10px] text-muted-foreground">
         <span>02:14</span>
         <div className="flex items-center gap-2.5 text-xs text-foreground">
-          <button type="button" className="hover:text-cyan-400">⏮</button>
-          <button type="button" className="size-5 rounded-full bg-foreground text-background flex items-center justify-center font-bold">⏸</button>
-          <button type="button" className="hover:text-cyan-400">⏭</button>
+          <button type="button" className="hover:text-cyan-400">
+            ⏮
+          </button>
+          <button
+            type="button"
+            className="flex size-5 items-center justify-center rounded-full bg-foreground font-bold text-background"
+          >
+            ⏸
+          </button>
+          <button type="button" className="hover:text-cyan-400">
+            ⏭
+          </button>
         </div>
         <span>03:45</span>
       </div>
@@ -709,21 +853,21 @@ function AudioControllerPreview() {
 
 function TokenUsagePreview() {
   return (
-    <div className="flex flex-col items-center justify-center text-center gap-2">
-      <div className="relative size-20 flex items-center justify-center">
+    <div className="flex flex-col items-center justify-center gap-2 text-center">
+      <div className="relative flex size-20 items-center justify-center">
         <svg className="absolute size-full -rotate-90">
           <circle
             cx="40"
             cy="40"
             r="34"
-            className="stroke-muted fill-none"
+            className="fill-none stroke-muted"
             strokeWidth="6"
           />
           <circle
             cx="40"
             cy="40"
             r="34"
-            className="stroke-cyan-400 fill-none"
+            className="fill-none stroke-cyan-400"
             strokeWidth="6"
             strokeDasharray="213.6"
             strokeDashoffset="64"
@@ -731,13 +875,17 @@ function TokenUsagePreview() {
           />
         </svg>
         <div className="flex flex-col items-center">
-          <span className="text-sm font-bold font-mono">70%</span>
-          <span className="text-[8px] text-muted-foreground font-mono">92.5k t/s</span>
+          <span className="font-mono text-sm font-bold">70%</span>
+          <span className="font-mono text-[8px] text-muted-foreground">
+            92.5k t/s
+          </span>
         </div>
       </div>
-      <div className="min-w-0 mt-1">
+      <div className="mt-1 min-w-0">
         <p className="text-xs font-semibold">Gemma 2B Local</p>
-        <p className="text-[9px] text-muted-foreground font-mono">API Usage Limits</p>
+        <p className="font-mono text-[9px] text-muted-foreground">
+          API Usage Limits
+        </p>
       </div>
     </div>
   );
@@ -745,8 +893,10 @@ function TokenUsagePreview() {
 
 function MichaelSignPreview() {
   return (
-    <div className="relative flex h-full w-full flex-col items-center justify-center p-4 overflow-hidden bg-black/80 rounded-md border border-border/40 select-none group/sig-card">
-      <style dangerouslySetInnerHTML={{ __html: `
+    <div className="group/sig-card relative flex h-full w-full flex-col items-center justify-center overflow-hidden rounded-md border border-border/40 bg-black/80 p-4 select-none">
+      <style
+        dangerouslySetInnerHTML={{
+          __html: `
         @import url('https://fonts.googleapis.com/css2?family=Pinyon+Script&display=swap');
         
         @keyframes sig-pulse {
@@ -804,12 +954,14 @@ function MichaelSignPreview() {
           width: 480px;
           opacity: 0.9;
         }
-      `}} />
-      <div className="relative flex flex-col items-center justify-center transform group-hover/sig-card:scale-105 transition-transform duration-700 ease-out">
-        <span className="text-7xl sm:text-8xl md:text-[6.5rem] lg:text-[8rem] xl:text-[9.5rem] 2xl:text-[11rem] font-normal gold-metallic-text tracking-wide leading-none pb-4 italic select-none">
+      `,
+        }}
+      />
+      <div className="relative flex transform flex-col items-center justify-center transition-transform duration-700 ease-out group-hover/sig-card:scale-105">
+        <span className="gold-metallic-text pr-8 pb-4 text-7xl leading-none font-normal tracking-wide select-none sm:text-8xl md:text-[6.5rem] lg:text-[8rem] xl:text-[9.5rem] 2xl:text-[11rem]">
           Michael
         </span>
-        <div className="absolute bottom-2.5 left-1/2 -translate-x-1/2 h-[3px] gold-underline -rotate-2 rounded-full" />
+        <div className="gold-underline absolute bottom-2.5 left-1/2 h-[3px] -translate-x-1/2 -rotate-2 rounded-full" />
       </div>
     </div>
   );
@@ -841,7 +993,8 @@ function ViewToggle({ active }: { active: ComponentsMode }) {
         title="Component list"
         className={cn(
           "flex size-7 items-center justify-center rounded-md text-muted-foreground transition-colors hover:text-foreground",
-          active === "list" && "bg-foreground text-background hover:text-background"
+          active === "list" &&
+            "bg-foreground text-background hover:text-background"
         )}
       >
         <Grid3X3Icon className="size-3.5" />
