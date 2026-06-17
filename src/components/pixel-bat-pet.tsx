@@ -70,10 +70,22 @@ export function PixelBatPet() {
     setShouldRender(true);
     if (typeof window !== "undefined") {
       const saved = localStorage.getItem("pixel-bat-enabled");
-      if (saved !== null) {
-        setIsEnabled(saved === "true");
-      }
+      setIsEnabled(saved !== "false");
     }
+  }, []);
+
+  useEffect(() => {
+    const handleBatChange = () => {
+      if (typeof window !== "undefined") {
+        const saved = localStorage.getItem("pixel-bat-enabled");
+        setIsEnabled(saved !== "false");
+      }
+    };
+
+    window.addEventListener("pixel-bat-changed", handleBatChange);
+    return () => {
+      window.removeEventListener("pixel-bat-changed", handleBatChange);
+    };
   }, []);
 
   useEffect(() => {
@@ -84,6 +96,7 @@ export function PixelBatPet() {
           const next = !prev;
           if (typeof window !== "undefined") {
             localStorage.setItem("pixel-bat-enabled", String(next));
+            window.dispatchEvent(new Event("pixel-bat-changed"));
           }
           return next;
         });
@@ -100,7 +113,9 @@ export function PixelBatPet() {
       isFirstRender.current = false;
       return;
     }
-    setNotificationText(isEnabled ? "Pixel Bat Pet Enabled!" : "Pixel Bat Pet Disabled!");
+    setNotificationText(
+      isEnabled ? "Pixel Bat Pet Enabled!" : "Pixel Bat Pet Disabled!"
+    );
     setShowNotification(true);
     const timer = setTimeout(() => {
       setShowNotification(false);
@@ -963,11 +978,12 @@ export function PixelBatPet() {
 
         const aboutTop = (() => {
           const a = findAboutEl();
-          return a
-            ? a.getBoundingClientRect().top
-            : Number.POSITIVE_INFINITY;
+          return a ? a.getBoundingClientRect().top : Number.POSITIVE_INFINITY;
         })();
-        const upperBound = Math.min(aboutTop - FOLLOW_TOP_MARGIN, window.innerHeight - 80);
+        const upperBound = Math.min(
+          aboutTop - FOLLOW_TOP_MARGIN,
+          window.innerHeight - 80
+        );
         const cy = Math.max(140, Math.min(upperBound - 80, 280));
         const radiusX = Math.min(window.innerWidth * 0.38, 480);
         const radiusY = Math.min((upperBound - 80) * 0.45, 130);
@@ -999,7 +1015,8 @@ export function PixelBatPet() {
           const ahead = Math.min(t + 0.01, 1) * Math.PI * 2;
           const dn = 1 + Math.sin(ahead) * Math.sin(ahead);
           const aheadX = cx + (radiusX * Math.cos(ahead)) / dn;
-          const aheadY = cy + (radiusY * Math.sin(ahead) * Math.cos(ahead)) / dn;
+          const aheadY =
+            cy + (radiusY * Math.sin(ahead) * Math.cos(ahead)) / dn;
           const angleDeg =
             (Math.atan2(aheadY - ty, aheadX - tx) * 180) / Math.PI;
 
@@ -1639,10 +1656,14 @@ export function PixelBatPet() {
   return (
     <>
       {showNotification && (
-        <div className="fixed bottom-6 right-6 z-[9999] flex items-center gap-2 rounded-full border border-zinc-200 bg-white/95 px-4 py-2.5 text-xs font-semibold text-zinc-900 shadow-xl backdrop-blur-md transition-all duration-300 dark:border-zinc-800 dark:bg-zinc-950/95 dark:text-zinc-50 animate-in fade-in slide-in-from-bottom-3">
-          <div className={`h-2 w-2 rounded-full ${isEnabled ? 'bg-emerald-500 animate-pulse' : 'bg-red-500'}`} />
+        <div className="fixed right-6 bottom-6 z-[9999] flex animate-in items-center gap-2 rounded-full border border-zinc-200 bg-white/95 px-4 py-2.5 text-xs font-semibold text-zinc-900 shadow-xl backdrop-blur-md transition-all duration-300 fade-in slide-in-from-bottom-3 dark:border-zinc-800 dark:bg-zinc-950/95 dark:text-zinc-50">
+          <div
+            className={`h-2 w-2 rounded-full ${isEnabled ? "animate-pulse bg-emerald-500" : "bg-red-500"}`}
+          />
           <span>{notificationText}</span>
-          <span className="text-[10px] text-zinc-500 bg-zinc-100 dark:bg-zinc-800 px-1.5 py-0.5 rounded ml-2">Ctrl + Esc</span>
+          <span className="ml-2 rounded bg-zinc-100 px-1.5 py-0.5 text-[10px] text-zinc-500 dark:bg-zinc-800">
+            Ctrl + Esc
+          </span>
         </div>
       )}
       {isEnabled && (
