@@ -16,9 +16,9 @@ export function IsometricUDMark({
   ...props
 }: IsometricUDMarkProps) {
   // Base coordinates of the isometric grid origin
-  const cx = 305;
-  const cy = 35;
-  const unit = 40; // Scaled up unit size to fill cover banner height
+  const cx = 460;
+  const cy = 20;
+  const unit = 26; // Adjusted unit size to fit in upper portion of banner
 
   // 3D Isometric projection function
   const project = (u: number, v: number, w: number): [number, number] => {
@@ -42,14 +42,14 @@ export function IsometricUDMark({
       { from: [10.5, 0, -1], to: [10.5, 0, 5] },
 
       // Diagonal projection perspective axes extending out to the edges
-      { from: [-8, 0, 1], to: [18, 0, 1], dashed: true },
-      { from: [-8, 0, 3], to: [18, 0, 3], dashed: true },
-      { from: [2, 0, -8], to: [2, 0, 12], dashed: true },
-      { from: [7, 0, -8], to: [7, 0, 12], dashed: true },
+      { from: [-20, 0, 1], to: [20, 0, 1], dashed: true },
+      { from: [-20, 0, 3], to: [20, 0, 3], dashed: true },
+      { from: [2, 0, -15], to: [2, 0, 20], dashed: true },
+      { from: [7, 0, -15], to: [7, 0, 20], dashed: true },
 
       // Outer extension lines to corners
-      { from: [-6, 0, -6], to: [16, 0, 10], dashed: true },
-      { from: [16, 0, -6], to: [-6, 0, 10], dashed: true },
+      { from: [-15, 0, -15], to: [20, 0, 20], dashed: true },
+      { from: [20, 0, -15], to: [-15, 0, 20], dashed: true },
     ],
     []
   );
