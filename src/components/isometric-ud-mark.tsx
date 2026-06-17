@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useMemo } from "react";
+
 import { cn } from "@/lib/utils";
 
 interface IsometricUDMarkProps extends React.ComponentProps<"svg"> {
@@ -156,7 +157,7 @@ export function IsometricUDMark({
       ], // Inner Front/Recess (facing back-left)
     ];
 
-    uSides.forEach((side, idx) => {
+    uSides.forEach((side) => {
       // Determine side hatch and wall type based on direction
       const avgU = side.reduce((sum, p) => sum + p[0], 0) / side.length;
       const avgW = side.reduce((sum, p) => sum + p[2], 0) / side.length;
