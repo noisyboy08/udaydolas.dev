@@ -16,9 +16,9 @@ export function IsometricUDMark({
   ...props
 }: IsometricUDMarkProps) {
   // Base coordinates of the isometric grid origin
-  const cx = 460;
-  const cy = 20;
-  const unit = 26; // Adjusted unit size to fit in upper portion of banner
+  const cx = 310;
+  const cy = 50;
+  const unit = 40; // Scaled up unit size to match CD reference
 
   // 3D Isometric projection function
   const project = (u: number, v: number, w: number): [number, number] => {
@@ -360,7 +360,7 @@ export function IsometricUDMark({
     <svg
       id={id}
       xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 800 300" // Fixed 8:3 ratio to fill cover banner
+      viewBox="0 0 800 400" // Fixed 2:1 ratio matching cover banner aspect ratio
       fill="none"
       className={cn("h-auto w-full text-black dark:text-white", className)}
       style={{ overflow: "visible" }}
@@ -455,14 +455,14 @@ export function IsometricUDMark({
       {/* 2. Technical Metadata Texts (positioned near bottom right) */}
       <text
         x="730"
-        y="270"
+        y="370"
         className="fill-zinc-400/55 font-mono text-[10px] font-bold tracking-wider uppercase select-none dark:fill-zinc-500/35"
       >
         FIG_001
       </text>
       <text
         x="730"
-        y="280"
+        y="380"
         className="fill-zinc-400/35 font-mono text-[7px] tracking-widest uppercase select-none dark:fill-zinc-500/20"
       >
         Isometric Wireframe v1.0
