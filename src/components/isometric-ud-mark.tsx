@@ -97,12 +97,6 @@ export function IsometricUDMark({
       [9.5, 0, 4],
     ];
 
-    // Include guide line endpoints in bounding box
-    guideLines3D.forEach((l) => {
-      all3DPoints.push(l.from as [number, number, number]);
-      all3DPoints.push(l.to as [number, number, number]);
-    });
-
     const projected = all3DPoints.map(([u, v, w]) => project(u, v, w));
     const xs = projected.map((p) => p[0]);
     const ys = projected.map((p) => p[1]);
@@ -112,7 +106,7 @@ export function IsometricUDMark({
     const minY = Math.min(...ys);
     const maxY = Math.max(...ys);
 
-    const margin = 24; // padding around the drawing boundaries
+    const margin = 12; // padding around the drawing boundaries
     const width = maxX - minX + 2 * margin;
     const height = maxY - minY + 2 * margin;
 
@@ -125,7 +119,7 @@ export function IsometricUDMark({
       maxY,
       value: `${(minX - margin).toFixed(1)} ${(minY - margin).toFixed(1)} ${width.toFixed(1)} ${height.toFixed(1)}`,
     };
-  }, [guideLines3D]);
+  }, []);
 
   // Render guide lines
   const guideLinesJSX = useMemo(() => {
@@ -356,6 +350,7 @@ export function IsometricUDMark({
       viewBox={viewBox.value} // Dynamically calculated tight viewBox
       fill="none"
       className={cn("h-auto w-full text-black dark:text-white", className)}
+      style={{ overflow: "visible" }}
       {...props}
     >
       <defs>

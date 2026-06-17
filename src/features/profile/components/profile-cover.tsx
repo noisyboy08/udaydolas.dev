@@ -15,7 +15,7 @@ export function ProfileCover() {
       >
         <IsometricUDMark
           id="js-cover-mark"
-          className="h-[75%] w-auto max-w-full sm:h-[80%]"
+          className="w-full h-full"
         />
       </div>
     </BrandContextMenu>
