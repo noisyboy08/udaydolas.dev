@@ -8,25 +8,7 @@ interface IsometricUDMarkProps extends React.ComponentProps<"svg"> {
   themeColor?: string;
 }
 
-const H = 0.9; // extrusion height (thickness) of blocks
-
-// 3D coordinates for all corners of U and D blocks
-const dTopOuter: [number, number, number][] = [
-  [5.5, H, 0],
-  [8.5, H, 0],
-  [9.5, H, 1],
-  [9.5, H, 3],
-  [8.5, H, 4],
-  [5.5, H, 4],
-];
-const dTopInner: [number, number, number][] = [
-  [6.5, H, 1],
-  [7.75, H, 1],
-  [8.5, H, 1.75],
-  [8.5, H, 2.25],
-  [7.75, H, 3],
-  [6.5, H, 3],
-];
+const H = 0.7; // Sleek extrusion height (thickness) matching CD reference
 
 export function IsometricUDMark({
   className,
@@ -34,9 +16,9 @@ export function IsometricUDMark({
   ...props
 }: IsometricUDMarkProps) {
   // Base coordinates of the isometric grid origin
-  const cx = 400;
-  const cy = 180;
-  const unit = 32; // size of each isometric grid cell (scaled up from 26 for better detail visibility)
+  const cx = 305;
+  const cy = 35;
+  const unit = 40; // Scaled up unit size to fill cover banner height
 
   // 3D Isometric projection function
   const project = (u: number, v: number, w: number): [number, number] => {
@@ -50,7 +32,7 @@ export function IsometricUDMark({
     return pts.map(([u, v, w]) => project(u, v, w).join(",")).join(" ");
   };
 
-  // List of all guide lines (blueprint lines)
+  // List of all guide lines (blueprint lines extending all the way across)
   const guideLines3D = useMemo(
     () => [
       // Main bounding floor box (v=0)
@@ -59,67 +41,18 @@ export function IsometricUDMark({
       { from: [-1, 0, -1], to: [-1, 0, 5] },
       { from: [10.5, 0, -1], to: [10.5, 0, 5] },
 
-      // Diagonal projection perspective axes extending out
-      { from: [-3, 0, 1], to: [12, 0, 1], dashed: true },
-      { from: [-3, 0, 3], to: [12, 0, 3], dashed: true },
-      { from: [2, 0, -3], to: [2, 0, 7], dashed: true },
-      { from: [7, 0, -3], to: [7, 0, 7], dashed: true },
+      // Diagonal projection perspective axes extending out to the edges
+      { from: [-8, 0, 1], to: [18, 0, 1], dashed: true },
+      { from: [-8, 0, 3], to: [18, 0, 3], dashed: true },
+      { from: [2, 0, -8], to: [2, 0, 12], dashed: true },
+      { from: [7, 0, -8], to: [7, 0, 12], dashed: true },
 
       // Outer extension lines to corners
-      { from: [-2, 0, -2], to: [11.5, 0, 4.75], dashed: true },
-      { from: [11, 0, -2], to: [-2.5, 0, 4.75], dashed: true },
+      { from: [-6, 0, -6], to: [16, 0, 10], dashed: true },
+      { from: [16, 0, -6], to: [-6, 0, 10], dashed: true },
     ],
     []
   );
-
-  // Calculate the bounding box of all projected coordinates dynamically to crop the SVG perfectly
-  const viewBox = useMemo(() => {
-    const all3DPoints: [number, number, number][] = [
-      // Polygons
-      [0, H, 0],
-      [1, H, 0],
-      [1, H, 3],
-      [3, H, 3],
-      [3, H, 0],
-      [4, H, 0],
-      [4, H, 4],
-      [0, H, 4],
-      ...dTopOuter,
-      ...dTopInner,
-      // Base corners
-      [0, 0, 0],
-      [4, 0, 0],
-      [0, 0, 4],
-      [4, 0, 4],
-      [5.5, 0, 0],
-      [9.5, 0, 0],
-      [5.5, 0, 4],
-      [9.5, 0, 4],
-    ];
-
-    const projected = all3DPoints.map(([u, v, w]) => project(u, v, w));
-    const xs = projected.map((p) => p[0]);
-    const ys = projected.map((p) => p[1]);
-
-    const minX = Math.min(...xs);
-    const maxX = Math.max(...xs);
-    const minY = Math.min(...ys);
-    const maxY = Math.max(...ys);
-
-    const margin = 12; // padding around the drawing boundaries
-    const width = maxX - minX + 2 * margin;
-    const height = maxY - minY + 2 * margin;
-
-    return {
-      minX: minX - margin,
-      minY: minY - margin,
-      width,
-      height,
-      maxX,
-      maxY,
-      value: `${(minX - margin).toFixed(1)} ${(minY - margin).toFixed(1)} ${width.toFixed(1)} ${height.toFixed(1)}`,
-    };
-  }, []);
 
   // Render guide lines
   const guideLinesJSX = useMemo(() => {
@@ -134,7 +67,7 @@ export function IsometricUDMark({
           x2={x2.toFixed(1)}
           y2={y2.toFixed(1)}
           className={cn(
-            "stroke-zinc-500/35 dark:stroke-zinc-400/20", // Increased guide line opacity for better visibility
+            "stroke-zinc-500/35 dark:stroke-zinc-400/20", // Guide line styling
             l.dashed ? "stroke-dasharray-[4_4]" : "stroke-dasharray-[2_2]"
           )}
           strokeWidth="1"
@@ -143,87 +76,116 @@ export function IsometricUDMark({
     });
   }, [guideLines3D]);
 
-  // Assemble the 3D polygons of U and D blocks
+  // Assemble the 3D polygons of U and D blocks (split to resolve non-convex rendering issues)
   const polygons = useMemo(() => {
     interface PolyDef {
       points: [number, number, number][];
-      innerPoints?: [number, number, number][];
-      type: "top" | "top-d" | "side-left" | "side-right" | "inner";
-      hatchType: "top" | "side" | "none";
+      type: "top" | "side-left" | "side-right";
+      hatchType: "top" | "side";
       depth: number;
     }
 
     const list: PolyDef[] = [];
 
-    // --- U Top Face (8-point flat outline) ---
-    const uTopPoints: [number, number, number][] = [
+    // --- U Top Face (split into 3 convex sections for perfect painter order) ---
+    // 1. Left leg top: u: 0..1, w: 0..3
+    const uTopLeftLeg: [number, number, number][] = [
       [0, H, 0],
       [1, H, 0],
       [1, H, 3],
-      [3, H, 3],
+      [0, H, 3],
+    ];
+    list.push({
+      points: uTopLeftLeg,
+      type: "top",
+      hatchType: "top",
+      depth:
+        uTopLeftLeg.reduce((sum, p) => sum + p[0] + p[2], 0) /
+        uTopLeftLeg.length,
+    });
+
+    // 2. Right leg top: u: 3..4, w: 0..3
+    const uTopRightLeg: [number, number, number][] = [
       [3, H, 0],
       [4, H, 0],
+      [4, H, 3],
+      [3, H, 3],
+    ];
+    list.push({
+      points: uTopRightLeg,
+      type: "top",
+      hatchType: "top",
+      depth:
+        uTopRightLeg.reduce((sum, p) => sum + p[0] + p[2], 0) /
+        uTopRightLeg.length,
+    });
+
+    // 3. Connector top: u: 0..4, w: 3..4
+    const uTopConnector: [number, number, number][] = [
+      [0, H, 3],
+      [4, H, 3],
       [4, H, 4],
       [0, H, 4],
     ];
     list.push({
-      points: uTopPoints,
+      points: uTopConnector,
       type: "top",
       hatchType: "top",
       depth:
-        uTopPoints.reduce((sum, p) => sum + p[0] + p[2], 0) / uTopPoints.length,
+        uTopConnector.reduce((sum, p) => sum + p[0] + p[2], 0) /
+        uTopConnector.length,
     });
 
-    // --- U Side Walls ---
+    // --- U Side Walls (facing left/right/front/back) ---
     const uSides: [number, number, number][][] = [
       [
         [0, 0, 0],
         [0, H, 0],
         [0, H, 4],
         [0, 0, 4],
-      ], // Outer Left
+      ], // Outer Left (facing down-left)
       [
         [4, 0, 0],
         [4, H, 0],
         [4, H, 4],
         [4, 0, 4],
-      ], // Outer Right
+      ], // Outer Right (facing down-left)
       [
         [0, 0, 4],
         [0, H, 4],
         [4, H, 4],
         [4, 0, 4],
-      ], // Front Wall
+      ], // Outer Front Wall (facing down-right)
       [
         [0, 0, 0],
         [0, H, 0],
         [1, H, 0],
         [1, 0, 0],
-      ], // Left leg back wall
+      ], // Left leg back end (facing down-right)
       [
         [3, 0, 0],
         [3, H, 0],
         [4, H, 0],
         [4, 0, 0],
-      ], // Right leg back wall
+      ], // Right leg back end (facing down-right)
       [
         [1, 0, 0],
         [1, H, 0],
         [1, H, 3],
         [1, 0, 3],
-      ], // Inner Left
+      ], // Inner Left wall (facing down-left)
       [
         [3, 0, 0],
         [3, H, 0],
         [3, H, 3],
         [3, 0, 3],
-      ], // Inner Right
+      ], // Inner Right wall (facing down-left)
       [
         [1, 0, 3],
         [1, H, 3],
         [3, H, 3],
         [3, 0, 3],
-      ], // Inner Front
+      ], // Inner Connector wall (facing down-right)
     ];
 
     uSides.forEach((side) => {
@@ -239,14 +201,65 @@ export function IsometricUDMark({
       });
     });
 
-    // --- D Top Face ---
+    // --- D Top Face (split into 4 convex pieces for depth sorting) ---
+    // 1. D Left bar top
+    const dTopL: [number, number, number][] = [
+      [5.5, H, 0],
+      [6.5, H, 0],
+      [6.5, H, 4],
+      [5.5, H, 4],
+    ];
     list.push({
-      points: dTopOuter,
-      innerPoints: dTopInner,
-      type: "top-d",
+      points: dTopL,
+      type: "top",
       hatchType: "top",
-      depth:
-        dTopOuter.reduce((sum, p) => sum + p[0] + p[2], 0) / dTopOuter.length,
+      depth: dTopL.reduce((sum, p) => sum + p[0] + p[2], 0) / dTopL.length,
+    });
+
+    // 2. D Top section top
+    const dTopT: [number, number, number][] = [
+      [6.5, H, 0],
+      [8.5, H, 0],
+      [7.75, H, 1],
+      [6.5, H, 1],
+    ];
+    list.push({
+      points: dTopT,
+      type: "top",
+      hatchType: "top",
+      depth: dTopT.reduce((sum, p) => sum + p[0] + p[2], 0) / dTopT.length,
+    });
+
+    // 3. D Bottom section top
+    const dTopB: [number, number, number][] = [
+      [6.5, H, 3],
+      [7.75, H, 3],
+      [8.5, H, 4],
+      [6.5, H, 4],
+    ];
+    list.push({
+      points: dTopB,
+      type: "top",
+      hatchType: "top",
+      depth: dTopB.reduce((sum, p) => sum + p[0] + p[2], 0) / dTopB.length,
+    });
+
+    // 4. D Right section top (curved front-right area)
+    const dTopR: [number, number, number][] = [
+      [7.75, H, 1],
+      [8.5, H, 0],
+      [9.5, H, 1],
+      [9.5, H, 3],
+      [8.5, H, 4],
+      [7.75, H, 3],
+      [8.5, H, 2.25],
+      [8.5, H, 1.75],
+    ];
+    list.push({
+      points: dTopR,
+      type: "top",
+      hatchType: "top",
+      depth: dTopR.reduce((sum, p) => sum + p[0] + p[2], 0) / dTopR.length,
     });
 
     // --- D Side Walls ---
@@ -262,7 +275,7 @@ export function IsometricUDMark({
         [5.5, H, 4],
         [8.5, H, 4],
         [8.5, 0, 4],
-      ], // Outer Front-Left
+      ], // Outer Front
       [
         [8.5, 0, 4],
         [8.5, H, 4],
@@ -347,7 +360,7 @@ export function IsometricUDMark({
     <svg
       id={id}
       xmlns="http://www.w3.org/2000/svg"
-      viewBox={viewBox.value} // Dynamically calculated tight viewBox
+      viewBox="0 0 800 300" // Fixed 8:3 ratio to fill cover banner
       fill="none"
       className={cn("h-auto w-full text-black dark:text-white", className)}
       style={{ overflow: "visible" }}
@@ -365,7 +378,7 @@ export function IsometricUDMark({
           /* Solid shaded backgrounds for 3D faces */
           .face-top {
             fill: #f4f4f5;
-            stroke: rgba(0, 0, 0, 0.38); /* Increased stroke contrast */
+            stroke: rgba(0, 0, 0, 0.38);
           }
           .face-side-left {
             fill: #e4e4e7;
@@ -378,7 +391,7 @@ export function IsometricUDMark({
           
           .dark .face-top {
             fill: #0c0c0e;
-            stroke: rgba(255, 255, 255, 0.35); /* High-contrast white stroke */
+            stroke: rgba(255, 255, 255, 0.35);
           }
           .dark .face-side-left {
             fill: #030304;
@@ -391,7 +404,7 @@ export function IsometricUDMark({
           
           /* Hatch patterns coloring */
           .hatch-line {
-            stroke: rgba(0, 0, 0, 0.18); /* Increased hatch visibility */
+            stroke: rgba(0, 0, 0, 0.18);
           }
           .dark .hatch-line {
             stroke: rgba(255, 255, 255, 0.16);
@@ -400,13 +413,13 @@ export function IsometricUDMark({
           }}
         />
 
-        {/* Diagonal Hatching Pattern for Top Faces */}
+        {/* Diagonal Hatching Pattern for Top Faces (aligned to u axis) */}
         <pattern
           id="isometric-hatch-top"
           width="8"
           height="8"
           patternUnits="userSpaceOnUse"
-          patternTransform="rotate(45)"
+          patternTransform="rotate(60)"
         >
           <line
             x1="0"
@@ -439,18 +452,18 @@ export function IsometricUDMark({
       {/* 1. Guide lines (drawn in the background) */}
       <g>{guideLinesJSX}</g>
 
-      {/* 2. Technical Metadata Texts (positioned dynamically near bottom right of bounding box) */}
+      {/* 2. Technical Metadata Texts (positioned near bottom right) */}
       <text
-        x={viewBox.maxX - 62}
-        y={viewBox.maxY - 16}
-        className="fill-zinc-400/50 font-mono text-[10px] font-bold tracking-wider uppercase select-none dark:fill-zinc-500/35"
+        x="730"
+        y="270"
+        className="fill-zinc-400/55 font-mono text-[10px] font-bold tracking-wider uppercase select-none dark:fill-zinc-500/35"
       >
         FIG_001
       </text>
       <text
-        x={viewBox.maxX - 62}
-        y={viewBox.maxY - 6}
-        className="fill-zinc-400/30 font-mono text-[7px] tracking-widest uppercase select-none dark:fill-zinc-500/20"
+        x="730"
+        y="280"
+        className="fill-zinc-400/35 font-mono text-[7px] tracking-widest uppercase select-none dark:fill-zinc-500/20"
       >
         Isometric Wireframe v1.0
       </text>
@@ -461,7 +474,7 @@ export function IsometricUDMark({
           let faceClass = "";
           let hatchFill = "none";
 
-          if (poly.type === "top" || poly.type === "top-d") {
+          if (poly.type === "top") {
             faceClass = "face-top";
             hatchFill =
               poly.hatchType === "top" ? "url(#isometric-hatch-top)" : "none";
@@ -477,41 +490,6 @@ export function IsometricUDMark({
               poly.hatchType === "side"
                 ? "url(#isometric-hatch-vertical)"
                 : "none";
-          }
-
-          if (poly.type === "top-d" && poly.innerPoints) {
-            const outerPath = poly.points
-              .map(([u, v, w]) => project(u, v, w).join(","))
-              .join(" L ");
-            const innerPath = poly.innerPoints
-              .map(([u, v, w]) => project(u, v, w).join(","))
-              .join(" L ");
-            const combinedD = `M ${outerPath} Z M ${innerPath} Z`;
-
-            return (
-              <g key={`poly-group-${idx}`}>
-                <path
-                  d={combinedD}
-                  fillRule="evenodd"
-                  className={cn("isometric-poly", faceClass)}
-                  strokeWidth="0"
-                />
-                <path
-                  d={combinedD}
-                  fillRule="evenodd"
-                  fill={hatchFill}
-                  strokeWidth="0"
-                  pointerEvents="none"
-                />
-                <path
-                  d={combinedD}
-                  fillRule="evenodd"
-                  fill="none"
-                  className={cn("isometric-poly", faceClass)}
-                  strokeWidth="1"
-                />
-              </g>
-            );
           }
 
           const formattedPoints = formatPoints(poly.points);
