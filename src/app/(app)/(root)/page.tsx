@@ -27,6 +27,7 @@ export default function Page() {
       />
 
       <div className="mx-auto md:max-w-3xl">
+        <Separator className="screen-line-after" />
         <ProfileCover />
         <ProfileHeader />
         <Separator />
