@@ -69,19 +69,6 @@ export const TECH_STACK: TechStack[] = [
     categories: ["02 Frontend"],
   },
   {
-    key: "tanstack",
-    title: "TanStack",
-    href: "https://tanstack.com/",
-    categories: ["02 Frontend"],
-    theme: true,
-  },
-  {
-    key: "mobx-state-tree",
-    title: "MobX-State-Tree",
-    href: "https://mobx-state-tree.js.org/",
-    categories: ["02 Frontend"],
-  },
-  {
     key: "redux",
     title: "Redux",
     href: "https://redux.js.org/",
@@ -96,12 +83,6 @@ export const TECH_STACK: TechStack[] = [
     categories: ["03 Backend & Database"],
   },
   {
-    key: "bun",
-    title: "Bun",
-    href: "https://bun.sh/",
-    categories: ["03 Backend & Database"],
-  },
-  {
     key: "postgresql",
     title: "PostgreSQL",
     href: "https://www.postgresql.org/",
@@ -111,12 +92,6 @@ export const TECH_STACK: TechStack[] = [
     key: "mongodb",
     title: "MongoDB",
     href: "https://www.mongodb.com/",
-    categories: ["03 Backend & Database"],
-  },
-  {
-    key: "redis",
-    title: "Redis",
-    href: "https://redis.io/",
     categories: ["03 Backend & Database"],
   },
 
