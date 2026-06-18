@@ -66,11 +66,9 @@ export function IsometricUDMark({
           y1={y1.toFixed(1)}
           x2={x2.toFixed(1)}
           y2={y2.toFixed(1)}
-          className={cn(
-            "stroke-zinc-500/35 dark:stroke-zinc-400/20", // Guide line styling
-            l.dashed ? "stroke-dasharray-[4_4]" : "stroke-dasharray-[2_2]"
-          )}
+          className="stroke-zinc-500/35 dark:stroke-zinc-400/20" // Guide line styling
           strokeWidth="1"
+          strokeDasharray="2 4"
         />
       );
     });
@@ -375,31 +373,19 @@ export function IsometricUDMark({
             transition: fill 0.3s, stroke 0.3s;
           }
           
-          /* Solid shaded backgrounds for 3D faces */
-          .face-top {
-            fill: #f4f4f5;
+          /* Solid backgrounds for blueprint sketch faces */
+          .face-top,
+          .face-side-left,
+          .face-side-right {
+            fill: #fafafa;
             stroke: rgba(0, 0, 0, 0.38);
           }
-          .face-side-left {
-            fill: #e4e4e7;
-            stroke: rgba(0, 0, 0, 0.28);
-          }
-          .face-side-right {
-            fill: #ebebef;
-            stroke: rgba(0, 0, 0, 0.32);
-          }
           
-          .dark .face-top {
-            fill: #0c0c0e;
-            stroke: rgba(255, 255, 255, 0.35);
-          }
-          .dark .face-side-left {
-            fill: #030304;
-            stroke: rgba(255, 255, 255, 0.22);
-          }
+          .dark .face-top,
+          .dark .face-side-left,
           .dark .face-side-right {
-            fill: #07070a;
-            stroke: rgba(255, 255, 255, 0.28);
+            fill: #09090b;
+            stroke: rgba(255, 255, 255, 0.35);
           }
           
           /* Hatch patterns coloring */
@@ -478,20 +464,13 @@ export function IsometricUDMark({
 
           if (poly.type === "top") {
             faceClass = "face-top";
-            hatchFill =
-              poly.hatchType === "top" ? "url(#isometric-hatch-top)" : "none";
+            hatchFill = "url(#isometric-hatch-top)";
           } else if (poly.type === "side-left") {
             faceClass = "face-side-left";
-            hatchFill =
-              poly.hatchType === "side"
-                ? "url(#isometric-hatch-vertical)"
-                : "none";
+            hatchFill = "url(#isometric-hatch-top)";
           } else {
             faceClass = "face-side-right";
-            hatchFill =
-              poly.hatchType === "side"
-                ? "url(#isometric-hatch-vertical)"
-                : "none";
+            hatchFill = "url(#isometric-hatch-top)";
           }
 
           const formattedPoints = formatPoints(poly.points);
