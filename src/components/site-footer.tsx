@@ -2,6 +2,7 @@
 
 import { usePathname } from "next/navigation";
 
+import { ChanhDaiWordmark } from "@/components/chanhdai-wordmark";
 import { cn } from "@/lib/utils";
 
 export function SiteFooter() {
@@ -35,6 +36,11 @@ export function SiteFooter() {
 
         <div className="screen-line-before screen-line-after h-8 border-x border-edge">
           <div className="h-full w-full bg-[repeating-linear-gradient(315deg,var(--pattern-foreground)_0,var(--pattern-foreground)_1px,transparent_0,transparent_50%)] bg-size-[10px_10px] [--pattern-foreground:var(--color-edge)]/56" />
+        </div>
+
+        {/* Large visual wordmark signature */}
+        <div className="px-8 py-6 flex justify-center text-zinc-300/10 dark:text-zinc-800/20 select-none">
+          <ChanhDaiWordmark className="w-full max-w-2xl h-auto" fill="none" stroke="currentColor" strokeWidth="1" />
         </div>
       </div>
       <div className="pb-[env(safe-area-inset-bottom,0px)]">
