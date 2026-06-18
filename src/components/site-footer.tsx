@@ -2,7 +2,7 @@
 
 import { usePathname } from "next/navigation";
 
-import { ChanhDaiWordmark } from "@/components/chanhdai-wordmark";
+import { WordmarkHoverEffect } from "@/components/wordmark-hover-effect";
 import { cn } from "@/lib/utils";
 
 export function SiteFooter() {
@@ -39,8 +39,8 @@ export function SiteFooter() {
         </div>
 
         {/* Large visual wordmark signature */}
-        <div className="px-8 py-6 flex justify-center text-zinc-300/10 dark:text-zinc-800/20 select-none">
-          <ChanhDaiWordmark className="w-full max-w-2xl h-auto" fill="none" stroke="currentColor" strokeWidth="1" />
+        <div className="px-8 py-6 flex justify-center select-none">
+          <WordmarkHoverEffect className="w-full max-w-2xl h-auto" />
         </div>
       </div>
       <div className="pb-[env(safe-area-inset-bottom,0px)]">
