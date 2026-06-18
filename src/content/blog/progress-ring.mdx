@@ -1,0 +1,42 @@
+---
+title: Progress Ring
+description: SVG circular progress indicator with smooth animated fill, configurable size, stroke width, and accent color.
+category: components
+new: true
+createdAt: 2025-06-13
+updatedAt: 2025-06-13
+---
+
+## Overview
+
+Renders an SVG `circle` with a `stroke-dashoffset` transition to animate the fill arc from 0 to a target percentage. Supports an optional center label and fully configurable colors.
+
+## Usage
+
+```tsx
+import { ProgressRing } from "@/registry/progress-ring";
+
+export default function Demo() {
+  return (
+    <ProgressRing
+      value={72}
+      size={120}
+      strokeWidth={10}
+      accentColor="#6366f1"
+      label="72%"
+    />
+  );
+}
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `value` | `number` | required | Progress value from 0–100. |
+| `size` | `number` | `80` | Diameter of the SVG in pixels. |
+| `strokeWidth` | `number` | `8` | Width of the progress stroke. |
+| `accentColor` | `string` | `#6366f1` | Color of the filled arc. |
+| `trackColor` | `string` | — | Color of the background track arc. |
+| `label` | `string` | — | Optional text rendered in the center. |
+| `className` | `string` | — | Extra class for the SVG wrapper. |

@@ -1,0 +1,50 @@
+---
+title: Accordion
+description: Animated accordion with smooth height transitions using CSS grid-template-rows, supporting single and multi-open modes.
+category: components
+new: true
+createdAt: 2025-06-13
+updatedAt: 2025-06-13
+---
+
+## Overview
+
+A composable accordion built with `grid-template-rows: 0fr` / `1fr` transition for buttery-smooth expand/collapse animation. Supports toggling a single item at a time or multiple items simultaneously.
+
+## Usage
+
+```tsx
+import { Accordion, AccordionItem } from "@/registry/accordion";
+
+export default function Demo() {
+  return (
+    <Accordion>
+      <AccordionItem title="What is this?">
+        A smooth animated accordion component built without any dependencies.
+      </AccordionItem>
+      <AccordionItem title="How do I install it?">
+        Run: npx shadcn@latest add accordion
+      </AccordionItem>
+    </Accordion>
+  );
+}
+```
+
+## Props
+
+### `Accordion`
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `children` | `ReactNode` | required | `AccordionItem` children. |
+| `multiple` | `boolean` | `false` | Allow multiple items open at the same time. |
+| `className` | `string` | — | Extra class for the accordion wrapper. |
+
+### `AccordionItem`
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `title` | `string` | required | The clickable heading text. |
+| `children` | `ReactNode` | required | Collapsible body content. |
+| `defaultOpen` | `boolean` | `false` | Whether the item starts expanded. |
+| `className` | `string` | — | Extra class for the item wrapper. |

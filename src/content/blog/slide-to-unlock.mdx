@@ -1,0 +1,38 @@
+---
+title: Slide to Unlock
+description: Draggable unlock slider with elastic spring-back, a fill that tracks progress, and an unlocked confirmation state.
+category: components
+new: true
+createdAt: 2025-06-13
+updatedAt: 2025-06-13
+---
+
+## Overview
+
+A pointer-based drag slider that snaps to unlocked when dragged past 90% of the track width, with elastic spring-back on release and a color transition to green on success.
+
+## Usage
+
+```tsx
+import { SlideToUnlock } from "@/registry/slide-to-unlock";
+
+export default function Demo() {
+  return (
+    <SlideToUnlock
+      label="Slide to unlock"
+      onUnlock={() => console.log("Unlocked!")}
+      accentColor="#6366f1"
+    />
+  );
+}
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `onUnlock` | `() => void` | — | Callback fired when the slider reaches the unlocked position. |
+| `label` | `string` | `"Slide to unlock"` | Text shown in the track before unlocking. |
+| `unlockedLabel` | `string` | `"Unlocked!"` | Text shown after the unlocked state is reached. |
+| `accentColor` | `string` | `#6366f1` | Color of the thumb and fill overlay. |
+| `className` | `string` | — | Extra class for the track wrapper. |

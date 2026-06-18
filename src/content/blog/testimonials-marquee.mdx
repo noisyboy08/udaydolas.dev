@@ -1,0 +1,37 @@
+---
+title: Testimonials Marquee
+description: A continuous horizontal marquee of testimonial cards with pause-on-hover, configurable speed, and fade-out edges.
+category: components
+new: true
+createdAt: 2025-06-10
+updatedAt: 2025-06-10
+---
+
+## Overview
+
+A horizontally scrolling strip of testimonial cards. Cards are duplicated to create a seamless loop. Pauses on mouse hover by default.
+
+## Usage
+
+```tsx
+import { TestimonialsMarquee } from "@/registry/testimonials-marquee";
+
+const ITEMS = [
+  { quote: "Incredible components!", author: "Alex Chen", role: "Frontend Engineer" },
+  { quote: "Production ready out of the box.", author: "Priya Sharma", role: "Designer" },
+];
+
+export default function Demo() {
+  return <TestimonialsMarquee items={ITEMS} speed={40} />;
+}
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `items` | `TestimonialsMarqueeItem[]` | — | Array of testimonial objects. |
+| `speed` | `number` | `40` | Scroll speed in pixels per second. |
+| `pauseOnHover` | `boolean` | `true` | Pause the animation when the cursor is over it. |
+| `direction` | `"left" \| "right"` | `"left"` | Scroll direction. |
+| `className` | `string` | — | Extra class for the wrapper. |

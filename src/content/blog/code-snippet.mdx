@@ -1,0 +1,35 @@
+---
+title: Code Snippet
+description: Dark code block with macOS chrome window decorations, a language tag, syntax highlighting, and an integrated copy button.
+category: components
+new: true
+createdAt: 2025-06-13
+updatedAt: 2025-06-13
+---
+
+## Overview
+
+A styled code display component that renders code in a dark terminal-style window with three traffic-light dots, a language badge in the top-right corner, and an inline copy-to-clipboard button.
+
+## Usage
+
+```tsx
+import { CodeSnippet } from "@/registry/code-snippet";
+
+export default function Demo() {
+  return (
+    <CodeSnippet
+      language="tsx"
+      code={`import { Button } from "@/components/ui/button";\n\nexport default function Demo() {\n  return <Button>Click me</Button>;\n}`}
+    />
+  );
+}
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `code` | `string` | required | The code string to display. |
+| `language` | `string` | `"tsx"` | Language label shown in the top-right badge. |
+| `className` | `string` | — | Extra class for the outer wrapper. |

@@ -1,0 +1,64 @@
+---
+title: CascadeAnnote - Advanced Codebase Annotation Tool
+description: An advanced codebase annotation tool allowing real-time code highlighting, visual link connections, markdown annotating, and export configurations for developers.
+image: /images/blog/CascadeAnnote .png
+createdAt: 2025-01-25
+category: projects
+updatedAt: 2025-01-25
+github: https://github.com/noisyboy08/CascadeAnnote
+live: https://cascade-annote.vercel.app
+---
+
+## Overview
+
+**CascadeAnnote** is a next-generation interactive codebase annotation and documentation tool designed for developers who need to visually explain, review, or document complex code architecture. Rather than writing separate README files or creating ad-hoc diagrams in Figma, CascadeAnnote lets you annotate *directly on the code itself* — drawing visual connection arrows, writing markdown notes, and exporting everything as a shareable portable configuration.
+
+Built for code reviewers, technical writers, senior engineers onboarding new team members, and open source maintainers who want their documentation to live *alongside* the code rather than separately from it.
+
+![CascadeAnnote Preview](/images/blog/CascadeAnnote .png)
+
+## The Problem it Solves
+
+Code documentation has always been disconnected from the code itself — README files drift out of date, architecture diagrams in Figma don't update when code changes, and code review comments in GitHub disappear after a PR closes. CascadeAnnote solves this by making annotations a first-class artifact of the codebase, stored as version-controllable config files that live in the repository.
+
+## Key Features
+
+### 📝 Live Code Block Annotations
+Select any range of code lines and instantly attach a floating annotation card. Each card supports full markdown formatting — bold, code blocks, headers, links — and can contain technical explanations, architectural rationale, review comments, or TODO notes. All annotations persist and sync in real-time as you edit the underlying code.
+
+### 🔗 SVG Connection Mapper
+Draw interactive visual connector lines between any two code blocks or annotation cards using the drag-to-connect system. These SVG paths are fully interactive — you can bend their curves, add relationship labels ("calls", "inherits", "transforms", "returns"), color-code by type, and delete individual connections without affecting others. The connection map auto-updates when code blocks are repositioned.
+
+### 🎨 Dual-Pane Editor
+The left pane shows your code with syntax highlighting and inline annotation markers (small colored tabs indicating annotation types). The right pane provides a full markdown editor for the currently selected annotation, with a live split-preview rendering the formatted output in real-time as you type. Toggle between edit and preview modes with a single keystroke.
+
+### 💾 Export & Share System
+Export your entire annotation session — all code blocks, annotation cards, connection lines, and layout positions — as a single portable JSON configuration file. This file can be committed to version control alongside the code, re-imported by any other CascadeAnnote user who pulls the repo, shared as a URL, or embedded as a documentation artifact in CI/CD pipelines and PR templates.
+
+### ⚡ Developer-First Keyboard Workflow
+Every single action in CascadeAnnote has a keyboard shortcut. Select code blocks with keyboard range selection (shift+arrow), create annotation cards with a hotkey (ctrl/cmd+K), draw connections by pressing Tab between cards, switch panes with alt+arrow, and export the full session with ctrl/cmd+E. Power users can complete entire annotation workflows without ever touching the mouse.
+
+### 🌗 Theme & Accessibility
+CascadeAnnote ships with both a dark and a light theme, both carefully designed for accessibility with WCAG AA contrast ratios throughout. Annotation cards support font size scaling, and all interactive elements have descriptive ARIA labels for screen reader compatibility.
+
+## Tech Stack
+
+| Layer | Technology |
+|---|---|
+| **Framework** | React, Vite |
+| **Language** | TypeScript |
+| **Styling** | Tailwind CSS, CSS Custom Properties |
+| **Icons** | Lucide Icons |
+| **Animations** | Framer Motion |
+| **Connection Rendering** | SVG + HTML5 Canvas |
+| **Deployment** | Vercel |
+
+## Design Philosophy
+
+CascadeAnnote's design is deliberately minimal and focused — a developer's workspace should disappear into the background, letting the code and annotations take center stage. The palette is near-monochromatic with a single vivid accent color used sparingly for active states, connections, and highlights. The clean grid, generous whitespace, and precise typography make long annotation sessions comfortable rather than fatiguing.
+
+## Project Links
+
+- **GitHub Repository**: [CascadeAnnote](https://github.com/noisyboy08/CascadeAnnote)
+- **Live Demo**: [CascadeAnnote](https://cascade-annote.vercel.app)
+- **Status**: Production Ready

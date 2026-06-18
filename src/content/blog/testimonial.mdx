@@ -1,0 +1,39 @@
+---
+title: Testimonial
+description: Testimonial card with card, minimal, and spotlight variants for showcasing customer quotes with author info.
+category: components
+new: true
+createdAt: 2025-06-13
+updatedAt: 2025-06-13
+---
+
+## Overview
+
+A flexible testimonial component that renders a quote, author name, title, and optional avatar in three visual variants: a standard card, a minimal borderless layout, and a spotlight style.
+
+## Usage
+
+```tsx
+import { Testimonial } from "@/registry/testimonial";
+
+export default function Demo() {
+  return (
+    <Testimonial
+      quote="This is the best component library I've ever used."
+      author="Jane Doe"
+      title="Senior Engineer"
+      variant="card"
+    />
+  );
+}
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `quote` | `string` | required | The testimonial quote text. |
+| `author` | `string` | required | Name of the person giving the testimonial. |
+| `title` | `string` | — | Role or company of the author. |
+| `variant` | `"card" \| "minimal" \| "spotlight"` | `"card"` | Visual layout variant. |
+| `className` | `string` | — | Extra class for the wrapper. |

@@ -1,0 +1,39 @@
+---
+title: Animated Tabs
+description: Tabs component with pill, underline, and card style variants, featuring a smooth sliding active indicator animation.
+category: components
+new: true
+createdAt: 2025-06-13
+updatedAt: 2025-06-13
+---
+
+## Overview
+
+A fully controlled tab bar with three visual variants. The active tab indicator slides smoothly between tabs using `layoutId`-based animation (Motion for React). Supports horizontal scrolling for many tabs on small screens.
+
+## Usage
+
+```tsx
+import { AnimatedTabs } from "@/registry/animated-tabs";
+
+export default function Demo() {
+  return (
+    <AnimatedTabs
+      tabs={["Overview", "Features", "Pricing"]}
+      defaultTab="Overview"
+      variant="pill"
+      onTabChange={(tab) => console.log(tab)}
+    />
+  );
+}
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `tabs` | `string[]` | required | List of tab labels. |
+| `defaultTab` | `string` | first tab | Initially active tab label. |
+| `variant` | `"pill" \| "underline" \| "card"` | `"pill"` | Visual style of the tab bar. |
+| `onTabChange` | `(tab: string) => void` | — | Callback fired when the active tab changes. |
+| `className` | `string` | — | Extra class for the tab bar wrapper. |
