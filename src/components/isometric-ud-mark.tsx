@@ -218,7 +218,7 @@ export function IsometricUDMark({
     const dTopT: [number, number, number][] = [
       [6.5, H, 0],
       [8.5, H, 0],
-      [7.75, H, 1],
+      [8.5, H, 1],
       [6.5, H, 1],
     ];
     list.push({
@@ -231,7 +231,7 @@ export function IsometricUDMark({
     // 3. D Bottom section top
     const dTopB: [number, number, number][] = [
       [6.5, H, 3],
-      [7.75, H, 3],
+      [8.5, H, 3],
       [8.5, H, 4],
       [6.5, H, 4],
     ];
@@ -242,16 +242,14 @@ export function IsometricUDMark({
       depth: dTopB.reduce((sum, p) => sum + p[0] + p[2], 0) / dTopB.length,
     });
 
-    // 4. D Right section top (curved front-right area)
+    // 4. D Right section top (flat rectangular inner edge)
     const dTopR: [number, number, number][] = [
-      [7.75, H, 1],
       [8.5, H, 0],
       [9.5, H, 1],
       [9.5, H, 3],
       [8.5, H, 4],
-      [7.75, H, 3],
-      [8.5, H, 2.25],
-      [8.5, H, 1.75],
+      [8.5, H, 3],
+      [8.5, H, 1],
     ];
     list.push({
       points: dTopR,
@@ -309,30 +307,18 @@ export function IsometricUDMark({
       [
         [6.5, 0, 1],
         [6.5, H, 1],
-        [7.75, H, 1],
-        [7.75, 0, 1],
+        [8.5, H, 1],
+        [8.5, 0, 1],
       ], // Hole Back
       [
-        [7.75, 0, 1],
-        [7.75, H, 1],
-        [8.5, H, 1.75],
-        [8.5, 0, 1.75],
-      ], // Hole Angled Back
-      [
-        [8.5, 0, 1.75],
-        [8.5, H, 1.75],
-        [8.5, H, 2.25],
-        [8.5, 0, 2.25],
+        [8.5, 0, 1],
+        [8.5, H, 1],
+        [8.5, H, 3],
+        [8.5, 0, 3],
       ], // Hole Right
       [
-        [8.5, 0, 2.25],
-        [8.5, H, 2.25],
-        [7.75, H, 3],
-        [7.75, 0, 3],
-      ], // Hole Angled Front
-      [
-        [7.75, 0, 3],
-        [7.75, H, 3],
+        [8.5, 0, 3],
+        [8.5, H, 3],
         [6.5, H, 3],
         [6.5, 0, 3],
       ], // Hole Front
