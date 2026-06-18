@@ -6,7 +6,9 @@ import { About } from "@/features/profile/components/about";
 import { Blog } from "@/features/profile/components/blog";
 import { Brand } from "@/features/profile/components/brand";
 import { Certifications } from "@/features/profile/components/certifications";
+import { Components } from "@/features/profile/components/components";
 import { Experiences } from "@/features/profile/components/experiences";
+import { Github } from "@/features/profile/components/github";
 import { Overview } from "@/features/profile/components/overview";
 import { ProfileCover } from "@/features/profile/components/profile-cover";
 import { ProfileHeader } from "@/features/profile/components/profile-header";
@@ -41,7 +43,13 @@ export default function Page() {
         <About />
         <Separator />
 
+        <Github />
+        <Separator />
+
         <TeckStack />
+        <Separator />
+
+        <Components />
         <Separator />
 
         <Blog />
