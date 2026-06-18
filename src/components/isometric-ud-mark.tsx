@@ -78,60 +78,30 @@ export function IsometricUDMark({
   const polygons = useMemo(() => {
     interface PolyDef {
       points: [number, number, number][];
-      type: "top" | "side-left" | "side-right";
+      innerPoints?: [number, number, number][];
+      type: "top" | "top-d" | "side-left" | "side-right";
       hatchType: "top" | "side";
       depth: number;
     }
 
     const list: PolyDef[] = [];
 
-    // --- U Top Face (split into 3 convex sections for perfect painter order) ---
-    // 1. Left leg top: u: 0..1, w: 0..3
-    const uTopLeftLeg: [number, number, number][] = [
+    // --- U Top Face (single continuous polygon) ---
+    const uTop: [number, number, number][] = [
       [0, H, 0],
       [1, H, 0],
       [1, H, 3],
-      [0, H, 3],
-    ];
-    list.push({
-      points: uTopLeftLeg,
-      type: "top",
-      hatchType: "top",
-      depth:
-        uTopLeftLeg.reduce((sum, p) => sum + p[0] + p[2], 0) /
-        uTopLeftLeg.length,
-    });
-
-    // 2. Right leg top: u: 3..4, w: 0..3
-    const uTopRightLeg: [number, number, number][] = [
+      [3, H, 3],
       [3, H, 0],
       [4, H, 0],
-      [4, H, 3],
-      [3, H, 3],
-    ];
-    list.push({
-      points: uTopRightLeg,
-      type: "top",
-      hatchType: "top",
-      depth:
-        uTopRightLeg.reduce((sum, p) => sum + p[0] + p[2], 0) /
-        uTopRightLeg.length,
-    });
-
-    // 3. Connector top: u: 0..4, w: 3..4
-    const uTopConnector: [number, number, number][] = [
-      [0, H, 3],
-      [4, H, 3],
       [4, H, 4],
       [0, H, 4],
     ];
     list.push({
-      points: uTopConnector,
+      points: uTop,
       type: "top",
       hatchType: "top",
-      depth:
-        uTopConnector.reduce((sum, p) => sum + p[0] + p[2], 0) /
-        uTopConnector.length,
+      depth: uTop.reduce((sum, p) => sum + p[0] + p[2], 0) / uTop.length,
     });
 
     // --- U Side Walls (facing left/right/front/back) ---
@@ -199,63 +169,27 @@ export function IsometricUDMark({
       });
     });
 
-    // --- D Top Face (split into 4 convex pieces for depth sorting) ---
-    // 1. D Left bar top
-    const dTopL: [number, number, number][] = [
+    // --- D Top Face (single continuous polygon with inner hole) ---
+    const dTopOuter: [number, number, number][] = [
       [5.5, H, 0],
-      [6.5, H, 0],
-      [6.5, H, 4],
-      [5.5, H, 4],
-    ];
-    list.push({
-      points: dTopL,
-      type: "top",
-      hatchType: "top",
-      depth: dTopL.reduce((sum, p) => sum + p[0] + p[2], 0) / dTopL.length,
-    });
-
-    // 2. D Top section top
-    const dTopT: [number, number, number][] = [
-      [6.5, H, 0],
-      [8.5, H, 0],
-      [8.5, H, 1],
-      [6.5, H, 1],
-    ];
-    list.push({
-      points: dTopT,
-      type: "top",
-      hatchType: "top",
-      depth: dTopT.reduce((sum, p) => sum + p[0] + p[2], 0) / dTopT.length,
-    });
-
-    // 3. D Bottom section top
-    const dTopB: [number, number, number][] = [
-      [6.5, H, 3],
-      [8.5, H, 3],
-      [8.5, H, 4],
-      [6.5, H, 4],
-    ];
-    list.push({
-      points: dTopB,
-      type: "top",
-      hatchType: "top",
-      depth: dTopB.reduce((sum, p) => sum + p[0] + p[2], 0) / dTopB.length,
-    });
-
-    // 4. D Right section top (flat rectangular inner edge)
-    const dTopR: [number, number, number][] = [
       [8.5, H, 0],
       [9.5, H, 1],
       [9.5, H, 3],
       [8.5, H, 4],
+      [5.5, H, 4],
+    ];
+    const dTopInner: [number, number, number][] = [
+      [6.5, H, 1],
+      [6.5, H, 3],
       [8.5, H, 3],
       [8.5, H, 1],
     ];
     list.push({
-      points: dTopR,
-      type: "top",
+      points: dTopOuter,
+      innerPoints: dTopInner,
+      type: "top-d",
       hatchType: "top",
-      depth: dTopR.reduce((sum, p) => sum + p[0] + p[2], 0) / dTopR.length,
+      depth: dTopOuter.reduce((sum, p) => sum + p[0] + p[2], 0) / dTopOuter.length,
     });
 
     // --- D Side Walls ---
@@ -451,12 +385,53 @@ export function IsometricUDMark({
           if (poly.type === "top") {
             faceClass = "face-top";
             hatchFill = "url(#isometric-hatch-top)";
+          } else if (poly.type === "top-d") {
+            faceClass = "face-top";
+            hatchFill = "url(#isometric-hatch-top)";
           } else if (poly.type === "side-left") {
             faceClass = "face-side-left";
-            hatchFill = "url(#isometric-hatch-top)";
+            hatchFill = "none";
           } else {
             faceClass = "face-side-right";
-            hatchFill = "url(#isometric-hatch-top)";
+            hatchFill = "none";
+          }
+
+          // Special rendering for D's top face (with hole) using evenodd path
+          if (poly.type === "top-d" && poly.innerPoints) {
+            const outerPath = poly.points
+              .map(([u, v, w]) => project(u, v, w).join(","))
+              .join(" L ");
+            const innerPath = poly.innerPoints
+              .map(([u, v, w]) => project(u, v, w).join(","))
+              .join(" L ");
+            const combinedD = `M ${outerPath} Z M ${innerPath} Z`;
+
+            return (
+              <g key={`poly-group-${idx}`}>
+                <path
+                  d={combinedD}
+                  fillRule="evenodd"
+                  className={cn("isometric-poly", faceClass)}
+                  strokeWidth="0"
+                />
+                {hatchFill !== "none" && (
+                  <path
+                    d={combinedD}
+                    fillRule="evenodd"
+                    fill={hatchFill}
+                    strokeWidth="0"
+                    pointerEvents="none"
+                  />
+                )}
+                <path
+                  d={combinedD}
+                  fillRule="evenodd"
+                  fill="none"
+                  className={cn("isometric-poly", faceClass)}
+                  strokeWidth="1"
+                />
+              </g>
+            );
           }
 
           const formattedPoints = formatPoints(poly.points);
