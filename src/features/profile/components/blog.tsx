@@ -162,9 +162,33 @@ export function Blog() {
   ).length;
 
   // Retrieve exact 6 posts in design order
-  const homePosts = HOME_BLOG_SLUGS.map((slug) =>
-    allPosts.find((post) => post.slug === slug)
-  ).filter((post): post is Post => !!post);
+  const homePosts = HOME_BLOG_SLUGS.map((slug) => {
+    const found = allPosts.find((post) => post.slug === slug);
+    if (found) return found;
+
+    // Fallbacks for deleted mock posts to keep the homepage UI intact
+    if (slug === "chevrons-up-down-icon") {
+      return {
+        slug,
+        metadata: {
+          title: "Chevrons Up Down Icon",
+          createdAt: "2026-06-10",
+          category: "components",
+        },
+      } as Post;
+    }
+    if (slug === "mobius-loop-icon") {
+      return {
+        slug,
+        metadata: {
+          title: "Mobius Loop Icon",
+          createdAt: "2026-06-10",
+          category: "components",
+        },
+      } as Post;
+    }
+    return null;
+  }).filter((post): post is Post => !!post);
 
   return (
     <Panel id="blog">
@@ -184,17 +208,17 @@ export function Blog() {
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
           {homePosts.map((post) => {
             const isComponent = post.metadata.category === "components";
+            const isMock = ["chevrons-up-down-icon", "mobius-loop-icon"].includes(post.slug);
             const linkHref = isComponent ? `/components/${post.slug}` : `/blog/${post.slug}`;
             
-            return (
-              <Link
-                key={post.slug}
-                href={linkHref}
-                className="group flex flex-col gap-3 rounded-xl border border-edge bg-zinc-950/40 p-2 hover:border-zinc-800 hover:bg-zinc-900/20 transition-all duration-300 h-full"
-              >
+            const cardContent = (
+              <>
                 <BlogCover slug={post.slug} />
                 <div className="flex flex-col gap-1 p-2 pt-1">
-                  <h3 className="text-sm font-semibold leading-snug text-balance text-zinc-200 group-hover:text-white transition-colors">
+                  <h3 className={cn(
+                    "text-sm font-semibold leading-snug text-balance transition-colors",
+                    isMock ? "text-zinc-400" : "text-zinc-200 group-hover:text-white"
+                  )}>
                     {post.metadata.title}
                   </h3>
                   <time
@@ -204,6 +228,27 @@ export function Blog() {
                     {dayjs(post.metadata.createdAt).format("DD.MM.YYYY")}
                   </time>
                 </div>
+              </>
+            );
+
+            if (isMock) {
+              return (
+                <div
+                  key={post.slug}
+                  className="flex flex-col gap-3 rounded-xl border border-edge bg-zinc-950/40 p-2 select-none cursor-default h-full"
+                >
+                  {cardContent}
+                </div>
+              );
+            }
+
+            return (
+              <Link
+                key={post.slug}
+                href={linkHref}
+                className="group flex flex-col gap-3 rounded-xl border border-edge bg-zinc-950/40 p-2 hover:border-zinc-800 hover:bg-zinc-900/20 transition-all duration-300 h-full"
+              >
+                {cardContent}
               </Link>
             );
           })}

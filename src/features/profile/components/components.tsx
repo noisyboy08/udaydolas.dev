@@ -99,22 +99,54 @@ export function Components() {
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 border-b border-edge">
         {HOME_COMPONENTS.map((item) => {
           const Icon = item.icon;
+          const isMock = [
+            "chevrons-up-down-icon",
+            "mobius-loop-icon",
+            "brand-assets-menu",
+            "toc-minimap",
+            "twemoji",
+          ].includes(item.slug);
+
+          const content = (
+            <>
+              <span className="relative flex size-6 shrink-0 items-center justify-center rounded-md border border-border bg-muted text-muted-foreground shadow-sm">
+                <Icon className="size-3.5" aria-hidden />
+              </span>
+              <span
+                className={cn(
+                  "truncate text-sm font-semibold underline-offset-4",
+                  isMock ? "text-zinc-500" : "group-hover:underline"
+                )}
+              >
+                {item.title}
+              </span>
+            </>
+          );
+
+          const className = cn(
+            "flex min-h-12 items-center gap-3 border-edge px-4 py-3",
+            "sm:border-r md:[&:nth-child(3n)]:border-r-0 sm:max-md:[&:nth-child(2n)]:border-r-0 sm:border-r",
+            "[&:nth-child(n+2)]:border-t sm:[&:nth-child(n+3)]:border-t md:[&:nth-child(n+4)]:border-t",
+            isMock
+              ? "cursor-default select-none bg-zinc-950/20"
+              : "group transition-colors hover:bg-accent/60"
+          );
+
+          if (isMock) {
+            return (
+              <div key={item.title} className={className}>
+                {content}
+              </div>
+            );
+          }
+
           return (
             <Link
               key={item.title}
               href={`/components/${item.slug}`}
-              className={cn(
-                "group flex min-h-12 items-center gap-3 border-edge px-4 py-3 transition-colors hover:bg-accent/60",
-                "sm:border-r md:[&:nth-child(3n)]:border-r-0 sm:max-md:[&:nth-child(2n)]:border-r-0 sm:border-r",
-                "[&:nth-child(n+2)]:border-t sm:[&:nth-child(n+3)]:border-t md:[&:nth-child(n+4)]:border-t"
-              )}
+              className={className}
             >
-              <span className="relative flex size-6 shrink-0 items-center justify-center rounded-md border border-border bg-muted text-muted-foreground shadow-sm">
-                <Icon className="size-3.5" aria-hidden />
-              </span>
-              <span className="truncate text-sm font-semibold underline-offset-4 group-hover:underline">
-                {item.title}
-              </span>
+              {content}
             </Link>
           );
         })}
