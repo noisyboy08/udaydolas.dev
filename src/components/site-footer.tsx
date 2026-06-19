@@ -39,8 +39,8 @@ export function SiteFooter() {
         </div>
 
         {/* Large visual wordmark signature */}
-        <div className="px-8 py-6 flex justify-center select-none">
-          <WordmarkHoverEffect className="w-full max-w-3xl h-auto" />
+        <div className="px-4 py-8 flex justify-start select-none w-full">
+          <WordmarkHoverEffect className="w-full max-w-5xl h-auto" />
         </div>
       </div>
       <div className="pb-[env(safe-area-inset-bottom,0px)]">
