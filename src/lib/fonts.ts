@@ -1,7 +1,6 @@
 import {
   IBM_Plex_Mono as FontMono,
   IBM_Plex_Sans as FontSans,
-  Pinyon_Script as FontScript,
 } from "next/font/google";
 
 export const fontSans = FontSans({
@@ -16,11 +15,4 @@ export const fontMono = FontMono({
   display: "swap",
   subsets: ["latin"],
   variable: "--font-mono",
-});
-
-export const fontScript = FontScript({
-  weight: "400",
-  display: "swap",
-  subsets: ["latin"],
-  variable: "--font-script",
 });
