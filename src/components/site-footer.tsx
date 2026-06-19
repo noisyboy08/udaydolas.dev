@@ -13,7 +13,7 @@ export function SiteFooter() {
     <footer className="max-w-screen overflow-x-hidden px-2">
       <div
         className={cn(
-          "screen-line-before mx-auto border-x border-edge pt-4",
+          "screen-line-before mx-auto pt-4",
           isShowcase ? "max-w-[1720px]" : "md:max-w-3xl"
         )}
       >
@@ -34,13 +34,13 @@ export function SiteFooter() {
           .
         </p>
 
-        <div className="screen-line-before screen-line-after h-8 border-x border-edge">
+        <div className="screen-line-before screen-line-after h-8">
           <div className="h-full w-full bg-[repeating-linear-gradient(315deg,var(--pattern-foreground)_0,var(--pattern-foreground)_1px,transparent_0,transparent_50%)] bg-size-[10px_10px] [--pattern-foreground:var(--color-edge)]/56" />
         </div>
 
         {/* Large visual wordmark signature */}
         <div className="px-8 py-6 flex justify-center select-none">
-          <WordmarkHoverEffect className="w-full max-w-2xl h-auto" />
+          <WordmarkHoverEffect className="w-full max-w-3xl h-auto" />
         </div>
       </div>
       <div className="pb-[env(safe-area-inset-bottom,0px)]">
