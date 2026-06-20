@@ -8,24 +8,48 @@ import { cn } from "@/lib/utils";
 function WordmarkPaths() {
   return (
     <>
-      {/* U (X: 48 to 112) */}
-      <path d="M 48 40 L 48 128 A 32 32 0 0 0 112 128 L 112 40" />
-      {/* d (X: 128 to 192) */}
-      <path d="M 128 128 A 32 32 0 1 0 192 128 A 32 32 0 1 0 128 128 M 192 40 L 192 160" />
-      {/* a (X: 208 to 272) */}
-      <path d="M 208 128 A 32 32 0 1 0 272 128 A 32 32 0 1 0 208 128 M 272 96 L 272 160" />
-      {/* y (X: 288 to 352) */}
-      <path d="M 288 96 L 288 128 A 32 32 0 0 0 352 128 M 352 96 L 352 176 A 16 16 0 0 1 336 192 L 310 192" />
-      {/* D (X: 368 to 432) */}
-      <path d="M 368 40 L 368 160 M 368 40 A 64 60 0 0 1 368 160" />
-      {/* o (X: 448 to 512) */}
-      <path d="M 448 128 A 32 32 0 1 0 512 128 A 32 32 0 1 0 448 128" />
-      {/* l (X: 528 to 592) */}
-      <path d="M 560 40 L 560 160" />
-      {/* a (X: 608 to 672) */}
-      <path d="M 608 128 A 32 32 0 1 0 672 128 A 32 32 0 1 0 608 128 M 672 96 L 672 160" />
-      {/* s (X: 688 to 752) */}
-      <path d="M 748 104 C 748 96, 692 96, 692 116 C 692 136, 748 128, 748 148 C 748 164, 692 164, 692 156" />
+      {/* U */}
+      <rect x="108" y="0" width="15" height="60" />
+      <rect x="153" y="0" width="15" height="60" />
+      <rect x="108" y="45" width="60" height="15" />
+      {/* D */}
+      <rect x="188" y="0" width="15" height="60" />
+      <rect x="203" y="0" width="30" height="15" />
+      <rect x="233" y="15" width="15" height="30" />
+      <rect x="203" y="45" width="30" height="15" />
+      {/* A */}
+      <rect x="268" y="0" width="15" height="60" />
+      <rect x="313" y="0" width="15" height="60" />
+      <rect x="283" y="0" width="30" height="15" />
+      <rect x="283" y="30" width="30" height="15" />
+      {/* Y */}
+      <rect x="348" y="0" width="15" height="30" />
+      <rect x="393" y="0" width="15" height="30" />
+      <rect x="370" y="30" width="15" height="30" />
+      {/* D */}
+      <rect x="438" y="0" width="15" height="60" />
+      <rect x="453" y="0" width="30" height="15" />
+      <rect x="483" y="15" width="15" height="30" />
+      <rect x="453" y="45" width="30" height="15" />
+      {/* O */}
+      <rect x="518" y="0" width="15" height="60" />
+      <rect x="533" y="0" width="30" height="15" />
+      <rect x="563" y="0" width="15" height="60" />
+      <rect x="533" y="45" width="30" height="15" />
+      {/* L */}
+      <rect x="598" y="0" width="15" height="60" />
+      <rect x="598" y="45" width="45" height="15" />
+      {/* A */}
+      <rect x="658" y="0" width="15" height="60" />
+      <rect x="703" y="0" width="15" height="60" />
+      <rect x="673" y="0" width="30" height="15" />
+      <rect x="673" y="30" width="30" height="15" />
+      {/* S */}
+      <rect x="748" y="0" width="45" height="15" />
+      <rect x="748" y="15" width="15" height="15" />
+      <rect x="748" y="30" width="45" height="15" />
+      <rect x="778" y="45" width="15" height="15" />
+      <rect x="748" y="45" width="45" height="15" />
     </>
   );
 }
@@ -51,8 +75,8 @@ export function WordmarkHoverEffect(props: React.ComponentProps<"svg">) {
   return (
     <svg
       ref={containerRef}
-      className={cn("w-full max-w-3xl h-auto select-none", props.className)}
-      viewBox="0 0 800 200"
+      className={cn("w-full select-none", props.className)}
+      viewBox="0 0 900 80"
       xmlns="http://www.w3.org/2000/svg"
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
@@ -60,11 +84,6 @@ export function WordmarkHoverEffect(props: React.ComponentProps<"svg">) {
       {...props}
     >
       <defs>
-        {/* Clip path to cut off letters below the horizontal line */}
-        <clipPath id="halfCutClip">
-          <rect x="0" y="0" width="800" height="160" />
-        </clipPath>
-
         <linearGradient
           id="logoGradient"
           gradientUnits="userSpaceOnUse"
@@ -101,61 +120,21 @@ export function WordmarkHoverEffect(props: React.ComponentProps<"svg">) {
           maskUnits="userSpaceOnUse"
           x="0"
           y="0"
-          width="800"
-          height="200"
-          fill="black"
+          width="900"
+          height="80"
         >
-          <rect fill="url(#revealMask)" width="800" height="200" />
-          <g clipPath="url(#halfCutClip)">
-            <WordmarkPaths />
-          </g>
-        </mask>
-
-        <mask
-          id="pathOutsideMask"
-          maskUnits="userSpaceOnUse"
-          x="0"
-          y="0"
-          width="800"
-          height="200"
-          fill="black"
-        >
-          <rect fill="white" width="800" height="200" />
-          <g clipPath="url(#halfCutClip)">
-            <WordmarkPaths />
-          </g>
+          <rect fill="url(#revealMask)" width="900" height="80" />
         </mask>
       </defs>
 
-      {/* Render horizontal line at the cutoff point Y = 160 */}
-      <line
-        x1="0"
-        y1="160"
-        x2="800"
-        y2="160"
-        className="stroke-zinc-300 dark:stroke-zinc-800"
-        strokeWidth="2"
-      />
-
-      <g
-        className="fill-transparent stroke-zinc-300/35 dark:stroke-zinc-800/40"
-        strokeWidth="3.5"
-        mask="url(#pathOutsideMask)"
-      >
-        <g clipPath="url(#halfCutClip)">
-          <WordmarkPaths />
-        </g>
+      {/* Faint background block letters */}
+      <g className="fill-zinc-300/35 dark:fill-zinc-800/40">
+        <WordmarkPaths />
       </g>
 
-      <g
-        className="fill-transparent"
-        stroke="url(#logoGradient)"
-        strokeWidth="3.5"
-        mask="url(#logoMask)"
-      >
-        <g clipPath="url(#halfCutClip)">
-          <WordmarkPaths />
-        </g>
+      {/* Color reveal letters on hover */}
+      <g fill="url(#logoGradient)" mask="url(#logoMask)">
+        <WordmarkPaths />
       </g>
     </svg>
   );
