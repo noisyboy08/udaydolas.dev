@@ -5,105 +5,115 @@ import React, { useEffect, useRef, useState } from "react";
 
 import { cn } from "@/lib/utils";
 
-const SW = 7; // bar/stroke width in SVG units
-
 /**
- * "UDAY DOLAS" in blocky outlined pixel-art letters.
+ * "UDAY DOLAS" pixel-art wordmark — same style as the chanhdai.com footer.
  *
- * Each letter is built from thin filled rects forming just the BORDER
- * of the letter (background shows through the hollow centre).
+ * Letter geometry rules (copied faithfully from chanhdai-wordmark.tsx):
+ *   bar width  = 8 px
+ *   viewBox    = 0 0 960 190
+ *   baseline y = 180  (bottom of every letter)
  *
- * DELIBERATE height variation per letter creates the organic skyline
- * silhouette seen in the reference image:
- *
- *   U  – left bar much taller than right bar (asymmetric U)
- *   D  – medium-tall
- *   A  – medium
- *   Y  – tall arms, no top connector, join at mid, stem below
- *   [word space]
- *   D  – tallest element in the whole wordmark
- *   O  – shortest (small square)
- *   L  – tall, simple vertical + foot
- *   A  – medium
- *   S  – medium, three horizontal bars + two side connectors
- *
- * ViewBox: 0 0 900 195   baseline (bottom edge): y = 176
- * All letters: visual width = 70 px, gaps = 22 px, word-space = 55 px
+ * Heights vary per letter to create the irregular city-skyline silhouette:
+ *   U  y=18  (tall)
+ *   D  y=18  (tall)
+ *   A  y=70  (short)
+ *   Y  y=25  (tall, arms + stem)
+ *   D  y=10  (TALLEST, extra visual weight)
+ *   O  y=70  (short)
+ *   L  y=20  (tall)
+ *   A  y=70  (short)
+ *   S  y=55  (medium)
  */
+
+const B = 8;   // bar / stroke width
+const Y0 = 180; // baseline (bottom edge of all letters)
+
 function WordmarkPaths() {
+  // ── letter x origins ──────────────────────────────────────────────────
+  const Ux  = 20;   // U  → right edge  98
+  const D1x = 118;  // D  → right edge  196
+  const Ax  = 216;  // A  → right edge  294
+  const Yx  = 314;  // Y  → right edge  392 → +60 word-space → D at 452
+  const D2x = 452;  // D  → right edge  530
+  const Ox  = 550;  // O  → right edge  628
+  const Lx  = 648;  // L  → right edge  726
+  const A2x = 746;  // A  → right edge  824
+  const Sx  = 844;  // S  → right edge  922
+
+  // helper: height from a top-y to the baseline
+  const h = (topY: number) => Y0 - topY;
+
   return (
     <>
-      {/* ── U  x=15  left=y10  right=y35 ── */}
-      <rect x={15}  y={10}  width={SW} height={166} />  {/* left bar  (tall) */}
-      <rect x={78}  y={35}  width={SW} height={141} />  {/* right bar (shorter) */}
-      <rect x={15}  y={169} width={70} height={SW}  />  {/* bottom bar */}
+      {/* ── U  top=18  w=78 ── */}
+      <rect x={Ux}      y={18}  width={B}  height={h(18)} />  {/* left bar  */}
+      <rect x={Ux + 70} y={18}  width={B}  height={h(18)} />  {/* right bar */}
+      <rect x={Ux}      y={Y0 - B} width={78} height={B} />  {/* bottom bar */}
 
-      {/* ── D  x=107  y=42 ── */}
-      <rect x={107} y={42}  width={SW} height={134} />  {/* left bar */}
-      <rect x={107} y={42}  width={70} height={SW}  />  {/* top bar */}
-      <rect x={170} y={49}  width={SW} height={127} />  {/* right bar (inner) */}
-      <rect x={107} y={169} width={70} height={SW}  />  {/* bottom bar */}
+      {/* ── D  top=18  w=78 ── */}
+      <rect x={D1x}      y={18}      width={B}  height={h(18)} />  {/* left  */}
+      <rect x={D1x}      y={18}      width={78} height={B}     />  {/* top   */}
+      <rect x={D1x + 70} y={18 + B}  width={B}  height={h(18) - B} />  {/* right (inner arc) */}
+      <rect x={D1x}      y={Y0 - B}  width={78} height={B}    />  {/* bottom */}
 
-      {/* ── A  x=199  y=52 ── */}
-      <rect x={199} y={52}  width={SW} height={124} />  {/* left bar */}
-      <rect x={262} y={52}  width={SW} height={124} />  {/* right bar */}
-      <rect x={199} y={52}  width={70} height={SW}  />  {/* top bar */}
-      <rect x={199} y={108} width={70} height={SW}  />  {/* crossbar */}
+      {/* ── A  top=70  w=78 ── */}
+      <rect x={Ax}      y={70}      width={B}  height={h(70)} />  {/* left  */}
+      <rect x={Ax + 70} y={70}      width={B}  height={h(70)} />  {/* right */}
+      <rect x={Ax}      y={70}      width={78} height={B}     />  {/* top   */}
+      <rect x={Ax}      y={115}     width={78} height={B}     />  {/* crossbar */}
 
-      {/* ── Y  x=291  y=27  (arms, no top bar, midpoint join, stem) ── */}
-      <rect x={291} y={27}  width={SW} height={75}  />  {/* left arm */}
-      <rect x={354} y={27}  width={SW} height={75}  />  {/* right arm */}
-      <rect x={291} y={102} width={70} height={SW}  />  {/* mid join */}
-      <rect x={323} y={102} width={SW} height={74}  />  {/* centre stem */}
+      {/* ── Y  top=25  arms=25→102  stem=102→180  w=78 ── */}
+      <rect x={Yx}      y={25}  width={B}  height={77} />  {/* left arm  */}
+      <rect x={Yx + 70} y={25}  width={B}  height={77} />  {/* right arm */}
+      <rect x={Yx}      y={102} width={78} height={B}  />  {/* mid join  */}
+      <rect x={Yx + 35} y={102} width={B}  height={h(102)} />  {/* stem  */}
 
       {/* ═══ word space ═══ */}
 
-      {/* ── D  x=438  y=5  TALLEST ── */}
-      <rect x={438} y={5}   width={SW} height={171} />  {/* left bar */}
-      <rect x={438} y={5}   width={70} height={SW}  />  {/* top bar */}
-      <rect x={501} y={12}  width={SW} height={164} />  {/* right bar (inner) */}
-      <rect x={438} y={169} width={70} height={SW}  />  {/* bottom bar */}
+      {/* ── D  top=10  w=78  (TALLEST) ── */}
+      <rect x={D2x}      y={10}      width={B}  height={h(10)} />
+      <rect x={D2x}      y={10}      width={78} height={B}     />
+      <rect x={D2x + 70} y={10 + B}  width={B}  height={h(10) - B} />
+      <rect x={D2x}      y={Y0 - B}  width={78} height={B}    />
 
-      {/* ── O  x=530  y=78  SHORTEST ── */}
-      <rect x={530} y={78}  width={SW} height={98}  />  {/* left bar */}
-      <rect x={593} y={78}  width={SW} height={98}  />  {/* right bar */}
-      <rect x={530} y={78}  width={70} height={SW}  />  {/* top bar */}
-      <rect x={530} y={169} width={70} height={SW}  />  {/* bottom bar */}
+      {/* ── O  top=70  w=78  (shortest) ── */}
+      <rect x={Ox}      y={70}     width={B}  height={h(70)} />  {/* left  */}
+      <rect x={Ox + 70} y={70}     width={B}  height={h(70)} />  {/* right */}
+      <rect x={Ox}      y={70}     width={78} height={B}     />  {/* top   */}
+      <rect x={Ox}      y={Y0 - B} width={78} height={B}    />  {/* bottom */}
 
-      {/* ── L  x=622  y=22  tall ── */}
-      <rect x={622} y={22}  width={SW} height={154} />  {/* vertical bar */}
-      <rect x={622} y={169} width={70} height={SW}  />  {/* foot bar */}
+      {/* ── L  top=20  w=78 ── */}
+      <rect x={Lx} y={20}     width={B}  height={h(20)} />  {/* vertical */}
+      <rect x={Lx} y={Y0 - B} width={78} height={B}    />  {/* foot     */}
 
-      {/* ── A  x=714  y=52 ── */}
-      <rect x={714} y={52}  width={SW} height={124} />  {/* left bar */}
-      <rect x={777} y={52}  width={SW} height={124} />  {/* right bar */}
-      <rect x={714} y={52}  width={70} height={SW}  />  {/* top bar */}
-      <rect x={714} y={108} width={70} height={SW}  />  {/* crossbar */}
+      {/* ── A  top=70  w=78 ── */}
+      <rect x={A2x}      y={70}  width={B}  height={h(70)} />
+      <rect x={A2x + 70} y={70}  width={B}  height={h(70)} />
+      <rect x={A2x}      y={70}  width={78} height={B}     />
+      <rect x={A2x}      y={115} width={78} height={B}     />
 
-      {/* ── S  x=806  y=67 ── */}
-      <rect x={806} y={67}  width={70} height={SW}  />  {/* top bar */}
-      <rect x={806} y={74}  width={SW} height={46}  />  {/* top-left vert */}
-      <rect x={806} y={120} width={70} height={SW}  />  {/* mid bar */}
-      <rect x={869} y={127} width={SW} height={42}  />  {/* bottom-right vert */}
-      <rect x={806} y={169} width={70} height={SW}  />  {/* bottom bar */}
+      {/* ── S  top=55  w=78 ── */}
+      <rect x={Sx}      y={55}      width={78} height={B}  />  {/* top bar      */}
+      <rect x={Sx}      y={55 + B}  width={B}  height={52} />  {/* top-left     */}
+      <rect x={Sx}      y={107 + B} width={78} height={B}  />  {/* mid bar      */}
+      <rect x={Sx + 70} y={116 + B} width={B}  height={h(116) - B} />  {/* bot-right */}
+      <rect x={Sx}      y={Y0 - B}  width={78} height={B}  />  {/* bottom bar   */}
     </>
   );
 }
 
 export function WordmarkHoverEffect(props: React.ComponentProps<"svg">) {
   const containerRef = useRef<SVGSVGElement>(null);
-  const [cursor, setCursor] = useState({ x: 0, y: 0 });
-  const [hovered, setHovered] = useState(false);
+  const [cursor, setCursor]         = useState({ x: 0, y: 0 });
+  const [hovered, setHovered]       = useState(false);
   const [maskPosition, setMaskPosition] = useState({ cx: "50%", cy: "50%" });
 
   useEffect(() => {
     if (containerRef.current && cursor.x !== null && cursor.y !== null) {
       const svgRect = containerRef.current.getBoundingClientRect();
-      const cxPercentage = ((cursor.x - svgRect.left) / svgRect.width) * 100;
-      const cyPercentage = ((cursor.y - svgRect.top) / svgRect.height) * 100;
       setMaskPosition({
-        cx: `${cxPercentage}%`,
-        cy: `${cyPercentage}%`,
+        cx: `${((cursor.x - svgRect.left) / svgRect.width)  * 100}%`,
+        cy: `${((cursor.y - svgRect.top)  / svgRect.height) * 100}%`,
       });
     }
   }, [cursor]);
@@ -112,7 +122,7 @@ export function WordmarkHoverEffect(props: React.ComponentProps<"svg">) {
     <svg
       ref={containerRef}
       className={cn("w-full select-none", props.className)}
-      viewBox="0 0 900 195"
+      viewBox="0 0 960 190"
       xmlns="http://www.w3.org/2000/svg"
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
@@ -120,14 +130,14 @@ export function WordmarkHoverEffect(props: React.ComponentProps<"svg">) {
       {...props}
     >
       <defs>
-        {/* Multi-colour gradient for the hover reveal */}
+        {/* Multi-stop gradient applied on hover */}
         <linearGradient
           id="logoGradient"
           gradientUnits="userSpaceOnUse"
           x1="0"
-          y1="97"
-          x2="900"
-          y2="97"
+          y1="95"
+          x2="960"
+          y2="95"
         >
           {hovered && (
             <>
@@ -140,7 +150,7 @@ export function WordmarkHoverEffect(props: React.ComponentProps<"svg">) {
           )}
         </linearGradient>
 
-        {/* Radial spotlight that follows the cursor */}
+        {/* Radial spotlight that tracks the cursor */}
         <motion.radialGradient
           id="revealMask"
           gradientUnits="userSpaceOnUse"
@@ -155,32 +165,28 @@ export function WordmarkHoverEffect(props: React.ComponentProps<"svg">) {
 
         {/*
           logoMask:
-          • Black base hides everything
-          • Letter rects filled with the radial spotlight:
-            near cursor → white → colour revealed
-            far from cursor → black → hidden
+            black base  → hides everything
+            letter bars filled with the radial spotlight
+            → only bars near the cursor turn white → gradient colour shows through
         */}
         <mask
           id="logoMask"
           maskUnits="userSpaceOnUse"
-          x="0"
-          y="0"
-          width="900"
-          height="195"
+          x="0" y="0" width="960" height="190"
         >
-          <rect width="900" height="195" fill="black" />
+          <rect width="960" height="190" fill="black" />
           <g fill="url(#revealMask)">
             <WordmarkPaths />
           </g>
         </mask>
       </defs>
 
-      {/* Ghost letters — very faint, always visible */}
-      <g className="fill-zinc-400/[0.18] dark:fill-zinc-400/[0.12]">
+      {/* Ghost / resting state: very faint outlines */}
+      <g className="fill-zinc-400/[0.15] dark:fill-zinc-300/[0.10]">
         <WordmarkPaths />
       </g>
 
-      {/* Coloured gradient revealed through cursor spotlight */}
+      {/* Colour gradient, revealed only through the letter bars */}
       <g fill="url(#logoGradient)" mask="url(#logoMask)">
         <WordmarkPaths />
       </g>
