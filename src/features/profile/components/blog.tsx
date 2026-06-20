@@ -15,34 +15,34 @@ import { Panel, PanelHeader, PanelTitle } from "./panel";
 export function BlogCover({ slug }: { slug: string }) {
   if (slug === "react-wheel-picker-vercel") {
     return (
-      <div className="relative aspect-video w-full overflow-hidden rounded-lg bg-black flex flex-col items-center justify-center border border-white/5 select-none p-4">
+      <div className="relative flex aspect-video w-full flex-col items-center justify-center overflow-hidden rounded-lg border border-white/5 bg-black p-4 select-none">
         {/* Vercel technical blueprint banner */}
         <div className="flex items-center gap-3">
           <div className="flex flex-col items-center">
             {/* Scrollable wheel pickers visual */}
-            <div className="flex gap-1.5 h-12 items-center text-[8px] font-mono text-zinc-600">
-              <div className="flex flex-col gap-1 select-none opacity-40">
+            <div className="flex h-12 items-center gap-1.5 font-mono text-[8px] text-zinc-600">
+              <div className="flex flex-col gap-1 opacity-40 select-none">
                 <span>08</span>
-                <span className="text-zinc-400 font-bold scale-110">09</span>
+                <span className="scale-110 font-bold text-zinc-400">09</span>
                 <span>10</span>
               </div>
               <div className="flex flex-col gap-1 select-none">
                 <span>28</span>
-                <span className="text-white font-bold scale-115">29</span>
+                <span className="scale-115 font-bold text-white">29</span>
                 <span>30</span>
               </div>
-              <div className="flex flex-col gap-1 select-none opacity-40">
+              <div className="flex flex-col gap-1 opacity-40 select-none">
                 <span>01</span>
-                <span className="text-zinc-400 font-bold scale-110">02</span>
+                <span className="scale-110 font-bold text-zinc-400">02</span>
                 <span>03</span>
               </div>
             </div>
           </div>
           <div className="h-8 w-px bg-zinc-800" />
-          <div className="flex flex-col text-[8px] font-mono leading-normal tracking-wide text-zinc-500">
-            <span className="text-white font-bold text-[9px] flex items-center gap-1.5 mb-0.5">
+          <div className="flex flex-col font-mono text-[8px] leading-normal tracking-wide text-zinc-500">
+            <span className="mb-0.5 flex items-center gap-1.5 text-[9px] font-bold text-white">
               {/* Triangle Logo */}
-              <span className="inline-block border-l-[5px] border-l-transparent border-r-[5px] border-r-transparent border-b-[9px] border-b-white" />
+              <span className="inline-block border-r-[5px] border-b-[9px] border-l-[5px] border-r-transparent border-b-white border-l-transparent" />
               VERCEL INC. // 2025
             </span>
             <span>OPEN SOURCE SOFTWARE PROGRAM</span>
@@ -54,22 +54,28 @@ export function BlogCover({ slug }: { slug: string }) {
 
   if (slug === "followed-by-shadcn-x") {
     return (
-      <div className="relative aspect-video w-full overflow-hidden rounded-lg bg-black flex items-center justify-center border border-white/5 select-none p-2.5">
+      <div className="relative flex aspect-video w-full items-center justify-center overflow-hidden rounded-lg border border-white/5 bg-black p-2.5 select-none">
         {/* shadcn X profile card mockup */}
         <div className="w-[180px] rounded-lg border border-zinc-800 bg-zinc-950 p-2 font-sans text-[8px] text-zinc-400">
           <div className="flex items-start justify-between">
-            <div className="size-6 rounded-full bg-zinc-800 border border-zinc-700 flex items-center justify-center font-bold text-white text-[10px] overflow-hidden">
+            <div className="flex size-6 items-center justify-center overflow-hidden rounded-full border border-zinc-700 bg-zinc-800 text-[10px] font-bold text-white">
               <SmileIcon className="size-4" />
             </div>
             <div className="flex gap-1">
-              <span className="rounded-full border border-zinc-800 px-1.5 py-0.5 text-[6px] text-zinc-400">X</span>
-              <span className="rounded-full bg-white px-1.5 py-0.5 text-[6px] font-semibold text-black">Following</span>
+              <span className="rounded-full border border-zinc-800 px-1.5 py-0.5 text-[6px] text-zinc-400">
+                X
+              </span>
+              <span className="rounded-full bg-white px-1.5 py-0.5 text-[6px] font-semibold text-black">
+                Following
+              </span>
             </div>
           </div>
           <div className="mt-1">
-            <p className="font-bold text-white text-[9px] leading-tight flex items-center gap-0.5">
+            <p className="flex items-center gap-0.5 text-[9px] leading-tight font-bold text-white">
               shadcn
-              <span className="inline-block size-2 rounded-full bg-blue-500 text-[5px] text-white flex items-center justify-center">✓</span>
+              <span className="flex inline-block size-2 items-center justify-center rounded-full bg-blue-500 text-[5px] text-white">
+                ✓
+              </span>
             </p>
             <p className="text-[7px] text-zinc-500">@shadcn</p>
           </div>
@@ -87,8 +93,8 @@ export function BlogCover({ slug }: { slug: string }) {
 
   if (slug === "chevrons-up-down-icon") {
     return (
-      <div className="relative aspect-video w-full overflow-hidden rounded-lg bg-black flex items-center justify-center border border-white/5 select-none">
-        <div className="flex flex-col items-center justify-center p-3 rounded-lg border border-zinc-800/40 bg-zinc-900/10 hover:border-zinc-800 transition-colors">
+      <div className="relative flex aspect-video w-full items-center justify-center overflow-hidden rounded-lg border border-white/5 bg-black select-none">
+        <div className="flex flex-col items-center justify-center rounded-lg border border-zinc-800/40 bg-zinc-900/10 p-3 transition-colors hover:border-zinc-800">
           <ChevronsUpDownIcon className="size-8 text-zinc-400" />
         </div>
       </div>
@@ -97,8 +103,8 @@ export function BlogCover({ slug }: { slug: string }) {
 
   if (slug === "mobius-loop-icon") {
     return (
-      <div className="relative aspect-video w-full overflow-hidden rounded-lg bg-black flex items-center justify-center border border-white/5 select-none">
-        <div className="flex flex-col items-center justify-center p-3 rounded-lg border border-zinc-800/40 bg-zinc-900/10 hover:border-zinc-800 transition-colors">
+      <div className="relative flex aspect-video w-full items-center justify-center overflow-hidden rounded-lg border border-white/5 bg-black select-none">
+        <div className="flex flex-col items-center justify-center rounded-lg border border-zinc-800/40 bg-zinc-900/10 p-3 transition-colors hover:border-zinc-800">
           <InfinityIcon className="size-8 text-zinc-400" />
         </div>
       </div>
@@ -107,10 +113,12 @@ export function BlogCover({ slug }: { slug: string }) {
 
   if (slug === "spinning-circular-text") {
     return (
-      <div className="relative aspect-video w-full overflow-hidden rounded-lg bg-black flex items-center justify-center border border-white/5 select-none">
-        <div className="relative size-12 flex items-center justify-center border border-dashed border-zinc-800 rounded-full animate-[spin_8s_linear_infinite]">
-          <div className="absolute text-[5px] font-mono text-zinc-500 uppercase tracking-widest flex items-center justify-center w-full h-full">
-            <span className="text-[6px] tracking-normal select-none">BUILT WITH CARE • NCDAI •</span>
+      <div className="relative flex aspect-video w-full items-center justify-center overflow-hidden rounded-lg border border-white/5 bg-black select-none">
+        <div className="relative flex size-12 animate-[spin_8s_linear_infinite] items-center justify-center rounded-full border border-dashed border-zinc-800">
+          <div className="absolute flex h-full w-full items-center justify-center font-mono text-[5px] tracking-widest text-zinc-500 uppercase">
+            <span className="text-[6px] tracking-normal select-none">
+              BUILT WITH CARE • UDAYDOLAS •
+            </span>
           </div>
         </div>
       </div>
@@ -119,13 +127,18 @@ export function BlogCover({ slug }: { slug: string }) {
 
   if (slug === "dot-grid-spotlight") {
     return (
-      <div className="relative aspect-video w-full overflow-hidden rounded-lg bg-black flex items-center justify-center border border-white/5 select-none">
-        <div className="grid grid-cols-6 gap-1.5 p-2 bg-zinc-950 rounded-lg border border-zinc-900">
+      <div className="relative flex aspect-video w-full items-center justify-center overflow-hidden rounded-lg border border-white/5 bg-black select-none">
+        <div className="grid grid-cols-6 gap-1.5 rounded-lg border border-zinc-900 bg-zinc-950 p-2">
           {Array.from({ length: 24 }).map((_, i) => (
-            <div key={i} className={cn(
-              "size-1 rounded-full",
-              i === 10 || i === 11 || i === 16 || i === 17 ? "bg-zinc-400 shadow-sm" : "bg-zinc-800"
-            )} />
+            <div
+              key={i}
+              className={cn(
+                "size-1 rounded-full",
+                i === 10 || i === 11 || i === 16 || i === 17
+                  ? "bg-zinc-400 shadow-sm"
+                  : "bg-zinc-800"
+              )}
+            />
           ))}
         </div>
       </div>
@@ -134,11 +147,15 @@ export function BlogCover({ slug }: { slug: string }) {
 
   // Fallback for other posts (e.g. standard blogs)
   return (
-    <div className="relative aspect-video w-full overflow-hidden rounded-lg bg-black flex flex-col items-center justify-center border border-white/5 select-none p-4 font-mono text-[9px] text-zinc-500">
-      <div className="border border-dashed border-zinc-800 rounded p-2 text-center max-w-[80%]">
-        <span className="text-zinc-400 uppercase tracking-wider block mb-1">TECHNICAL GUIDE</span>
-        <div className="h-px bg-zinc-800 my-1" />
-        <span className="text-[8px] text-zinc-600 block">FIG_002 // ARTICLE</span>
+    <div className="relative flex aspect-video w-full flex-col items-center justify-center overflow-hidden rounded-lg border border-white/5 bg-black p-4 font-mono text-[9px] text-zinc-500 select-none">
+      <div className="max-w-[80%] rounded border border-dashed border-zinc-800 p-2 text-center">
+        <span className="mb-1 block tracking-wider text-zinc-400 uppercase">
+          TECHNICAL GUIDE
+        </span>
+        <div className="my-1 h-px bg-zinc-800" />
+        <span className="block text-[8px] text-zinc-600">
+          FIG_002 // ARTICLE
+        </span>
       </div>
     </div>
   );
@@ -150,12 +167,12 @@ const HOME_BLOG_SLUGS = [
   "chevrons-up-down-icon",
   "mobius-loop-icon",
   "spinning-circular-text",
-  "dot-grid-spotlight"
+  "dot-grid-spotlight",
 ];
 
 export function Blog() {
   const allPosts = getAllPosts();
-  
+
   // Total count of articles and components (excluding projects)
   const allPostsCount = allPosts.filter(
     (post) => post.metadata?.category !== "projects"
@@ -201,24 +218,33 @@ export function Blog() {
         </PanelTitle>
       </PanelHeader>
 
-      <div className="relative py-4 px-4">
+      <div className="relative px-4 py-4">
         {/* Visual middle column divider on desktop */}
         <div className="pointer-events-none absolute inset-y-0 left-1/2 -z-1 border-l border-edge max-sm:hidden" />
 
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
           {homePosts.map((post) => {
             const isComponent = post.metadata.category === "components";
-            const isMock = ["chevrons-up-down-icon", "mobius-loop-icon"].includes(post.slug);
-            const linkHref = isComponent ? `/components/${post.slug}` : `/blog/${post.slug}`;
-            
+            const isMock = [
+              "chevrons-up-down-icon",
+              "mobius-loop-icon",
+            ].includes(post.slug);
+            const linkHref = isComponent
+              ? `/components/${post.slug}`
+              : `/blog/${post.slug}`;
+
             const cardContent = (
               <>
                 <BlogCover slug={post.slug} />
                 <div className="flex flex-col gap-1 p-2 pt-1">
-                  <h3 className={cn(
-                    "text-sm font-semibold leading-snug text-balance transition-colors",
-                    isMock ? "text-zinc-400" : "text-zinc-200 group-hover:text-white"
-                  )}>
+                  <h3
+                    className={cn(
+                      "text-sm leading-snug font-semibold text-balance transition-colors",
+                      isMock
+                        ? "text-zinc-400"
+                        : "text-zinc-200 group-hover:text-white"
+                    )}
+                  >
                     {post.metadata.title}
                   </h3>
                   <time
@@ -235,7 +261,7 @@ export function Blog() {
               return (
                 <div
                   key={post.slug}
-                  className="flex flex-col gap-3 rounded-xl border border-edge bg-zinc-950/40 p-2 select-none cursor-default h-full"
+                  className="flex h-full cursor-default flex-col gap-3 rounded-xl border border-edge bg-zinc-950/40 p-2 select-none"
                 >
                   {cardContent}
                 </div>
@@ -246,7 +272,7 @@ export function Blog() {
               <Link
                 key={post.slug}
                 href={linkHref}
-                className="group flex flex-col gap-3 rounded-xl border border-edge bg-zinc-950/40 p-2 hover:border-zinc-800 hover:bg-zinc-900/20 transition-all duration-300 h-full"
+                className="group flex h-full flex-col gap-3 rounded-xl border border-edge bg-zinc-950/40 p-2 transition-all duration-300 hover:border-zinc-800 hover:bg-zinc-900/20"
               >
                 {cardContent}
               </Link>
