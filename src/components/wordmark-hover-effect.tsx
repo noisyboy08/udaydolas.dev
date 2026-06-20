@@ -5,51 +5,88 @@ import React, { useEffect, useRef, useState } from "react";
 
 import { cn } from "@/lib/utils";
 
+// Bar thickness for all letter strokes
+const T = 9;
+
 function WordmarkPaths() {
+  /**
+   * "UDAY DOLAS" — blocky outlined pixel letters.
+   *
+   * Each letter is built from thin filled rects that form the OUTLINE
+   * of the letter (the dark background shows through the center),
+   * matching the reference image style.
+   *
+   * Layout:  viewBox 0 0 935 165
+   * Letters: 75px wide, 130px tall (y=25→155)
+   * Gap:     20px between letters, 70px for the word space
+   */
+
+  // X starting positions
+  const Ux  = 20;
+  const D1x = 115;
+  const Ax  = 210;
+  const Yx  = 305;
+  //          Y ends at 305+75=380 → 70px word-space → D starts at 450
+  const D2x = 450;
+  const Ox  = 545;
+  const Lx  = 640;
+  const A2x = 735;
+  const Sx  = 830;
+
   return (
     <>
-      {/* U */}
-      <rect x="108" y="0" width="15" height="60" />
-      <rect x="153" y="0" width="15" height="60" />
-      <rect x="108" y="45" width="60" height="15" />
-      {/* D */}
-      <rect x="188" y="0" width="15" height="60" />
-      <rect x="203" y="0" width="30" height="15" />
-      <rect x="233" y="15" width="15" height="30" />
-      <rect x="203" y="45" width="30" height="15" />
-      {/* A */}
-      <rect x="268" y="0" width="15" height="60" />
-      <rect x="313" y="0" width="15" height="60" />
-      <rect x="283" y="0" width="30" height="15" />
-      <rect x="283" y="30" width="30" height="15" />
-      {/* Y */}
-      <rect x="348" y="0" width="15" height="30" />
-      <rect x="393" y="0" width="15" height="30" />
-      <rect x="370" y="30" width="15" height="30" />
-      {/* D */}
-      <rect x="438" y="0" width="15" height="60" />
-      <rect x="453" y="0" width="30" height="15" />
-      <rect x="483" y="15" width="15" height="30" />
-      <rect x="453" y="45" width="30" height="15" />
-      {/* O */}
-      <rect x="518" y="0" width="15" height="60" />
-      <rect x="533" y="0" width="30" height="15" />
-      <rect x="563" y="0" width="15" height="60" />
-      <rect x="533" y="45" width="30" height="15" />
-      {/* L */}
-      <rect x="598" y="0" width="15" height="60" />
-      <rect x="598" y="45" width="45" height="15" />
-      {/* A */}
-      <rect x="658" y="0" width="15" height="60" />
-      <rect x="703" y="0" width="15" height="60" />
-      <rect x="673" y="0" width="30" height="15" />
-      <rect x="673" y="30" width="30" height="15" />
-      {/* S */}
-      <rect x="748" y="0" width="45" height="15" />
-      <rect x="748" y="15" width="15" height="15" />
-      <rect x="748" y="30" width="45" height="15" />
-      <rect x="778" y="45" width="15" height="15" />
-      <rect x="748" y="45" width="45" height="15" />
+      {/* ─── U ─── */}
+      <rect x={Ux + 0}  y={25}  width={T}  height={130} /> {/* left  */}
+      <rect x={Ux + 66} y={25}  width={T}  height={130} /> {/* right */}
+      <rect x={Ux + 0}  y={146} width={75} height={T}   /> {/* bottom */}
+
+      {/* ─── D (first) ─── */}
+      <rect x={D1x + 0}  y={25}  width={T}  height={130} /> {/* left */}
+      <rect x={D1x + 0}  y={25}  width={57} height={T}   /> {/* top */}
+      <rect x={D1x + 48} y={34}  width={T}  height={112} /> {/* right (shorter = D bulge) */}
+      <rect x={D1x + 0}  y={146} width={57} height={T}   /> {/* bottom */}
+
+      {/* ─── A (first) ─── */}
+      <rect x={Ax + 0}  y={25}  width={T}  height={130} /> {/* left */}
+      <rect x={Ax + 66} y={25}  width={T}  height={130} /> {/* right */}
+      <rect x={Ax + 0}  y={25}  width={75} height={T}   /> {/* top */}
+      <rect x={Ax + 0}  y={82}  width={75} height={T}   /> {/* crossbar */}
+
+      {/* ─── Y ─── */}
+      <rect x={Yx + 0}  y={25}  width={T}  height={70} /> {/* left arm */}
+      <rect x={Yx + 66} y={25}  width={T}  height={70} /> {/* right arm */}
+      <rect x={Yx + 0}  y={25}  width={75} height={T}  /> {/* top bar */}
+      <rect x={Yx + 0}  y={86}  width={75} height={T}  /> {/* mid join */}
+      <rect x={Yx + 33} y={86}  width={T}  height={69} /> {/* stem */}
+
+      {/* ─── D (second) ─── */}
+      <rect x={D2x + 0}  y={25}  width={T}  height={130} />
+      <rect x={D2x + 0}  y={25}  width={57} height={T}   />
+      <rect x={D2x + 48} y={34}  width={T}  height={112} />
+      <rect x={D2x + 0}  y={146} width={57} height={T}   />
+
+      {/* ─── O ─── */}
+      <rect x={Ox + 0}  y={25}  width={T}  height={130} /> {/* left */}
+      <rect x={Ox + 66} y={25}  width={T}  height={130} /> {/* right */}
+      <rect x={Ox + 0}  y={25}  width={75} height={T}   /> {/* top */}
+      <rect x={Ox + 0}  y={146} width={75} height={T}   /> {/* bottom */}
+
+      {/* ─── L ─── */}
+      <rect x={Lx + 0} y={25}  width={T}  height={130} /> {/* vertical */}
+      <rect x={Lx + 0} y={146} width={75} height={T}   /> {/* foot */}
+
+      {/* ─── A (second) ─── */}
+      <rect x={A2x + 0}  y={25}  width={T}  height={130} />
+      <rect x={A2x + 66} y={25}  width={T}  height={130} />
+      <rect x={A2x + 0}  y={25}  width={75} height={T}   />
+      <rect x={A2x + 0}  y={82}  width={75} height={T}   />
+
+      {/* ─── S ─── */}
+      <rect x={Sx + 0}  y={25}  width={75} height={T}  /> {/* top bar */}
+      <rect x={Sx + 0}  y={25}  width={T}  height={66} /> {/* top-left */}
+      <rect x={Sx + 0}  y={82}  width={75} height={T}  /> {/* mid bar */}
+      <rect x={Sx + 66} y={91}  width={T}  height={64} /> {/* bottom-right */}
+      <rect x={Sx + 0}  y={146} width={75} height={T}  /> {/* bottom bar */}
     </>
   );
 }
@@ -76,7 +113,7 @@ export function WordmarkHoverEffect(props: React.ComponentProps<"svg">) {
     <svg
       ref={containerRef}
       className={cn("w-full select-none", props.className)}
-      viewBox="0 0 900 80"
+      viewBox="0 0 935 165"
       xmlns="http://www.w3.org/2000/svg"
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
@@ -84,22 +121,22 @@ export function WordmarkHoverEffect(props: React.ComponentProps<"svg">) {
       {...props}
     >
       <defs>
-        {/* Gradient applied to hovered/revealed letters */}
+        {/* Multicolour gradient applied to hovered letters */}
         <linearGradient
           id="logoGradient"
           gradientUnits="userSpaceOnUse"
-          x1="0%"
-          y1="50%"
-          x2="100%"
-          y2="50%"
+          x1="0"
+          y1="82"
+          x2="935"
+          y2="82"
         >
           {hovered && (
             <>
-              <stop offset="0%" stopColor={"var(--color-yellow-500)"} />
-              <stop offset="25%" stopColor={"var(--color-red-500)"} />
-              <stop offset="50%" stopColor={"var(--color-blue-500)"} />
-              <stop offset="75%" stopColor={"var(--color-cyan-500)"} />
-              <stop offset="100%" stopColor={"var(--color-violet-500)"} />
+              <stop offset="0%"   stopColor="var(--color-yellow-500)" />
+              <stop offset="25%"  stopColor="var(--color-red-500)"    />
+              <stop offset="50%"  stopColor="var(--color-blue-500)"   />
+              <stop offset="75%"  stopColor="var(--color-cyan-500)"   />
+              <stop offset="100%" stopColor="var(--color-violet-500)" />
             </>
           )}
         </linearGradient>
@@ -113,43 +150,37 @@ export function WordmarkHoverEffect(props: React.ComponentProps<"svg">) {
           animate={maskPosition}
           transition={{ duration: 0, ease: "easeInOut" }}
         >
-          <stop offset="0%" stopColor="white" />
+          <stop offset="0%"   stopColor="white" />
           <stop offset="100%" stopColor="black" />
         </motion.radialGradient>
 
         {/*
-          logoMask: cuts the gradient reveal into letter shapes only.
-          Black background = hide everything.
-          White letter shapes multiplied by the radial gradient = reveal only
-          the letters under the cursor spotlight.
+          logoMask:
+          • Black base  →  everything hidden
+          • Letter shapes filled with the radial spotlight gradient
+            →  only letters near the cursor become visible/bright
         */}
         <mask
           id="logoMask"
           maskUnits="userSpaceOnUse"
           x="0"
           y="0"
-          width="900"
-          height="80"
+          width="935"
+          height="165"
         >
-          {/* Black base — hides everything by default */}
-          <rect width="900" height="80" fill="black" />
-          {/*
-            Letter shapes filled with the radial gradient:
-            where the gradient is white (near cursor) → letters are revealed.
-            where the gradient is black (far from cursor) → letters stay hidden.
-          */}
+          <rect width="935" height="165" fill="black" />
           <g fill="url(#revealMask)">
             <WordmarkPaths />
           </g>
         </mask>
       </defs>
 
-      {/* Faint background block letters — always visible */}
-      <g className="fill-zinc-300/35 dark:fill-zinc-800/40">
+      {/* Ghost / resting state — very faint outlined letters */}
+      <g className="fill-zinc-400/20 dark:fill-zinc-500/25">
         <WordmarkPaths />
       </g>
 
-      {/* Colored gradient letters revealed by cursor spotlight */}
+      {/* Coloured gradient letters revealed through cursor spotlight */}
       <g fill="url(#logoGradient)" mask="url(#logoMask)">
         <WordmarkPaths />
       </g>
