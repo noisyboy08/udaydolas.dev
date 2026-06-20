@@ -84,6 +84,7 @@ export function WordmarkHoverEffect(props: React.ComponentProps<"svg">) {
       {...props}
     >
       <defs>
+        {/* Gradient applied to hovered/revealed letters */}
         <linearGradient
           id="logoGradient"
           gradientUnits="userSpaceOnUse"
@@ -103,10 +104,11 @@ export function WordmarkHoverEffect(props: React.ComponentProps<"svg">) {
           )}
         </linearGradient>
 
+        {/* Radial spotlight that follows the cursor */}
         <motion.radialGradient
           id="revealMask"
           gradientUnits="userSpaceOnUse"
-          r="20%"
+          r="25%"
           initial={{ cx: "50%", cy: "50%" }}
           animate={maskPosition}
           transition={{ duration: 0, ease: "easeInOut" }}
@@ -115,6 +117,12 @@ export function WordmarkHoverEffect(props: React.ComponentProps<"svg">) {
           <stop offset="100%" stopColor="black" />
         </motion.radialGradient>
 
+        {/*
+          logoMask: cuts the gradient reveal into letter shapes only.
+          Black background = hide everything.
+          White letter shapes multiplied by the radial gradient = reveal only
+          the letters under the cursor spotlight.
+        */}
         <mask
           id="logoMask"
           maskUnits="userSpaceOnUse"
@@ -123,16 +131,25 @@ export function WordmarkHoverEffect(props: React.ComponentProps<"svg">) {
           width="900"
           height="80"
         >
-          <rect fill="url(#revealMask)" width="900" height="80" />
+          {/* Black base — hides everything by default */}
+          <rect width="900" height="80" fill="black" />
+          {/*
+            Letter shapes filled with the radial gradient:
+            where the gradient is white (near cursor) → letters are revealed.
+            where the gradient is black (far from cursor) → letters stay hidden.
+          */}
+          <g fill="url(#revealMask)">
+            <WordmarkPaths />
+          </g>
         </mask>
       </defs>
 
-      {/* Faint background block letters */}
+      {/* Faint background block letters — always visible */}
       <g className="fill-zinc-300/35 dark:fill-zinc-800/40">
         <WordmarkPaths />
       </g>
 
-      {/* Color reveal letters on hover */}
+      {/* Colored gradient letters revealed by cursor spotlight */}
       <g fill="url(#logoGradient)" mask="url(#logoMask)">
         <WordmarkPaths />
       </g>

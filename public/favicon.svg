@@ -1,12 +1,11 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128">
-  <rect width="128" height="128" rx="28" fill="black" />
-  <!-- U -->
-  <rect x="20" y="36" width="12" height="56" fill="white" />
-  <rect x="48" y="36" width="12" height="56" fill="white" />
-  <rect x="20" y="80" width="40" height="12" fill="white" />
-  <!-- D -->
-  <rect x="72" y="36" width="12" height="56" fill="white" />
-  <rect x="84" y="36" width="24" height="12" fill="white" />
-  <rect x="84" y="80" width="24" height="12" fill="white" />
-  <rect x="96" y="48" width="12" height="32" fill="white" />
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <!-- Black rounded background -->
+  <rect width="512" height="512" rx="80" fill="black" />
+  <!-- UD logo path — matches chanhdai-mark.tsx exactly, centered vertically -->
+  <g transform="translate(0, 128)">
+    <path
+      fill="white"
+      d="M48 256H0V0h48v256ZM224 256H176V0h48v256ZM176 256H48V208h128v48ZM320 256H272V0h48v256ZM464 48H320V0h144v48ZM464 256H320V208h144v48ZM512 208H464V48h48v160Z"
+    />
+  </g>
 </svg>
