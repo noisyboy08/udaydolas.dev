@@ -66,9 +66,9 @@ export function IsometricUDMark({
           y1={y1.toFixed(1)}
           x2={x2.toFixed(1)}
           y2={y2.toFixed(1)}
-          className="stroke-zinc-500/35 dark:stroke-zinc-400/20" // Guide line styling
+          className="guide-line-animated stroke-zinc-500/35 dark:stroke-zinc-400/20"
           strokeWidth="1"
-          strokeDasharray="2 4"
+          strokeDasharray="4 8"
         />
       );
     });
@@ -282,7 +282,7 @@ export function IsometricUDMark({
       viewBox="0 0 800 400" // Fixed 2:1 ratio matching cover banner aspect ratio
       fill="none"
       className={cn("h-auto w-full text-black dark:text-white", className)}
-      style={{ overflow: "visible" }}
+      style={{ overflow: "hidden" }}
       {...props}
     >
       <defs>
@@ -299,32 +299,33 @@ export function IsometricUDMark({
           .face-side-left,
           .face-side-right {
             fill: #fafafa;
-            stroke: rgba(0, 0, 0, 0.38);
+            stroke: rgba(0, 0, 0, 0.45);
           }
           
           .dark .face-top,
           .dark .face-side-left,
           .dark .face-side-right {
             fill: #09090b;
-            stroke: rgba(255, 255, 255, 0.35);
+            stroke: rgba(255, 255, 255, 0.4);
           }
           
-          /* Hatch patterns coloring */
-          .hatch-line {
-            stroke: rgba(0, 0, 0, 0.18);
+          /* Animated guide lines */
+          @keyframes dashMove {
+            0% { stroke-dashoffset: 0; }
+            100% { stroke-dashoffset: -24; }
           }
-          .dark .hatch-line {
-            stroke: rgba(255, 255, 255, 0.16);
+          .guide-line-animated {
+            animation: dashMove 8s linear infinite;
           }
         `,
           }}
         />
 
-        {/* Diagonal Hatching Pattern for Top Faces (aligned to u axis) */}
+        {/* Diagonal Hatching Pattern for Top Faces — prominent ////// like reference */}
         <pattern
           id="isometric-hatch-top"
-          width="8"
-          height="8"
+          width="6"
+          height="6"
           patternUnits="userSpaceOnUse"
           patternTransform="rotate(60)"
         >
@@ -332,28 +333,48 @@ export function IsometricUDMark({
             x1="0"
             y1="0"
             x2="0"
-            y2="8"
+            y2="6"
             stroke="currentColor"
-            strokeOpacity="0.35"
-            strokeWidth="1"
+            strokeOpacity="0.55"
+            strokeWidth="0.8"
           />
         </pattern>
 
-        {/* Vertical Hatching Pattern for Side Faces */}
+        {/* Diagonal Hatching for Side-Left Faces */}
         <pattern
-          id="isometric-hatch-vertical"
+          id="isometric-hatch-side-left"
           width="6"
-          height="8"
+          height="6"
           patternUnits="userSpaceOnUse"
+          patternTransform="rotate(80)"
         >
           <line
             x1="0"
             y1="0"
             x2="0"
-            y2="8"
+            y2="6"
             stroke="currentColor"
-            strokeOpacity="0.3"
-            strokeWidth="1"
+            strokeOpacity="0.4"
+            strokeWidth="0.8"
+          />
+        </pattern>
+
+        {/* Diagonal Hatching for Side-Right Faces */}
+        <pattern
+          id="isometric-hatch-side-right"
+          width="6"
+          height="6"
+          patternUnits="userSpaceOnUse"
+          patternTransform="rotate(-10)"
+        >
+          <line
+            x1="0"
+            y1="0"
+            x2="0"
+            y2="6"
+            stroke="currentColor"
+            strokeOpacity="0.35"
+            strokeWidth="0.8"
           />
         </pattern>
       </defs>
@@ -391,10 +412,10 @@ export function IsometricUDMark({
             hatchFill = "url(#isometric-hatch-top)";
           } else if (poly.type === "side-left") {
             faceClass = "face-side-left";
-            hatchFill = "none";
+            hatchFill = "url(#isometric-hatch-side-left)";
           } else {
             faceClass = "face-side-right";
-            hatchFill = "none";
+            hatchFill = "url(#isometric-hatch-side-right)";
           }
 
           // Special rendering for D's top face (with hole) using evenodd path
