@@ -377,10 +377,13 @@ export function IsometricUDMark({
             strokeWidth="0.8"
           />
         </pattern>
+        <clipPath id="guide-clip-path">
+          <rect x="-1000" y="0" width="3000" height="400" />
+        </clipPath>
       </defs>
 
       {/* 1. Guide lines (drawn in the background) */}
-      <g>{guideLinesJSX}</g>
+      <g clipPath="url(#guide-clip-path)">{guideLinesJSX}</g>
 
       {/* 2. Technical Metadata Texts (positioned near bottom right) */}
       <text

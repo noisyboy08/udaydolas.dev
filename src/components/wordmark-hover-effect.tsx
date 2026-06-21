@@ -53,8 +53,7 @@ function WordmarkPaths() {
       {/* S */}
       <rect x="748" y="0" width="45" height="15" />
       <rect x="748" y="15" width="15" height="15" />
-      <rect x="748" y="30" width="45" height="15" />
-      <rect x="778" y="45" width="15" height="15" />
+      <rect x="778" y="30" width="15" height="15" />
       <rect x="748" y="45" width="45" height="15" />
     </>
   );
