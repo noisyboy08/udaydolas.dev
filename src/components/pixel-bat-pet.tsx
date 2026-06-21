@@ -12,7 +12,7 @@ const SCALE = 3;
 // element-coord (32, 34), i.e. viewport (cssLeft + 32, cssTop + 34).
 // So to position the visual sprite center at viewport (vx, vy):
 // cssLeft = vx - 32; cssTop = vy - 34. This is true for any rotation.
-const BAT_CENTER_X = 32;
+const BAT_CENTER_X = 29;
 const BAT_CENTER_Y = 34;
 
 const FOLLOW_DISTANCE = 56;
@@ -203,7 +203,7 @@ export function PixelBatPet() {
       if (!avatar) return null;
       return {
         x: avatar.left + avatar.width / 2,
-        y: avatar.top - 64, // sit on top of the profile picture
+        y: avatar.top - 78, // sit on top of the profile picture
       };
     };
 

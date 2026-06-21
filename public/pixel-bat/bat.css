@@ -9,7 +9,7 @@
      midpoint of the sprite's full animation extent y∈[4,64], x≈[1,62]) so
      180° rotation for the upside-down hang leaves the visual center
      invariant — no surprise translation. */
-  transform-origin: 32px 34px;
+  transform-origin: 29px 34px;
   position: fixed;
   pointer-events: none;
   z-index: 9999;
