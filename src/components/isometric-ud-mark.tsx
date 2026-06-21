@@ -282,7 +282,7 @@ export function IsometricUDMark({
       viewBox="0 0 800 400" // Fixed 2:1 ratio matching cover banner aspect ratio
       fill="none"
       className={cn("h-auto w-full text-black dark:text-white", className)}
-      style={{ overflow: "hidden" }}
+      style={{ overflow: "visible" }}
       {...props}
     >
       <defs>
