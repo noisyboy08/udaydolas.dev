@@ -16,8 +16,8 @@ export function IsometricUDMark({
   ...props
 }: IsometricUDMarkProps) {
   // Base coordinates of the isometric grid origin
-  const cx = 310;
-  const cy = 50;
+  const cx = 350;
+  const cy = 60;
   const unit = 40; // Scaled up unit size to match CD reference
 
   // 3D Isometric projection function
