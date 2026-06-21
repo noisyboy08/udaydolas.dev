@@ -74,7 +74,7 @@ export function MorphingText({
   return (
     <span
       className={cn(
-        "font-mono tabular-nums tracking-widest transition-all",
+        "font-mono tracking-widest tabular-nums transition-all",
         isAnimating && "opacity-80",
         className
       )}

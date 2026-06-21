@@ -42,20 +42,20 @@ export function TeckStack() {
           {groupedStack.map((group) => (
             <div
               key={group.id}
-              className="grid grid-cols-1 md:grid-cols-[180px_1fr] border-b border-edge last:border-b-0"
+              className="grid grid-cols-1 border-b border-edge last:border-b-0 md:grid-cols-[180px_1fr]"
             >
               {/* Left Column: Category Info */}
-              <div className="flex items-center px-4 py-3 md:py-4 border-b border-edge md:border-b-0 md:border-r border-edge select-none bg-zinc-500/[0.01] dark:bg-white/[0.005]">
-                <span className="font-mono text-xs text-zinc-400 dark:text-zinc-600 mr-2.5 font-bold">
+              <div className="flex items-center border-b border-edge bg-zinc-500/[0.01] px-4 py-3 select-none md:border-r md:border-b-0 md:py-4 dark:bg-white/[0.005]">
+                <span className="mr-2.5 font-mono text-xs font-bold text-zinc-400 dark:text-zinc-600">
                   {group.id}
                 </span>
-                <span className="text-xs font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-500">
+                <span className="text-xs font-semibold tracking-wider text-zinc-500 uppercase dark:text-zinc-500">
                   {group.name}
                 </span>
               </div>
 
               {/* Right Column: Badges */}
-              <div className="p-4 flex flex-wrap gap-2 items-center">
+              <div className="flex flex-wrap items-center gap-2 p-4">
                 {group.items.map((tech) => (
                   <SimpleTooltip key={tech.key} content={tech.title}>
                     <a
@@ -63,7 +63,7 @@ export function TeckStack() {
                       target="_blank"
                       rel="noopener noreferrer"
                       className={cn(
-                        "inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md text-xs font-medium select-none cursor-pointer",
+                        "inline-flex cursor-pointer items-center gap-1.5 rounded-md px-2.5 py-1 text-xs font-medium select-none",
                         "bg-zinc-100 hover:bg-zinc-200 dark:bg-zinc-900/60 dark:hover:bg-zinc-800/80",
                         "border border-zinc-200 dark:border-zinc-800/80",
                         "text-zinc-800 dark:text-zinc-200",
@@ -77,7 +77,7 @@ export function TeckStack() {
                             alt={`${tech.title} light icon`}
                             width={16}
                             height={16}
-                            className="hidden [html.light_&]:block w-4 h-4 object-contain"
+                            className="hidden h-4 w-4 object-contain [html.light_&]:block"
                             unoptimized
                           />
                           <Image
@@ -85,7 +85,7 @@ export function TeckStack() {
                             alt={`${tech.title} dark icon`}
                             width={16}
                             height={16}
-                            className="hidden [html.dark_&]:block w-4 h-4 object-contain"
+                            className="hidden h-4 w-4 object-contain [html.dark_&]:block"
                             unoptimized
                           />
                         </>
@@ -95,7 +95,7 @@ export function TeckStack() {
                           alt={`${tech.title} icon`}
                           width={16}
                           height={16}
-                          className="w-4 h-4 object-contain"
+                          className="h-4 w-4 object-contain"
                           unoptimized
                         />
                       )}
@@ -111,4 +111,3 @@ export function TeckStack() {
     </Panel>
   );
 }
-

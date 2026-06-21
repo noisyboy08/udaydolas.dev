@@ -24,33 +24,39 @@ As cyber threats grow in scale and sophistication, traditional static firewall l
 ## Key Features
 
 ### 🚨 Live Alerts Engine (Real-Time)
+
 A continuously updating alerts feed processes incoming network events through a multi-source threat correlation engine. Alerts are classified by severity (Critical, High, Medium, Low), tagged with specific attack patterns (port scan, brute force, command-and-control, data exfiltration), and enriched with AbuseIPDB geodata and VirusTotal IP scores.
 
 ### 🕸️ Attack Graph Visualization
+
 An interactive network attack graph visualizes the entire intrusion kill chain in real-time. It maps out where the threat entered, which network assets have been probed or compromised, and highlights lateral movement attempts. Nodes are color-coded by compromise status and edges show the attack trajectory.
 
 ### 🗺️ Live Threat Map
+
 A global geospatial map overlay displays live threat origins and destination paths. Moving vectors dynamically link attack coordinates to your host infrastructure, featuring country-level attribution, threat-type markers, and real-time response counters.
 
 ### 🍯 Honeypot Trap Switch
+
 Deploys or teardowns a decoy SSH honeypot service on port 2222 with a single click. When hackers target this decoy, ZeroBit captures their keystrokes, payloads, and IPs, feeds them into the threat database, and triggers firewall auto-blocks against the attackers.
 
 ### 🧠 Adaptive Learning Model Gym
+
 A local training simulator that lets operators run mock network scenarios and training datasets. Operators can adjust model thresholds, test classifiers, and watch detection accuracy improve. Over time, the model adapts to custom traffic baseline variations.
 
 ### 📊 Deception Metrics & Network Topology
+
 Visualizes network topology nodes and system health status. It presents interactive statistics on active honeypot traps, decoy interactions, firewall rule injection counts, and raw API JSON logs for deep forensic investigation.
 
 ## Tech Stack
 
-| Layer | Technology |
-|---|---|
-| **Frontend** | React, TypeScript |
-| **Styling** | Tailwind CSS |
-| **Backend** | Python, FastAPI |
-| **Threat APIs** | Groq AI, VirusTotal API, AbuseIPDB |
-| **Visualizations** | D3-based Attack Graphs, SVG Threat Maps |
-| **Deployment** | Vercel (Frontend), self-hosted API backend |
+| Layer              | Technology                                 |
+| ------------------ | ------------------------------------------ |
+| **Frontend**       | React, TypeScript                          |
+| **Styling**        | Tailwind CSS                               |
+| **Backend**        | Python, FastAPI                            |
+| **Threat APIs**    | Groq AI, VirusTotal API, AbuseIPDB         |
+| **Visualizations** | D3-based Attack Graphs, SVG Threat Maps    |
+| **Deployment**     | Vercel (Frontend), self-hosted API backend |
 
 ## Design Philosophy
 

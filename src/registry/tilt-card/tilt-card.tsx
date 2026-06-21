@@ -11,7 +11,12 @@ type TiltCardProps = {
   glare?: boolean;
 };
 
-export function TiltCard({ children, className, maxTilt = 12, glare = true }: TiltCardProps) {
+export function TiltCard({
+  children,
+  className,
+  maxTilt = 12,
+  glare = true,
+}: TiltCardProps) {
   const ref = useRef<HTMLDivElement>(null);
   const [tilt, setTilt] = useState({ x: 0, y: 0 });
   const [glarePos, setGlarePos] = useState({ x: 50, y: 50 });
@@ -37,7 +42,9 @@ export function TiltCard({ children, className, maxTilt = 12, glare = true }: Ti
       className={cn("relative overflow-hidden rounded-xl", className)}
       style={{
         transform: `perspective(600px) rotateX(${tilt.x}deg) rotateY(${tilt.y}deg) scale(${hovered ? 1.03 : 1})`,
-        transition: hovered ? "transform 0.1s ease-out" : "transform 0.5s cubic-bezier(.23,1,.32,1)",
+        transition: hovered
+          ? "transform 0.1s ease-out"
+          : "transform 0.5s cubic-bezier(.23,1,.32,1)",
         transformStyle: "preserve-3d",
       }}
       onMouseMove={handleMove}

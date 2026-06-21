@@ -11,7 +11,7 @@ live: https://anti-gravity-city.vercel.app
 
 ## Overview
 
-**Anti-Gravity-City** transforms static GitHub repositories into a living, breathing 3D Cyberpunk Metropolis. Instead of reading flat file trees or wall-to-wall diff logs, developers can now *fly through* their codebase — each file becomes a glowing skyscraper, each import/export dependency becomes a neon energy beam connecting buildings at different altitude layers.
+**Anti-Gravity-City** transforms static GitHub repositories into a living, breathing 3D Cyberpunk Metropolis. Instead of reading flat file trees or wall-to-wall diff logs, developers can now _fly through_ their codebase — each file becomes a glowing skyscraper, each import/export dependency becomes a neon energy beam connecting buildings at different altitude layers.
 
 The project was born from a simple but powerful idea: **codebases are architectural cities in disguise**. Complex systems have districts (modules), highways (data flows), and skylines (abstraction layers). Anti-Gravity-City makes that metaphor physically visible and interactive.
 
@@ -19,36 +19,41 @@ The project was born from a simple but powerful idea: **codebases are architectu
 
 ## The Problem it Solves
 
-For developers working on large codebases, understanding the overall architecture at a glance is nearly impossible. You either read documentation (usually outdated), trace imports manually, or rely on someone senior to explain the structure. Anti-Gravity-City eliminates all three pain points by making the architecture *literally visible* as a 3D cityscape you can fly through and interact with.
+For developers working on large codebases, understanding the overall architecture at a glance is nearly impossible. You either read documentation (usually outdated), trace imports manually, or rely on someone senior to explain the structure. Anti-Gravity-City eliminates all three pain points by making the architecture _literally visible_ as a 3D cityscape you can fly through and interact with.
 
 ## Key Features
 
 ### 🏙️ 3D City Renderer
+
 Each source file is mapped to a building. File size determines building height, folder nesting sets the altitude tier, and import/export relationships draw glowing connector beams between structures. The entire city rebuilds live as you push new commits — you can literally watch your codebase grow.
 
 ### 🛡️ Force Field Districts
+
 Related modules and folders are enclosed in interactive force field bubbles with distinct color palettes, making it immediately clear which parts of the codebase belong together. Hover a district to see all its member files and inter-dependencies highlighted.
 
 ### 🤖 Gemini AI Codebase Chatbot
+
 A fully embedded Google Gemini AI assistant reads your parsed repository structure and answers architectural questions like "What does this module depend on?" or "Which files have the most coupling?" — directly inside the 3D control panel. No context switching, no documentation hunting.
 
 ### ⏱️ Git Timeline Time-Travel
+
 Scrub through a commit timeline slider and watch the city rebuild itself, building by building, tracking exactly how the repository grew from a single file to a full metropolis. You can pause, rewind, and replay the entire history of your codebase as a cinematic 3D animation.
 
 ### 🎵 Procedural Synth Engine
+
 All UI interactions, hover events, camera movements, and city transitions are accompanied by a real-time **Web Audio API synthesizer** generating immersive cyberpunk ambient sound — no pre-recorded audio files. The engine synthesizes tones, hums, and pulses dynamically based on what you interact with.
 
 ## Tech Stack
 
-| Layer | Technology |
-|---|---|
-| **3D Rendering** | React Three Fiber, Three.js, GLSL Shaders |
-| **AI Integration** | Google Gemini API |
-| **Sound Engine** | Procedural Web Audio API Synthesizer |
-| **Backend / Parsing** | Node.js, Express, GitHub API |
-| **UI & Animation** | React, Tailwind CSS, Framer Motion |
-| **Build Tool** | Vite |
-| **Deployment** | Vercel |
+| Layer                 | Technology                                |
+| --------------------- | ----------------------------------------- |
+| **3D Rendering**      | React Three Fiber, Three.js, GLSL Shaders |
+| **AI Integration**    | Google Gemini API                         |
+| **Sound Engine**      | Procedural Web Audio API Synthesizer      |
+| **Backend / Parsing** | Node.js, Express, GitHub API              |
+| **UI & Animation**    | React, Tailwind CSS, Framer Motion        |
+| **Build Tool**        | Vite                                      |
+| **Deployment**        | Vercel                                    |
 
 ## Design Philosophy
 

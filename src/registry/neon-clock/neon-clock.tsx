@@ -67,7 +67,7 @@ export function NeonClock({ className, color = "purple" }: NeonClockProps) {
       {/* main time */}
       <div
         className={cn(
-          "flex items-center gap-1 font-mono text-5xl font-bold tabular-nums tracking-tight",
+          "flex items-center gap-1 font-mono text-5xl font-bold tracking-tight tabular-nums",
           c.text,
           c.shadow
         )}

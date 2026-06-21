@@ -16,7 +16,11 @@ type TimelineProps = {
   accentColor?: string;
 };
 
-export function Timeline({ items, className, accentColor = "#6366f1" }: TimelineProps) {
+export function Timeline({
+  items,
+  className,
+  accentColor = "#6366f1",
+}: TimelineProps) {
   const statusColors = {
     done: accentColor,
     active: accentColor,
@@ -36,10 +40,11 @@ export function Timeline({ items, className, accentColor = "#6366f1" }: Timeline
           {/* Line */}
           {i < items.length - 1 && (
             <div
-              className="absolute left-4 top-8 w-px flex-none"
+              className="absolute top-8 left-4 w-px flex-none"
               style={{
                 height: "calc(100% - 8px)",
-                background: item.status === "done" ? accentColor : "var(--color-border)",
+                background:
+                  item.status === "done" ? accentColor : "var(--color-border)",
                 opacity: item.status === "done" ? 0.4 : 0.3,
               }}
             />
@@ -48,32 +53,48 @@ export function Timeline({ items, className, accentColor = "#6366f1" }: Timeline
           {/* Dot */}
           <div className="relative z-10 flex-none pt-1">
             <div
-              className={cn("flex size-8 items-center justify-center rounded-full", statusRing[item.status ?? "pending"])}
-              style={{
-                background: statusColors[item.status ?? "pending"],
-                "--tw-ring-color": accentColor,
-                borderColor: item.status === "pending" ? undefined : accentColor,
-              } as React.CSSProperties}
+              className={cn(
+                "flex size-8 items-center justify-center rounded-full",
+                statusRing[item.status ?? "pending"]
+              )}
+              style={
+                {
+                  background: statusColors[item.status ?? "pending"],
+                  "--tw-ring-color": accentColor,
+                  borderColor:
+                    item.status === "pending" ? undefined : accentColor,
+                } as React.CSSProperties
+              }
             >
               {item.icon ?? (
                 <span
                   className="size-2.5 rounded-full"
-                  style={{ background: item.status === "pending" ? "var(--color-muted-foreground)" : "white", opacity: item.status === "pending" ? 0.4 : 1 }}
+                  style={{
+                    background:
+                      item.status === "pending"
+                        ? "var(--color-muted-foreground)"
+                        : "white",
+                    opacity: item.status === "pending" ? 0.4 : 1,
+                  }}
                 />
               )}
             </div>
           </div>
 
           {/* Content */}
-          <div className="pb-6 min-w-0">
+          <div className="min-w-0 pb-6">
             <div className="flex items-center gap-2">
-              <p className="font-semibold text-sm">{item.title}</p>
+              <p className="text-sm font-semibold">{item.title}</p>
               {item.date && (
-                <span className="text-xs text-muted-foreground">{item.date}</span>
+                <span className="text-xs text-muted-foreground">
+                  {item.date}
+                </span>
               )}
             </div>
             {item.description && (
-              <p className="mt-0.5 text-sm text-muted-foreground">{item.description}</p>
+              <p className="mt-0.5 text-sm text-muted-foreground">
+                {item.description}
+              </p>
             )}
           </div>
         </div>

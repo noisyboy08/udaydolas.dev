@@ -32,9 +32,9 @@ Spend time on one great primary color. Then derive everything else using HSL adj
 
 ```css
 :root {
-  --primary-h: 142;        /* hue: forest green */
-  --primary-s: 71%;        /* saturation */
-  --primary-l: 45%;        /* lightness */
+  --primary-h: 142; /* hue: forest green */
+  --primary-s: 71%; /* saturation */
+  --primary-l: 45%; /* lightness */
 
   --primary: hsl(var(--primary-h), var(--primary-s), var(--primary-l));
   --primary-hover: hsl(var(--primary-h), var(--primary-s), 38%);
@@ -83,7 +83,7 @@ This keeps interfaces feeling airy rather than rigid. The border exists to give 
 Animations that follow physical laws feel satisfying. Animations that don't feel robotic or cheap.
 
 - **Easing in**: things that come from off-screen accelerate into view (`ease-in`)
-- **Easing out**: things that stop decelerate to rest (`ease-out`)  
+- **Easing out**: things that stop decelerate to rest (`ease-out`)
 - **Easing in-out**: things that traverse a space (`ease-in-out`)
 - **Never linear**: linear motion feels mechanical — avoid it for UI animations
 
@@ -93,8 +93,14 @@ Animations that follow physical laws feel satisfying. Animations that don't feel
 }
 
 @keyframes slideIn {
-  from { transform: translateY(8px); opacity: 0; }
-  to   { transform: translateY(0);   opacity: 1; }
+  from {
+    transform: translateY(8px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
 ```
 

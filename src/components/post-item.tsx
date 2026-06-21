@@ -19,14 +19,14 @@ export function PostItem({
   return (
     <div
       className={cn(
-        "group/post flex flex-col gap-3 p-2 justify-between h-full",
+        "group/post flex h-full flex-col justify-between gap-3 p-2",
         "max-sm:screen-line-before max-sm:screen-line-after",
         "sm:nth-[2n+1]:screen-line-before sm:nth-[2n+1]:screen-line-after"
       )}
     >
       <Link
         href={`/blog/${post.slug}`}
-        className="group/link flex flex-col gap-2 flex-grow"
+        className="group/link flex flex-grow flex-col gap-2"
       >
         {post.metadata.image && (
           <div className="relative select-none [&_img]:aspect-1200/630 [&_img]:rounded-xl">
@@ -66,14 +66,14 @@ export function PostItem({
       </Link>
 
       {(post.metadata.github || post.metadata.live) && (
-        <div className="flex items-center gap-2.5 p-2 pt-0 mt-auto">
+        <div className="mt-auto flex items-center gap-2.5 p-2 pt-0">
           {post.metadata.github && (
             <SimpleTooltip content="GitHub Code">
               <a
                 href={post.metadata.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex size-8 shrink-0 items-center justify-center rounded-full border border-edge bg-zinc-50 dark:bg-zinc-900/50 hover:bg-zinc-100 dark:hover:bg-zinc-800 text-muted-foreground hover:text-foreground transition-colors"
+                className="flex size-8 shrink-0 items-center justify-center rounded-full border border-edge bg-zinc-50 text-muted-foreground transition-colors hover:bg-zinc-100 hover:text-foreground dark:bg-zinc-900/50 dark:hover:bg-zinc-800"
               >
                 <Icons.github className="size-4" />
                 <span className="sr-only">GitHub</span>
@@ -86,7 +86,7 @@ export function PostItem({
                 href={post.metadata.live}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex size-8 shrink-0 items-center justify-center rounded-full border border-edge bg-zinc-50 dark:bg-zinc-900/50 hover:bg-zinc-100 dark:hover:bg-zinc-800 text-muted-foreground hover:text-foreground transition-colors"
+                className="flex size-8 shrink-0 items-center justify-center rounded-full border border-edge bg-zinc-50 text-muted-foreground transition-colors hover:bg-zinc-100 hover:text-foreground dark:bg-zinc-900/50 dark:hover:bg-zinc-800"
               >
                 <LinkIcon className="size-4" />
                 <span className="sr-only">Live Preview</span>

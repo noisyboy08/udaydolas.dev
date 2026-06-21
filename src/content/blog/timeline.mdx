@@ -32,18 +32,18 @@ export default function Demo() {
 
 ## Props
 
-| Prop | Type | Default | Description |
-|---|---|---|---|
-| `items` | `TimelineItem[]` | required | Array of timeline steps. |
-| `accentColor` | `string` | `#6366f1` | Color applied to done and active step indicators and lines. |
-| `className` | `string` | — | Extra class for the timeline wrapper. |
+| Prop          | Type             | Default   | Description                                                 |
+| ------------- | ---------------- | --------- | ----------------------------------------------------------- |
+| `items`       | `TimelineItem[]` | required  | Array of timeline steps.                                    |
+| `accentColor` | `string`         | `#6366f1` | Color applied to done and active step indicators and lines. |
+| `className`   | `string`         | —         | Extra class for the timeline wrapper.                       |
 
 ### `TimelineItem`
 
-| Field | Type | Description |
-|---|---|---|
-| `title` | `string` | Step heading. |
-| `description` | `string` | Optional body text below the title. |
-| `date` | `string` | Optional date label shown beside the title. |
-| `icon` | `ReactNode` | Optional icon inside the dot indicator. |
-| `status` | `"done" \| "active" \| "pending"` | Controls the dot color and connecting line style. |
+| Field         | Type                              | Description                                       |
+| ------------- | --------------------------------- | ------------------------------------------------- |
+| `title`       | `string`                          | Step heading.                                     |
+| `description` | `string`                          | Optional body text below the title.               |
+| `date`        | `string`                          | Optional date label shown beside the title.       |
+| `icon`        | `ReactNode`                       | Optional icon inside the dot indicator.           |
+| `status`      | `"done" \| "active" \| "pending"` | Controls the dot color and connecting line style. |

@@ -16,7 +16,9 @@ export default function NumberCounterDemo() {
             className="text-3xl font-black"
             separator=","
           />
-          <span className="text-xs text-muted-foreground text-center">{s.label}</span>
+          <span className="text-center text-xs text-muted-foreground">
+            {s.label}
+          </span>
         </div>
       ))}
     </div>

@@ -28,10 +28,7 @@ export function SiteHeaderContainer({
 
   return (
     <div
-      className={cn(
-        className,
-        isShowcase ? "max-w-[1720px]" : "md:max-w-3xl"
-      )}
+      className={cn(className, isShowcase ? "max-w-[1720px]" : "md:max-w-3xl")}
       {...props}
     >
       {children}

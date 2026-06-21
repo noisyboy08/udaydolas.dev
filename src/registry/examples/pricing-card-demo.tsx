@@ -14,7 +14,12 @@ export default function PricingCardDemo() {
         name="Pro"
         price={29}
         description="For professional developers"
-        features={["All 50+ components", "Priority support", "Commercial license", "Early access"]}
+        features={[
+          "All 50+ components",
+          "Priority support",
+          "Commercial license",
+          "Early access",
+        ]}
         cta="Get Pro"
         highlight
         badge="Most Popular"

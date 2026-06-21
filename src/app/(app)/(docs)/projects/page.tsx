@@ -6,7 +6,8 @@ import { getPostsByCategory } from "@/data/blog";
 
 export const metadata: Metadata = {
   title: "Projects",
-  description: "A showcase of projects I've built — spanning AI, full-stack web apps, and developer tooling.",
+  description:
+    "A showcase of projects I've built — spanning AI, full-stack web apps, and developer tooling.",
 };
 
 export default function Page() {

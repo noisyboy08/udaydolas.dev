@@ -42,18 +42,28 @@ export function StatCard({
 
       <div className="flex items-start justify-between gap-3">
         <div className="min-w-0">
-          <p className="mb-1 text-xs font-medium uppercase tracking-widest text-muted-foreground">
+          <p className="mb-1 text-xs font-medium tracking-widest text-muted-foreground uppercase">
             {label}
           </p>
-          <p className="text-2xl font-bold tabular-nums tracking-tight">
-            {prefix}{value}{suffix}
+          <p className="text-2xl font-bold tracking-tight tabular-nums">
+            {prefix}
+            {value}
+            {suffix}
           </p>
           {change !== undefined && (
-            <div className={cn("mt-1 flex items-center gap-1 text-xs font-medium",
-              isPositive ? "text-emerald-500" : "text-rose-500"
-            )}>
-              {isPositive ? <TrendingUpIcon className="size-3" /> : <TrendingDownIcon className="size-3" />}
-              {isPositive ? "+" : ""}{change}% vs last period
+            <div
+              className={cn(
+                "mt-1 flex items-center gap-1 text-xs font-medium",
+                isPositive ? "text-emerald-500" : "text-rose-500"
+              )}
+            >
+              {isPositive ? (
+                <TrendingUpIcon className="size-3" />
+              ) : (
+                <TrendingDownIcon className="size-3" />
+              )}
+              {isPositive ? "+" : ""}
+              {change}% vs last period
             </div>
           )}
         </div>

@@ -10,13 +10,7 @@ import { cn } from "@/lib/utils";
 import type { Post } from "@/types/blog";
 
 // ─── Single blog card ─────────────────────────────────────────────────────────
-function BlogCard({
-  post,
-  priority,
-}: {
-  post: Post;
-  priority?: boolean;
-}) {
+function BlogCard({ post, priority }: { post: Post; priority?: boolean }) {
   // Use the post's own image or fall back to the dynamic OG image
   const coverImage =
     post.metadata.image ||
@@ -47,18 +41,18 @@ function BlogCard({
 
         {/* "New" badge */}
         {post.metadata.new && (
-          <span className="absolute right-3 top-3 rounded-md bg-sky-500 px-2 py-0.5 font-mono text-xs font-semibold text-white shadow-lg">
+          <span className="absolute top-3 right-3 rounded-md bg-sky-500 px-2 py-0.5 font-mono text-xs font-semibold text-white shadow-lg">
             New
           </span>
         )}
 
         {/* Inset ring */}
-        <div className="pointer-events-none absolute inset-0 rounded-2xl ring-1 ring-inset ring-white/8" />
+        <div className="pointer-events-none absolute inset-0 rounded-2xl ring-1 ring-white/8 ring-inset" />
       </div>
 
       {/* Meta */}
       <div className="flex flex-col gap-1.5 p-4">
-        <h3 className="text-base font-semibold leading-snug text-balance text-white transition-colors group-hover:text-white/90 underline-offset-2">
+        <h3 className="text-base leading-snug font-semibold text-balance text-white underline-offset-2 transition-colors group-hover:text-white/90">
           {post.metadata.title}
         </h3>
 
@@ -90,7 +84,7 @@ export function BlogView({ posts }: { posts: Post[] }) {
   return (
     <div className="min-h-svh">
       {/* ── Hero ─────────────────────────────────────────────────── */}
-      <div className="border-b border-edge px-4 pb-6 pt-4">
+      <div className="border-b border-edge px-4 pt-4 pb-6">
         <p className="mb-1 font-mono text-xs font-medium text-muted-foreground">
           Blog
         </p>
@@ -108,7 +102,7 @@ export function BlogView({ posts }: { posts: Post[] }) {
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             placeholder="Search Blog…"
-            className="w-full bg-transparent font-mono text-sm text-foreground placeholder:text-muted-foreground/60 outline-none"
+            className="w-full bg-transparent font-mono text-sm text-foreground outline-none placeholder:text-muted-foreground/60"
           />
         </label>
       </div>
@@ -126,7 +120,9 @@ export function BlogView({ posts }: { posts: Post[] }) {
             <SearchIcon className="size-8 text-muted-foreground/30" />
             <p className="text-sm text-muted-foreground">
               No posts found for{" "}
-              <span className="font-medium text-foreground">&quot;{query}&quot;</span>
+              <span className="font-medium text-foreground">
+                &quot;{query}&quot;
+              </span>
             </p>
             <button
               onClick={() => setQuery("")}

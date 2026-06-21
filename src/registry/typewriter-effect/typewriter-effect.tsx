@@ -37,7 +37,10 @@ export function TypewriterEffect({
     const word = words[wordIdx];
     if (phase === "typing") {
       if (displayed.length < word.length) {
-        const id = setTimeout(() => setDisplayed(word.slice(0, displayed.length + 1)), typingSpeed);
+        const id = setTimeout(
+          () => setDisplayed(word.slice(0, displayed.length + 1)),
+          typingSpeed
+        );
         return () => clearTimeout(id);
       } else {
         const id = setTimeout(() => setPhase("pause"), pauseDuration);
@@ -49,14 +52,25 @@ export function TypewriterEffect({
     }
     if (phase === "deleting") {
       if (displayed.length > 0) {
-        const id = setTimeout(() => setDisplayed(displayed.slice(0, -1)), deletingSpeed);
+        const id = setTimeout(
+          () => setDisplayed(displayed.slice(0, -1)),
+          deletingSpeed
+        );
         return () => clearTimeout(id);
       } else {
         setWordIdx((i) => (i + 1) % words.length);
         setPhase("typing");
       }
     }
-  }, [displayed, phase, wordIdx, words, typingSpeed, deletingSpeed, pauseDuration]);
+  }, [
+    displayed,
+    phase,
+    wordIdx,
+    words,
+    typingSpeed,
+    deletingSpeed,
+    pauseDuration,
+  ]);
 
   return (
     <span className={cn("font-mono", className)}>

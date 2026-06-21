@@ -24,30 +24,35 @@ Reddit's edit button is invisible — when someone edits a post, no notification
 ## Key Features
 
 ### 👁️ Real-Time Edit Detection Engine
+
 Continuously monitors high-engagement posts across Reddit and social feeds for content modifications. The detection daemon polls monitored posts at sub-second intervals and compares content hashes. When a silent edit is detected, ContextGuard captures the before/after diff and logs it to the public transparency ledger within seconds of the change occurring.
 
 ### 📋 Public Transparency Ledger
+
 A permanent, searchable feed of all detected edits across every monitored post and account. Anyone can search a post URL or user handle to retrieve the complete edit history — every version of the content, with full timestamp, character-level diff highlighting, and engagement stats at the time of each edit.
 
 ### 🤖 AI Manipulation Classifier
+
 Each detected edit is automatically run through an NLP classification pipeline that categorizes the type of modification into one of five categories: sentiment reversal, link injection, scam pattern insertion, factual flip, or benign correction. Edits classified as high-risk immediately trigger community alert notifications and are promoted to the top of the transparency feed.
 
 ### 🔔 Real-Time Alert Subscriptions
+
 Users, moderators, and journalists can subscribe to specific threads, subreddits, or individual accounts to receive instant webhook or push notifications whenever a flagged edit is detected. Subscription filters can be set by severity level, edit type, or account trust score.
 
 ### 📊 Context Integrity Score
+
 Every tracked account accumulates a Context Integrity Score — a public credibility rating calculated from edit frequency, edit severity classifications, post engagement at time of edit, and historical manipulation patterns. The score is displayed on every scan result and is publicly accessible via a profile lookup API.
 
 ## Tech Stack
 
-| Layer | Technology |
-|---|---|
-| **Frontend** | React, TypeScript, Tailwind CSS |
-| **Animations** | Framer Motion |
-| **AI/NLP Layer** | Node.js + NLP Classification API |
-| **Data Source** | Reddit API, Social Platform Scrapers |
-| **Storage** | Immutable Ledger (PostgreSQL + append-only schema) |
-| **Deployment** | Vercel |
+| Layer            | Technology                                         |
+| ---------------- | -------------------------------------------------- |
+| **Frontend**     | React, TypeScript, Tailwind CSS                    |
+| **Animations**   | Framer Motion                                      |
+| **AI/NLP Layer** | Node.js + NLP Classification API                   |
+| **Data Source**  | Reddit API, Social Platform Scrapers               |
+| **Storage**      | Immutable Ledger (PostgreSQL + append-only schema) |
+| **Deployment**   | Vercel                                             |
 
 ## Design Philosophy
 

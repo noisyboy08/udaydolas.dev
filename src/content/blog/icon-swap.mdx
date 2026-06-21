@@ -19,22 +19,18 @@ import { HeartIcon, HeartOffIcon } from "lucide-react";
 
 export default function Demo() {
   return (
-    <IconSwap
-      iconA={<HeartIcon />}
-      iconB={<HeartOffIcon />}
-      animation="flip"
-    />
+    <IconSwap iconA={<HeartIcon />} iconB={<HeartOffIcon />} animation="flip" />
   );
 }
 ```
 
 ## Props
 
-| Prop | Type | Default | Description |
-|---|---|---|---|
-| `iconA` | `ReactNode` | required | Icon shown in the default (off) state. |
-| `iconB` | `ReactNode` | required | Icon shown in the toggled (on) state. |
-| `animation` | `"flip" \| "slide" \| "fade"` | `"flip"` | Transition animation between the two icons. |
-| `defaultActive` | `boolean` | `false` | Whether the button starts in the active (iconB) state. |
-| `onChange` | `(active: boolean) => void` | — | Callback fired when the toggle state changes. |
-| `className` | `string` | — | Extra class for the button element. |
+| Prop            | Type                          | Default  | Description                                            |
+| --------------- | ----------------------------- | -------- | ------------------------------------------------------ |
+| `iconA`         | `ReactNode`                   | required | Icon shown in the default (off) state.                 |
+| `iconB`         | `ReactNode`                   | required | Icon shown in the toggled (on) state.                  |
+| `animation`     | `"flip" \| "slide" \| "fade"` | `"flip"` | Transition animation between the two icons.            |
+| `defaultActive` | `boolean`                     | `false`  | Whether the button starts in the active (iconB) state. |
+| `onChange`      | `(active: boolean) => void`   | —        | Callback fired when the toggle state changes.          |
+| `className`     | `string`                      | —        | Extra class for the button element.                    |

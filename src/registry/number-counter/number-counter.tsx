@@ -70,8 +70,9 @@ export function NumberCounter({
 
   return (
     <span ref={ref} className={cn("tabular-nums", className)}>
-      {prefix}{formatted}{suffix}
+      {prefix}
+      {formatted}
+      {suffix}
     </span>
   );
 }
-

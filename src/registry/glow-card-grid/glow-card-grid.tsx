@@ -15,7 +15,13 @@ type GlowCardProps = GlowCardGridItem & {
   className?: string;
 };
 
-function GlowCard({ title, description, icon, glowColor = "#6366f1", className }: GlowCardProps) {
+function GlowCard({
+  title,
+  description,
+  icon,
+  glowColor = "#6366f1",
+  className,
+}: GlowCardProps) {
   const cardRef = useRef<HTMLDivElement>(null);
   const [pos, setPos] = useState({ x: 0, y: 0 });
   const [hovered, setHovered] = useState(false);
@@ -64,7 +70,9 @@ function GlowCard({ title, description, icon, glowColor = "#6366f1", className }
         </div>
       )}
       <h3 className="mb-1 text-sm font-semibold">{title}</h3>
-      <p className="text-xs leading-relaxed text-muted-foreground">{description}</p>
+      <p className="text-xs leading-relaxed text-muted-foreground">
+        {description}
+      </p>
     </div>
   );
 }
@@ -75,12 +83,18 @@ type GlowCardGridProps = {
   className?: string;
 };
 
-export function GlowCardGrid({ items, cols = 3, className }: GlowCardGridProps) {
+export function GlowCardGrid({
+  items,
+  cols = 3,
+  className,
+}: GlowCardGridProps) {
   return (
     <div
       className={cn(
         "grid gap-3",
-        cols === 2 ? "grid-cols-1 sm:grid-cols-2" : "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3",
+        cols === 2
+          ? "grid-cols-1 sm:grid-cols-2"
+          : "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3",
         className
       )}
     >

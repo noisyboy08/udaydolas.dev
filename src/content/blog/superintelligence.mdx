@@ -24,32 +24,37 @@ Every mainstream AI assistant — ChatGPT, Claude, Gemini — sends every word y
 ## Key Features
 
 ### 🖥️ On-Device LLM Execution
+
 Uses WebLLM — a cutting-edge framework for running quantized language models in the browser — combined with WebGPU for hardware-accelerated matrix computations. The model runs entirely on your local GPU. There are zero network requests after the initial model download. The downloaded model is cached in the browser's persistent storage for instant startup on every subsequent session.
 
 ### 🔒 Architectural Privacy Guarantee
+
 Privacy isn't a policy — it's a technical constraint built into the architecture. The application has no backend server, no telemetry endpoints, no analytics SDKs, no session logging infrastructure. It literally cannot send your data anywhere because there is no server to send it to. The only network activity is the initial one-time model weight download from a public CDN.
 
 ### ⚡ GPU-Accelerated Token Generation
+
 WebGPU compute shaders provide hardware-accelerated matrix multiplication operations — the core computation of transformer inference. On a mid-range consumer GPU (e.g., RTX 3070 or Apple M2), Superintelligence achieves 20-40 tokens per second, which is faster than most users can read — making the on-device experience feel instant and fluid rather than slow and limited.
 
 ### 🎨 Cinematic Scrolljacking UI
+
 The landing page and onboarding experience is a full scrolljacking showcase powered by GSAP ScrollTrigger. Each section (Intro → About → Services → Work → Process → Voices → Pricing) has its own entrance choreography: 3D perspective card reveals on the "Work" section, staggered text cascade animations, an animated neural-grid background that responds to scroll velocity, and keyboard-driven arrow key navigation between sections.
 
 ### 🗣️ Multi-Modal Input Interface
+
 Text (keyboard), voice (browser Web Speech API for speech-to-text input), and document context (drag-and-drop PDF parsing that extracts text into the model's context window) all feed the same local LLM session. This enables use cases like: "Summarize this contract PDF without sending it anywhere" or "Explain this medical report to me privately."
 
 ## Tech Stack
 
-| Layer | Technology |
-|---|---|
-| **Framework** | React, TypeScript |
-| **On-Device AI** | WebLLM (browser-native LLM runtime) |
-| **GPU Acceleration** | WebGPU API |
-| **Animations** | GSAP ScrollTrigger + Framer Motion |
-| **Styling** | Tailwind CSS |
-| **Voice Input** | Web Speech API |
-| **Document Parsing** | PDF.js (client-side) |
-| **Deployment** | Vercel (static, zero backend) |
+| Layer                | Technology                          |
+| -------------------- | ----------------------------------- |
+| **Framework**        | React, TypeScript                   |
+| **On-Device AI**     | WebLLM (browser-native LLM runtime) |
+| **GPU Acceleration** | WebGPU API                          |
+| **Animations**       | GSAP ScrollTrigger + Framer Motion  |
+| **Styling**          | Tailwind CSS                        |
+| **Voice Input**      | Web Speech API                      |
+| **Document Parsing** | PDF.js (client-side)                |
+| **Deployment**       | Vercel (static, zero backend)       |
 
 ## Design Philosophy
 

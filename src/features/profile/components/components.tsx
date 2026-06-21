@@ -96,7 +96,7 @@ export function Components() {
         </PanelTitle>
       </PanelHeader>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 border-b border-edge">
+      <div className="grid grid-cols-1 border-b border-edge sm:grid-cols-2 md:grid-cols-3">
         {HOME_COMPONENTS.map((item) => {
           const Icon = item.icon;
           const isMock = [
@@ -125,10 +125,10 @@ export function Components() {
 
           const className = cn(
             "flex min-h-12 items-center gap-3 border-edge px-4 py-3",
-            "sm:border-r md:[&:nth-child(3n)]:border-r-0 sm:max-md:[&:nth-child(2n)]:border-r-0 sm:border-r",
+            "sm:border-r sm:max-md:[&:nth-child(2n)]:border-r-0 md:[&:nth-child(3n)]:border-r-0",
             "[&:nth-child(n+2)]:border-t sm:[&:nth-child(n+3)]:border-t md:[&:nth-child(n+4)]:border-t",
             isMock
-              ? "cursor-default select-none bg-zinc-950/20"
+              ? "cursor-default bg-zinc-950/20 select-none"
               : "group transition-colors hover:bg-accent/60"
           );
 

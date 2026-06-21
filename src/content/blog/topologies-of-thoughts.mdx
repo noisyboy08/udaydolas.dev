@@ -24,20 +24,26 @@ Human knowledge is inherently non-linear and deeply interconnected — yet every
 ## Key Features
 
 ### 🌐 3D Living Knowledge Graph
+
 Every note, idea, and concept you add becomes a node in a three-dimensional graph. Connections between ideas become edges with computed semantic weight values — the floating decimal numbers visible in the hero (0.1456, 0.3543, 0.3189) represent the semantic similarity score between connected concepts, calculated by the AI backend. The entire graph renders in real-time 3D using Three.js with a particle-density background that creates a visceral sense of navigating idea-space.
 
 ### 🤲 Hand & Camera Gesture Navigation
+
 Navigate your knowledge graph without touching a mouse or keyboard. The gesture system uses WebXR Device API with camera-based hand tracking:
+
 - **Pinch** with one hand to select and drag a node
 - **Two-handed pinch** to zoom in and out of the graph
 - **Wrist rotation** to orbit the 3D camera around the graph's center
 - **Navigate concepts as nodes and edges, pinch to select, two hands to zoom, wrist to orbit** — the in-app tooltip in the hero summarizes the full gesture vocabulary.
 
 ### 🔗 Live Graph Mode
+
 A live streaming graph view shows ideas and connections forming in real-time as you type or dictate notes. As you write about a concept, the AI backend identifies related nodes already in your graph and draws animated edge connections in real-time. Watching your knowledge graph grow live creates an entirely new relationship with thinking and note-taking.
 
 ### 🤖 Self-Hosted AI Backend (FastAPI)
+
 Every AI feature routes through a FastAPI Python backend that the user deploys on their own infrastructure:
+
 - **Note summarization** — Condenses long notes into a concise node label
 - **Concept linking** — Suggests new edges between semantically related nodes
 - **Semantic similarity scoring** — Computes the edge weight values displayed on connections
@@ -46,19 +52,20 @@ Every AI feature routes through a FastAPI Python backend that the user deploys o
 Your OpenAI, Groq, or Anthropic API keys live on your server — never in the browser, never in a third-party database.
 
 ### 🔍 Semantic Edge Discovery
+
 The AI backend continuously computes pairwise semantic similarity between all nodes in your graph and surfaces non-obvious connections you hadn't made explicitly. These suggested edges appear as dashed lines that you can confirm or dismiss — helping you discover hidden relationships between ideas across different topics in your knowledge base.
 
 ## Tech Stack
 
-| Layer | Technology |
-|---|---|
-| **Frontend** | React, TypeScript |
-| **3D Rendering** | Three.js (WebGL graph visualization) |
-| **Gesture Recognition** | WebXR Device API |
-| **AI Backend** | Python, FastAPI |
-| **AI Models** | OpenAI / Groq API (self-hosted routing) |
-| **Styling** | Tailwind CSS |
-| **Deployment** | Vercel (frontend) + User-hosted backend |
+| Layer                   | Technology                              |
+| ----------------------- | --------------------------------------- |
+| **Frontend**            | React, TypeScript                       |
+| **3D Rendering**        | Three.js (WebGL graph visualization)    |
+| **Gesture Recognition** | WebXR Device API                        |
+| **AI Backend**          | Python, FastAPI                         |
+| **AI Models**           | OpenAI / Groq API (self-hosted routing) |
+| **Styling**             | Tailwind CSS                            |
+| **Deployment**          | Vercel (frontend) + User-hosted backend |
 
 ## Design Philosophy
 

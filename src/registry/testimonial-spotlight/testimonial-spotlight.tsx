@@ -37,7 +37,7 @@ export function TestimonialSpotlight({
       ref={cardRef}
       onMouseMove={handleMove}
       className={cn(
-        "group relative overflow-hidden rounded-2xl border border-zinc-200 dark:border-border bg-zinc-50 dark:bg-zinc-950 p-5 sm:p-6 text-zinc-900 dark:text-white",
+        "group relative overflow-hidden rounded-2xl border border-zinc-200 bg-zinc-50 p-5 text-zinc-900 sm:p-6 dark:border-border dark:bg-zinc-950 dark:text-white",
         className
       )}
     >
@@ -63,22 +63,32 @@ export function TestimonialSpotlight({
       <div className="relative">
         {/* Large quote mark */}
         <div
-          className="mb-1.5 text-4xl font-black leading-none opacity-20 dark:opacity-40"
+          className="mb-1.5 text-4xl leading-none font-black opacity-20 dark:opacity-40"
           style={{ color: gradientFrom }}
         >
           &ldquo;
         </div>
-        <p className="mb-3 text-xs sm:text-sm leading-relaxed text-zinc-600 dark:text-zinc-300">{quote}</p>
+        <p className="mb-3 text-xs leading-relaxed text-zinc-600 sm:text-sm dark:text-zinc-300">
+          {quote}
+        </p>
         <div className="flex items-center gap-3">
           <div
             className="flex size-9 items-center justify-center rounded-full text-xs font-bold text-white"
-            style={{ background: `linear-gradient(135deg, ${gradientFrom}, ${gradientTo})` }}
+            style={{
+              background: `linear-gradient(135deg, ${gradientFrom}, ${gradientTo})`,
+            }}
           >
             {author[0]}
           </div>
           <div>
-            <p className="font-semibold text-xs sm:text-sm text-zinc-900 dark:text-white">{author}</p>
-            {role && <p className="text-[10px] sm:text-xs text-zinc-500 dark:text-zinc-400">{role}</p>}
+            <p className="text-xs font-semibold text-zinc-900 sm:text-sm dark:text-white">
+              {author}
+            </p>
+            {role && (
+              <p className="text-[10px] text-zinc-500 sm:text-xs dark:text-zinc-400">
+                {role}
+              </p>
+            )}
           </div>
         </div>
       </div>

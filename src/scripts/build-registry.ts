@@ -68,7 +68,7 @@ export const Index: Record<string, any> = {`;
             files:
               item.files?.map((file) => {
                 if (file.path.startsWith("src/")) {
-                   return file;
+                  return file;
                 }
 
                 return {

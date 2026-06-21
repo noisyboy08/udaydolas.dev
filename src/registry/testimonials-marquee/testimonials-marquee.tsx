@@ -32,7 +32,9 @@ function Card({ item }: { item: TestimonialsMarqueeItem }) {
         <div className="min-w-0">
           <p className="truncate text-sm font-semibold">{item.author}</p>
           {item.role && (
-            <p className="truncate text-xs text-muted-foreground">{item.role}</p>
+            <p className="truncate text-xs text-muted-foreground">
+              {item.role}
+            </p>
           )}
         </div>
       </div>

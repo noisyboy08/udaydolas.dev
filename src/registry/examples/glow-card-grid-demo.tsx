@@ -1,23 +1,33 @@
-import { CodeIcon, LayersIcon, RocketIcon,ShieldIcon, SparklesIcon, ZapIcon } from "lucide-react";
+import {
+  CodeIcon,
+  LayersIcon,
+  RocketIcon,
+  ShieldIcon,
+  SparklesIcon,
+  ZapIcon,
+} from "lucide-react";
 
 import { GlowCardGrid } from "@/registry/glow-card-grid";
 
 const ITEMS = [
   {
     title: "Motion Effects",
-    description: "Smooth, GPU-accelerated animations using CSS and the Web Animations API.",
+    description:
+      "Smooth, GPU-accelerated animations using CSS and the Web Animations API.",
     icon: <SparklesIcon className="size-4" />,
     glowColor: "#a855f7",
   },
   {
     title: "Zero Dependencies",
-    description: "Built with vanilla React and CSS. No extra libraries required.",
+    description:
+      "Built with vanilla React and CSS. No extra libraries required.",
     icon: <ZapIcon className="size-4" />,
     glowColor: "#06b6d4",
   },
   {
     title: "Accessible",
-    description: "Every component is keyboard-navigable and screen reader friendly.",
+    description:
+      "Every component is keyboard-navigable and screen reader friendly.",
     icon: <ShieldIcon className="size-4" />,
     glowColor: "#10b981",
   },

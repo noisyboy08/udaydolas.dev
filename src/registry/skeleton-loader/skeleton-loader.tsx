@@ -8,7 +8,11 @@ type SkeletonProps = {
   lines?: number;
 };
 
-export function Skeleton({ className, variant = "rect", lines = 1 }: SkeletonProps) {
+export function Skeleton({
+  className,
+  variant = "rect",
+  lines = 1,
+}: SkeletonProps) {
   if (variant === "text" && lines > 1) {
     return (
       <div className={cn("space-y-2", className)}>
@@ -16,7 +20,7 @@ export function Skeleton({ className, variant = "rect", lines = 1 }: SkeletonPro
           <div
             key={i}
             className={cn(
-              "h-3 rounded-full bg-muted animate-pulse",
+              "h-3 animate-pulse rounded-full bg-muted",
               i === lines - 1 && "w-3/4"
             )}
           />
@@ -38,7 +42,12 @@ export function Skeleton({ className, variant = "rect", lines = 1 }: SkeletonPro
 
 export function SkeletonCard({ className }: { className?: string }) {
   return (
-    <div className={cn("rounded-xl border border-border bg-card p-3 space-y-2.5", className)}>
+    <div
+      className={cn(
+        "space-y-2.5 rounded-xl border border-border bg-card p-3",
+        className
+      )}
+    >
       <div className="flex items-center gap-3">
         <Skeleton variant="circle" className="size-8 shrink-0" />
         <div className="flex-1 space-y-1.5">

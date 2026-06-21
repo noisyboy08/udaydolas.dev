@@ -32,7 +32,9 @@ export function SpinningCircularText({
         width={size}
         height={size}
         viewBox={`0 0 ${size} ${size}`}
-        style={{ animation: `spinning-circular-text-spin ${duration}s linear infinite` }}
+        style={{
+          animation: `spinning-circular-text-spin ${duration}s linear infinite`,
+        }}
       >
         {chars.map((char, i) => {
           const angle = i * angleStep - 90;

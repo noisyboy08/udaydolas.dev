@@ -24,30 +24,35 @@ Most enterprise and research data is trapped in unstructured text files, documen
 ## Key Features
 
 ### 📥 Ingest Agent (Collecting Data)
+
 The Ingest Agent connects to structured and unstructured data feeds—including APIs, local files, and live document streams. It automatically parses text, filters out noise, detects language boundaries, and queues the clean payloads for relationship analysis.
 
 ### 🔗 Analytics Agent (Analyzing Relationships)
+
 The Analytics Agent runs deep semantic extraction models to identify entities and their associations. It establishes connection strengths, defines relationship types, and computes similarity scores using vector embeddings to construct the relational skeleton.
 
 ### 💡 Insight Agent (Finding Patterns)
+
 The Insight Agent executes community detection algorithms and flags network anomalies. It clusters related nodes together, identifies highly connected "influence hubs," and isolates peripheral nodes to bubble up actionable patterns.
 
 ### 🎨 Visualization Agent (Building Graph)
+
 The Visualization Agent compiles the nodes and edges, rendering them in a beautiful, physics-bound 3D particle-field network using Three.js. Hovering over nodes reveals details about their entities and connecting edges, allowing users to physically navigate their data space.
 
 ### ⚙️ Multi-Agent Coordination Panel
+
 Provides a live telemetry view of all running agents. Real-time progress bars, status indicators, and throughput counters allow operators to track exactly where data is in the processing pipeline.
 
 ## Tech Stack
 
-| Layer | Technology |
-|---|---|
-| **Frontend** | React, TypeScript |
-| **Styling** | Vanilla CSS, glassmorphism design system |
-| **3D Engine** | Three.js (WebGL graph rendering) |
-| **API Backend** | Python, FastAPI |
-| **Agent Coordination** | LangChain / Custom Agent Runtime |
-| **Deployment** | Vercel (Frontend), self-hosted API backend |
+| Layer                  | Technology                                 |
+| ---------------------- | ------------------------------------------ |
+| **Frontend**           | React, TypeScript                          |
+| **Styling**            | Vanilla CSS, glassmorphism design system   |
+| **3D Engine**          | Three.js (WebGL graph rendering)           |
+| **API Backend**        | Python, FastAPI                            |
+| **Agent Coordination** | LangChain / Custom Agent Runtime           |
+| **Deployment**         | Vercel (Frontend), self-hosted API backend |
 
 ## Design Philosophy
 

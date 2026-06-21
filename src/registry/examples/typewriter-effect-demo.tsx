@@ -13,7 +13,11 @@ export default function TypewriterEffectDemo() {
         />
       </p>
       <TypewriterEffect
-        words={["Building the future", "One component at a time", "With React & Next.js"]}
+        words={[
+          "Building the future",
+          "One component at a time",
+          "With React & Next.js",
+        ]}
         className="text-lg text-muted-foreground"
         typingSpeed={60}
       />

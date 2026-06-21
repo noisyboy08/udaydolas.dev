@@ -47,13 +47,15 @@ export function MagneticButton({
       className={cn(
         "relative inline-flex items-center justify-center rounded-full px-6 py-3 font-semibold text-white",
         "bg-gradient-to-r from-violet-600 to-indigo-600 shadow-lg",
-        "transition-shadow duration-300 hover:shadow-violet-500/40 hover:shadow-xl",
-        "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-500",
+        "transition-shadow duration-300 hover:shadow-xl hover:shadow-violet-500/40",
+        "focus-visible:ring-2 focus-visible:ring-violet-500 focus-visible:outline-none",
         className
       )}
       style={{
         transform: `translate(${delta.x}px, ${delta.y}px)`,
-        transition: active ? "transform 0.1s ease-out" : "transform 0.4s cubic-bezier(.34,1.56,.64,1)",
+        transition: active
+          ? "transform 0.1s ease-out"
+          : "transform 0.4s cubic-bezier(.34,1.56,.64,1)",
       }}
       onMouseMove={handleMove}
       onMouseLeave={handleLeave}

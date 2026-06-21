@@ -44,7 +44,7 @@ export function CopyButton({
       className={cn(
         "inline-flex items-center justify-center gap-2 rounded-md border border-border bg-card font-medium text-muted-foreground",
         "transition-all duration-150 hover:border-foreground/20 hover:bg-accent hover:text-foreground",
-        "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
+        "focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none",
         variant === "icon" && "aspect-square",
         variant === "icon-label" && "px-3",
         variant === "pill" && "rounded-full px-4",
@@ -53,7 +53,12 @@ export function CopyButton({
         className
       )}
     >
-      <span className={cn("transition-transform duration-200", copied && "scale-110")}>
+      <span
+        className={cn(
+          "transition-transform duration-200",
+          copied && "scale-110"
+        )}
+      >
         {copied ? (
           <CheckIcon className={cn(iconSize[size], "text-green-500")} />
         ) : (
@@ -61,7 +66,9 @@ export function CopyButton({
         )}
       </span>
       {variant !== "icon" && (
-        <span className="transition-all duration-150">{copied ? "Copied!" : "Copy"}</span>
+        <span className="transition-all duration-150">
+          {copied ? "Copied!" : "Copy"}
+        </span>
       )}
     </button>
   );

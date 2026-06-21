@@ -46,8 +46,12 @@ export default function ScrollFadeEffectDemo() {
           <div className="flex items-center gap-2.5 rounded-lg border border-border bg-card p-2">
             <div className="size-7 shrink-0 rounded-md bg-gradient-to-br from-violet-500 to-indigo-500" />
             <div>
-              <p className="text-xs font-semibold capitalize">Fade From {dir}</p>
-              <p className="text-[10px] text-muted-foreground">Scroll to trigger this animation</p>
+              <p className="text-xs font-semibold capitalize">
+                Fade From {dir}
+              </p>
+              <p className="text-[10px] text-muted-foreground">
+                Scroll to trigger this animation
+              </p>
             </div>
           </div>
         </InstantFadeIn>
@@ -55,4 +59,3 @@ export default function ScrollFadeEffectDemo() {
     </div>
   );
 }
-

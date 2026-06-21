@@ -189,7 +189,8 @@ export function IsometricUDMark({
       innerPoints: dTopInner,
       type: "top-d",
       hatchType: "top",
-      depth: dTopOuter.reduce((sum, p) => sum + p[0] + p[2], 0) / dTopOuter.length,
+      depth:
+        dTopOuter.reduce((sum, p) => sum + p[0] + p[2], 0) / dTopOuter.length,
     });
 
     // --- D Side Walls ---

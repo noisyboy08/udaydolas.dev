@@ -11,7 +11,14 @@ type FeatureCardProps = {
   href?: string;
 };
 
-export function FeatureCard({ title, description, icon, className, accentColor = "#6366f1", href }: FeatureCardProps) {
+export function FeatureCard({
+  title,
+  description,
+  icon,
+  className,
+  accentColor = "#6366f1",
+  href,
+}: FeatureCardProps) {
   const Tag = href ? "a" : "div";
 
   return (
@@ -34,7 +41,9 @@ export function FeatureCard({ title, description, icon, className, accentColor =
 
       <div>
         <p className="mb-1 font-semibold">{title}</p>
-        <p className="text-sm leading-relaxed text-muted-foreground">{description}</p>
+        <p className="text-sm leading-relaxed text-muted-foreground">
+          {description}
+        </p>
       </div>
 
       {href && (
@@ -49,7 +58,9 @@ export function FeatureCard({ title, description, icon, className, accentColor =
       {/* Hover shimmer */}
       <div
         className="pointer-events-none absolute inset-0 rounded-xl opacity-0 transition-opacity duration-300 group-hover:opacity-100"
-        style={{ background: `radial-gradient(300px at 50% 0%, ${accentColor}0a, transparent 70%)` }}
+        style={{
+          background: `radial-gradient(300px at 50% 0%, ${accentColor}0a, transparent 70%)`,
+        }}
       />
     </Tag>
   );

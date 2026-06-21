@@ -4,7 +4,14 @@ import { cn } from "@/lib/utils";
 
 type BadgeProps = {
   label: string;
-  variant?: "default" | "success" | "warning" | "error" | "info" | "outline" | "gradient";
+  variant?:
+    | "default"
+    | "success"
+    | "warning"
+    | "error"
+    | "info"
+    | "outline"
+    | "gradient";
   size?: "sm" | "md" | "lg";
   dot?: boolean;
   className?: string;
@@ -30,8 +37,18 @@ const dotColors: Record<string, string> = {
   gradient: "bg-white",
 };
 
-export function Badge({ label, variant = "default", size = "md", dot = false, className }: BadgeProps) {
-  const sizeClass = { sm: "px-1.5 py-0.5 text-xs", md: "px-2.5 py-0.5 text-xs", lg: "px-3 py-1 text-sm" };
+export function Badge({
+  label,
+  variant = "default",
+  size = "md",
+  dot = false,
+  className,
+}: BadgeProps) {
+  const sizeClass = {
+    sm: "px-1.5 py-0.5 text-xs",
+    md: "px-2.5 py-0.5 text-xs",
+    lg: "px-3 py-1 text-sm",
+  };
 
   return (
     <span
@@ -39,13 +56,18 @@ export function Badge({ label, variant = "default", size = "md", dot = false, cl
         "inline-flex items-center gap-1.5 rounded-full font-medium",
         variantStyles[variant],
         sizeClass[size],
-        variant === "gradient" && "bg-gradient-to-r from-violet-600 to-indigo-600",
+        variant === "gradient" &&
+          "bg-gradient-to-r from-violet-600 to-indigo-600",
         className
       )}
     >
       {dot && (
         <span
-          className={cn("size-1.5 rounded-full", dotColors[variant], variant === "success" && "animate-pulse")}
+          className={cn(
+            "size-1.5 rounded-full",
+            dotColors[variant],
+            variant === "success" && "animate-pulse"
+          )}
         />
       )}
       {label}

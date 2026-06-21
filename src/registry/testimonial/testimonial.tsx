@@ -34,7 +34,11 @@ export function Testimonial({
         </p>
         <footer className="flex items-center gap-3">
           {avatar ? (
-            <img src={avatar} alt={author} className="size-9 rounded-full object-cover" />
+            <img
+              src={avatar}
+              alt={author}
+              className="size-9 rounded-full object-cover"
+            />
           ) : (
             <span className="flex size-9 items-center justify-center rounded-full bg-gradient-to-br from-violet-400 to-cyan-400 text-sm font-bold text-white">
               {author[0]}
@@ -61,13 +65,24 @@ export function Testimonial({
         <div className="relative z-10">
           <div className="mb-4 flex gap-1">
             {stars.map((filled, i) => (
-              <span key={i} className={filled ? "text-amber-400" : "text-muted"}>★</span>
+              <span
+                key={i}
+                className={filled ? "text-amber-400" : "text-muted"}
+              >
+                ★
+              </span>
             ))}
           </div>
-          <p className="mb-5 text-base leading-relaxed">&ldquo;{quote}&rdquo;</p>
+          <p className="mb-5 text-base leading-relaxed">
+            &ldquo;{quote}&rdquo;
+          </p>
           <div className="flex items-center gap-3">
             {avatar ? (
-              <img src={avatar} alt={author} className="size-10 rounded-full object-cover" />
+              <img
+                src={avatar}
+                alt={author}
+                className="size-10 rounded-full object-cover"
+              />
             ) : (
               <span className="flex size-10 items-center justify-center rounded-full bg-gradient-to-br from-violet-500 to-cyan-500 text-sm font-bold text-white">
                 {author[0]}
@@ -75,7 +90,10 @@ export function Testimonial({
             )}
             <div>
               <p className="text-sm font-semibold">{author}</p>
-              <p className="text-xs text-muted-foreground">{role}{company ? ` · ${company}` : ""}</p>
+              <p className="text-xs text-muted-foreground">
+                {role}
+                {company ? ` · ${company}` : ""}
+              </p>
             </div>
           </div>
         </div>
@@ -84,16 +102,32 @@ export function Testimonial({
   }
 
   return (
-    <div className={cn("rounded-xl border border-border bg-card p-5 shadow-sm", className)}>
+    <div
+      className={cn(
+        "rounded-xl border border-border bg-card p-5 shadow-sm",
+        className
+      )}
+    >
       <div className="mb-3 flex gap-1">
         {stars.map((filled, i) => (
-          <span key={i} className={filled ? "text-amber-400" : "text-muted-foreground/30"}>★</span>
+          <span
+            key={i}
+            className={filled ? "text-amber-400" : "text-muted-foreground/30"}
+          >
+            ★
+          </span>
         ))}
       </div>
-      <p className="mb-4 text-sm leading-relaxed text-muted-foreground">&ldquo;{quote}&rdquo;</p>
+      <p className="mb-4 text-sm leading-relaxed text-muted-foreground">
+        &ldquo;{quote}&rdquo;
+      </p>
       <div className="flex items-center gap-3">
         {avatar ? (
-          <img src={avatar} alt={author} className="size-8 shrink-0 rounded-full object-cover" />
+          <img
+            src={avatar}
+            alt={author}
+            className="size-8 shrink-0 rounded-full object-cover"
+          />
         ) : (
           <span className="flex size-8 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-violet-400 to-cyan-400 text-xs font-bold text-white">
             {author[0]}
@@ -101,7 +135,12 @@ export function Testimonial({
         )}
         <div className="min-w-0">
           <p className="truncate text-sm font-semibold">{author}</p>
-          {role && <p className="truncate text-xs text-muted-foreground">{role}{company ? ` · ${company}` : ""}</p>}
+          {role && (
+            <p className="truncate text-xs text-muted-foreground">
+              {role}
+              {company ? ` · ${company}` : ""}
+            </p>
+          )}
         </div>
       </div>
     </div>

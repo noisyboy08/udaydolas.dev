@@ -65,13 +65,13 @@ export function Github() {
       </PanelHeader>
 
       <PanelContent className="p-4 md:p-6">
-        <div className="w-full text-zinc-900 dark:text-foreground font-sans selection:bg-zinc-500/30">
+        <div className="w-full font-sans text-zinc-900 selection:bg-zinc-500/30 dark:text-foreground">
           <div className="flex flex-col">
             {/* The scrollable graph container */}
-            <div className="overflow-x-auto pb-2 scrollbar-none">
-              <div className="min-w-[620px] flex flex-col">
+            <div className="scrollbar-none overflow-x-auto pb-2">
+              <div className="flex min-w-[620px] flex-col">
                 {/* Month labels */}
-                <div className="flex pl-7 mb-1.5 text-[10px] font-mono text-zinc-450 dark:text-zinc-500 select-none">
+                <div className="text-zinc-450 mb-1.5 flex pl-7 font-mono text-[10px] select-none dark:text-zinc-500">
                   {MONTHS_ORDER.map((month, i) => (
                     <span
                       key={month}
@@ -88,7 +88,7 @@ export function Github() {
                 {/* Day labels and grid side-by-side */}
                 <div className="flex gap-2">
                   {/* Days labels */}
-                  <div className="flex flex-col justify-between py-1.5 text-[9px] font-mono text-zinc-450 dark:text-zinc-500 w-5 select-none leading-none h-[78px]">
+                  <div className="text-zinc-450 flex h-[78px] w-5 flex-col justify-between py-1.5 font-mono text-[9px] leading-none select-none dark:text-zinc-500">
                     <span className="h-2.5"></span>
                     <span className="h-2.5">Mon</span>
                     <span className="h-2.5"></span>
@@ -100,14 +100,14 @@ export function Github() {
 
                   {/* Contributions grid (53 columns * 7 rows) */}
                   <div
-                    className="grid grid-flow-col gap-[3px] flex-1"
+                    className="grid flex-1 grid-flow-col gap-[3px]"
                     style={{ gridTemplateRows: "repeat(7, minmax(0, 1fr))" }}
                   >
                     {data.map((level, i) => (
                       <div
                         key={i}
                         className={cn(
-                          "size-[9px] rounded-[1.5px] transition-all hover:scale-125 hover:z-10",
+                          "size-[9px] rounded-[1.5px] transition-all hover:z-10 hover:scale-125",
                           getColor(level)
                         )}
                         title={`Level ${level} contributions`}
@@ -119,17 +119,17 @@ export function Github() {
             </div>
 
             {/* Bottom Footer Row of Graph Card */}
-            <div className="mt-3 flex items-center justify-between text-[10px] font-mono text-zinc-450 dark:text-zinc-500 pt-2 border-t border-zinc-200 dark:border-zinc-800/40">
+            <div className="text-zinc-450 mt-3 flex items-center justify-between border-t border-zinc-200 pt-2 font-mono text-[10px] dark:border-zinc-800/40 dark:text-zinc-500">
               <span>
                 {totalContributions} contributions in the past 365 days.
               </span>
               <div className="flex items-center gap-1.5 select-none">
                 <span>Less</span>
-                <span className="size-[9px] rounded-[1.5px] bg-zinc-200/50 dark:bg-zinc-900/60 border border-zinc-300/10 dark:border-zinc-800/60" />
+                <span className="size-[9px] rounded-[1.5px] border border-zinc-300/10 bg-zinc-200/50 dark:border-zinc-800/60 dark:bg-zinc-900/60" />
                 <span className="size-[9px] rounded-[1.5px] bg-zinc-300 dark:bg-zinc-800" />
-                <span className="size-[9px] rounded-[1.5px] bg-zinc-400 dark:bg-zinc-650" />
+                <span className="dark:bg-zinc-650 size-[9px] rounded-[1.5px] bg-zinc-400" />
                 <span className="size-[9px] rounded-[1.5px] bg-zinc-500 dark:bg-zinc-500" />
-                <span className="size-[9px] rounded-[1.5px] bg-zinc-700 dark:bg-zinc-350" />
+                <span className="dark:bg-zinc-350 size-[9px] rounded-[1.5px] bg-zinc-700" />
                 <span>More</span>
               </div>
             </div>

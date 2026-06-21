@@ -18,18 +18,15 @@ import { TextFlip } from "@/registry/text-flip";
 
 export default function Demo() {
   return (
-    <TextFlip
-      words={["Fast", "Beautiful", "Accessible"]}
-      interval={2000}
-    />
+    <TextFlip words={["Fast", "Beautiful", "Accessible"]} interval={2000} />
   );
 }
 ```
 
 ## Props
 
-| Prop | Type | Default | Description |
-|---|---|---|---|
-| `words` | `string[]` | required | The list of words to cycle through. |
-| `interval` | `number` | `2000` | Milliseconds between each word swap. |
-| `className` | `string` | — | Extra class applied to the text element. |
+| Prop        | Type       | Default  | Description                              |
+| ----------- | ---------- | -------- | ---------------------------------------- |
+| `words`     | `string[]` | required | The list of words to cycle through.      |
+| `interval`  | `number`   | `2000`   | Milliseconds between each word swap.     |
+| `className` | `string`   | —        | Extra class applied to the text element. |

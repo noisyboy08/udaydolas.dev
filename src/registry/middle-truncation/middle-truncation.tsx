@@ -9,7 +9,12 @@ type MiddleTruncationProps = {
   separator?: string;
 };
 
-export function MiddleTruncation({ text, maxLength = 32, className, separator = "..." }: MiddleTruncationProps) {
+export function MiddleTruncation({
+  text,
+  maxLength = 32,
+  className,
+  separator = "...",
+}: MiddleTruncationProps) {
   if (text.length <= maxLength) {
     return <span className={className}>{text}</span>;
   }

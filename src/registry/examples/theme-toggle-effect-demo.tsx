@@ -22,9 +22,7 @@ export default function ThemeToggleEffectDemo() {
     return (
       <div className="flex h-full w-full flex-col items-center justify-center gap-2 bg-zinc-950 transition-colors duration-500">
         <ThemeToggleEffect defaultDark={true} />
-        <p className="text-xs font-medium text-white/60">
-          Dark mode active
-        </p>
+        <p className="text-xs font-medium text-white/60">Dark mode active</p>
       </div>
     );
   }
@@ -46,7 +44,10 @@ export default function ThemeToggleEffectDemo() {
       style={{ background: isDark ? "hsl(240,6%,10%)" : "hsl(48,100%,97%)" }}
     >
       <ThemeToggleEffect defaultDark={isDark} onChange={handleChange} />
-      <p className="text-xs font-medium" style={{ color: isDark ? "rgba(255,255,255,0.6)" : "rgba(0,0,0,0.5)" }}>
+      <p
+        className="text-xs font-medium"
+        style={{ color: isDark ? "rgba(255,255,255,0.6)" : "rgba(0,0,0,0.5)" }}
+      >
         {isDark ? "Dark mode active" : "Light mode active"}
       </p>
     </div>

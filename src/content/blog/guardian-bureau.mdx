@@ -24,31 +24,36 @@ Solana's DeFi ecosystem moves fast — new tokens launch every minute, and bad a
 ## Key Features
 
 ### 🛡️ DEPLOY_SCANNER — Contract Threat Analysis
+
 The core tool: paste any Solana contract address into the terminal console interface and initialize a deep threat scan. The scanner checks for rug pull mechanisms (locked liquidity flags, mint authority status), honeypot patterns (buy/sell asymmetric fee structures), unauthorized token burning, and known malicious wallet signature patterns — all in under 3 seconds.
 
 ### 📡 VAULT.LOGS — Audit Ledger
+
 A publicly browsable, timestamped ledger of every contract scan performed on the platform. Each log entry contains the contract address, a full threat severity rating (green/yellow/red), all flagged patterns with severity explanations, and an AI-written analyst summary in plain English. The ledger is append-only and permanently accessible.
 
 ### 🧠 INTEL.AI — Plain English Threat Translator
-An integrated AI layer that converts raw threat scan results into plain-English explanations any user can understand. Instead of "UNAUTHORIZED_MINT_AUTHORITY flag detected at 0x4f2a...", INTEL.AI tells you: "This contract owner can mint unlimited tokens at any time, which would instantly devalue your holdings. This is a common rug pull mechanism." 
+
+An integrated AI layer that converts raw threat scan results into plain-English explanations any user can understand. Instead of "UNAUTHORIZED_MINT_AUTHORITY flag detected at 0x4f2a...", INTEL.AI tells you: "This contract owner can mint unlimited tokens at any time, which would instantly devalue your holdings. This is a common rug pull mechanism."
 
 ### ⚡ THREAT.NET — Live Community Feed
+
 A real-time threat intelligence feed aggregating the latest flagged contracts, active scam campaigns sweeping the Solana ecosystem, and newly detected malicious signature patterns from community scans. The feed updates live and allows users to upvote confirmed scams and add contextual notes.
 
 ### 🔒 Collective Intelligence Network
+
 Every community-reported contract and every confirmed threat feeds back into GUARDIAN's central signature database. Each new scan improves pattern recognition accuracy and expands the threat library — making the platform exponentially smarter with every user interaction.
 
 ## Tech Stack
 
-| Layer | Technology |
-|---|---|
-| **Framework** | React 18, Vite |
-| **Blockchain** | Solana Web3.js, Anchor Protocol |
-| **Styling** | Tailwind CSS, CSS Custom Properties |
-| **Animations** | Framer Motion, HTML5 Canvas (particle effects) |
-| **AI Layer** | NLP threat explanation engine |
-| **State** | Ephemeral component-level state (no persistent client store) |
-| **Deployment** | Vercel |
+| Layer          | Technology                                                   |
+| -------------- | ------------------------------------------------------------ |
+| **Framework**  | React 18, Vite                                               |
+| **Blockchain** | Solana Web3.js, Anchor Protocol                              |
+| **Styling**    | Tailwind CSS, CSS Custom Properties                          |
+| **Animations** | Framer Motion, HTML5 Canvas (particle effects)               |
+| **AI Layer**   | NLP threat explanation engine                                |
+| **State**      | Ephemeral component-level state (no persistent client store) |
+| **Deployment** | Vercel                                                       |
 
 ## Design Philosophy
 

@@ -24,30 +24,35 @@ Traditional RAG systems split files into uniform text chunks and store them in a
 ## Key Features
 
 ### 📄 Multimodal Document Parser
+
 Parses and structure-extracts complex file layouts. It recognizes image zones, isolates data tables, formats mathematical equations into LaTeX syntax, and converts standard text into clean, hierarchical Markdown ready for indexing.
 
 ### 🕸️ LightRAG Graph Grounding
+
 Replaces isolated vector chunking with a dynamic knowledge graph. LightRAG structures content as nodes (entities, concepts) and edges (relational bonds), preserving semantic relationships across the entire dataset.
 
 ### 🔍 Hybrid Retrieval Engine
+
 Combines vector distance search with graph-based neighbor searches. This allows RAG-Anything to resolve specific, low-level keyword queries (local search) and high-level abstract summaries (global search) simultaneously.
 
 ### 📊 Dynamic Knowledge Graph Explorer
+
 Provides an interactive, in-browser graph visualizer. When a query is run, the dashboard highlights the exact nodes and connections retrieved, allowing users to inspect the reasoning path behind the AI response.
 
 ### ⚡ Developer Control Console
+
 Provides an intuitive dashboard for adjusting indexing parameters, configuring chunk sizes, checking embedding model parameters, and monitoring usage metrics.
 
 ## Tech Stack
 
-| Layer | Technology |
-|---|---|
-| **Frontend** | React, Next.js, TypeScript |
-| **Styling** | Tailwind CSS (lime-green design theme) |
-| **Backend** | Python, FastAPI |
-| **RAG Engine** | LightRAG |
-| **Data Formats** | PDF, JSON, LaTeX |
-| **Deployment** | Vercel (Frontend), Vercel/Self-hosted API |
+| Layer            | Technology                                |
+| ---------------- | ----------------------------------------- |
+| **Frontend**     | React, Next.js, TypeScript                |
+| **Styling**      | Tailwind CSS (lime-green design theme)    |
+| **Backend**      | Python, FastAPI                           |
+| **RAG Engine**   | LightRAG                                  |
+| **Data Formats** | PDF, JSON, LaTeX                          |
+| **Deployment**   | Vercel (Frontend), Vercel/Self-hosted API |
 
 ## Design Philosophy
 

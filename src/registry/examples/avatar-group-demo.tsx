@@ -1,9 +1,14 @@
 import { AvatarGroup } from "@/registry/avatar-group";
 
 const USERS = [
-  { name: "Uday Dolas" }, { name: "Alex Chen" }, { name: "Priya Sharma" },
-  { name: "Jordan Lee" }, { name: "Sarah Kim" }, { name: "Marco Rossi" },
-  { name: "Aisha Patel" }, { name: "Tom Zhang" },
+  { name: "Uday Dolas" },
+  { name: "Alex Chen" },
+  { name: "Priya Sharma" },
+  { name: "Jordan Lee" },
+  { name: "Sarah Kim" },
+  { name: "Marco Rossi" },
+  { name: "Aisha Patel" },
+  { name: "Tom Zhang" },
 ];
 
 export default function AvatarGroupDemo() {

@@ -2,21 +2,6 @@ import fs from "fs";
 import path from "path";
 import sharp from "sharp";
 
-// Exact same path data as chanhdai-mark.tsx — this draws the blocky "UD" logo
-// U: left vertical + right vertical + bottom bar
-// D: left vertical + top bar + right bar + bottom bar
-const svgContent = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 256" width="512" height="256">
-  <!-- Black rounded background -->
-  <rect width="512" height="256" rx="40" fill="black" />
-  <!-- UD logo path — matches chanhdai-mark.tsx exactly, scaled to fit -->
-  <g transform="translate(64, 32) scale(0.75)">
-    <path
-      fill="white"
-      d="M48 256H0V0h48v256ZM224 256H176V0h48v256ZM176 256H48V208h128v48ZM320 256H272V0h48v256ZM464 48H320V0h144v48ZM464 256H320V208h144v48ZM512 208H464V48h48v160Z"
-    />
-  </g>
-</svg>`;
-
 // Square version for icons (UD centered in a square canvas)
 const svgSquare = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
   <!-- Black rounded background -->

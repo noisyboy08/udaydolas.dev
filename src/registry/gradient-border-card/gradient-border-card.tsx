@@ -25,10 +25,14 @@ export function GradientBorderCard({
       style={{
         background: `linear-gradient(135deg, ${gradient})`,
         backgroundSize: animated ? "200% 200%" : undefined,
-        animation: animated ? "gradient-border-spin 4s linear infinite" : undefined,
+        animation: animated
+          ? "gradient-border-spin 4s linear infinite"
+          : undefined,
       }}
     >
-      <div className={cn("relative h-full w-full rounded-[11px] bg-card", padding)}>
+      <div
+        className={cn("relative h-full w-full rounded-[11px] bg-card", padding)}
+      >
         {children}
       </div>
       <style>{`

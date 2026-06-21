@@ -31,7 +31,12 @@ export function ProgressRing({
   const cx = size / 2;
 
   return (
-    <div className={cn("relative inline-flex items-center justify-center", className)}>
+    <div
+      className={cn(
+        "relative inline-flex items-center justify-center",
+        className
+      )}
+    >
       <svg width={size} height={size} className="-rotate-90">
         {/* Track */}
         <circle
@@ -63,8 +68,12 @@ export function ProgressRing({
       </svg>
       {showLabel && (
         <div className="absolute flex flex-col items-center">
-          <span className="text-xl font-bold tabular-nums">{Math.round(value)}%</span>
-          {label && <span className="text-xs text-muted-foreground">{label}</span>}
+          <span className="text-xl font-bold tabular-nums">
+            {Math.round(value)}%
+          </span>
+          {label && (
+            <span className="text-xs text-muted-foreground">{label}</span>
+          )}
         </div>
       )}
     </div>

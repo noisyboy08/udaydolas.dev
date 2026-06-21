@@ -12,7 +12,13 @@ type IconSwapProps = {
   direction?: "fade" | "flip" | "slide";
 };
 
-export function IconSwap({ iconA, iconB, label, className, direction = "flip" }: IconSwapProps) {
+export function IconSwap({
+  iconA,
+  iconB,
+  label,
+  className,
+  direction = "flip",
+}: IconSwapProps) {
   const [swapped, setSwapped] = useState(false);
 
   return (
@@ -35,10 +41,16 @@ export function IconSwap({ iconA, iconB, label, className, direction = "flip" }:
           className="absolute inset-0 flex items-center justify-center transition-all duration-300"
           style={
             direction === "flip"
-              ? { transform: swapped ? "rotateY(90deg)" : "rotateY(0deg)", opacity: swapped ? 0 : 1 }
+              ? {
+                  transform: swapped ? "rotateY(90deg)" : "rotateY(0deg)",
+                  opacity: swapped ? 0 : 1,
+                }
               : direction === "slide"
-              ? { transform: swapped ? "translateY(-100%)" : "translateY(0)", opacity: swapped ? 0 : 1 }
-              : { opacity: swapped ? 0 : 1 }
+                ? {
+                    transform: swapped ? "translateY(-100%)" : "translateY(0)",
+                    opacity: swapped ? 0 : 1,
+                  }
+                : { opacity: swapped ? 0 : 1 }
           }
         >
           {iconA}
@@ -48,10 +60,16 @@ export function IconSwap({ iconA, iconB, label, className, direction = "flip" }:
           className="absolute inset-0 flex items-center justify-center transition-all duration-300"
           style={
             direction === "flip"
-              ? { transform: swapped ? "rotateY(0deg)" : "rotateY(-90deg)", opacity: swapped ? 1 : 0 }
+              ? {
+                  transform: swapped ? "rotateY(0deg)" : "rotateY(-90deg)",
+                  opacity: swapped ? 1 : 0,
+                }
               : direction === "slide"
-              ? { transform: swapped ? "translateY(0)" : "translateY(100%)", opacity: swapped ? 1 : 0 }
-              : { opacity: swapped ? 1 : 0 }
+                ? {
+                    transform: swapped ? "translateY(0)" : "translateY(100%)",
+                    opacity: swapped ? 1 : 0,
+                  }
+                : { opacity: swapped ? 1 : 0 }
           }
         >
           {iconB}
@@ -61,4 +79,3 @@ export function IconSwap({ iconA, iconB, label, className, direction = "flip" }:
     </button>
   );
 }
-

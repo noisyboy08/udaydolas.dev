@@ -19,8 +19,8 @@ import { SpotlightCard } from "@/registry/spotlight-card";
 export default function Demo() {
   return (
     <SpotlightCard spotlightColor="rgba(139, 92, 246, 0.15)">
-      <h3 className="text-white font-semibold">Card Title</h3>
-      <p className="text-zinc-400 text-sm">Hover to reveal the spotlight.</p>
+      <h3 className="font-semibold text-white">Card Title</h3>
+      <p className="text-sm text-zinc-400">Hover to reveal the spotlight.</p>
     </SpotlightCard>
   );
 }
@@ -28,8 +28,8 @@ export default function Demo() {
 
 ## Props
 
-| Prop | Type | Default | Description |
-|---|---|---|---|
-| `children` | `ReactNode` | required | Card content. |
-| `spotlightColor` | `string` | `rgba(139,92,246,0.15)` | Any CSS color for the spotlight radial gradient. |
-| `className` | `string` | — | Extra class for the card wrapper. |
+| Prop             | Type        | Default                 | Description                                      |
+| ---------------- | ----------- | ----------------------- | ------------------------------------------------ |
+| `children`       | `ReactNode` | required                | Card content.                                    |
+| `spotlightColor` | `string`    | `rgba(139,92,246,0.15)` | Any CSS color for the spotlight radial gradient. |
+| `className`      | `string`    | —                       | Extra class for the card wrapper.                |

@@ -24,35 +24,41 @@ Modern browser tab management is fundamentally broken. Every browser treats tabs
 ## Key Features
 
 ### 🌳 Visual Tab Tree
+
 Every tab is a node in a spatial tree rendered on an interactive canvas. The relationship between tabs is visually explicit — edge lines connect parent tabs to their children, creating a branching structure that perfectly mirrors how your browsing actually works. The tree supports zoom (from 20% to 300%), pan navigation, and node repositioning. Opening a link in a new tab instantly adds a new child node with an animated edge connection.
 
 ### 🔍 Unified Command Bar
+
 A centered, command-palette style URL/search bar at the top of the canvas accepts URL entry, search queries (routes to your default search engine), and instant bookmark lookup. Below the command bar, quick-access pinned shortcuts show your most-used sites (YouTube, ChatGPT, Amazon, Google Docs, Netflix, GitHub) as one-click chip buttons — no need to remember URLs for the sites you visit most.
 
 ### 🗺️ Tab Minimap
+
 A miniature overview map in the bottom-right corner of the interface renders the full tab tree at reduced scale, providing complete spatial orientation even when you've zoomed into a specific branch. Clicking any node on the minimap instantly centers the viewport on that tab and activates it. The minimap uses a teal/cyan color coding to show active vs. inactive tab nodes.
 
 ### ⏱️ Complete Browser Feature Set
+
 Despite the radical tab visualization change, Sowser includes every standard browser feature rebuilt with a tree-first mental model:
+
 - **Bookmarks** — Save any tab as a bookmark with automatic title and favicon capture; organize bookmarks into smart collections
 - **History** — Full browsing history with timeline view and visual backtrack trails showing which path through the tree you took
 - **Downloads** — Download manager with progress indicators, file type icons, and download directory organization
 - **Session persistence** — The entire tab tree state (node positions, zoom level, active tab) is saved and restored across browser restarts
 
 ### 🎨 Slate Dark UI System
+
 A premium dark interface with a vertical icon-based left sidebar providing persistent access to all browser functions: tab tree, web view, bookmarks, tab groups, magic AI features, favorites, history, downloads, and settings. The sidebar uses a consistent teal accent for active states and a dark slate background with subtle border separators — clean, professional, distraction-free.
 
 ## Tech Stack
 
-| Layer | Technology |
-|---|---|
-| **Runtime** | Electron (desktop app shell) |
-| **Language** | TypeScript |
-| **UI Framework** | React |
-| **Tab Rendering** | HTML5 Canvas API (tree graph) |
-| **Web Views** | Electron WebView / BrowserView |
-| **Styling** | Tailwind CSS |
-| **Data** | Local IndexedDB (session, bookmarks, history) |
+| Layer             | Technology                                    |
+| ----------------- | --------------------------------------------- |
+| **Runtime**       | Electron (desktop app shell)                  |
+| **Language**      | TypeScript                                    |
+| **UI Framework**  | React                                         |
+| **Tab Rendering** | HTML5 Canvas API (tree graph)                 |
+| **Web Views**     | Electron WebView / BrowserView                |
+| **Styling**       | Tailwind CSS                                  |
+| **Data**          | Local IndexedDB (session, bookmarks, history) |
 
 ## Design Philosophy
 

@@ -23,7 +23,10 @@ export function StepProgress({
     return (
       <div className={cn("flex gap-1.5", className)}>
         {steps.map((_, i) => (
-          <div key={i} className="h-1 flex-1 overflow-hidden rounded-full bg-muted">
+          <div
+            key={i}
+            className="h-1 flex-1 overflow-hidden rounded-full bg-muted"
+          >
             <div
               className="h-full rounded-full transition-all duration-500"
               style={{
@@ -65,7 +68,8 @@ export function StepProgress({
                 "flex size-8 items-center justify-center rounded-full text-sm font-bold transition-all duration-300",
                 i < current && "text-white",
                 i === current && "text-white ring-4",
-                i > current && "border border-border bg-muted text-muted-foreground"
+                i > current &&
+                  "border border-border bg-muted text-muted-foreground"
               )}
               style={
                 i <= current
@@ -78,12 +82,16 @@ export function StepProgress({
             >
               {i < current ? "✓" : i + 1}
             </div>
-            <span className="mt-1 max-w-16 text-center text-xs text-muted-foreground">{step}</span>
+            <span className="mt-1 max-w-16 text-center text-xs text-muted-foreground">
+              {step}
+            </span>
           </div>
           {i < steps.length - 1 && (
             <div
               className="mx-1 mb-5 h-px flex-1 transition-all duration-500"
-              style={{ background: i < current ? accentColor : "var(--color-border)" }}
+              style={{
+                background: i < current ? accentColor : "var(--color-border)",
+              }}
             />
           )}
         </React.Fragment>
@@ -91,4 +99,3 @@ export function StepProgress({
     </div>
   );
 }
-

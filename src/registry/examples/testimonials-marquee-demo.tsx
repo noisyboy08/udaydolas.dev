@@ -2,17 +2,20 @@ import { TestimonialsMarquee } from "@/registry/testimonials-marquee";
 
 const ITEMS = [
   {
-    quote: "Uday's portfolio is one of the most polished I've seen. Clean code, stunning UI.",
+    quote:
+      "Uday's portfolio is one of the most polished I've seen. Clean code, stunning UI.",
     author: "Alex Chen",
     role: "Senior Frontend Engineer",
   },
   {
-    quote: "The components library is incredibly well thought out. Production ready.",
+    quote:
+      "The components library is incredibly well thought out. Production ready.",
     author: "Priya Sharma",
     role: "Product Designer",
   },
   {
-    quote: "Fast, accessible, and beautiful. Exactly what modern web should feel like.",
+    quote:
+      "Fast, accessible, and beautiful. Exactly what modern web should feel like.",
     author: "Jordan Lee",
     role: "Tech Lead",
   },

@@ -17,7 +17,12 @@ type AccordionProps = {
   accentColor?: string;
 };
 
-export function Accordion({ items, className, allowMultiple = false, accentColor = "#6366f1" }: AccordionProps) {
+export function Accordion({
+  items,
+  className,
+  allowMultiple = false,
+  accentColor = "#6366f1",
+}: AccordionProps) {
   const [open, setOpen] = useState<Set<number>>(new Set());
 
   const toggle = (i: number) => {
@@ -34,7 +39,12 @@ export function Accordion({ items, className, allowMultiple = false, accentColor
   };
 
   return (
-    <div className={cn("divide-y divide-border rounded-xl border border-border", className)}>
+    <div
+      className={cn(
+        "divide-y divide-border rounded-xl border border-border",
+        className
+      )}
+    >
       {items.map((item, i) => {
         const isOpen = open.has(i);
         return (

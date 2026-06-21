@@ -18,7 +18,12 @@ const COLORS = [
   "from-fuchsia-500 to-purple-500",
 ];
 
-export function AvatarGroup({ avatars, max = 5, size = "md", className }: AvatarGroupProps) {
+export function AvatarGroup({
+  avatars,
+  max = 5,
+  size = "md",
+  className,
+}: AvatarGroupProps) {
   const shown = avatars.slice(0, max);
   const rest = avatars.length - max;
 

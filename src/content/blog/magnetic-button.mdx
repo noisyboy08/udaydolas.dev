@@ -17,18 +17,14 @@ Listens to `mousemove` events relative to the button's bounding rect and applies
 import { MagneticButton } from "@/registry/magnetic-button";
 
 export default function Demo() {
-  return (
-    <MagneticButton strength={0.4}>
-      Hover me
-    </MagneticButton>
-  );
+  return <MagneticButton strength={0.4}>Hover me</MagneticButton>;
 }
 ```
 
 ## Props
 
-| Prop | Type | Default | Description |
-|---|---|---|---|
-| `children` | `ReactNode` | required | Button content. |
-| `strength` | `number` | `0.4` | Magnetic pull strength (0 = no movement, 1 = full offset). |
-| `className` | `string` | — | Extra class for the button element. |
+| Prop        | Type        | Default  | Description                                                |
+| ----------- | ----------- | -------- | ---------------------------------------------------------- |
+| `children`  | `ReactNode` | required | Button content.                                            |
+| `strength`  | `number`    | `0.4`    | Magnetic pull strength (0 = no movement, 1 = full offset). |
+| `className` | `string`    | —        | Extra class for the button element.                        |

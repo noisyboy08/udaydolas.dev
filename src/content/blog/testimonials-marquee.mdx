@@ -17,8 +17,16 @@ A horizontally scrolling strip of testimonial cards. Cards are duplicated to cre
 import { TestimonialsMarquee } from "@/registry/testimonials-marquee";
 
 const ITEMS = [
-  { quote: "Incredible components!", author: "Alex Chen", role: "Frontend Engineer" },
-  { quote: "Production ready out of the box.", author: "Priya Sharma", role: "Designer" },
+  {
+    quote: "Incredible components!",
+    author: "Alex Chen",
+    role: "Frontend Engineer",
+  },
+  {
+    quote: "Production ready out of the box.",
+    author: "Priya Sharma",
+    role: "Designer",
+  },
 ];
 
 export default function Demo() {
@@ -28,10 +36,10 @@ export default function Demo() {
 
 ## Props
 
-| Prop | Type | Default | Description |
-|---|---|---|---|
-| `items` | `TestimonialsMarqueeItem[]` | — | Array of testimonial objects. |
-| `speed` | `number` | `40` | Scroll speed in pixels per second. |
-| `pauseOnHover` | `boolean` | `true` | Pause the animation when the cursor is over it. |
-| `direction` | `"left" \| "right"` | `"left"` | Scroll direction. |
-| `className` | `string` | — | Extra class for the wrapper. |
+| Prop           | Type                        | Default  | Description                                     |
+| -------------- | --------------------------- | -------- | ----------------------------------------------- |
+| `items`        | `TestimonialsMarqueeItem[]` | —        | Array of testimonial objects.                   |
+| `speed`        | `number`                    | `40`     | Scroll speed in pixels per second.              |
+| `pauseOnHover` | `boolean`                   | `true`   | Pause the animation when the cursor is over it. |
+| `direction`    | `"left" \| "right"`         | `"left"` | Scroll direction.                               |
+| `className`    | `string`                    | —        | Extra class for the wrapper.                    |

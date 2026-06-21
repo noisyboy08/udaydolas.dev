@@ -80,15 +80,19 @@ export function PricingCard({
     >
       {badge && (
         <span
-          className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full px-3 py-0.5 text-xs font-bold text-white z-10"
-          style={{ background: `linear-gradient(90deg, ${accentColor}, #a855f7)` }}
+          className="absolute -top-3 left-1/2 z-10 -translate-x-1/2 rounded-full px-3 py-0.5 text-xs font-bold text-white"
+          style={{
+            background: `linear-gradient(90deg, ${accentColor}, #a855f7)`,
+          }}
         >
           {badge}
         </span>
       )}
 
       <p className="mb-1 font-semibold">{name}</p>
-      {description && <p className="mb-4 text-xs text-muted-foreground">{description}</p>}
+      {description && (
+        <p className="mb-4 text-xs text-muted-foreground">{description}</p>
+      )}
 
       <div className="mb-6 flex items-end gap-1">
         <span className="text-4xl font-black tabular-nums">${price}</span>
@@ -102,7 +106,17 @@ export function PricingCard({
               className="mt-0.5 size-4 shrink-0"
               style={{ color: accentColor }}
             />
-            <span className={highlight ? (isDark ? "text-zinc-300" : "text-zinc-600") : "text-muted-foreground"}>{f}</span>
+            <span
+              className={
+                highlight
+                  ? isDark
+                    ? "text-zinc-300"
+                    : "text-zinc-600"
+                  : "text-muted-foreground"
+              }
+            >
+              {f}
+            </span>
           </li>
         ))}
       </ul>
@@ -113,7 +127,9 @@ export function PricingCard({
         className={cn(
           "mt-auto w-full rounded-xl py-2.5 text-sm font-semibold transition-all duration-200",
           highlight
-            ? (isDark ? "bg-white text-zinc-900 hover:bg-zinc-100" : "bg-zinc-900 text-white hover:bg-zinc-800")
+            ? isDark
+              ? "bg-white text-zinc-900 hover:bg-zinc-100"
+              : "bg-zinc-900 text-white hover:bg-zinc-800"
             : "border border-border bg-background hover:bg-accent"
         )}
         style={!highlight ? { borderColor: `${accentColor}40` } : undefined}

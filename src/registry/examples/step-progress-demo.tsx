@@ -11,12 +11,37 @@ export default function StepProgressDemo() {
 
   return (
     <div className="flex w-full max-w-md flex-col gap-5 py-2">
-      <StepProgress steps={STEPS} current={current} variant="numbered" accentColor="#6366f1" />
-      <StepProgress steps={STEPS} current={current} variant="bars" accentColor="#06b6d4" />
-      <StepProgress steps={STEPS} current={current} variant="dots" accentColor="#a855f7" />
+      <StepProgress
+        steps={STEPS}
+        current={current}
+        variant="numbered"
+        accentColor="#6366f1"
+      />
+      <StepProgress
+        steps={STEPS}
+        current={current}
+        variant="bars"
+        accentColor="#06b6d4"
+      />
+      <StepProgress
+        steps={STEPS}
+        current={current}
+        variant="dots"
+        accentColor="#a855f7"
+      />
       <div className="flex gap-2">
-        <button onClick={() => setCurrent((c) => Math.max(0, c - 1))} className="rounded-lg border border-border bg-card px-3 py-1.5 text-sm">← Prev</button>
-        <button onClick={() => setCurrent((c) => Math.min(STEPS.length - 1, c + 1))} className="rounded-lg border border-border bg-card px-3 py-1.5 text-sm">Next →</button>
+        <button
+          onClick={() => setCurrent((c) => Math.max(0, c - 1))}
+          className="rounded-lg border border-border bg-card px-3 py-1.5 text-sm"
+        >
+          ← Prev
+        </button>
+        <button
+          onClick={() => setCurrent((c) => Math.min(STEPS.length - 1, c + 1))}
+          className="rounded-lg border border-border bg-card px-3 py-1.5 text-sm"
+        >
+          Next →
+        </button>
       </div>
     </div>
   );

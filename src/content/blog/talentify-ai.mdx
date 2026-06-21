@@ -24,34 +24,40 @@ Job seekers send hundreds of applications and receive zero responses — not bec
 ## Key Features
 
 ### 📄 AI Resume Parser
+
 Upload your resume as a PDF or paste plain text directly into the editor. Talentify's AI model extracts and categorizes every data point: work experience with tenure calculations, skills (technical and soft), educational background, certifications and licenses, project contributions, and quantifiable achievements. The parsed output is displayed in a structured profile that shows exactly what the ATS sees when it reads your resume.
 
 ### 🎯 ATS Compatibility Score
+
 A comprehensive ATS compatibility analysis checks your resume against the parsing rules used by major Applicant Tracking Systems (Greenhouse, Workday, Lever, iCIMS). It evaluates: keyword density relative to your target role, section label conventions (does "Work History" parse the same as "Experience"?), formatting elements that break ATS parsers (tables, text in header/footer, multi-column layouts, custom bullet symbols), and file format optimization. The result is a 0-100 ATS Score with a prioritized list of specific fixes.
 
 ### 💡 AI-Generated Improvement Suggestions
+
 For every weakness identified in your resume — passive voice verbs, missing quantifiable achievements, vague skill descriptions, experience gaps with no narrative bridge, education listed in the wrong order — Talentify AI generates specific replacement copy that you can apply immediately. Not generic advice like "add more metrics" but actual replacement sentences: "Changed: Managed team projects. To: Led cross-functional team of 8 engineers to deliver 3 product launches 15% ahead of schedule."
 
 ### 📊 Role-Specific Keyword Analysis
+
 Paste any job description into the Role Matcher and Talentify AI performs a keyword gap analysis: which skills and technologies mentioned in the JD are missing from your resume, which ones are present but underemphasized, and which of your existing skills map to the role requirements even if the exact words don't match. It then generates a keyword integration plan showing exactly where to naturally incorporate each missing term.
 
 ### 📈 Interview Probability Predictor
+
 A composite score combining ATS compatibility (40%), keyword match rate (30%), experience relevance to the target role (20%), and overall resume quality (10%) produces an Interview Probability percentage — a single number that tells you how likely you are to get a callback for this specific role with your current resume. As you apply the AI's suggestions, the predictor updates in real-time, gamifying the improvement process.
 
 ### 🎨 Side Navigation Dashboard
+
 An icon-based vertical side navigation (home, analytics, upload, activity, document, contact) provides quick access to every tool in the platform without cluttering the main content area, keeping the resume editing experience clean and focused.
 
 ## Tech Stack
 
-| Layer | Technology |
-|---|---|
-| **Framework** | React, TypeScript |
-| **AI/NLP Engine** | Resume parsing + keyword extraction LLM |
-| **PDF Processing** | PDF.js (client-side parsing) |
-| **Styling** | Tailwind CSS |
-| **Animations** | Framer Motion (score reveals, suggestion cards) |
-| **Backend** | Node.js API (ATS scoring, JD analysis) |
-| **Deployment** | Vercel |
+| Layer              | Technology                                      |
+| ------------------ | ----------------------------------------------- |
+| **Framework**      | React, TypeScript                               |
+| **AI/NLP Engine**  | Resume parsing + keyword extraction LLM         |
+| **PDF Processing** | PDF.js (client-side parsing)                    |
+| **Styling**        | Tailwind CSS                                    |
+| **Animations**     | Framer Motion (score reveals, suggestion cards) |
+| **Backend**        | Node.js API (ATS scoring, JD analysis)          |
+| **Deployment**     | Vercel                                          |
 
 ## Design Philosophy
 

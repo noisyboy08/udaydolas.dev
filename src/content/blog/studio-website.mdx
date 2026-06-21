@@ -11,7 +11,7 @@ live: https://studio-gamma-three-56.vercel.app
 
 ## Overview
 
-**Studio** is a professional, high-fidelity portfolio and studio website that showcases premium design & engineering work. The tagline captures the mission perfectly: *"We craft digital experiences that endure."* A premium design & engineering studio for founders, brands, and builders who refuse to settle for ordinary.
+**Studio** is a professional, high-fidelity portfolio and studio website that showcases premium design & engineering work. The tagline captures the mission perfectly: _"We craft digital experiences that endure."_ A premium design & engineering studio for founders, brands, and builders who refuse to settle for ordinary.
 
 With 200+ founders trusting the work, a 4.9-star rating, and 50+ projects shipped, Studio is both a showcase of craft and a living demonstration of what the studio can build for clients.
 
@@ -24,31 +24,36 @@ Agency and studio websites often fall into one of two traps: either they're tech
 ## Key Features
 
 ### 🎬 Cinematic Interactive Hero
+
 The hero section is an experience in itself — seamless background video with layered entrance animations that sequence perfectly on load, context-aware browser tab title updates when users switch tabs (maintaining engagement even when the page isn't visible), and a sticky scroll-to-top utility with smooth spring physics. Every scroll interaction triggers a precisely timed Framer Motion animation sequence.
 
 ### 🧭 Dynamic Routing & Content-Aware Titles
+
 Built on React Router v7 with full programmatic routing. Each page and project case study has a dynamically generated browser tab title and meta description. Route transitions use shared element animations for continuity, deep-linked project routes preserve scroll position, and the navigation state machine handles all edge cases cleanly.
 
 ### ✨ Premium Aesthetic System
+
 The design system is built on Tailwind CSS v4's new configuration architecture with CSS custom properties for all design tokens. Editorial typography pairs a high-contrast display serif for hero headings with a refined geometric sans-serif for body content — the same pairing used in luxury print design. Glassmorphism effects (frosted glass panels, backdrop blur layers) are applied selectively to navigation and modal overlays. Micro-motion is on every interactive element without feeling overwhelming.
 
 ### 📱 Precision Responsive Design
+
 Every component has been hand-crafted for three distinct viewport experiences: desktop (full-width editorial layouts), tablet (rebalanced grid proportions), and mobile (stack-first layouts with touch-optimized interaction targets). The mobile navigation is a full-screen animated overlay with staggered menu item reveals. CSS fluid typography using `clamp()` ensures headings scale perfectly between every breakpoint without hard jumps.
 
 ### 🚀 Modern Production Stack
+
 React 19 with concurrent rendering features for smoother interactions under load. Vite for sub-100ms hot module replacement during development. TypeScript strict mode for zero runtime type errors. Vercel edge network for global CDN distribution with sub-2-second first contentful paint in every major market.
 
 ## Tech Stack
 
-| Layer | Technology |
-|---|---|
-| **Framework** | React 19 |
-| **Build Tool** | Vite |
-| **Styling** | Tailwind CSS v4 (system integration) |
-| **Language** | TypeScript |
+| Layer          | Technology                            |
+| -------------- | ------------------------------------- |
+| **Framework**  | React 19                              |
+| **Build Tool** | Vite                                  |
+| **Styling**    | Tailwind CSS v4 (system integration)  |
+| **Language**   | TypeScript                            |
 | **Animations** | Framer Motion + standard HTML5 Canvas |
-| **Routing** | React Router v7 |
-| **Deployment** | Vercel |
+| **Routing**    | React Router v7                       |
+| **Deployment** | Vercel                                |
 
 ## Project Structure
 

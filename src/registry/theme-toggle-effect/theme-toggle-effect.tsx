@@ -10,7 +10,11 @@ type ThemeToggleEffectProps = {
   onChange?: (dark: boolean) => void;
 };
 
-export function ThemeToggleEffect({ className, defaultDark = true, onChange }: ThemeToggleEffectProps) {
+export function ThemeToggleEffect({
+  className,
+  defaultDark = true,
+  onChange,
+}: ThemeToggleEffectProps) {
   const [dark, setDark] = useState(defaultDark);
   const [animating, setAnimating] = useState(false);
 
@@ -45,7 +49,9 @@ export function ThemeToggleEffect({ className, defaultDark = true, onChange }: T
       <div
         className={cn(
           "absolute transition-all duration-500",
-          dark ? "scale-0 rotate-90 opacity-0" : "scale-100 rotate-0 opacity-100"
+          dark
+            ? "scale-0 rotate-90 opacity-0"
+            : "scale-100 rotate-0 opacity-100"
         )}
       >
         <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
@@ -56,7 +62,18 @@ export function ThemeToggleEffect({ className, defaultDark = true, onChange }: T
             const y1 = 12 + 6.5 * Math.sin(a);
             const x2 = 12 + 9 * Math.cos(a);
             const y2 = 12 + 9 * Math.sin(a);
-            return <line key={i} x1={x1} y1={y1} x2={x2} y2={y2} stroke="#f59e0b" strokeWidth="2" strokeLinecap="round" />;
+            return (
+              <line
+                key={i}
+                x1={x1}
+                y1={y1}
+                x2={x2}
+                y2={y2}
+                stroke="#f59e0b"
+                strokeWidth="2"
+                strokeLinecap="round"
+              />
+            );
           })}
         </svg>
       </div>
@@ -65,7 +82,9 @@ export function ThemeToggleEffect({ className, defaultDark = true, onChange }: T
       <div
         className={cn(
           "absolute transition-all duration-500",
-          dark ? "scale-100 rotate-0 opacity-100" : "scale-0 -rotate-90 opacity-0"
+          dark
+            ? "scale-100 rotate-0 opacity-100"
+            : "scale-0 -rotate-90 opacity-0"
         )}
       >
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none">

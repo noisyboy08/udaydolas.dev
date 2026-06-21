@@ -9,8 +9,12 @@ export default function Demo() {
 export default function CodeSnippetDemo() {
   return (
     <div className="w-full max-w-lg">
-      <CodeSnippet code={CODE} language="tsx" filename="demo.tsx" showLineNumbers />
+      <CodeSnippet
+        code={CODE}
+        language="tsx"
+        filename="demo.tsx"
+        showLineNumbers
+      />
     </div>
   );
 }
-

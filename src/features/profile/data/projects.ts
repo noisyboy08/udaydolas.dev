@@ -881,7 +881,3 @@ The platform includes a stunning cloud-sky UI with interactive cost-breakdown gr
 - 🤝 **Enterprise Integration Grid** — Integrates seamlessly with payment systems like Stripe, hosting networks like Vercel, databases like MongoDB, and security monitors like Snyk to build a comprehensive service map.`,
   },
 ];
-
-
-
-

@@ -14,7 +14,11 @@ A collection of skeleton placeholder shapes — card, text lines, and circle —
 ## Usage
 
 ```tsx
-import { SkeletonCard, SkeletonText, SkeletonAvatar } from "@/registry/skeleton-loader";
+import {
+  SkeletonCard,
+  SkeletonText,
+  SkeletonAvatar,
+} from "@/registry/skeleton-loader";
 
 export default function Demo() {
   return (
@@ -29,8 +33,8 @@ export default function Demo() {
 
 ## Components
 
-| Component | Props | Description |
-|---|---|---|
-| `SkeletonCard` | `className?` | Full card placeholder with header and body lines. |
-| `SkeletonText` | `lines?: number`, `className?` | N lines of text placeholder. |
-| `SkeletonAvatar` | `size?: "sm" \| "md" \| "lg"`, `className?` | Circular avatar placeholder. |
+| Component        | Props                                       | Description                                       |
+| ---------------- | ------------------------------------------- | ------------------------------------------------- |
+| `SkeletonCard`   | `className?`                                | Full card placeholder with header and body lines. |
+| `SkeletonText`   | `lines?: number`, `className?`              | N lines of text placeholder.                      |
+| `SkeletonAvatar` | `size?: "sm" \| "md" \| "lg"`, `className?` | Circular avatar placeholder.                      |

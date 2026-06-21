@@ -10,7 +10,7 @@ import { getAllPosts } from "@/data/blog";
 import { cn } from "@/lib/utils";
 
 import { SiteHeaderMark } from "./site-header-mark";
-import { SiteHeaderContainer,SiteHeaderWrapper } from "./site-header-wrapper";
+import { SiteHeaderContainer, SiteHeaderWrapper } from "./site-header-wrapper";
 
 const BrandContextMenu = dynamic(() =>
   import("@/components/brand-context-menu").then((mod) => mod.BrandContextMenu)

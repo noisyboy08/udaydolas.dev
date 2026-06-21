@@ -21,7 +21,7 @@ export function ShimmeringText({
 }: ShimmeringTextProps) {
   return (
     <span
-      className={cn("relative inline-block select-none font-bold", className)}
+      className={cn("relative inline-block font-bold select-none", className)}
       style={
         {
           color: baseColor,

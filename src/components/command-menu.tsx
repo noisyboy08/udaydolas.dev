@@ -271,7 +271,11 @@ export function CommandMenu({ posts }: { posts: Post[] }) {
 
           <CommandGroup heading="Preferences">
             <CommandItem
-              value={batEnabled ? "Disable Pixel Bat Pet bat pet toggle" : "Enable Pixel Bat Pet bat pet toggle"}
+              value={
+                batEnabled
+                  ? "Disable Pixel Bat Pet bat pet toggle"
+                  : "Enable Pixel Bat Pet bat pet toggle"
+              }
               keywords={["bat", "pet", "pixel", "toggle", "enable", "disable"]}
               onSelect={() => {
                 setOpen(false);
@@ -280,8 +284,15 @@ export function CommandMenu({ posts }: { posts: Post[] }) {
                 window.dispatchEvent(new Event("pixel-bat-changed"));
               }}
             >
-              <SparklesIcon className={cn("size-4 shrink-0 text-amber-500", batEnabled && "animate-pulse")} />
-              <span>{batEnabled ? "Disable Pixel Bat Pet" : "Enable Pixel Bat Pet"}</span>
+              <SparklesIcon
+                className={cn(
+                  "size-4 shrink-0 text-amber-500",
+                  batEnabled && "animate-pulse"
+                )}
+              />
+              <span>
+                {batEnabled ? "Disable Pixel Bat Pet" : "Enable Pixel Bat Pet"}
+              </span>
             </CommandItem>
           </CommandGroup>
 

@@ -13,20 +13,35 @@ type GithubStarsProps = {
   showIcon?: boolean;
 };
 
-export function GithubStars({ owner, repo, className, defaultCount = 1240, showIcon = true }: GithubStarsProps) {
+export function GithubStars({
+  owner,
+  repo,
+  className,
+  defaultCount = 1240,
+  showIcon = true,
+}: GithubStarsProps) {
   const [stars, setStars] = useState<number | null>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const controller = new AbortController();
-    fetch(`https://api.github.com/repos/${owner}/${repo}`, { signal: controller.signal })
+    fetch(`https://api.github.com/repos/${owner}/${repo}`, {
+      signal: controller.signal,
+    })
       .then((r) => r.json())
-      .then((d) => { setStars(d.stargazers_count ?? defaultCount); setLoading(false); })
-      .catch(() => { setStars(defaultCount); setLoading(false); });
+      .then((d) => {
+        setStars(d.stargazers_count ?? defaultCount);
+        setLoading(false);
+      })
+      .catch(() => {
+        setStars(defaultCount);
+        setLoading(false);
+      });
     return () => controller.abort();
   }, [owner, repo, defaultCount]);
 
-  const format = (n: number) => n >= 1000 ? `${(n / 1000).toFixed(1)}k` : String(n);
+  const format = (n: number) =>
+    n >= 1000 ? `${(n / 1000).toFixed(1)}k` : String(n);
 
   return (
     <a

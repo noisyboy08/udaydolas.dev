@@ -87,9 +87,6 @@ export function DotGridSpotlight({
   }, [dotColor, spotlightColor, dotSize, gap]);
 
   return (
-    <canvas
-      ref={canvasRef}
-      className={cn("block h-full w-full", className)}
-    />
+    <canvas ref={canvasRef} className={cn("block h-full w-full", className)} />
   );
 }

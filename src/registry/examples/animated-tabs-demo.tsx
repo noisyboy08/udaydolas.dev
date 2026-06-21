@@ -12,17 +12,29 @@ export default function AnimatedTabsDemo() {
           {
             label: "Preview",
             icon: <EyeIcon className="size-3.5" />,
-            content: <div className="rounded-lg border border-border bg-muted/50 p-4 text-sm text-muted-foreground">Preview panel content goes here.</div>,
+            content: (
+              <div className="rounded-lg border border-border bg-muted/50 p-4 text-sm text-muted-foreground">
+                Preview panel content goes here.
+              </div>
+            ),
           },
           {
             label: "Code",
             icon: <CodeIcon className="size-3.5" />,
-            content: <div className="rounded-lg bg-zinc-950 p-4 font-mono text-xs text-zinc-300">{"<AnimatedTabs tabs={[...]} />"}</div>,
+            content: (
+              <div className="rounded-lg bg-zinc-950 p-4 font-mono text-xs text-zinc-300">
+                {"<AnimatedTabs tabs={[...]} />"}
+              </div>
+            ),
           },
           {
             label: "Settings",
             icon: <SettingsIcon className="size-3.5" />,
-            content: <div className="rounded-lg border border-border bg-muted/50 p-4 text-sm text-muted-foreground">Settings panel content goes here.</div>,
+            content: (
+              <div className="rounded-lg border border-border bg-muted/50 p-4 text-sm text-muted-foreground">
+                Settings panel content goes here.
+              </div>
+            ),
           },
         ]}
       />
