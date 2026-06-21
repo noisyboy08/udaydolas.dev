@@ -23,14 +23,6 @@ const PERCH_IDLE_MS = 5000;
 // Top margin the bat keeps from the avatar in follow mode (so it can never
 // dive down into the avatar/About area while chasing the cursor).
 const FOLLOW_TOP_MARGIN = 12;
-// While perched, the visual sprite-center sits this far BELOW the wordmark's
-// bottom edge. The bat sprite is drawn head-up and is ~90px tall after scale
-// (half-height ~45 px). PERCH_HANG_PX = 50 puts the bat's head/ears just
-// below "UD" and the body+wings centered nicely under it.
-const PERCH_HANG_PX = 50;
-// Horizontal nudge from the UD wordmark's center. 0 = directly under the
-// middle of "UD"; positive = nudge right, negative = nudge left.
-const PERCH_X_OFFSET = 0;
 
 // Click-to-irritate detection.
 const CLICK_HIT_RADIUS = 70;
@@ -207,26 +199,11 @@ export function PixelBatPet() {
     };
 
     const computePerchTarget = (): { x: number; y: number } | null => {
-      const found = findCoverMark();
-      if (found) {
-        const { mark } = found;
-        // Hang from the bottom edge of the "UD" wordmark, centered under
-        // the letters. Y is mark.bottom + PERCH_HANG_PX so the rotated
-        // sprite's "feet" (now at the visual top after the 180° flip)
-        // sit right on the bottom line of "UD" and the body dangles
-        // beneath the letters.
-        return {
-          x: mark.left + mark.width / 2 + PERCH_X_OFFSET,
-          y: Math.max(mark.bottom + PERCH_HANG_PX, 60),
-        };
-      }
-      // Fall back to floating just above the avatar on pages without the
-      // cover mark (e.g. /blog post detail).
       const avatar = findAvatarRect();
       if (!avatar) return null;
       return {
-        x: avatar.left + avatar.width / 2 + 36,
-        y: avatar.top - 50,
+        x: avatar.left + avatar.width / 2,
+        y: avatar.top - 64, // sit on top of the profile picture
       };
     };
 
@@ -278,19 +255,17 @@ export function PixelBatPet() {
 
     // ---------- Wing-animation helpers ---------------------------------------
 
-    // Pause at a CONSISTENT frame (0% keyframe) instead of wherever the
-    // wing-flap happened to be when we paused. We restart the animation
-    // and pause it on the first frame in two style updates separated by
-    // a forced reflow so the browser registers the animation reset.
     const pauseWings = () => {
       bat.style.animation = "none";
       // Force layout flush so the "none" is actually applied before we
       // re-arm the animation in the paused state.
       void bat.offsetWidth;
       bat.style.animation = "bat 0.9s steps(1) infinite paused";
+      bat.style.animationDelay = "-0.58s"; // wings down resting frame
     };
     const resumeWings = () => {
       bat.style.animation = "bat 0.9s steps(1) infinite running";
+      bat.style.animationDelay = "";
     };
 
     // ---------- Audio (Web Audio synthesised SFX) ----------------------------

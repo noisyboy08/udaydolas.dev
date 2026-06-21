@@ -23,16 +23,6 @@ export function ProfileHeader() {
           />
         </div>
 
-        <Image
-          className="absolute top-0 -left-px h-6 border border-black sm:h-9"
-          src="https://flagcdn.com/w40/in.png"
-          alt="Flag of India"
-          width={60}
-          height={40}
-          priority
-          sizes="60px"
-          style={{ aspectRatio: "3/2" }}
-        />
       </div>
 
       <div className="flex min-w-0 flex-1 flex-col">
