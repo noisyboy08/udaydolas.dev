@@ -12,7 +12,7 @@ import type { Post } from "@/types/blog";
 import { Panel, PanelHeader, PanelTitle } from "./panel";
 
 // Dynamic custom covers matching the design blueprint aesthetics
-export function BlogCover({ slug }: { slug: string }) {
+export function BlogCover({ slug, title }: { slug: string; title?: string }) {
   if (slug === "react-wheel-picker-vercel") {
     return (
       <div className="relative flex aspect-video w-full flex-col items-center justify-center overflow-hidden rounded-lg border border-white/5 bg-black p-4 select-none">
@@ -46,6 +46,40 @@ export function BlogCover({ slug }: { slug: string }) {
               VERCEL INC. // 2025
             </span>
             <span>OPEN SOURCE SOFTWARE PROGRAM</span>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  if (slug === "ud-brand") {
+    return (
+      <div className="relative flex aspect-video w-full flex-col items-center justify-center overflow-hidden rounded-lg border border-white/5 bg-black p-4 select-none">
+        {/* Blueprint background grid */}
+        <div className="absolute inset-0 bg-[radial-gradient(#18181b_1px,transparent_1px)] [background-size:8px_8px] opacity-60 pointer-events-none" />
+        
+        {/* Technical Logo Spec Sheet Mockup */}
+        <div className="relative flex flex-col items-center justify-center space-y-2 z-10">
+          {/* Logo Mark Container with Dimension Lines */}
+          <div className="relative p-2 border border-dashed border-zinc-800 bg-zinc-950/80 rounded">
+            {/* The UD logo mark */}
+            <svg className="h-8 w-16 fill-white" viewBox="0 0 256 128">
+              <path d="M24 128H0V0h24v128ZM112 128H88V0h24v128ZM88 128H24V104h64v24ZM160 128H136V0h24v128ZM232 24H160V0h72v24ZM232 128H160V104h72v24ZM256 104H232V24h24v80Z" />
+            </svg>
+            
+            {/* Dimension guide markings */}
+            <div className="absolute -top-1.5 left-0 right-0 flex items-center justify-between px-1 text-[4px] font-mono text-zinc-600">
+              <span>← 256px →</span>
+            </div>
+            <div className="absolute -left-1.5 top-0 bottom-0 flex flex-col justify-between py-1 text-[4px] font-mono text-zinc-600 [writing-mode:vertical-lr]">
+              <span>← 128px →</span>
+            </div>
+          </div>
+          
+          {/* Metadata labels */}
+          <div className="flex flex-col items-center font-mono text-[6px] tracking-widest text-zinc-500 uppercase">
+            <span className="font-semibold text-zinc-400">UD MARK // SPEC SHEET</span>
+            <span className="text-[5px] text-zinc-600 mt-0.5">grid: 8x8 units / stroke: 1 unit</span>
           </div>
         </div>
       </div>
@@ -227,13 +261,20 @@ export function BlogCover({ slug }: { slug: string }) {
   // Fallback for other posts (e.g. standard blogs)
   return (
     <div className="relative flex aspect-video w-full flex-col items-center justify-center overflow-hidden rounded-lg border border-white/5 bg-black p-4 font-mono text-[9px] text-zinc-500 select-none">
-      <div className="max-w-[80%] rounded border border-dashed border-zinc-800 p-2 text-center">
-        <span className="mb-1 block tracking-wider text-zinc-400 uppercase">
-          TECHNICAL GUIDE
+      {/* Subtle background grid pattern */}
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#111_1px,transparent_1px),linear-gradient(to_bottom,#111_1px,transparent_1px)] bg-[size:12px_12px] opacity-40 pointer-events-none" />
+      
+      <div className="relative z-10 w-[85%] rounded-md border border-zinc-800/80 bg-zinc-950/80 p-3 text-center shadow-lg">
+        <span className="mb-1.5 block text-[7px] tracking-[0.2em] text-zinc-500 uppercase font-semibold">
+          TECHNICAL SPECIFICATION // DOCS
         </span>
-        <div className="my-1 h-px bg-zinc-800" />
-        <span className="block text-[8px] text-zinc-600">
-          FIG_002 // ARTICLE
+        <div className="my-1.5 h-px bg-zinc-900" />
+        <span className="block text-[10px] font-bold text-zinc-300 tracking-tight leading-snug my-1 text-balance">
+          {title || slug.toUpperCase().replace(/-/g, " ")}
+        </span>
+        <div className="my-1.5 h-px bg-zinc-900" />
+        <span className="block text-[6px] text-zinc-600 tracking-widest uppercase">
+          FIG_SYS_{slug.toUpperCase().replace(/-/g, "_").slice(0, 8)}{" // ARTICLE.MDX"}
         </span>
       </div>
     </div>

@@ -6,16 +6,12 @@ import Image from "next/image";
 import Link from "next/link";
 import React, { useMemo, useState } from "react";
 
+import { BlogCover } from "@/features/profile/components/blog";
 import { cn } from "@/lib/utils";
 import type { Post } from "@/types/blog";
 
 // ─── Single blog card ─────────────────────────────────────────────────────────
 function BlogCard({ post, priority }: { post: Post; priority?: boolean }) {
-  // Use the post's own image or fall back to the dynamic OG image
-  const coverImage =
-    post.metadata.image ||
-    `/og/simple?title=${encodeURIComponent(post.metadata.title)}`;
-
   return (
     <Link
       href={`/blog/${post.slug}`}
@@ -27,27 +23,33 @@ function BlogCard({ post, priority }: { post: Post; priority?: boolean }) {
     >
       {/* Cover image */}
       <div className="relative aspect-[1200/630] w-full overflow-hidden bg-zinc-950">
-        <Image
-          src={coverImage}
-          alt={post.metadata.title}
-          fill
-          priority={priority}
-          unoptimized={coverImage.startsWith("/og/")}
-          sizes="(max-width: 640px) 100vw, 50vw"
-          className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
-        />
+        {post.metadata.image ? (
+          <Image
+            src={post.metadata.image}
+            alt={post.metadata.title}
+            fill
+            priority={priority}
+            sizes="(max-width: 640px) 100vw, 50vw"
+            className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+          />
+        ) : (
+          <div className="size-full transition-transform duration-500 group-hover:scale-[1.03]">
+            <BlogCover slug={post.slug} title={post.metadata.title} />
+          </div>
+        )}
+        
         {/* subtle dark vignette */}
-        <div className="absolute inset-0 bg-gradient-to-t from-zinc-900/30 via-transparent to-transparent" />
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-zinc-900/30 via-transparent to-transparent z-10" />
 
         {/* "New" badge */}
         {post.metadata.new && (
-          <span className="absolute top-3 right-3 rounded-md bg-sky-500 px-2 py-0.5 font-mono text-xs font-semibold text-white shadow-lg">
+          <span className="absolute top-3 right-3 rounded-md bg-sky-500 px-2 py-0.5 font-mono text-xs font-semibold text-white shadow-lg z-20">
             New
           </span>
         )}
 
         {/* Inset ring */}
-        <div className="pointer-events-none absolute inset-0 rounded-2xl ring-1 ring-white/8 ring-inset" />
+        <div className="pointer-events-none absolute inset-0 rounded-2xl ring-1 ring-white/8 ring-inset z-20" />
       </div>
 
       {/* Meta */}
