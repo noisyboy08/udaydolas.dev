@@ -86,6 +86,82 @@ export function BlogCover({ slug, title }: { slug: string; title?: string }) {
     );
   }
 
+  if (slug === "accordion") {
+    return (
+      <div className="relative flex aspect-video w-full flex-col items-center justify-center overflow-hidden rounded-lg border border-white/5 bg-black p-4 select-none">
+        {/* Accordion Component UI Mockup */}
+        <div className="w-[170px] space-y-1 font-sans text-[7px] text-zinc-400">
+          <div className="rounded border border-zinc-800 bg-zinc-950 p-1.5">
+            <div className="flex items-center justify-between text-white font-medium">
+              <span>What is this system?</span>
+              <span className="text-[5px]">▲</span>
+            </div>
+            <p className="mt-1 text-[6px] leading-normal text-zinc-500">
+              A high-performance, accessible accordion component with smooth height transitions.
+            </p>
+          </div>
+          <div className="flex items-center justify-between rounded border border-zinc-900 bg-zinc-950/40 p-1.5">
+            <span>How do I integrate it?</span>
+            <span className="text-[5px]">▼</span>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  if (slug === "animated-tabs") {
+    return (
+      <div className="relative flex aspect-video w-full flex-col items-center justify-center overflow-hidden rounded-lg border border-white/5 bg-black p-4 select-none">
+        {/* Animated Tabs Mockup */}
+        <div className="w-[180px] space-y-2 font-sans">
+          {/* Tabs bar */}
+          <div className="relative flex rounded-full border border-zinc-900 bg-zinc-950/80 p-0.5 text-[7px]">
+            {/* Sliding background pill (highlight on Tab 1) */}
+            <div className="absolute top-0.5 bottom-0.5 left-0.5 w-[32%] rounded-full bg-white/10 border border-white/5" />
+            <div className="relative z-10 flex w-full items-center justify-between px-1">
+              <span className="w-[32%] py-0.5 text-center text-white font-medium">Design</span>
+              <span className="w-[32%] py-0.5 text-center text-zinc-500">Code</span>
+              <span className="w-[32%] py-0.5 text-center text-zinc-500">Deploy</span>
+            </div>
+          </div>
+          {/* Mock content panel */}
+          <div className="rounded-lg border border-zinc-900 bg-zinc-950 p-2 font-mono text-[5px] text-zinc-600">
+            <span className="text-zinc-400">const</span> tabConfig = {"{"} animate: <span className="text-sky-400">true</span> {"}"};
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  if (slug === "avatar-group") {
+    return (
+      <div className="relative flex aspect-video w-full flex-col items-center justify-center overflow-hidden rounded-lg border border-white/5 bg-black p-4 select-none">
+        {/* Avatar Group Mockup */}
+        <div className="flex flex-col items-center gap-2">
+          {/* Avatar stack */}
+          <div className="flex -space-x-2.5">
+            <div className="flex size-7 items-center justify-center rounded-full border-2 border-black bg-zinc-800 text-[8px] font-bold text-white">
+              JD
+            </div>
+            <div className="flex size-7 items-center justify-center rounded-full border-2 border-black bg-zinc-700 text-[8px] font-bold text-zinc-300">
+              UD
+            </div>
+            <div className="flex size-7 items-center justify-center rounded-full border-2 border-black bg-gradient-to-tr from-violet-500 to-indigo-500 text-[8px] font-bold text-white shadow-md">
+              A
+            </div>
+            <div className="flex size-7 items-center justify-center rounded-full border-2 border-black bg-zinc-900 text-[7px] font-bold text-zinc-500">
+              +4
+            </div>
+          </div>
+          {/* Subtitle spec */}
+          <span className="font-mono text-[5px] text-zinc-600 tracking-wider">
+            AVATAR_STACK // LIMIT: 4 // SPACER: -10px
+          </span>
+        </div>
+      </div>
+    );
+  }
+
   if (slug === "followed-by-shadcn-x") {
     return (
       <div className="relative flex aspect-video w-full items-center justify-center overflow-hidden rounded-lg border border-white/5 bg-black p-2.5 select-none">

@@ -23,7 +23,7 @@ function BlogCard({ post, priority }: { post: Post; priority?: boolean }) {
     >
       {/* Cover image */}
       <div className="relative aspect-[1200/630] w-full overflow-hidden bg-zinc-950">
-        {post.metadata.image ? (
+        {post.metadata.image && !post.metadata.image.startsWith("/og/") ? (
           <Image
             src={post.metadata.image}
             alt={post.metadata.title}
