@@ -49,14 +49,14 @@ export function BrandContextMenu({ children }: { children: React.ReactNode }) {
         </ContextMenuItem>
 
         <ContextMenuItem asChild>
-          <Link href="/blog/chanhdai-brand">
+          <Link href="/blog/ud-brand">
             <TriangleDashedIcon />
             Brand Guidelines
           </Link>
         </ContextMenuItem>
 
         <ContextMenuItem asChild>
-          <a href="https://assets.chanhdai.com/chanhdai-brand.zip" download>
+          <a href="/ud-brand.zip" download>
             <DownloadIcon />
             Download Brand Assets
           </a>

@@ -367,14 +367,14 @@ export function CommandMenu({ posts }: { posts: Post[] }) {
             </CommandItem>
 
             <CommandItem
-              onSelect={() => handleOpenLink("/blog/chanhdai-brand")}
+              onSelect={() => handleOpenLink("/blog/ud-brand")}
             >
               <TriangleDashedIcon />
               Brand Guidelines
             </CommandItem>
 
             <CommandItem asChild>
-              <a href="https://assets.chanhdai.com/chanhdai-brand.zip" download>
+              <a href="/ud-brand.zip" download>
                 <DownloadIcon />
                 Download Brand Assets
               </a>

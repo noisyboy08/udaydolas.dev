@@ -10,6 +10,7 @@ import { visit } from "unist-util-visit";
 import { CodeCollapsibleWrapper } from "@/components/code-collapsible-wrapper";
 import { ComponentPreview } from "@/components/component-preview";
 import { ComponentSource } from "@/components/component-source";
+import { VCardBoardingPass } from "@/features/profile/components/vcard-boarding-pass";
 import {
   Table,
   TableBody,
@@ -115,6 +116,7 @@ const components: MDXRemoteProps["components"] = {
   ComponentSource,
   CodeCollapsibleWrapper,
   CodeTabs,
+  VCardBoardingPass,
   Steps: (props) => (
     <div
       className="md:ml-3.5 md:border-l md:pl-7.5 prose-h3:text-wrap"

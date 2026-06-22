@@ -17,7 +17,6 @@ import { Projects } from "@/features/profile/components/projects";
 import { SocialLinks } from "@/features/profile/components/social-links";
 import { TeckStack } from "@/features/profile/components/teck-stack";
 import { Testimonials } from "@/features/profile/components/testimonials";
-import { VCardBoardingPass } from "@/features/profile/components/vcard-boarding-pass";
 import { cn } from "@/lib/utils";
 
 export default function Page() {
@@ -42,12 +41,7 @@ export default function Page() {
         <SocialLinks />
         <Separator />
 
-        <Panel id="vcard-boarding-pass-panel">
-          <PanelContent>
-            <VCardBoardingPass />
-          </PanelContent>
-        </Panel>
-        <Separator />
+
 
         <About />
         <Separator />

@@ -98,7 +98,6 @@ export function VCardBoardingPass() {
 
           {/* Name block */}
           <div className="vcard-name-block">
-            <span className="vcard-name-label">PASSENGER</span>
             <div className="vcard-name">
               {USER.firstName}
               <span className="vcard-name-last">{USER.lastName}</span>
