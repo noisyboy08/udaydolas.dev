@@ -1,14 +1,186 @@
 ---
 title: The UD Brand Design System
-description: Understanding the visual identity, block pixel logotype, and isometric wireframes behind the Uday Dolas brand.
+description: A deep dive into the visual identity, pixel logotype, isometric mark, and architectural design principles behind the Uday Dolas personal brand.
 createdAt: 2026-06-20
-updatedAt: 2026-06-20
+updatedAt: 2026-06-22
 ---
 
-The UD brand is built on a clean, technical visual identity inspired by blueprints, pixel art, and architectural geometry.
+The **UD brand** is built on a precise, technical visual identity — one that borrows from blueprint culture, pixel art, and architectural geometry. Every element has been deliberately crafted: nothing is accidental, nothing is decorative for decoration's sake.
 
-### Core Visual Elements
+## The Philosophy
 
-1. **The UD Mark**: A minimal, blocky representation of the initials "U" and "D" that serves as the primary favicon and app icon.
-2. **The Isometric Logotype**: A 3D-extruded isometric representation of the "UD" initials, designed to look like an architectural blueprint structure.
-3. **The Pixel-Art Wordmark**: A flat, uniform-height wordmark signature of "UDAY DOLAS" that spans the footer of the site, featuring a spotlight cursor-reveal mask effect.
+> *"Design is not what it looks like. Design is how it works."*
+
+The UD brand identity follows three guiding principles:
+
+- **Precision over decoration** — every line has a purpose
+- **Technical as aesthetic** — blueprint grids, isometric depth, pixel density
+- **Scalable at every size** — from 16×16 favicon to full-page hero
+
+---
+
+## The UD Mark
+
+The **UD Mark** is the primary logomark — a blocky, pixel-art representation of the initials **U** and **D** built on a strict 8×8 grid.
+
+### Grid Rules
+
+- Canvas: **8 × 8** pixels
+- Stroke weight: **1 unit** (scaled uniformly)
+- No anti-aliasing — crisp pixel edges only
+- Minimum clear space: **2 units** on all sides
+
+### Usage
+
+| Context | Size | Format |
+|---------|------|--------|
+| Favicon | 16 × 16 | `.ico` / `.png` |
+| App Icon | 512 × 512 | `.png` |
+| Social Avatar | 400 × 400 | `.png` |
+| Inline / UI | Any | `.svg` |
+
+The mark works on both **dark** and **light** backgrounds. Use the inverted version when placing on dark surfaces.
+
+---
+
+## The Isometric Logotype
+
+The **Isometric Logotype** is a 3D-extruded, isometric projection of the "UD" initials — designed to look like an architectural model rendered on a blueprint grid.
+
+### Construction Method
+
+Each letter is drawn in a **true isometric** projection (30° offset) with:
+
+- **Top face** — lightest shade (highlight)
+- **Left face** — mid tone (neutral)
+- **Right face** — darkest shade (shadow)
+
+The depth extrusion creates a sense of structural solidity — like carved stone or machined aluminum blocks.
+
+### Blueprint Aesthetic
+
+The logotype is always rendered on a **dot-grid or line-grid** background that references technical blueprints:
+
+- Grid spacing: 10 × 10 units
+- Grid color: 5% opacity foreground
+- The logotype itself uses the foreground color at full opacity
+
+This contrast creates an immediate "technical drawing" impression — precise, engineered, intentional.
+
+---
+
+## The Pixel-Art Wordmark
+
+The **Pixel-Art Wordmark** spells out `UDAY DOLAS` in a custom, flat, uniform-height pixel typeface.
+
+### Key Properties
+
+- **Uniform cap-height** — all letters share the same visual weight
+- **Monospaced grid** — each character occupies the same horizontal space
+- **No descenders** — flat baseline, all caps
+- **Rendering** — pure CSS `box-shadow` chains; zero raster images
+
+### Spotlight Cursor Effect
+
+The wordmark features a **cursor-reveal mask** — as the user moves their mouse across the footer, a radial spotlight progressively illuminates the wordmark beneath a dark overlay.
+
+- Mask: `radial-gradient(circle at cursor, transparent, black)`
+- Reveal radius: ~120px
+- The wordmark "glows" through the mask, rewarding exploration
+
+---
+
+## Typography
+
+The brand uses two typefaces, each chosen for a specific function:
+
+| Role | Font | Style |
+|------|------|-------|
+| Code / Labels | **JetBrains Mono** | Monospaced, technical |
+| UI / Body | **Geist** (by Vercel) | Clean, modern sans-serif |
+
+Both fonts are loaded via `next/font` for optimal performance and zero layout shift.
+
+**Type scale** follows a 1.25 modular ratio:
+
+- `xs` → 12px
+- `sm` → 14px
+- `base` → 16px
+- `lg` → 20px
+- `xl` → 25px
+- `2xl` → 32px
+
+---
+
+## Color Palette
+
+The palette is built on **semantic tokens** that automatically adapt between light and dark modes.
+
+### Dark Mode (Primary)
+
+| Token | Value | Usage |
+|-------|-------|-------|
+| Background | `#0a0a0a` | Page background |
+| Surface | `#111111` | Cards, panels |
+| Edge | `rgba(255,255,255,0.08)` | Borders, dividers |
+| Foreground | `#ededed` | Primary text |
+| Muted | `rgba(255,255,255,0.45)` | Secondary text |
+| Info | `#60a5fa` | Accent, links |
+
+### Light Mode
+
+| Token | Value | Usage |
+|-------|-------|-------|
+| Background | `#ffffff` | Page background |
+| Surface | `#f5f5f5` | Cards, panels |
+| Edge | `rgba(0,0,0,0.08)` | Borders, dividers |
+| Foreground | `#0a0a0a` | Primary text |
+| Muted | `rgba(0,0,0,0.45)` | Secondary text |
+| Info | `#2563eb` | Accent, links |
+
+---
+
+## Layout System
+
+The profile grid uses a **strict single-column layout** constrained to `max-w-3xl` (768px), divided into panels separated by 8-unit hatched dividers.
+
+Each panel:
+- Has a fixed **left column** for labels (rotated monospaced text)
+- Has a full-width **right area** for content
+- Uses `border-edge` lines to create a technical grid-paper feel
+
+The `screen-line-before` / `screen-line-after` utilities extend these borders beyond the layout boundary to the full viewport width — creating the illusion of an infinite technical drawing canvas.
+
+---
+
+## Design Principles in Practice
+
+### Everything is a Blueprint
+
+The entire site reads like a technical drawing:
+- Dotted grids, line separators
+- Rotated labels in the margins
+- Monospaced code everywhere
+- Pixel-precise alignments
+
+### Motion is Intentional
+
+Animations are never gratuitous:
+- **FlipSentences** — text cycle draws attention to roles
+- **Pixel Bat Pet** — whimsy through pixel art, with a full physics simulation
+- **Cursor spotlight** — rewards exploration in the footer
+
+### Dark by Default
+
+The brand is optimised for dark environments (screens, low-light rooms). Light mode is a full inversion, not an afterthought.
+
+---
+
+## Brand Assets
+
+All brand assets are available as SVG via the `⌘K` command palette:
+
+- **Copy Mark as SVG** — the pixel UD icon in current theme color
+- **Copy Logotype as SVG** — the isometric UD letters in current theme color
+
+Right-click anywhere on the **Brand panel** (bottom of the home page) to open the context menu for quick asset access.

@@ -10,12 +10,14 @@ import { Components } from "@/features/profile/components/components";
 import { Experiences } from "@/features/profile/components/experiences";
 import { Github } from "@/features/profile/components/github";
 import { Overview } from "@/features/profile/components/overview";
+import { Panel, PanelContent } from "@/features/profile/components/panel";
 import { ProfileCover } from "@/features/profile/components/profile-cover";
 import { ProfileHeader } from "@/features/profile/components/profile-header";
 import { Projects } from "@/features/profile/components/projects";
 import { SocialLinks } from "@/features/profile/components/social-links";
 import { TeckStack } from "@/features/profile/components/teck-stack";
 import { Testimonials } from "@/features/profile/components/testimonials";
+import { VCardBoardingPass } from "@/features/profile/components/vcard-boarding-pass";
 import { cn } from "@/lib/utils";
 
 export default function Page() {
@@ -38,6 +40,13 @@ export default function Page() {
         <Separator />
 
         <SocialLinks />
+        <Separator />
+
+        <Panel id="vcard-boarding-pass-panel">
+          <PanelContent>
+            <VCardBoardingPass />
+          </PanelContent>
+        </Panel>
         <Separator />
 
         <About />

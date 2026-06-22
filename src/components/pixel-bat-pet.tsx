@@ -202,14 +202,12 @@ export function PixelBatPet() {
       const avatar = findAvatarRect();
       if (!avatar) return null;
       // The bat's visual bottom pixel is at: currentY + (62 - 34) * SCALE = currentY + 84
-      // We want the bat claws to rest right on the avatar top rim.
-      // So: visual_bottom = avatar.top + 4  =>  currentY = avatar.top + 4 - 84 = avatar.top - 80
-      // On mobile the avatar is smaller (96px) so we peek a tiny bit more into it.
+      // To make the bat hug the avatar, we let it sit lower so the claws and wings overlap/hug the avatar.
       const isMobile = avatar.width < 120;
-      const yOffset = isMobile ? -68 : -80;
+      const yOffset = isMobile ? -45 : -20;
       return {
         x: avatar.left + avatar.width / 2,
-        y: avatar.top + yOffset, // bat claws touch the avatar rim
+        y: avatar.top + yOffset,
       };
     };
 
