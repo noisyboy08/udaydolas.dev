@@ -3,7 +3,7 @@ import { getTableOfContents } from "fumadocs-core/server";
 import { ArrowLeftIcon, ArrowRightIcon } from "lucide-react";
 import type { Metadata } from "next";
 import Link from "next/link";
-import { notFound, redirect } from "next/navigation";
+import { notFound } from "next/navigation";
 import type { BlogPosting as PageSchema, WithContext } from "schema-dts";
 
 import { LLMCopyButtonWithViewOptions } from "@/components/ai/page-actions";
@@ -14,17 +14,13 @@ import { ShareMenu } from "@/components/share-menu";
 import { Button } from "@/components/ui/button";
 import { Prose } from "@/components/ui/typography";
 import { SITE_INFO } from "@/config/site";
-import { findNeighbour, getAllPosts, getPostBySlug } from "@/data/blog";
+import { findNeighbour, getPostBySlug, getPostsByCategory } from "@/data/blog";
 import { USER } from "@/data/user";
 import { cn } from "@/lib/utils";
 import type { Post } from "@/types/blog";
 
 export async function generateStaticParams() {
-  const posts = getAllPosts().filter(
-    (post) =>
-      post.metadata.category !== "projects" &&
-      post.metadata.category !== "components"
-  );
+  const posts = getPostsByCategory("projects");
   return posts.map((post) => ({
     slug: post.slug,
   }));
@@ -44,7 +40,7 @@ export async function generateMetadata({
 
   const { title, description, image, createdAt, updatedAt } = post.metadata;
 
-  const postUrl = getPostUrl(post);
+  const postUrl = `/projects/${post.slug}`;
   const ogImage = image || `/og/simple?title=${encodeURIComponent(title)}`;
 
   return {
@@ -81,7 +77,7 @@ function getPageJsonLd(post: Post): WithContext<PageSchema> {
     image:
       post.metadata.image ||
       `/og/simple?title=${encodeURIComponent(post.metadata.title)}`,
-    url: `${SITE_INFO.url}${getPostUrl(post)}`,
+    url: `${SITE_INFO.url}/projects/${post.slug}`,
     datePublished: dayjs(post.metadata.createdAt).toISOString(),
     dateModified: dayjs(post.metadata.updatedAt).toISOString(),
     author: {
@@ -107,21 +103,13 @@ export default async function Page({
     notFound();
   }
 
-  if (post.metadata.category === "components") {
-    redirect(`/components/${post.slug}`);
-  }
-
-  if (post.metadata.category === "projects") {
-    redirect(`/projects/${post.slug}`);
+  if (post.metadata.category !== "projects") {
+    notFound();
   }
 
   const toc = getTableOfContents(post.content);
 
-  const allPosts = getAllPosts().filter(
-    (post) =>
-      post.metadata.category !== "projects" &&
-      post.metadata.category !== "components"
-  );
+  const allPosts = getPostsByCategory("projects");
   const { previous, next } = findNeighbour(allPosts, slug);
 
   return (
@@ -133,7 +121,11 @@ export default async function Page({
         }}
       />
 
-      <PostKeyboardShortcuts basePath="/blog" previous={previous} next={next} />
+      <PostKeyboardShortcuts
+        basePath="/projects"
+        previous={previous}
+        next={next}
+      />
 
       <div className="flex items-center justify-between p-2 pl-4">
         <Button
@@ -141,22 +133,22 @@ export default async function Page({
           variant="link"
           asChild
         >
-          <Link href="/blog">
+          <Link href="/projects">
             <ArrowLeftIcon />
-            Blog
+            Back
           </Link>
         </Button>
 
         <div className="flex items-center gap-2">
-          <ShareMenu url={getPostUrl(post)} />
+          <ShareMenu url={`/projects/${post.slug}`} />
 
           <LLMCopyButtonWithViewOptions
-            markdownUrl={`${getPostUrl(post)}.mdx`}
+            markdownUrl={`/projects/${post.slug}.mdx`}
           />
 
           {previous && (
             <Button variant="secondary" size="icon:sm" asChild>
-              <Link href={`/blog/${previous.slug}`}>
+              <Link href={`/projects/${previous.slug}`}>
                 <ArrowLeftIcon />
                 <span className="sr-only">Previous</span>
               </Link>
@@ -165,7 +157,7 @@ export default async function Page({
 
           {next && (
             <Button variant="secondary" size="icon:sm" asChild>
-              <Link href={`/blog/${next.slug}`}>
+              <Link href={`/projects/${next.slug}`}>
                 <span className="sr-only">Next</span>
                 <ArrowRightIcon />
               </Link>
@@ -201,10 +193,4 @@ export default async function Page({
       <div className="screen-line-before h-4 w-full" />
     </>
   );
-}
-
-function getPostUrl(post: Post) {
-  if (post.metadata.category === "components") return `/components/${post.slug}`;
-  if (post.metadata.category === "projects") return `/projects/${post.slug}`;
-  return `/blog/${post.slug}`;
 }

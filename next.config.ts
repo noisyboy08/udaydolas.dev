@@ -60,6 +60,10 @@ const nextConfig: NextConfig = {
         source: "/components/:slug.mdx",
         destination: "/blog.mdx/:slug",
       },
+      {
+        source: "/projects/:slug.mdx",
+        destination: "/blog.mdx/:slug",
+      },
     ];
   },
   // async headers() {

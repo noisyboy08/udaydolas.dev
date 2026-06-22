@@ -25,7 +25,13 @@ export function PostItem({
       )}
     >
       <Link
-        href={`/blog/${post.slug}`}
+        href={
+          post.metadata.category === "projects"
+            ? `/projects/${post.slug}`
+            : post.metadata.category === "components"
+            ? `/components/${post.slug}`
+            : `/blog/${post.slug}`
+        }
         className="group/link flex flex-grow flex-col gap-2"
       >
         {post.metadata.image && (
