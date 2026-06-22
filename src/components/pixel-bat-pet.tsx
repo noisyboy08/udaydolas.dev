@@ -201,9 +201,15 @@ export function PixelBatPet() {
     const computePerchTarget = (): { x: number; y: number } | null => {
       const avatar = findAvatarRect();
       if (!avatar) return null;
+      // The bat's visual bottom pixel is at: currentY + (62 - 34) * SCALE = currentY + 84
+      // We want the bat claws to rest right on the avatar top rim.
+      // So: visual_bottom = avatar.top + 4  =>  currentY = avatar.top + 4 - 84 = avatar.top - 80
+      // On mobile the avatar is smaller (96px) so we peek a tiny bit more into it.
+      const isMobile = avatar.width < 120;
+      const yOffset = isMobile ? -68 : -80;
       return {
         x: avatar.left + avatar.width / 2,
-        y: avatar.top - 78, // sit on top of the profile picture
+        y: avatar.top + yOffset, // bat claws touch the avatar rim
       };
     };
 
@@ -611,7 +617,7 @@ export function PixelBatPet() {
             // Slow, deliberate glide toward the perch over ~1.8 s. The
             // sprite is already drawn head-up, so we keep it upright and
             // just bank slightly into the flight curve (no 180° flip).
-            const t = Math.min((now - homeStartAt) / 1800, 1);
+            const t = Math.min((now - homeStartAt) / 1200, 1);
             const e = easeInOutCubic(t);
             currentX = homeFromX + (perch.x - homeFromX) * e;
             currentY = homeFromY + (perch.y - homeFromY) * e;
@@ -644,8 +650,8 @@ export function PixelBatPet() {
             // Sit perched under the UD letters with a tiny breathing sway.
             // No flip — the sprite is already head-up so this looks like
             // the bat has gripped the bottom of "UD" and is resting.
-            currentX += (perch.x - currentX) * 0.08;
-            currentY += (perch.y - currentY) * 0.08;
+            currentX += (perch.x - currentX) * 0.15;
+            currentY += (perch.y - currentY) * 0.15;
             const sway = Math.sin(now / 1100) * 1.4;
             const tilt = Math.sin(now / 1300) * 2; // gentle resting tilt
             setBatPosition(currentX + sway, currentY);
