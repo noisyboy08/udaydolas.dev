@@ -10,7 +10,6 @@ import { Components } from "@/features/profile/components/components";
 import { Experiences } from "@/features/profile/components/experiences";
 import { Github } from "@/features/profile/components/github";
 import { Overview } from "@/features/profile/components/overview";
-import { Panel, PanelContent } from "@/features/profile/components/panel";
 import { ProfileCover } from "@/features/profile/components/profile-cover";
 import { ProfileHeader } from "@/features/profile/components/profile-header";
 import { Projects } from "@/features/profile/components/projects";

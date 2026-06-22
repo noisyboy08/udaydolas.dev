@@ -10,7 +10,6 @@ import { visit } from "unist-util-visit";
 import { CodeCollapsibleWrapper } from "@/components/code-collapsible-wrapper";
 import { ComponentPreview } from "@/components/component-preview";
 import { ComponentSource } from "@/components/component-source";
-import { VCardBoardingPass } from "@/features/profile/components/vcard-boarding-pass";
 import {
   Table,
   TableBody,
@@ -22,6 +21,7 @@ import {
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Code, Heading } from "@/components/ui/typography";
 import { UTM_PARAMS } from "@/config/site";
+import { VCardBoardingPass } from "@/features/profile/components/vcard-boarding-pass";
 import { rehypeAddQueryParams } from "@/lib/rehype-add-query-params";
 import { rehypeComponent } from "@/lib/rehype-component";
 import { rehypeNpmCommand } from "@/lib/rehype-npm-command";
