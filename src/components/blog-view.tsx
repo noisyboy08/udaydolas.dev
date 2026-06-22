@@ -6,7 +6,7 @@ import Image from "next/image";
 import Link from "next/link";
 import React, { useMemo, useState } from "react";
 
-import { BlogCover } from "@/features/profile/components/blog";
+import { BlogCover } from "@/features/profile/components/blog-cover";
 import { cn } from "@/lib/utils";
 import type { Post } from "@/types/blog";
 
