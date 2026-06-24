@@ -17,7 +17,7 @@ export const USER = {
   website: "https://udaydolas.dev",
   otherWebsites: [
     "https://github.com/noisyboy08",
-    "https://linkedin.com/in/udaydolas",
+    "https://linkedin.com/in/uday-d-909708338",
     "https://twitter.com/udaydolas",
     "https://dev.to/udaydolas",
     "https://udaydolas.vercel.app",

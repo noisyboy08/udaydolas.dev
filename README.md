@@ -166,7 +166,7 @@ Use `.env.local` to override values. Reference `.env.example` for available keys
 3. Run `pnpm lint && pnpm check-types`
 4. Submit a PR with context/screenshots
 
-Ideas or feedback? Reach out on [LinkedIn](https://linkedin.com/in/udaydolas) or open an issue.
+Ideas or feedback? Reach out on [LinkedIn](https://linkedin.com/in/uday-d-909708338) or open an issue.
 
 ---
 
@@ -190,6 +190,6 @@ Released under the [MIT License](./LICENSE). Feel free to reuse components; plea
 
 **Turning ideas into reality with clean code & creative design.**
 
-[Portfolio](https://udaydolas.dev) | [GitHub](https://github.com/noisyboy08) | [LinkedIn](https://linkedin.com/in/udaydolas)
+[Portfolio](https://udaydolas.dev) | [GitHub](https://github.com/noisyboy08) | [LinkedIn](https://linkedin.com/in/uday-d-909708338)
 
 </div>

@@ -6,7 +6,7 @@ export const SOCIAL_LINKS: SocialLink[] = [
     icon: "https://i.pinimg.com/1200x/b0/28/c2/b028c2e59043116dfc0da6ec6fd26d70.jpg",
     title: "LinkedIn",
     description: "Uday Dolas",
-    href: "https://www.linkedin.com/in/udaydolas/",
+    href: "https://www.linkedin.com/in/uday-d-909708338/",
   },
   {
     icon: "https://i.pinimg.com/736x/64/88/0b/64880b9b0fe5b53bbe3f7280d262b33f.jpg",
