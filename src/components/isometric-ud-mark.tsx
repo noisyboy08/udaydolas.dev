@@ -402,65 +402,48 @@ export function IsometricUDMark({
           .guide-line-animated {
             animation: dashMove 8s linear infinite;
           }
+          /* Hatching line colors — explicit per theme (currentColor unreliable in pattern defs) */
+          .hatch-top        { stroke: rgba(0,0,0,0.55); }
+          .hatch-side-left  { stroke: rgba(0,0,0,0.4);  }
+          .hatch-side-right { stroke: rgba(0,0,0,0.3);  }
+          .dark .hatch-top        { stroke: rgba(255,255,255,0.65); }
+          .dark .hatch-side-left  { stroke: rgba(255,255,255,0.50); }
+          .dark .hatch-side-right { stroke: rgba(255,255,255,0.38); }
         `,
           }}
         />
 
-        {/* Prominent diagonal hatching for top faces — matching ////// reference */}
+        {/* Diagonal hatching for top faces — explicit colors for light/dark */}
         <pattern
           id="isometric-hatch-top"
-          width="8"
-          height="8"
+          width="10"
+          height="10"
           patternUnits="userSpaceOnUse"
-          patternTransform="rotate(60)"
+          patternTransform="rotate(45)"
         >
-          <line
-            x1="0"
-            y1="0"
-            x2="0"
-            y2="8"
-            stroke="currentColor"
-            strokeOpacity="0.7"
-            strokeWidth="1.2"
-          />
+          <line className="hatch-top" x1="0" y1="0" x2="0" y2="10" strokeWidth="1.5" />
         </pattern>
 
         {/* Hatching for side-left faces */}
         <pattern
           id="isometric-hatch-side-left"
-          width="8"
-          height="8"
+          width="10"
+          height="10"
           patternUnits="userSpaceOnUse"
-          patternTransform="rotate(80)"
+          patternTransform="rotate(45)"
         >
-          <line
-            x1="0"
-            y1="0"
-            x2="0"
-            y2="8"
-            stroke="currentColor"
-            strokeOpacity="0.55"
-            strokeWidth="1.1"
-          />
+          <line className="hatch-side-left" x1="0" y1="0" x2="0" y2="10" strokeWidth="1.2" />
         </pattern>
 
         {/* Hatching for side-right faces */}
         <pattern
           id="isometric-hatch-side-right"
-          width="8"
-          height="8"
+          width="10"
+          height="10"
           patternUnits="userSpaceOnUse"
-          patternTransform="rotate(-10)"
+          patternTransform="rotate(45)"
         >
-          <line
-            x1="0"
-            y1="0"
-            x2="0"
-            y2="8"
-            stroke="currentColor"
-            strokeOpacity="0.45"
-            strokeWidth="1.1"
-          />
+          <line className="hatch-side-right" x1="0" y1="0" x2="0" y2="10" strokeWidth="1.0" />
         </pattern>
 
         <clipPath id="guide-clip-path">
