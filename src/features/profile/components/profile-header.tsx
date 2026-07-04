@@ -9,7 +9,7 @@ import { VerifiedIcon } from "./verified-icon";
 
 export function ProfileHeader() {
   return (
-    <div className="screen-line-after relative z-10 mt-[-68px] flex border-x border-edge sm:mt-[-166px]">
+    <div className="screen-line-after relative z-10 mt-[-56px] flex border-x border-edge sm:mt-[-128px]">
       <div className="shrink-0 border-r border-edge">
         <div className="mx-[2px] my-[3px]">
           <Image

@@ -15,7 +15,7 @@ export function Overview() {
       <h2 className="sr-only">Overview</h2>
 
       <PanelContent>
-        <div className="grid grid-cols-2 gap-2">
+        <div className="grid grid-cols-2 gap-x-4 gap-y-2">
           {/* Left column */}
           <div className="space-y-2">
             {USER.jobs.map((job, index) => {
