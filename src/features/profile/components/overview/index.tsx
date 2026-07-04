@@ -17,7 +17,7 @@ export function Overview() {
       <PanelContent>
         <div className="grid grid-cols-2 gap-x-4 gap-y-2">
           {/* Left column */}
-          <div className="space-y-2">
+          <div className="space-y-2 border-r border-edge pr-4">
             {USER.jobs.map((job, index) => {
               return (
                 <JobItem
