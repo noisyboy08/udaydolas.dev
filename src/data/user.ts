@@ -11,8 +11,8 @@ export const USER = {
     "Software Engineer",
     "Tech Explorer & Innovator Rebuild",
   ],
-  address: "Pimpli Gurav , Pune City , Pune:61 , Maharashtra , India",
-  phoneNumber: "OTU3OTkzNDM1NQ==", // E.164 format, base64 encoded
+  address: "Pune, Maharashtra, India",
+  phoneNumber: "KzkxOTU3OTkzNDM1NQ==", // E.164 format (+919579934355), base64 encoded
   email: "dWRheWRvbGFzMDhAZ21haWwuY29t", // base64 encoded
   website: "https://udaydolas.dev",
   otherWebsites: [

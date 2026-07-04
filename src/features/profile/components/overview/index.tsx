@@ -14,34 +14,42 @@ export function Overview() {
     <Panel>
       <h2 className="sr-only">Overview</h2>
 
-      <PanelContent className="space-y-2">
-        {USER.jobs.map((job, index) => {
-          return (
-            <JobItem
-              key={index}
-              title={job.title}
-              company={job.company}
-              website={job.website}
+      <PanelContent>
+        <div className="grid grid-cols-2 gap-2">
+          {/* Left column */}
+          <div className="space-y-2">
+            {USER.jobs.map((job, index) => {
+              return (
+                <JobItem
+                  key={index}
+                  title={job.title}
+                  company={job.company}
+                  website={job.website}
+                />
+              );
+            })}
+
+            <IntroItem icon={MapPinIcon} content={USER.address} />
+
+            <PhoneItem phoneNumber={USER.phoneNumber} />
+          </div>
+
+          {/* Right column */}
+          <div className="space-y-2">
+            <EmailItem email={USER.email} />
+
+            <IntroItem
+              icon={GlobeIcon}
+              content={urlToName(USER.website)}
+              href={USER.website}
             />
-          );
-        })}
 
-        <IntroItem icon={MapPinIcon} content={USER.address} />
-
-        <PhoneItem phoneNumber={USER.phoneNumber} />
-
-        <EmailItem email={USER.email} />
-
-        <IntroItem
-          icon={GlobeIcon}
-          content={urlToName(USER.website)}
-          href={USER.website}
-        />
-
-        <IntroItem
-          icon={USER.gender === "male" ? MarsIcon : VenusIcon}
-          content={USER.pronouns}
-        />
+            <IntroItem
+              icon={USER.gender === "male" ? MarsIcon : VenusIcon}
+              content={USER.pronouns}
+            />
+          </div>
+        </div>
       </PanelContent>
     </Panel>
   );
