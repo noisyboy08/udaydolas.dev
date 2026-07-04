@@ -11,7 +11,7 @@ export default function FluidGradientTextDemo() {
         speed={3}
       />
       <FluidGradientText
-        text="udaydolas.dev"
+        text="udayy.tech"
         className="font-mono text-xl"
         colors={["#10b981", "#06b6d4", "#6366f1", "#a855f7"]}
         speed={5}

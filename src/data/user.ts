@@ -14,20 +14,20 @@ export const USER = {
   address: "Pune, Maharashtra, India",
   phoneNumber: "KzkxOTU3OTkzNDM1NQ==", // E.164 format (+919579934355), base64 encoded
   email: "dWRheWRvbGFzMDhAZ21haWwuY29t", // base64 encoded
-  website: "https://udaydolas.dev",
+  website: "https://udayy.tech",
   otherWebsites: [
     "https://github.com/noisyboy08",
     "https://linkedin.com/in/uday-d-909708338",
     "https://twitter.com/udaydolas",
     "https://dev.to/udaydolas",
-    "https://udaydolas.vercel.app",
+    "https://udayy.tech",
   ],
   jobTitle: "Software Engineer",
   jobs: [
     {
       title: "Software Engineer",
       company: "Freelance",
-      website: "https://udaydolas.dev",
+      website: "https://udayy.tech",
     },
     {
       title: "Technology Enthusiast",

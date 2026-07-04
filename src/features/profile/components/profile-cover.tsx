@@ -13,8 +13,8 @@ export function ProfileCover() {
           "bg-zinc-50 dark:bg-zinc-950"
         )}
       >
-        {/* Full-width border line at the bottom of cover — placed BEFORE the SVG so it renders behind it */}
-        <div className="pointer-events-none absolute bottom-0 -left-[100vw] h-px w-[200vw] bg-edge" />
+        {/* Full-width border line aligned with the top of the ProfileHeader, behind the SVG logo */}
+        <div className="pointer-events-none absolute bottom-12 -left-[100vw] h-px w-[200vw] bg-edge sm:bottom-20" />
         <IsometricUDMark id="js-cover-mark" className="h-full w-full" />
       </div>
     </BrandContextMenu>

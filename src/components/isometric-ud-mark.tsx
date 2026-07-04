@@ -313,17 +313,21 @@ export function IsometricUDMark({
     let faceClass = "";
     let hatchId = "";
 
-    if (poly.type === "top" || poly.type === "top-d") {
+    if (poly.type === "top") {
       faceClass = "face-top";
-      hatchId = "isometric-hatch-global";
+      hatchId = "isometric-hatch-top";
+    } else if (poly.type === "top-d") {
+      faceClass = "face-top";
+      hatchId = "isometric-hatch-top";
     } else if (poly.type === "side-left") {
       faceClass = "face-side-left";
+      hatchId = "isometric-hatch-side-left";
     } else {
       faceClass = "face-side-right";
+      hatchId = "isometric-hatch-side-right";
     }
 
-    const hatchFill = hatchId ? `url(#${hatchId})` : "none";
-
+    const hatchFill = `url(#${hatchId})`;
     const fmtPts = (pts: [number, number, number][]) =>
       pts.map(([u, v, w]) => project(u, v, w).join(",")).join(" ");
 
@@ -399,21 +403,47 @@ export function IsometricUDMark({
             animation: dashMove 8s linear infinite;
           }
           /* Hatching line colors — explicit per theme */
-          .hatch-line { stroke: rgba(0,0,0,0.55); }
-          .dark .hatch-line { stroke: rgba(255,255,255,0.75); }
+          .hatch-top        { stroke: rgba(0,0,0,0.65); }
+          .hatch-side-left  { stroke: rgba(0,0,0,0.50);  }
+          .hatch-side-right { stroke: rgba(0,0,0,0.40);  }
+          .dark .hatch-top        { stroke: rgba(255,255,255,0.85); }
+          .dark .hatch-side-left  { stroke: rgba(255,255,255,0.70); }
+          .dark .hatch-side-right { stroke: rgba(255,255,255,0.55); }
         `,
           }}
         />
 
-        {/* Unified diagonal hatching for all faces — parallel to the w-axis (60 deg rotation of vertical line) */}
+        {/* Dense diagonal hatching for top faces */}
         <pattern
-          id="isometric-hatch-global"
-          width="8"
-          height="8"
+          id="isometric-hatch-top"
+          width="6"
+          height="6"
+          patternUnits="userSpaceOnUse"
+          patternTransform="rotate(45)"
+        >
+          <line className="hatch-top" x1="0" y1="0" x2="0" y2="6" strokeWidth="2.0" />
+        </pattern>
+
+        {/* Dense hatching for side-left faces */}
+        <pattern
+          id="isometric-hatch-side-left"
+          width="6"
+          height="6"
           patternUnits="userSpaceOnUse"
           patternTransform="rotate(60)"
         >
-          <line className="hatch-line" x1="0" y1="0" x2="0" y2="8" strokeWidth="1.2" />
+          <line className="hatch-side-left" x1="0" y1="0" x2="0" y2="6" strokeWidth="1.8" />
+        </pattern>
+
+        {/* Dense hatching for side-right faces */}
+        <pattern
+          id="isometric-hatch-side-right"
+          width="6"
+          height="6"
+          patternUnits="userSpaceOnUse"
+          patternTransform="rotate(-30)"
+        >
+          <line className="hatch-side-right" x1="0" y1="0" x2="0" y2="6" strokeWidth="1.6" />
         </pattern>
 
         <clipPath id="guide-clip-path">
