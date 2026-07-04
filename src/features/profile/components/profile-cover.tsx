@@ -7,7 +7,7 @@ export function ProfileCover() {
     <BrandContextMenu>
       <div
         className={cn(
-          "aspect-[5/3] border-x border-edge select-none sm:aspect-2/1",
+          "aspect-[4/3] border-x border-edge select-none sm:aspect-[5/2]",
           "flex items-center justify-center text-black dark:text-white",
           "screen-line-before screen-line-after before:-top-px after:-bottom-px",
           "bg-zinc-50 dark:bg-zinc-950"

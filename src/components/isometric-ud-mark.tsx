@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useMemo } from "react";
+import React, { useMemo, useRef, useState } from "react";
 
 import { cn } from "@/lib/utils";
 
@@ -15,6 +15,31 @@ export function IsometricUDMark({
   id,
   ...props
 }: IsometricUDMarkProps) {
+  // Spring bounce animation state
+  const [springY, setSpringY] = useState(0);
+  const animFrameRef = useRef<number | null>(null);
+
+  function triggerSpring() {
+    if (animFrameRef.current !== null) return;
+    const startTime = performance.now();
+    const amplitude = -18; // px upward jump
+    const freq = 8;        // oscillation frequency
+    const decay = 4;       // decay rate
+
+    function animate(now: number) {
+      const t = (now - startTime) / 1000;
+      const y = amplitude * Math.exp(-decay * t) * Math.cos(freq * t);
+      setSpringY(y);
+      if (t < 1.2) {
+        animFrameRef.current = requestAnimationFrame(animate);
+      } else {
+        setSpringY(0);
+        animFrameRef.current = null;
+      }
+    }
+    animFrameRef.current = requestAnimationFrame(animate);
+  }
+
   // Base coordinates of the isometric grid origin
   const cx = 350;
   const cy = 60;
@@ -275,14 +300,117 @@ export function IsometricUDMark({
     return list.sort((a, b) => a.depth - b.depth);
   }, []);
 
+  // Separate top-face polygons (animated) from side walls (static)
+  const topPolygons = polygons.filter(
+    (p) => p.type === "top" || p.type === "top-d"
+  );
+  const sidePolygons = polygons.filter(
+    (p) => p.type === "side-left" || p.type === "side-right"
+  );
+
+  // Project a polygon to SVG — optionally offset in Y
+  function renderPoly(
+    poly: (typeof polygons)[0],
+    idx: number,
+    yOffset = 0
+  ) {
+    let faceClass = "";
+    let hatchId = "";
+
+    if (poly.type === "top") {
+      faceClass = "face-top";
+      hatchId = "isometric-hatch-top";
+    } else if (poly.type === "top-d") {
+      faceClass = "face-top";
+      hatchId = "isometric-hatch-top";
+    } else if (poly.type === "side-left") {
+      faceClass = "face-side-left";
+      hatchId = "isometric-hatch-side-left";
+    } else {
+      faceClass = "face-side-right";
+      hatchId = "isometric-hatch-side-right";
+    }
+
+    const hatchFill = `url(#${hatchId})`;
+
+    const offsetProject = (u: number, v: number, w: number): [number, number] => {
+      const [x, y] = project(u, v, w);
+      return [x, y + yOffset];
+    };
+
+    const offsetFormatPoints = (pts: [number, number, number][]) =>
+      pts.map(([u, v, w]) => offsetProject(u, v, w).join(",")).join(" ");
+
+    // Special rendering for D's top face (with hole) using evenodd path
+    if (poly.type === "top-d" && poly.innerPoints) {
+      const outerPath = poly.points
+        .map(([u, v, w]) => offsetProject(u, v, w).join(","))
+        .join(" L ");
+      const innerPath = poly.innerPoints
+        .map(([u, v, w]) => offsetProject(u, v, w).join(","))
+        .join(" L ");
+      const combinedD = `M ${outerPath} Z M ${innerPath} Z`;
+
+      return (
+        <g key={`poly-group-${idx}`}>
+          <path
+            d={combinedD}
+            fillRule="evenodd"
+            className={cn("isometric-poly", faceClass)}
+            strokeWidth="0"
+          />
+          <path
+            d={combinedD}
+            fillRule="evenodd"
+            fill={hatchFill}
+            strokeWidth="0"
+            pointerEvents="none"
+          />
+          <path
+            d={combinedD}
+            fillRule="evenodd"
+            fill="none"
+            className={cn("isometric-poly", faceClass)}
+            strokeWidth="1"
+          />
+        </g>
+      );
+    }
+
+    const formattedPoints = offsetFormatPoints(poly.points);
+
+    return (
+      <g key={`poly-group-${idx}`}>
+        <polygon
+          points={formattedPoints}
+          className={cn("isometric-poly", faceClass)}
+          strokeWidth="0"
+        />
+        <polygon
+          points={formattedPoints}
+          fill={hatchFill}
+          strokeWidth="0"
+          pointerEvents="none"
+        />
+        <polygon
+          points={formattedPoints}
+          fill="none"
+          className={cn("isometric-poly", faceClass)}
+          strokeWidth="1"
+        />
+      </g>
+    );
+  }
+
   return (
     <svg
       id={id}
       xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 800 400" // Fixed 2:1 ratio matching cover banner aspect ratio
+      viewBox="0 0 800 400"
       fill="none"
-      className={cn("h-auto w-full text-black dark:text-white", className)}
+      className={cn("h-auto w-full cursor-pointer text-black dark:text-white", className)}
       style={{ overflow: "visible" }}
+      onClick={triggerSpring}
       {...props}
     >
       <defs>
@@ -321,11 +449,11 @@ export function IsometricUDMark({
           }}
         />
 
-        {/* Diagonal Hatching Pattern for Top Faces — prominent ////// like reference */}
+        {/* Prominent diagonal hatching for top faces — matching ////// reference */}
         <pattern
           id="isometric-hatch-top"
-          width="6"
-          height="6"
+          width="8"
+          height="8"
           patternUnits="userSpaceOnUse"
           patternTransform="rotate(60)"
         >
@@ -333,18 +461,18 @@ export function IsometricUDMark({
             x1="0"
             y1="0"
             x2="0"
-            y2="6"
+            y2="8"
             stroke="currentColor"
-            strokeOpacity="0.55"
-            strokeWidth="0.8"
+            strokeOpacity="0.7"
+            strokeWidth="1.2"
           />
         </pattern>
 
-        {/* Diagonal Hatching for Side-Left Faces */}
+        {/* Hatching for side-left faces */}
         <pattern
           id="isometric-hatch-side-left"
-          width="6"
-          height="6"
+          width="8"
+          height="8"
           patternUnits="userSpaceOnUse"
           patternTransform="rotate(80)"
         >
@@ -352,18 +480,18 @@ export function IsometricUDMark({
             x1="0"
             y1="0"
             x2="0"
-            y2="6"
+            y2="8"
             stroke="currentColor"
-            strokeOpacity="0.4"
-            strokeWidth="0.8"
+            strokeOpacity="0.55"
+            strokeWidth="1.1"
           />
         </pattern>
 
-        {/* Diagonal Hatching for Side-Right Faces */}
+        {/* Hatching for side-right faces */}
         <pattern
           id="isometric-hatch-side-right"
-          width="6"
-          height="6"
+          width="8"
+          height="8"
           patternUnits="userSpaceOnUse"
           patternTransform="rotate(-10)"
         >
@@ -371,12 +499,13 @@ export function IsometricUDMark({
             x1="0"
             y1="0"
             x2="0"
-            y2="6"
+            y2="8"
             stroke="currentColor"
-            strokeOpacity="0.35"
-            strokeWidth="0.8"
+            strokeOpacity="0.45"
+            strokeWidth="1.1"
           />
         </pattern>
+
         <clipPath id="guide-clip-path">
           <rect x="-1000" y="0" width="3000" height="400" />
         </clipPath>
@@ -401,90 +530,14 @@ export function IsometricUDMark({
         Isometric Wireframe v1.0
       </text>
 
-      {/* 3. 3D Polygons (drawn back-to-front) */}
+      {/* 3. Side walls — static, no animation */}
       <g>
-        {polygons.map((poly, idx) => {
-          let faceClass = "";
-          let hatchFill = "none";
+        {sidePolygons.map((poly, idx) => renderPoly(poly, idx, 0))}
+      </g>
 
-          if (poly.type === "top") {
-            faceClass = "face-top";
-            hatchFill = "url(#isometric-hatch-top)";
-          } else if (poly.type === "top-d") {
-            faceClass = "face-top";
-            hatchFill = "url(#isometric-hatch-top)";
-          } else if (poly.type === "side-left") {
-            faceClass = "face-side-left";
-            hatchFill = "url(#isometric-hatch-side-left)";
-          } else {
-            faceClass = "face-side-right";
-            hatchFill = "url(#isometric-hatch-side-right)";
-          }
-
-          // Special rendering for D's top face (with hole) using evenodd path
-          if (poly.type === "top-d" && poly.innerPoints) {
-            const outerPath = poly.points
-              .map(([u, v, w]) => project(u, v, w).join(","))
-              .join(" L ");
-            const innerPath = poly.innerPoints
-              .map(([u, v, w]) => project(u, v, w).join(","))
-              .join(" L ");
-            const combinedD = `M ${outerPath} Z M ${innerPath} Z`;
-
-            return (
-              <g key={`poly-group-${idx}`}>
-                <path
-                  d={combinedD}
-                  fillRule="evenodd"
-                  className={cn("isometric-poly", faceClass)}
-                  strokeWidth="0"
-                />
-                {hatchFill !== "none" && (
-                  <path
-                    d={combinedD}
-                    fillRule="evenodd"
-                    fill={hatchFill}
-                    strokeWidth="0"
-                    pointerEvents="none"
-                  />
-                )}
-                <path
-                  d={combinedD}
-                  fillRule="evenodd"
-                  fill="none"
-                  className={cn("isometric-poly", faceClass)}
-                  strokeWidth="1"
-                />
-              </g>
-            );
-          }
-
-          const formattedPoints = formatPoints(poly.points);
-
-          return (
-            <g key={`poly-group-${idx}`}>
-              <polygon
-                points={formattedPoints}
-                className={cn("isometric-poly", faceClass)}
-                strokeWidth="0"
-              />
-              {hatchFill !== "none" && (
-                <polygon
-                  points={formattedPoints}
-                  fill={hatchFill}
-                  strokeWidth="0"
-                  pointerEvents="none"
-                />
-              )}
-              <polygon
-                points={formattedPoints}
-                fill="none"
-                className={cn("isometric-poly", faceClass)}
-                strokeWidth="1"
-              />
-            </g>
-          );
-        })}
+      {/* 4. Top faces — spring-animated upward on click */}
+      <g style={{ transform: `translateY(${springY}px)` }}>
+        {topPolygons.map((poly, idx) => renderPoly(poly, idx + 1000, springY))}
       </g>
     </svg>
   );
